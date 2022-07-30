@@ -1,0 +1,45 @@
+{
+  "name": "anti-pattern-inc/saasus-sdk-php",
+  "type": "library",
+  "description": "SaaSus SDK for PHP",
+  "autoload": {
+    "psr-4": {
+      "AntiPatternInc\\Saasus\\": "src/",
+      "OpenAPI\\Client\\": "generated/openapi/types/php/lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AntiPatternInc\\Saasus\\Test\\": "test/",
+      "OpenAPI\\Client\\Test\\": "generated/openapi/types/php/test/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Akihiro Yagasaki",
+      "email": "y@anti-pattern.co.jp"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.2",
+    "laravel/framework": "^9.2",
+    "guzzlehttp/guzzle": "^7.4",
+    "guzzlehttp/psr7": "^1.7.0|^2.0",
+    "guzzlehttp/promises": "^1.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "psr/cache": "^1.0",
+    "psr/simple-cache": "^1.0"
+  },
+  "scripts": {
+    "test": "phpunit test",
+    "validate:openapi": "openapi-generator-cli validate -i ../api/modules/auth/controller/authapi/authapi.yml",
+    "codegen:openapi": "openapi-generator-cli generate -g php -i ../api/modules/auth/controller/authapi/authapi.yml -o generated/openapi/types/php"
+  },
+  "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
+  }
+}

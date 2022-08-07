@@ -52,7 +52,7 @@ class Lib
         // トークンに対応したユーザ情報を取得
         $apibase = getenv('SAASUS_API_URL_BASE');
         if ($apibase == "") {
-            $apibase = "https://auth.api.dev.saasus.io";
+            $apibase = "https://api.saasus.io";
         }
 
         return Lib::callApi(

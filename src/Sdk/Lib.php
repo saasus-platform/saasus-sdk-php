@@ -44,14 +44,14 @@ class Lib
 
         $saasusid = getenv('SAASUS_SAAS_ID');
         $apikey = getenv('SAASUS_API_KEY');
-        if ($saasusid === false || $apikey === false) {
+        if ($saasusid == "" || $apikey == "") {
             error_log('SAASUS_SAAS_ID and SAASUS_API_KEY are required.');
             return false;
         }
 
         // トークンに対応したユーザ情報を取得
         $apibase = getenv('SAASUS_API_URL_BASE');
-        if ($apibase === false) {
+        if ($apibase == "") {
             $apibase = "https://auth.api.dev.saasus.io";
         }
 

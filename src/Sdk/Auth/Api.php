@@ -37,15 +37,15 @@ class Api
 
         $this->saasusid = getenv('SAASUS_SAAS_ID');
         $this->apikey = getenv('SAASUS_API_KEY');
-        if ($this->saasusid === false || $this->apikey === false) {
+        if ($this->saasusid == "" || $this->apikey == "") {
             error_log('SAASUS_SAAS_ID and SAASUS_API_KEY are required.');
             return false;
         }
 
         // トークンに対応したユーザ情報を取得
         $this->apibase = getenv('SAASUS_API_URL_BASE');
-        if ($this->apibase === false) {
-            $this->apibase = "https://auth.api.dev.saasus.io";
+        if ($this->apibase == "") {
+            $this->apibase = "https://api.saasus.io";
         }
     }
 

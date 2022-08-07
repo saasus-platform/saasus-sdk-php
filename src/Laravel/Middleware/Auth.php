@@ -37,13 +37,13 @@ class Auth
 
         $saasusid = getenv('SAASUS_SAAS_ID');
         $apikey = getenv('SAASUS_API_KEY');
-        if ($saasusid === false || $apikey === false) {
+        if ($saasusid == "" || $apikey == "") {
             return response()->json('SAASUS_SAAS_ID and SAASUS_API_KEY are required.', Response::HTTP_BAD_REQUEST);
         }
 
         $apibase = getenv('SAASUS_API_URL_BASE');
-        if ($apibase === false) {
-            $apibase = "https://auth.api.saasus.io";
+        if ($apibase == "") {
+            $apibase = "https://api.saasus.io";
         }
 
         // トークンに対応したユーザ情報を取得

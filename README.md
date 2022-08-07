@@ -1,3 +1,3 @@
 # saasus-sdk-php
 
-https://saasus-platform.readme.io/
+https://docs.saasus.io/

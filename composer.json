@@ -1,23 +1,22 @@
 {
-  "name": "anti-pattern-inc/saasus-sdk-php",
+  "name": "saasus-platform/saasus-sdk-php",
   "type": "library",
   "description": "SaaSus SDK for PHP",
   "autoload": {
     "psr-4": {
       "AntiPatternInc\\Saasus\\": "src/",
-      "OpenAPI\\Client\\": "generated/openapi/types/php/lib/"
+      "AntiPatternInc\\Saasus\\Sdk\\": "generated/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AntiPatternInc\\Saasus\\Test\\": "test/",
-      "OpenAPI\\Client\\Test\\": "generated/openapi/types/php/test/"
+      "AntiPatternInc\\Saasus\\Test\\": "test/"
     }
   },
   "authors": [
     {
-      "name": "Akihiro Yagasaki",
-      "email": "y@anti-pattern.co.jp"
+      "name": "SaaSus Platform",
+      "email": "saasus@anti-pattern.co.jp"
     }
   ],
   "require": {
@@ -25,21 +24,28 @@
     "laravel/framework": "^9.2",
     "guzzlehttp/guzzle": "^7.4",
     "guzzlehttp/psr7": "^1.7.0|^2.0",
-    "guzzlehttp/promises": "^1.4.0"
+    "guzzlehttp/promises": "^1.4.0",
+    "jane-php/open-api-runtime": "^7.3",
+    "php-http/guzzle7-adapter": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
     "psr/cache": "^1.0",
-    "psr/simple-cache": "^1.0"
+    "psr/simple-cache": "^1.0",
+    "jane-php/open-api-3": "^7.3",
+    "friendsofphp/php-cs-fixer": "^3.10"
   },
   "scripts": {
-    "test": "phpunit test",
-    "validate:openapi": "openapi-generator-cli validate -i ../api/modules/auth/controller/authapi/authapi.yml",
-    "codegen:openapi": "openapi-generator-cli generate -g php -i ../api/modules/auth/controller/authapi/authapi.yml -o generated/openapi/types/php"
+    "test": "phpunit test"
   },
   "config": {
     "allow-plugins": {
       "kylekatarnls/update-helper": true
+    }
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": "true"
     }
   }
 }

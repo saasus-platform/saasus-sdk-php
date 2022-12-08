@@ -31,7 +31,7 @@ class Auth
             } else {
                 Log::info('Can not get SaaSus ID token.');
                 if (getenv('SAASUS_AUTH_MODE') == "api") {
-                    return response()->json('Invalid ID Token.', Response::HTTP_FORBIDDEN);
+                    return response()->json('Invalid ID Token.', Response::HTTP_UNAUTHORIZED);
                 } else {
                     return redirect(getenv('SAASUS_LOGIN_URL'));
                 }

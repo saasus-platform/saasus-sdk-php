@@ -2,13 +2,16 @@
 
 namespace AntiPatternInc\Saasus\Laravel\Middleware;
 
+use AntiPatternInc\Saasus\Api\Client as ApiClient;
 use Closure;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
+
+use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoUnauthorizedException;
+use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoInternalServerErrorException;
 
 use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class Auth
 {
@@ -19,7 +22,7 @@ class Auth
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $token = $request->bearerToken();
         if (empty($token)) {
@@ -35,62 +38,22 @@ class Auth
             }
         }
 
-        $saasusid = getenv('SAASUS_SAAS_ID');
-        $apikey = getenv('SAASUS_API_KEY');
-        if ($saasusid == "" || $apikey == "") {
-            return response()->json('SAASUS_SAAS_ID and SAASUS_API_KEY are required.', Response::HTTP_BAD_REQUEST);
-        }
-
-        $apibase = getenv('SAASUS_API_URL_BASE');
-        if ($apibase == "") {
-            $apibase = "https://api.saasus.io";
-        }
-
-        // トークンに対応したユーザ情報を取得
-        $url = $apibase . "/api/auth/userinfo";
-        $method = "GET";
-
-        $options = [
-            'headers' => [
-                'X-SaaSus-ID-Token' => $token,
-                'X-SaaSus-SaaSID' => $saasusid,
-                'X-SaaSus-API-Key' => $apikey,
-                'Content-Type' => 'application/json',
-            ]
-        ];
-
         // リクエスト送信
-        $client = new Client();
-        $response = '';
+        $client = new ApiClient();
+        $authApiClient = $client->getAuthClient();
         try {
-            $response = $client->request($method, $url, $options);
-        } catch (ClientException $e) {
-            Log::info('SaaSus userinfo: ' . $e->getResponse()->getBody()->getContents());
-            if (getenv('SAASUS_AUTH_MODE') == "api") {
-                return response()->json('Invalid ID Token.', Response::HTTP_FORBIDDEN);
-            } else {
-                return redirect(getenv('SAASUS_LOGIN_URL'));
+            $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);
+        } catch (GetUserInfoUnauthorizedException | GetUserInfoInternalServerErrorException $e) {
+            if (get_class($e) == "GetUserInfoUnauthorizedException") {
+                Log::info('Type: Unauthorized, Message: ' . $e->getError());
+                if (getenv('SAASUS_AUTH_MODE') == "api") {
+                    return response()->json('Invalid ID Token.', Response::HTTP_UNAUTHORIZED);
+                } else {
+                    return redirect(getenv('SAASUS_LOGIN_URL'));
+                }
             }
-        }
-
-        // HTTP_FORBIDDEN は JWT がダメな場合
-        // なので、ログイン画面に forward される
-        if ($response->getStatusCode() == Response::HTTP_FORBIDDEN) {
-            Log::info('SaaSus userinfo: HTTP_FORBIDDEN');
-            if (getenv('SAASUS_AUTH_MODE') == "api") {
-                return response()->json('Invalid ID Token.', Response::HTTP_FORBIDDEN);
-            } else {
-                return redirect(getenv('SAASUS_LOGIN_URL'));
-            }
-        }
-        // HTTP_UNAUTHORIZED は API Key がダメな場合
-        if ($response->getStatusCode() == Response::HTTP_UNAUTHORIZED) {
-            return response()->json('Invalid API Key.', Response::HTTP_UNAUTHORIZED);
-        }
-
-        // その他のエラー
-        if ($response->getStatusCode() != Response::HTTP_OK) {
-            return response()->json('unexpected response: ', $response);
+            Log::info('Type: Intenal Server Error, Message: ' . $e->getError());
+            return response()->json('Unexpected response: ' . $e->getError(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $userinfo = $response->getBody();

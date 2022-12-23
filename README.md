@@ -7,26 +7,26 @@
 ### セットアップ
 
 ```
-composer config repositories.anti-pattern-inc/saasus-sdk-php vcs https://github.com/saasus-platform/saasus-sdk-php
+composer config repositories.saasus-platform/saasus-sdk-php vcs https://github.com/saasus-platform/saasus-sdk-php
 ```
 
 ### SDK 追加
 
 ```
-composer require Anti-Pattern-Inc/saasus-sdk-php
+composer require saasus-platform/saasus-sdk-php
 ```
 
 ### 環境変数を定義
 
 ```
 ### for SaaSus Platform
-SAASUS_SAAS_ID="saasid_98tjo3wifaoua （画面のSaaS ID）"
-SAASUS_API_KEY="apikey_kjntowjfoasnkjntwonsflajsno4as （画面のAPI KEY）"
-SAASUS_SECRET_KEY="DuFMclufMf7OH2r4Ma3nB2TatvRufqja7V2yZrlz+xA （画面のクライアントシークレット）"
+SAASUS_SAAS_ID="（画面のSaaS ID）"
+SAASUS_API_KEY="（画面のAPI KEY）"
+SAASUS_SECRET_KEY="（画面のクライアントシークレット）"
 SAASUS_LOGIN_URL="https://auth.sample.saasus.jp/　（ログイン画面のURL）"
 ```
 
-SAASUS_SAAS_ID, SAASUS_API_KEY は先ほど画面で表示した SaaS ID と API Key を、
+SAASUS_SAAS_ID, SAASUS_API_KEY, SAASUS_SECRET_KEY は SaaS 開発コンソール画面に表示されている SaaS ID、 API キー 　と　クライアントシークレットを、
 SAASUS_LOGIN_URL は、SaaSus コンソールで作成したログイン画面の URL を設定します。
 
 ### 認証モジュールの組み込み

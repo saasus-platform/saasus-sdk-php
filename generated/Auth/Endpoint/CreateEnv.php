@@ -5,8 +5,11 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class CreateEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-    * 連携のテストや開発用環境や実際の運用で利用する環境など複数の環境を定義することができるようになっており、
-    環境情報を作成します。
+    * 環境情報を作成します。
+    連携のテストや開発用環境や実際の運用で利用する環境など複数の環境を定義することができます。
+    
+    Create environment information.
+    Multiple environments can be defined, such as an environment for testing linkage, an environment for development, and an environment for actual operation.
     
     *
     * @param null|\stdClass $requestBody 

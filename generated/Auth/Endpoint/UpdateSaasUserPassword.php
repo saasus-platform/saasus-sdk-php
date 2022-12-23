@@ -6,11 +6,14 @@ class UpdateSaasUserPassword extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cli
 {
     protected $user_id;
     /**
-     * ユーザーのログインパスワードを変更します。
-     *
-     * @param string $userId ユーザーID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam $requestBody 
-     */
+    * ユーザーのログインパスワードを変更します。
+    
+    Change a user's login password.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam $requestBody 
+    */
     public function __construct(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam $requestBody = null)
     {
         $this->user_id = $userId;

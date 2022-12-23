@@ -13,25 +13,27 @@ class Attribute extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 属性名
+     * 属性名(attribute name)
      *
      * @var string
      */
     protected $attributeName;
     /**
-     * 表示名
+     * 表示名(Display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-     *
-     * @var string
-     */
+    * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
+    (Type (date can be used in YYYY-MM-DD format.))
+    
+    *
+    * @var string
+    */
     protected $attributeType;
     /**
-     * 属性名
+     * 属性名(attribute name)
      *
      * @return string
      */
@@ -40,7 +42,7 @@ class Attribute extends \ArrayObject
         return $this->attributeName;
     }
     /**
-     * 属性名
+     * 属性名(attribute name)
      *
      * @param string $attributeName
      *
@@ -53,7 +55,7 @@ class Attribute extends \ArrayObject
         return $this;
     }
     /**
-     * 表示名
+     * 表示名(Display name)
      *
      * @return string
      */
@@ -62,7 +64,7 @@ class Attribute extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 表示名
+     * 表示名(Display name)
      *
      * @param string $displayName
      *
@@ -75,21 +77,25 @@ class Attribute extends \ArrayObject
         return $this;
     }
     /**
-     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-     *
-     * @return string
-     */
+    * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
+    (Type (date can be used in YYYY-MM-DD format.))
+    
+    *
+    * @return string
+    */
     public function getAttributeType() : string
     {
         return $this->attributeType;
     }
     /**
-     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-     *
-     * @param string $attributeType
-     *
-     * @return self
-     */
+    * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
+    (Type (date can be used in YYYY-MM-DD format.))
+    
+    *
+    * @param string $attributeType
+    *
+    * @return self
+    */
     public function setAttributeType(string $attributeType) : self
     {
         $this->initialized['attributeType'] = true;

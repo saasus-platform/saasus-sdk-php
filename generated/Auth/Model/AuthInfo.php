@@ -13,13 +13,13 @@ class AuthInfo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 認証後遷移先
+     * 認証後遷移先(Transition destination after authentication)
      *
      * @var string
      */
     protected $callbackUrl;
     /**
-     * 認証後遷移先
+     * 認証後遷移先(Transition destination after authentication)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class AuthInfo extends \ArrayObject
         return $this->callbackUrl;
     }
     /**
-     * 認証後遷移先
+     * 認証後遷移先(Transition destination after authentication)
      *
      * @param string $callbackUrl
      *

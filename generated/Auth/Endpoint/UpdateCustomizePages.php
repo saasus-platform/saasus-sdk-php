@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class UpdateCustomizePages extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を更新します。
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam $requestBody 
-     */
+    * 認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を更新します。
+    
+    Update the authentication screen setting information (new registration, login, password reset, etc.).
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam $requestBody = null)
     {
         $this->body = $requestBody;

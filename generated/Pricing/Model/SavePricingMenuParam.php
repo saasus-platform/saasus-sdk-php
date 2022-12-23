@@ -13,31 +13,31 @@ class SavePricingMenuParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メニュー名
+     * メニュー名(Menu name)
      *
      * @var string
      */
     protected $name;
     /**
-     * メニュー表示名
+     * メニュー表示名(Menu display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * メニュー説明
+     * メニュー説明(Menu description)
      *
      * @var string
      */
     protected $description;
     /**
-     * 追加するユニットID
+     * 追加するユニットID(the unit id to add)
      *
      * @var string[]
      */
     protected $unitIds;
     /**
-     * メニュー名
+     * メニュー名(Menu name)
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this->name;
     }
     /**
-     * メニュー名
+     * メニュー名(Menu name)
      *
      * @param string $name
      *
@@ -59,7 +59,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this;
     }
     /**
-     * メニュー表示名
+     * メニュー表示名(Menu display name)
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * メニュー表示名
+     * メニュー表示名(Menu display name)
      *
      * @param string $displayName
      *
@@ -81,7 +81,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this;
     }
     /**
-     * メニュー説明
+     * メニュー説明(Menu description)
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this->description;
     }
     /**
-     * メニュー説明
+     * メニュー説明(Menu description)
      *
      * @param string $description
      *
@@ -103,7 +103,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this;
     }
     /**
-     * 追加するユニットID
+     * 追加するユニットID(the unit id to add)
      *
      * @return string[]
      */
@@ -112,7 +112,7 @@ class SavePricingMenuParam extends \ArrayObject
         return $this->unitIds;
     }
     /**
-     * 追加するユニットID
+     * 追加するユニットID(the unit id to add)
      *
      * @param string[] $unitIds
      *

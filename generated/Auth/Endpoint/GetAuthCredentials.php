@@ -5,12 +5,15 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 認証・認可情報の取得
-     *
-     * @param array $queryParameters {
-     *     @var string $code 認可コード
-     * }
-     */
+    * 一時コードを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
+    
+    Get an ID token, access token, and refresh token using a temporary code.
+    
+    *
+    * @param array $queryParameters {
+    *     @var string $code 一時コード(temp code)
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;

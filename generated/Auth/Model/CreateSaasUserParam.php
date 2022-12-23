@@ -13,19 +13,19 @@ class CreateSaasUserParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @var string
      */
     protected $email;
     /**
-     * 
+     * パスワード(password)
      *
      * @var string
      */
     protected $password;
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class CreateSaasUserParam extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @param string $email
      *
@@ -47,7 +47,7 @@ class CreateSaasUserParam extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * パスワード(password)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class CreateSaasUserParam extends \ArrayObject
         return $this->password;
     }
     /**
-     * 
+     * パスワード(password)
      *
      * @param string $password
      *

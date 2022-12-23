@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 
-class GetSaasID extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
+class GetSaasId extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -24,17 +24,17 @@ class GetSaasID extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
     /**
      * {@inheritdoc}
      *
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasIDInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasIdInternalServerErrorException
      *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasID
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasID', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasIDInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasIdInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

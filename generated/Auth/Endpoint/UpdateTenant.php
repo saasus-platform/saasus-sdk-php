@@ -6,11 +6,14 @@ class UpdateTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
 {
     protected $tenant_id;
     /**
-     * SaaSus Platform で管理する、テナントの詳細情報を更新します。
-     *
-     * @param string $tenantId テナントID
-     * @param null|\stdClass $requestBody 
-     */
+    * SaaSus Platform で管理する、テナントの詳細情報を更新します。
+    
+    Update tenant details managed by the SaaSus Platform.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(string $tenantId, ?\stdClass $requestBody = null)
     {
         $this->tenant_id = $tenantId;

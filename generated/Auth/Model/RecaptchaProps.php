@@ -13,19 +13,19 @@ class RecaptchaProps extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Site key
+     * サイトキー(Site key)
      *
      * @var string
      */
     protected $siteKey;
     /**
-     * Secret key
+     * シークレットキー(Secret key)
      *
      * @var string
      */
     protected $secretKey;
     /**
-     * Site key
+     * サイトキー(Site key)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class RecaptchaProps extends \ArrayObject
         return $this->siteKey;
     }
     /**
-     * Site key
+     * サイトキー(Site key)
      *
      * @param string $siteKey
      *
@@ -47,7 +47,7 @@ class RecaptchaProps extends \ArrayObject
         return $this;
     }
     /**
-     * Secret key
+     * シークレットキー(Secret key)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class RecaptchaProps extends \ArrayObject
         return $this->secretKey;
     }
     /**
-     * Secret key
+     * シークレットキー(Secret key)
      *
      * @param string $secretKey
      *

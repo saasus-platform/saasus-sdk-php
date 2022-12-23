@@ -19,13 +19,13 @@ class UserAvailableEnv extends \ArrayObject
      */
     protected $id;
     /**
-     * 環境名
+     * 環境名(Env name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @var Role[]
      */
@@ -53,7 +53,7 @@ class UserAvailableEnv extends \ArrayObject
         return $this;
     }
     /**
-     * 環境名
+     * 環境名(Env name)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class UserAvailableEnv extends \ArrayObject
         return $this->name;
     }
     /**
-     * 環境名
+     * 環境名(Env name)
      *
      * @param string $name
      *
@@ -75,7 +75,7 @@ class UserAvailableEnv extends \ArrayObject
         return $this;
     }
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @return Role[]
      */
@@ -84,7 +84,7 @@ class UserAvailableEnv extends \ArrayObject
         return $this->roles;
     }
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @param Role[] $roles
      *

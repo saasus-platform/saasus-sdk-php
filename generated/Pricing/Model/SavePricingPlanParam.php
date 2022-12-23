@@ -13,31 +13,33 @@ class SavePricingPlanParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 料金プラン名
+     * 料金プラン名(Pricing plan name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 料金プラン表示名
+     * 料金プラン表示名(Pricing plan display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 料金プラン説明
+     * 料金プラン説明(Pricing plan description)
      *
      * @var string
      */
     protected $description;
     /**
-     * メニューID（料金プランに追加するメニューIDを設定）
-     *
-     * @var string[]
-     */
+    * メニューID（料金プランに追加するメニューIDを設定）
+    Menu ID (set the menu ID to be added to the pricing plan)
+    
+    *
+    * @var string[]
+    */
     protected $menuIds;
     /**
-     * 料金プラン名
+     * 料金プラン名(Pricing plan name)
      *
      * @return string
      */
@@ -46,7 +48,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->name;
     }
     /**
-     * 料金プラン名
+     * 料金プラン名(Pricing plan name)
      *
      * @param string $name
      *
@@ -59,7 +61,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プラン表示名
+     * 料金プラン表示名(Pricing plan display name)
      *
      * @return string
      */
@@ -68,7 +70,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 料金プラン表示名
+     * 料金プラン表示名(Pricing plan display name)
      *
      * @param string $displayName
      *
@@ -81,7 +83,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プラン説明
+     * 料金プラン説明(Pricing plan description)
      *
      * @return string
      */
@@ -90,7 +92,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->description;
     }
     /**
-     * 料金プラン説明
+     * 料金プラン説明(Pricing plan description)
      *
      * @param string $description
      *
@@ -103,21 +105,25 @@ class SavePricingPlanParam extends \ArrayObject
         return $this;
     }
     /**
-     * メニューID（料金プランに追加するメニューIDを設定）
-     *
-     * @return string[]
-     */
+    * メニューID（料金プランに追加するメニューIDを設定）
+    Menu ID (set the menu ID to be added to the pricing plan)
+    
+    *
+    * @return string[]
+    */
     public function getMenuIds() : array
     {
         return $this->menuIds;
     }
     /**
-     * メニューID（料金プランに追加するメニューIDを設定）
-     *
-     * @param string[] $menuIds
-     *
-     * @return self
-     */
+    * メニューID（料金プランに追加するメニューIDを設定）
+    Menu ID (set the menu ID to be added to the pricing plan)
+    
+    *
+    * @param string[] $menuIds
+    *
+    * @return self
+    */
     public function setMenuIds(array $menuIds) : self
     {
         $this->initialized['menuIds'] = true;

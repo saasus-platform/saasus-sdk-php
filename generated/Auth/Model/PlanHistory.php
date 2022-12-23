@@ -19,9 +19,9 @@ class PlanHistory extends \ArrayObject
      */
     protected $planId;
     /**
-     * 登録日
+     * 登録日時
      *
-     * @var string
+     * @var int
      */
     protected $planAppliedAt;
     /**
@@ -47,22 +47,22 @@ class PlanHistory extends \ArrayObject
         return $this;
     }
     /**
-     * 登録日
+     * 登録日時
      *
-     * @return string
+     * @return int
      */
-    public function getPlanAppliedAt() : string
+    public function getPlanAppliedAt() : int
     {
         return $this->planAppliedAt;
     }
     /**
-     * 登録日
+     * 登録日時
      *
-     * @param string $planAppliedAt
+     * @param int $planAppliedAt
      *
      * @return self
      */
-    public function setPlanAppliedAt(string $planAppliedAt) : self
+    public function setPlanAppliedAt(int $planAppliedAt) : self
     {
         $this->initialized['planAppliedAt'] = true;
         $this->planAppliedAt = $planAppliedAt;

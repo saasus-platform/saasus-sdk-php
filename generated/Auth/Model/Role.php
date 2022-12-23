@@ -13,19 +13,19 @@ class Role extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 役割名
+     * 役割(ロール)名(role name)
      *
      * @var string
      */
     protected $roleName;
     /**
-     * 役割表示名
+     * 役割(ロール)表示名(role display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 役割名
+     * 役割(ロール)名(role name)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class Role extends \ArrayObject
         return $this->roleName;
     }
     /**
-     * 役割名
+     * 役割(ロール)名(role name)
      *
      * @param string $roleName
      *
@@ -47,7 +47,7 @@ class Role extends \ArrayObject
         return $this;
     }
     /**
-     * 役割表示名
+     * 役割(ロール)表示名(role display name)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class Role extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 役割表示名
+     * 役割(ロール)表示名(role display name)
      *
      * @param string $displayName
      *

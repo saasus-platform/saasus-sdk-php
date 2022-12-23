@@ -13,13 +13,13 @@ class UpdateStripeInfoParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * シークレットキー(secret key)
      *
      * @var string
      */
     protected $secretKey;
     /**
-     * 
+     * シークレットキー(secret key)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class UpdateStripeInfoParam extends \ArrayObject
         return $this->secretKey;
     }
     /**
-     * 
+     * シークレットキー(secret key)
      *
      * @param string $secretKey
      *

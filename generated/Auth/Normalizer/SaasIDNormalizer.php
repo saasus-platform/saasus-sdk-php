@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SaasIDNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class SaasIdNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class SaasIDNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasID';
+        return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasID';
+        return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId';
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class SaasIDNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasID();
+        $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

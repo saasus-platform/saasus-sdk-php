@@ -6,10 +6,13 @@ class DeleteEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
 {
     protected $env_id;
     /**
-     * 環境情報を削除します。
-     *
-     * @param int $envId 環境ID
-     */
+    * 環境情報を削除します。
+    
+    Delete env info.
+    
+    *
+    * @param int $envId 環境ID(Env ID)
+    */
     public function __construct(int $envId)
     {
         $this->env_id = $envId;

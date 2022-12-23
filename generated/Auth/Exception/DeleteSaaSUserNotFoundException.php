@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Exception;
 
-class DeleteSaaSUserNotFoundException extends NotFoundException
+class DeleteSaasUserNotFoundException extends NotFoundException
 {
     /**
      * @var \AntiPatternInc\Saasus\Sdk\Auth\Model\Error

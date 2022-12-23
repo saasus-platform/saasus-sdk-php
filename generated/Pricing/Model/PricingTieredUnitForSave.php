@@ -13,7 +13,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @var int
      */
@@ -25,36 +25,36 @@ class PricingTieredUnitForSave extends \ArrayObject
      */
     protected $meteringUnitName;
     /**
-     * 
+     * 名前(name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 
+     * 表示名(display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 
+     * 説明(description)
      *
      * @var string
      */
     protected $description;
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(Type of unit of measurement)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @var string
     */
     protected $type;
     /**
-     * 
+     * 通貨(currency)
      *
      * @var string
      */
@@ -66,7 +66,7 @@ class PricingTieredUnitForSave extends \ArrayObject
      */
     protected $tiers;
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @return int
      */
@@ -75,7 +75,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->upperCount;
     }
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @param int $upperCount
      *
@@ -110,7 +110,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 名前(name)
      *
      * @return string
      */
@@ -119,7 +119,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
+     * 名前(name)
      *
      * @param string $name
      *
@@ -132,7 +132,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 表示名(display name)
      *
      * @return string
      */
@@ -141,7 +141,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 
+     * 表示名(display name)
      *
      * @param string $displayName
      *
@@ -154,7 +154,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 説明(description)
      *
      * @return string
      */
@@ -163,7 +163,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
+     * 説明(description)
      *
      * @param string $description
      *
@@ -176,11 +176,11 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(Type of unit of measurement)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @return string
@@ -190,11 +190,11 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->type;
     }
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(Type of unit of measurement)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @param string $type
@@ -208,7 +208,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 通貨(currency)
      *
      * @return string
      */
@@ -217,7 +217,7 @@ class PricingTieredUnitForSave extends \ArrayObject
         return $this->currency;
     }
     /**
-     * 
+     * 通貨(currency)
      *
      * @param string $currency
      *

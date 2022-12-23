@@ -19,31 +19,31 @@ class UserAvailableTenant extends \ArrayObject
      */
     protected $id;
     /**
-     * テナント名
+     * テナント名(Tenant name)
      *
      * @var string
      */
     protected $name;
     /**
-     * completed_sign_up /確認/
+     * 
      *
      * @var bool
      */
     protected $completedSignUp;
     /**
-     * 環境情報、役割情報
+     * 環境情報、役割(ロール)情報(Environmental info, role info)
      *
      * @var UserAvailableEnv[]
      */
     protected $envs;
     /**
-     * 
+     * ユーザー追加属性(User Added Attribute)
      *
      * @var mixed[]
      */
     protected $userAttribute;
     /**
-     * 
+     * バックオフィス担当者のメール(Back office contact email)
      *
      * @var string
      */
@@ -77,7 +77,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this;
     }
     /**
-     * テナント名
+     * テナント名(Tenant name)
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this->name;
     }
     /**
-     * テナント名
+     * テナント名(Tenant name)
      *
      * @param string $name
      *
@@ -99,7 +99,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this;
     }
     /**
-     * completed_sign_up /確認/
+     * 
      *
      * @return bool
      */
@@ -108,7 +108,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this->completedSignUp;
     }
     /**
-     * completed_sign_up /確認/
+     * 
      *
      * @param bool $completedSignUp
      *
@@ -121,7 +121,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this;
     }
     /**
-     * 環境情報、役割情報
+     * 環境情報、役割(ロール)情報(Environmental info, role info)
      *
      * @return UserAvailableEnv[]
      */
@@ -130,7 +130,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this->envs;
     }
     /**
-     * 環境情報、役割情報
+     * 環境情報、役割(ロール)情報(Environmental info, role info)
      *
      * @param UserAvailableEnv[] $envs
      *
@@ -143,7 +143,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * ユーザー追加属性(User Added Attribute)
      *
      * @return mixed[]
      */
@@ -152,7 +152,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this->userAttribute;
     }
     /**
-     * 
+     * ユーザー追加属性(User Added Attribute)
      *
      * @param mixed[] $userAttribute
      *
@@ -165,7 +165,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * バックオフィス担当者のメール(Back office contact email)
      *
      * @return string
      */
@@ -174,7 +174,7 @@ class UserAvailableTenant extends \ArrayObject
         return $this->backOfficeStaffEmail;
     }
     /**
-     * 
+     * バックオフィス担当者のメール(Back office contact email)
      *
      * @param string $backOfficeStaffEmail
      *

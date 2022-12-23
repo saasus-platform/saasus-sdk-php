@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Exception;
 
-class CreateSaaSUserBadRequestException extends BadRequestException
+class CreateSaasUserBadRequestException extends BadRequestException
 {
     /**
      * @var \AntiPatternInc\Saasus\Sdk\Auth\Model\Error

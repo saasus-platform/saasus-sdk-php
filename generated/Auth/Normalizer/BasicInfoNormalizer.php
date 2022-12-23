@@ -69,6 +69,10 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDefaultDomainName($data['default_domain_name']);
             unset($data['default_domain_name']);
         }
+        if (\array_key_exists('from_email_address', $data)) {
+            $object->setFromEmailAddress($data['from_email_address']);
+            unset($data['from_email_address']);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -92,6 +96,7 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $data['dkim_dns_records'] = $values;
         $data['default_domain_name'] = $object->getDefaultDomainName();
+        $data['from_email_address'] = $object->getFromEmailAddress();
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

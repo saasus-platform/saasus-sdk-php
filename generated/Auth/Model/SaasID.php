@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Model;
 
-class SaasID extends \ArrayObject
+class SaasId extends \ArrayObject
 {
     /**
      * @var array

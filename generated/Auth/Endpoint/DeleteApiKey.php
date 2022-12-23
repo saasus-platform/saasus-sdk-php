@@ -6,10 +6,13 @@ class DeleteApiKey extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
 {
     protected $api_key;
     /**
-     * サーバサイド用の API キーを削除します。
-     *
-     * @param string $apiKey ApiKey
-     */
+    * サーバサイド用の API キーを削除します。
+    
+    Delete API Keys.
+    
+    *
+    * @param string $apiKey APIキー(API key)
+    */
     public function __construct(string $apiKey)
     {
         $this->api_key = $apiKey;

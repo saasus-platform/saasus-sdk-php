@@ -13,19 +13,22 @@ class CreateTenantUserParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @var string
      */
     protected $email;
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @var mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @var mixed[]
+    */
     protected $attributes;
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @return string
      */
@@ -34,7 +37,7 @@ class CreateTenantUserParam extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @param string $email
      *
@@ -47,21 +50,27 @@ class CreateTenantUserParam extends \ArrayObject
         return $this;
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @return mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @return mixed[]
+    */
     public function getAttributes() : iterable
     {
         return $this->attributes;
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @param mixed[] $attributes
-     *
-     * @return self
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @param mixed[] $attributes
+    *
+    * @return self
+    */
     public function setAttributes(iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;

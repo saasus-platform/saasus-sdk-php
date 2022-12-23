@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Exception;
 
-class DeleteSaaSUserInternalServerErrorException extends InternalServerErrorException
+class DeleteSaasUserInternalServerErrorException extends InternalServerErrorException
 {
     /**
      * @var \AntiPatternInc\Saasus\Sdk\Auth\Model\Error

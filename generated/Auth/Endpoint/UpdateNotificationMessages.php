@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class UpdateNotificationMessages extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 各種通知メールテンプレート更新します。
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam $requestBody 
-     */
+    * 各種通知メールテンプレート更新します。
+    
+    Update the registered notification email template.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam $requestBody = null)
     {
         $this->body = $requestBody;

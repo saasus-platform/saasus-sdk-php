@@ -8,13 +8,16 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     protected $user_id;
     protected $env_id;
     /**
-     * テナントのユーザーに役割を作成します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $userId ユーザーID
-     * @param int $envId 環境ID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody 
-     */
+    * テナントのユーザーに役割(ロール)を作成します。
+    
+    Create roles for tenant users.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $userId ユーザーID(User ID)
+    * @param int $envId 環境ID(Env ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody 
+    */
     public function __construct(string $tenantId, string $userId, int $envId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody = null)
     {
         $this->tenant_id = $tenantId;

@@ -6,11 +6,14 @@ class UpdatePricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $menu_id;
     /**
-     * プライシング機能メニューを更新します。
-     *
-     * @param string $menuId メニューID
-     * @param null|\stdClass $requestBody 
-     */
+    * プライシング機能メニューを更新します。
+    
+    Update pricing feature menu.
+    
+    *
+    * @param string $menuId メニューID(menu ID)
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(string $menuId, ?\stdClass $requestBody = null)
     {
         $this->menu_id = $menuId;

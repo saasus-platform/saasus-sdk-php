@@ -7,11 +7,14 @@ class GetMeteringUnitDateCountsByTenantIdAndDate extends \AntiPatternInc\Saasus\
     protected $tenant_id;
     protected $date;
     /**
-     * 指定した日の全メータリングユニットカウントを取得します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $date 日
-     */
+    * 指定した日の全メータリングユニットカウントを取得します。
+    
+    Gets the total metering unit count for the specified date.
+    
+    *
+    * @param string $tenantId テナントID(tenant id)
+    * @param string $date 日(date)
+    */
     public function __construct(string $tenantId, string $date)
     {
         $this->tenant_id = $tenantId;

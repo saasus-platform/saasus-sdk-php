@@ -2,14 +2,17 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 
-class GetSaaSUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
+class GetSaasUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     protected $user_id;
     /**
-     * ユーザーIDからユーザー情報を取得します。
-     *
-     * @param string $userId ユーザーID
-     */
+    * ユーザーIDからユーザー情報を取得します。
+    
+    Get user information from user ID.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    */
     public function __construct(string $userId)
     {
         $this->user_id = $userId;
@@ -34,8 +37,8 @@ class GetSaaSUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEnd
     /**
      * {@inheritdoc}
      *
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaaSUserNotFoundException
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaaSUserInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasUserNotFoundException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasUserInternalServerErrorException
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser
      */
@@ -45,10 +48,10 @@ class GetSaaSUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEnd
             return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUser', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaaSUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaaSUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

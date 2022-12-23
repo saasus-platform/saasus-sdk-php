@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 
-class UpdateSaasID extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
+class UpdateSaasId extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -24,7 +24,7 @@ class UpdateSaasID extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasIDInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasIdInternalServerErrorException
      *
      * @return null
      */
@@ -34,7 +34,7 @@ class UpdateSaasID extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasIDInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasIdInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

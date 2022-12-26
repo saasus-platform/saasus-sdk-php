@@ -7,11 +7,14 @@ class GetTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseE
     protected $tenant_id;
     protected $user_id;
     /**
-     * テナントのユーザーをIDから一件取得します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $userId ユーザーID
-     */
+    * テナントのユーザーをIDから一件取得します。
+    
+    Acquires one tenant user by specifying the ID.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $userId ユーザーID(User ID)
+    */
     public function __construct(string $tenantId, string $userId)
     {
         $this->tenant_id = $tenantId;

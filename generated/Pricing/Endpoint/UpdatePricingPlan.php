@@ -6,11 +6,14 @@ class UpdatePricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $plan_id;
     /**
-     * 料金プランを更新します。
-     *
-     * @param string $planId 料金プランID
-     * @param null|\stdClass $requestBody 
-     */
+    * 料金プランを更新します。
+    
+    Update Pricing plan.
+    
+    *
+    * @param string $planId 料金プランID(Price plan ID)
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(string $planId, ?\stdClass $requestBody = null)
     {
         $this->plan_id = $planId;

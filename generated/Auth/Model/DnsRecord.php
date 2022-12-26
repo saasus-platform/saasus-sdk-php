@@ -13,25 +13,25 @@ class DnsRecord extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * CNAMEリソースレコード
+     * CNAMEリソースレコード(CNAME resource record)
      *
      * @var string
      */
     protected $type;
     /**
-     * レコード名
+     * レコード名(record name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 値
+     * 値(value)
      *
      * @var string
      */
     protected $value;
     /**
-     * CNAMEリソースレコード
+     * CNAMEリソースレコード(CNAME resource record)
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class DnsRecord extends \ArrayObject
         return $this->type;
     }
     /**
-     * CNAMEリソースレコード
+     * CNAMEリソースレコード(CNAME resource record)
      *
      * @param string $type
      *
@@ -53,7 +53,7 @@ class DnsRecord extends \ArrayObject
         return $this;
     }
     /**
-     * レコード名
+     * レコード名(record name)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class DnsRecord extends \ArrayObject
         return $this->name;
     }
     /**
-     * レコード名
+     * レコード名(record name)
      *
      * @param string $name
      *
@@ -75,7 +75,7 @@ class DnsRecord extends \ArrayObject
         return $this;
     }
     /**
-     * 値
+     * 値(value)
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class DnsRecord extends \ArrayObject
         return $this->value;
     }
     /**
-     * 値
+     * 値(value)
      *
      * @param string $value
      *

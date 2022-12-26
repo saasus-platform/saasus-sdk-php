@@ -5,10 +5,17 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class CreateRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 役割を作成します。
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * 役割(ロール)を作成します。
+    ここで作成した役割をユーザーに付与することによって、SaaS側で役割ベースの認可を実装することが用意になります。
+    また、同じユーザーでも、属するテナント・環境ごとに持っている役割を変えることが可能です。
+    
+    Create a role.
+    By granting users the roles created here, it becomes easier to implement role-based authorization on the SaaS side.
+    In addition, even the same user can have different roles for each tenant/environment to which they belong.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

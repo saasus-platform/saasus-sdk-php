@@ -13,27 +13,36 @@ class UpdateTenantUserParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @var mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @var mixed[]
+    */
     protected $attributes;
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @return mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @return mixed[]
+    */
     public function getAttributes() : iterable
     {
         return $this->attributes;
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定した情報）
-     *
-     * @param mixed[] $attributes
-     *
-     * @return self
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @param mixed[] $attributes
+    *
+    * @return self
+    */
     public function setAttributes(iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;

@@ -13,13 +13,13 @@ class CreateTenantUserRolesParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @var string[]
      */
     protected $roleNames;
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @return string[]
      */
@@ -28,7 +28,7 @@ class CreateTenantUserRolesParam extends \ArrayObject
         return $this->roleNames;
     }
     /**
-     * 役割情報
+     * 役割(ロール)情報(Role info)
      *
      * @param string[] $roleNames
      *

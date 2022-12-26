@@ -13,19 +13,19 @@ class MessageTemplate extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * タイトル
+     * タイトル(title)
      *
      * @var string
      */
     protected $subject;
     /**
-     * メッセージ
+     * メッセージ(message)
      *
      * @var string
      */
     protected $message;
     /**
-     * タイトル
+     * タイトル(title)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class MessageTemplate extends \ArrayObject
         return $this->subject;
     }
     /**
-     * タイトル
+     * タイトル(title)
      *
      * @param string $subject
      *
@@ -47,7 +47,7 @@ class MessageTemplate extends \ArrayObject
         return $this;
     }
     /**
-     * メッセージ
+     * メッセージ(message)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class MessageTemplate extends \ArrayObject
         return $this->message;
     }
     /**
-     * メッセージ
+     * メッセージ(message)
      *
      * @param string $message
      *

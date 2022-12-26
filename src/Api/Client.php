@@ -5,6 +5,7 @@ namespace AntiPatternInc\Saasus\Api;
 use AntiPatternInc\Saasus\Sdk\Auth;
 use AntiPatternInc\Saasus\Sdk\Billing;
 use AntiPatternInc\Saasus\Sdk\Pricing;
+use AntiPatternInc\Saasus\Sdk\Integration;
 use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
@@ -15,6 +16,7 @@ class Client
     protected Auth\Client $authClient;
     protected Billing\Client $billingClient;
     protected Pricing\Client $pricingClient;
+    protected Integration\Client $integrationClient;
 
     protected GuzzleClient $guzzleClient;
 
@@ -55,9 +57,10 @@ class Client
             ]
         );
 
-        $this->authClient = Auth\Client::create($this->createApiClient($this->apibase . "/v0/auth"));
-        $this->billingClient = Billing\Client::create($this->createApiClient($this->apibase . "/v0/billing"));
-        $this->pricingClient = Pricing\Client::create($this->createApiClient($this->apibase . "/v0/pricing"));
+        $this->authClient = Auth\Client::create($this->createApiClient($this->apibase . "/v1/auth"));
+        $this->billingClient = Billing\Client::create($this->createApiClient($this->apibase . "/v1/billing"));
+        $this->pricingClient = Pricing\Client::create($this->createApiClient($this->apibase . "/v1/pricing"));
+        $this->integrationClient = Integration\Client::create($this->createApiClient($this->apibase . "/v1/integration"));
     }
 
     protected function createApiClient($apibase)
@@ -83,5 +86,10 @@ class Client
     public function getPricingClient()
     {
         return $this->pricingClient;
+    }
+
+    public function getIntegrationClient()
+    {
+        return $this->integrationClient;
     }
 }

@@ -5,10 +5,15 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class CreateAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 認証・認可情報の保存
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * 引数のIDトークン・アクセストークン・リフレッシュトークンを一時保存し取得用の一時コードを返却する。
+    一時コードの有効期間は発行から10秒です。
+    
+    Temporarily save the argument ID token, access token, and refresh token and return the temporary code for acquisition.
+    Temporary codes are valid for 10 seconds from issuance.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

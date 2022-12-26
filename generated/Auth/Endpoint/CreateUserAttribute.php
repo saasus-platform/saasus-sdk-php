@@ -9,6 +9,10 @@ class CreateUserAttribute extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
     例えば、ユーザー名を持たせる、誕生日を持たせるなど、ユーザーに紐付いた項目の定義を行うことができます。
     一方で、個人情報を SaaSus Platform 側に持たせたくない場合は、このユーザー属性定義を行わずに SaaS 側で個人情報を持つことを検討してください。
     
+    Register additional user attributes to be retained in the SaaSus Platform.
+    For example, you can define items associated with a user, such as having a user name, having a birthday, etc.
+    On the other hand, if you don't want to have personal information on the SaaS Platform side, consider having personal information on the SaaS side without this user attribute definition.
+    
     *
     * @param null|\stdClass $requestBody 
     */

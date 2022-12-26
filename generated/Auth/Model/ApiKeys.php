@@ -13,13 +13,13 @@ class ApiKeys extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * APIキー(API key)
      *
      * @var string[]
      */
     protected $apiKeys;
     /**
-     * 
+     * APIキー(API key)
      *
      * @return string[]
      */
@@ -28,7 +28,7 @@ class ApiKeys extends \ArrayObject
         return $this->apiKeys;
     }
     /**
-     * 
+     * APIキー(API key)
      *
      * @param string[] $apiKeys
      *

@@ -45,6 +45,10 @@ class UpdateBasicInfoParamNormalizer implements DenormalizerInterface, Normalize
             $object->setDomainName($data['domain_name']);
             unset($data['domain_name']);
         }
+        if (\array_key_exists('from_email_address', $data)) {
+            $object->setFromEmailAddress($data['from_email_address']);
+            unset($data['from_email_address']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -59,6 +63,7 @@ class UpdateBasicInfoParamNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         $data['domain_name'] = $object->getDomainName();
+        $data['from_email_address'] = $object->getFromEmailAddress();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

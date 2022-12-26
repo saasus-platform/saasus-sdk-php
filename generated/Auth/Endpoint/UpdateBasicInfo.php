@@ -5,9 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class UpdateBasicInfo extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-    * SaaSus ID を元にパラメータとして設定したドメイン名を設定更新します。
+    * SaaS ID を元にパラメータとして設定したドメイン名を設定更新します。
     CNAME レコードが生成されますので、 DNS に設定して下さい。
     既に稼働中の SaaS アプリケーションに設定している場合には、動作に影響があります。
+    
+    Update the domain name set as a parameter based on the SaaS ID.
+    A CNAME record will be generated, so set it in your DNS.
+    If you set it on a SaaS application that is already running, it will affect your behavior.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam $requestBody 

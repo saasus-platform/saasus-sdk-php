@@ -25,14 +25,19 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\GetStripeInfo(), $fetch);
     }
     /**
-     * Stripeの連携情報を更新
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Billing\Exception\UpdateStripeInfoInternalServerErrorException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
+    * 請求業務で使う外部SaaSとの連携情報を更新します。
+    現在は Stripe と連携が可能です。
+    
+    Updates information on linkage with external SaaS used in billing operations.
+    Currently, it is possible to linkage with Stripe.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Billing\Exception\UpdateStripeInfoInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
     public function updateStripeInfo(?\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\UpdateStripeInfo($requestBody), $fetch);
@@ -42,7 +47,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.saasus.io/v0/billing');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.saasus.io/v1/billing');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

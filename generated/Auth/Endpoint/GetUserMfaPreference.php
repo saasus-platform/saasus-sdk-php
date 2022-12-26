@@ -6,10 +6,13 @@ class GetUserMfaPreference extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
 {
     protected $user_id;
     /**
-     * 個別のユーザーのMFA設定を取得
-     *
-     * @param string $userId ユーザーID
-     */
+    * ユーザーのMFA設定を取得します。
+    
+    Get the user's MFA settings.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    */
     public function __construct(string $userId)
     {
         $this->user_id = $userId;

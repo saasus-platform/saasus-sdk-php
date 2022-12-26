@@ -6,10 +6,13 @@ class DeleteTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
 {
     protected $tenant_id;
     /**
-     * SaaSus Platform で管理する、テナントの詳細情報を削除します。
-     *
-     * @param string $tenantId テナントID
-     */
+    * SaaSus Platform で管理する、テナントの詳細情報を削除します。
+    
+    Delete tenant information managed by SaaSus Platform.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    */
     public function __construct(string $tenantId)
     {
         $this->tenant_id = $tenantId;

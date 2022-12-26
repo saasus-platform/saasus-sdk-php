@@ -6,10 +6,13 @@ class GetTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
 {
     protected $tenant_id;
     /**
-     * SaaSus Platform で管理する、テナントの詳細情報を取得します。
-     *
-     * @param string $tenantId テナントID
-     */
+    * SaaSus Platform で管理する、テナントの詳細情報を取得します。
+    
+    Get detailed information about a tenant registered with the SaaSus Platform.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    */
     public function __construct(string $tenantId)
     {
         $this->tenant_id = $tenantId;

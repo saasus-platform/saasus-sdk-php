@@ -19,13 +19,13 @@ class UserInfo extends \ArrayObject
      */
     protected $id;
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @var string
      */
     protected $email;
     /**
-     * テナント情報
+     * テナント情報(Tenant info)
      *
      * @var UserAvailableTenant[]
      */
@@ -53,7 +53,7 @@ class UserInfo extends \ArrayObject
         return $this;
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class UserInfo extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス
+     * メールアドレス(e-mail)
      *
      * @param string $email
      *
@@ -75,7 +75,7 @@ class UserInfo extends \ArrayObject
         return $this;
     }
     /**
-     * テナント情報
+     * テナント情報(Tenant info)
      *
      * @return UserAvailableTenant[]
      */
@@ -84,7 +84,7 @@ class UserInfo extends \ArrayObject
         return $this->tenants;
     }
     /**
-     * テナント情報
+     * テナント情報(Tenant info)
      *
      * @param UserAvailableTenant[] $tenants
      *

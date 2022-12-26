@@ -13,18 +13,18 @@ class DeviceConfiguration extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * always: 常に記憶する
-    userOptIn: ユーザーオプトイン
-    no: 記憶しない
+    * always: 常に記憶する(always remember)
+    userOptIn: ユーザーオプトイン(User opt-in)
+    no: (don't save)
     
     *
     * @var string
     */
     protected $deviceRemembering;
     /**
-    * always: 常に記憶する
-    userOptIn: ユーザーオプトイン
-    no: 記憶しない
+    * always: 常に記憶する(always remember)
+    userOptIn: ユーザーオプトイン(User opt-in)
+    no: (don't save)
     
     *
     * @return string
@@ -34,9 +34,9 @@ class DeviceConfiguration extends \ArrayObject
         return $this->deviceRemembering;
     }
     /**
-    * always: 常に記憶する
-    userOptIn: ユーザーオプトイン
-    no: 記憶しない
+    * always: 常に記憶する(always remember)
+    userOptIn: ユーザーオプトイン(User opt-in)
+    no: (don't save)
     
     *
     * @param string $deviceRemembering

@@ -13,25 +13,25 @@ class MeteringUnitMonthCount extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 計測ユニット名
+     * 計測ユニット名(Metering unit name)
      *
      * @var string
      */
     protected $meteringUnitName;
     /**
-     * 月
+     * 月(month)
      *
      * @var string
      */
     protected $month;
     /**
-     * 件数
+     * 件数(count)
      *
      * @var int
      */
     protected $count;
     /**
-     * 計測ユニット名
+     * 計測ユニット名(Metering unit name)
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class MeteringUnitMonthCount extends \ArrayObject
         return $this->meteringUnitName;
     }
     /**
-     * 計測ユニット名
+     * 計測ユニット名(Metering unit name)
      *
      * @param string $meteringUnitName
      *
@@ -53,7 +53,7 @@ class MeteringUnitMonthCount extends \ArrayObject
         return $this;
     }
     /**
-     * 月
+     * 月(month)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class MeteringUnitMonthCount extends \ArrayObject
         return $this->month;
     }
     /**
-     * 月
+     * 月(month)
      *
      * @param string $month
      *
@@ -75,7 +75,7 @@ class MeteringUnitMonthCount extends \ArrayObject
         return $this;
     }
     /**
-     * 件数
+     * 件数(count)
      *
      * @return int
      */
@@ -84,7 +84,7 @@ class MeteringUnitMonthCount extends \ArrayObject
         return $this->count;
     }
     /**
-     * 件数
+     * 件数(count)
      *
      * @param int $count
      *

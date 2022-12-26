@@ -7,11 +7,14 @@ class GetMeteringUnitMonthCountsByTenantIdAndMonth extends \AntiPatternInc\Saasu
     protected $tenant_id;
     protected $month;
     /**
-     * 指定した月の全メータリングユニットカウントを取得します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $month 月
-     */
+    * 指定した月の全メータリングユニットカウントを取得します。
+    
+    Gets all metering unit counts for the specified month.
+    
+    *
+    * @param string $tenantId テナントID(tenant id)
+    * @param string $month 月(month)
+    */
     public function __construct(string $tenantId, string $month)
     {
         $this->tenant_id = $tenantId;

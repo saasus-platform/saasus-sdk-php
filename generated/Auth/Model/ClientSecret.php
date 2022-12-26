@@ -13,13 +13,13 @@ class ClientSecret extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * クライアントシークレット(client secret)
      *
      * @var string
      */
     protected $clientSecret;
     /**
-     * 
+     * クライアントシークレット(client secret)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class ClientSecret extends \ArrayObject
         return $this->clientSecret;
     }
     /**
-     * 
+     * クライアントシークレット(client secret)
      *
      * @param string $clientSecret
      *

@@ -6,11 +6,14 @@ class CreateSecretCode extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
 {
     protected $user_id;
     /**
-     * 認証アプリケーション登録用のシークレットコード作成
-     *
-     * @param string $userId ユーザーID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam $requestBody 
-     */
+    * 認証アプリケーション登録用のシークレットコードを作成します。
+    
+    Create a secret code for authenticator application registration.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam $requestBody 
+    */
     public function __construct(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam $requestBody = null)
     {
         $this->user_id = $userId;

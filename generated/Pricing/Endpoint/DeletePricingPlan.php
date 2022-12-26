@@ -6,10 +6,13 @@ class DeletePricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $plan_id;
     /**
-     * 料金プランを削除します。
-     *
-     * @param string $planId 料金プランID
-     */
+    * 料金プランを削除します。
+    
+    Delete a Pricing plan.
+    
+    *
+    * @param string $planId 料金プランID(Price plan ID)
+    */
     public function __construct(string $planId)
     {
         $this->plan_id = $planId;

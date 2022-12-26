@@ -6,11 +6,14 @@ class UpdateUserMfaPreference extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cl
 {
     protected $user_id;
     /**
-     * 個別のユーザーのMFA設定を更新
-     *
-     * @param string $userId ユーザーID
-     * @param null|\stdClass $requestBody 
-     */
+    * ユーザーのMFA設定を更新します。
+    
+    Update the user's MFA settings.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(string $userId, ?\stdClass $requestBody = null)
     {
         $this->user_id = $userId;

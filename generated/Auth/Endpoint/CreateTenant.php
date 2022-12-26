@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class CreateTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * SaaSus Platform で管理する、テナント情報を作成します。
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * SaaSus Platform で管理する、テナント情報を作成します。
+    
+    Create tenant information in the SaaSus Platform.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

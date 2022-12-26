@@ -9,13 +9,16 @@ class DeleteTenantUserRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
     protected $env_id;
     protected $role_name;
     /**
-     * テナントのユーザーから役割を削除します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $userId ユーザーID
-     * @param int $envId 環境ID
-     * @param string $roleName 役割名
-     */
+    * テナントのユーザーから役割(ロール)を削除します。
+    
+    Delete a role (role) from a tenant user.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $userId ユーザーID(User ID)
+    * @param int $envId 環境ID(Env ID)
+    * @param string $roleName 役割(ロール)名(role name)
+    */
     public function __construct(string $tenantId, string $userId, int $envId, string $roleName)
     {
         $this->tenant_id = $tenantId;

@@ -13,25 +13,25 @@ class Credentials extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * IDトークン(ID token)
      *
      * @var string
      */
     protected $idToken;
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @var string
      */
     protected $accessToken;
     /**
-     * 
+     * リフレッシュトークン(refresh token)
      *
      * @var string
      */
     protected $refreshToken;
     /**
-     * 
+     * IDトークン(ID token)
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class Credentials extends \ArrayObject
         return $this->idToken;
     }
     /**
-     * 
+     * IDトークン(ID token)
      *
      * @param string $idToken
      *
@@ -53,7 +53,7 @@ class Credentials extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class Credentials extends \ArrayObject
         return $this->accessToken;
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @param string $accessToken
      *
@@ -75,7 +75,7 @@ class Credentials extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * リフレッシュトークン(refresh token)
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class Credentials extends \ArrayObject
         return $this->refreshToken;
     }
     /**
-     * 
+     * リフレッシュトークン(refresh token)
      *
      * @param string $refreshToken
      *

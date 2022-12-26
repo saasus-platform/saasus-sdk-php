@@ -13,31 +13,31 @@ class CustomizePageSettingsProps extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * サービス名
+     * サービス名(Service name)
      *
      * @var string
      */
     protected $title;
     /**
-     * 利用規約URL
+     * 利用規約URL(Terms of use URL)
      *
      * @var string
      */
     protected $termsOfServiceUrl;
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(Privacy Policy URL)
      *
      * @var string
      */
     protected $privacyPolicyUrl;
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @var string
      */
     protected $googleTagManagerContainerId;
     /**
-     * サービス名
+     * サービス名(Service name)
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->title;
     }
     /**
-     * サービス名
+     * サービス名(Service name)
      *
      * @param string $title
      *
@@ -59,7 +59,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this;
     }
     /**
-     * 利用規約URL
+     * 利用規約URL(Terms of use URL)
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->termsOfServiceUrl;
     }
     /**
-     * 利用規約URL
+     * 利用規約URL(Terms of use URL)
      *
      * @param string $termsOfServiceUrl
      *
@@ -81,7 +81,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this;
     }
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(Privacy Policy URL)
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->privacyPolicyUrl;
     }
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(Privacy Policy URL)
      *
      * @param string $privacyPolicyUrl
      *
@@ -103,7 +103,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this;
     }
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->googleTagManagerContainerId;
     }
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @param string $googleTagManagerContainerId
      *

@@ -13,13 +13,13 @@ class SoftwareTokenSecretCode extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * シークレットコード(secret code)
      *
      * @var string
      */
     protected $secretCode;
     /**
-     * 
+     * シークレットコード(secret code)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class SoftwareTokenSecretCode extends \ArrayObject
         return $this->secretCode;
     }
     /**
-     * 
+     * シークレットコード(secret code)
      *
      * @param string $secretCode
      *

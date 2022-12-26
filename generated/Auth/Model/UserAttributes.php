@@ -13,13 +13,13 @@ class UserAttributes extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * ユーザー属性定義
+     * ユーザー属性定義(User attribute definition)
      *
      * @var Attribute[]
      */
     protected $userAttributes;
     /**
-     * ユーザー属性定義
+     * ユーザー属性定義(User attribute definition)
      *
      * @return Attribute[]
      */
@@ -28,7 +28,7 @@ class UserAttributes extends \ArrayObject
         return $this->userAttributes;
     }
     /**
-     * ユーザー属性定義
+     * ユーザー属性定義(User attribute definition)
      *
      * @param Attribute[] $userAttributes
      *

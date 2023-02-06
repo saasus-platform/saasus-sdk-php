@@ -23,7 +23,7 @@ composer require saasus-platform/saasus-sdk-php
 SAASUS_SAAS_ID="（画面のSaaS ID）"
 SAASUS_API_KEY="（画面のAPI KEY）"
 SAASUS_SECRET_KEY="（画面のクライアントシークレット）"
-SAASUS_LOGIN_URL="https://auth.sample.saasus.jp/　（ログイン画面のURL）"
+SAASUS_LOGIN_URL="https://auth.sample.saasus.jp/（ログイン画面のURL）"
 ```
 
 SAASUS_SAAS_ID, SAASUS_API_KEY, SAASUS_SECRET_KEY は SaaS 開発コンソール画面に表示されている SaaS ID、 API キー 　と　クライアントシークレットを、

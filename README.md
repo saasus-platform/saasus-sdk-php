@@ -58,6 +58,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   請求業務で使う外部 SaaS との連携情報の参照・更新に利用します。
 
+- [Integration](./generated/Integration/README.md)
+
+  EventBridge 連携設定の参照・更新に利用します。
+
 ---
 
 # ユースケースサンプル

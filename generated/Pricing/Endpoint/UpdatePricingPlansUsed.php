@@ -7,7 +7,7 @@ class UpdatePricingPlansUsed extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\
     /**
     * 料金プランと配下のメニュー・ユニットを使用済みに更新します。
     
-    Updates the price plan and feature menu/pricing unit to used.
+    Update price plan and feature menu/pricing unit to used.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody 

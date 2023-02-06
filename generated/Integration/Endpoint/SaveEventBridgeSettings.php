@@ -7,7 +7,7 @@ class SaveEventBridgeSettings extends \AntiPatternInc\Saasus\Sdk\Integration\Run
     /**
     * ホストの状態を Amazon EventBridge 経由で提供するための設定を更新します。
     
-    Update the configuration to provide host state via Amazon EventBridge.
+    Update configuration used to provide the host state via Amazon EventBridge.
     
     *
     * @param null|\stdClass $requestBody 

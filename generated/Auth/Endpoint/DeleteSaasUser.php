@@ -8,7 +8,7 @@ class DeleteSaasUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
     /**
     * ユーザーIDを元に一致するユーザーをテナントからすべて削除し、SaaSからも削除します。
     
-    Deletes all matching users based on the user ID from the tenant and also deletes them from SaaS.
+    Delete all users with matching user ID from the tenant and SaaS.
     
     *
     * @param string $userId ユーザーID(User ID)

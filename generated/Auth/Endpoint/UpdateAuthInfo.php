@@ -8,7 +8,7 @@ class UpdateAuthInfo extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
     * ログイン後に認証情報を渡す SaaS の URL を登録します。
     ここで登録した URL に認証情報を渡し、SaaSus SDK を利用してこの Callback の実装をすることが可能となります。
     
-    Register a SaaS URL to pass authentication after login.
+    Register post-login SaaS URL for authentication information.
     It is possible to pass authentication information to the URL registered here and implement this Callback using the SaaSus SDK.
     
     *

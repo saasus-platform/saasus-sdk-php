@@ -9,8 +9,8 @@ class CreateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     * テナントにユーザーを作成します。
     attributesを空のオブジェクトにした場合、追加属性は空で作成されます。
     
-    Create a user in your tenant.
-    If attributes is an empty object, the additional attributes will be created empty.
+    Create a tenant user.
+    If attributes is empty, the additional attributes will be created empty.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

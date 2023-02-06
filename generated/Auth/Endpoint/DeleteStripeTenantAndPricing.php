@@ -2,21 +2,8 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 
-class DeleteApiKey extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
+class DeleteStripeTenantAndPricing extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
-    protected $api_key;
-    /**
-    * サーバサイド用の API キーを削除します。
-    
-    Delete API Key.
-    
-    *
-    * @param string $apiKey APIキー(API key)
-    */
-    public function __construct(string $apiKey)
-    {
-        $this->api_key = $apiKey;
-    }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
@@ -24,7 +11,7 @@ class DeleteApiKey extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
     }
     public function getUri() : string
     {
-        return str_replace(array('{api_key}'), array($this->api_key), '/apikeys/{api_key}');
+        return '/stripe';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -37,7 +24,7 @@ class DeleteApiKey extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteApiKeyInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteStripeTenantAndPricingInternalServerErrorException
      *
      * @return null
      */
@@ -47,7 +34,7 @@ class DeleteApiKey extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteApiKeyInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteStripeTenantAndPricingInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

@@ -2,21 +2,8 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Pricing\Endpoint;
 
-class DeletePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
+class DeleteStripePlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
 {
-    protected $pricing_unit_id;
-    /**
-    * プライシングユニットを削除します。
-    
-    Delete a pricing unit.
-    
-    *
-    * @param string $pricingUnitId ユニットID(unit id)
-    */
-    public function __construct(string $pricingUnitId)
-    {
-        $this->pricing_unit_id = $pricingUnitId;
-    }
     use \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
@@ -24,7 +11,7 @@ class DeletePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     }
     public function getUri() : string
     {
-        return str_replace(array('{pricing_unit_id}'), array($this->pricing_unit_id), '/units/{pricing_unit_id}');
+        return '/stripe';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -37,7 +24,7 @@ class DeletePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
      * {@inheritdoc}
      *
-     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeletePricingUnitInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteStripePlanInternalServerErrorException
      *
      * @return null
      */
@@ -47,7 +34,7 @@ class DeletePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeletePricingUnitInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteStripePlanInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

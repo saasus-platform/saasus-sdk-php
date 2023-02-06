@@ -13,13 +13,13 @@ class BasicInfo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @var string
      */
     protected $domainName;
     /**
-     * DNSレコードの検証結果(DNS record verification results)
+     * DNSレコードの検証結果(DNS Record Verification Results)
      *
      * @var bool
      */
@@ -37,25 +37,25 @@ class BasicInfo extends \ArrayObject
      */
     protected $cloudFrontDnsRecord;
     /**
-     * DKIM DNS レコード(DKIM DNS records)
+     * DKIM DNS レコード(DKIM DNS Records)
      *
      * @var DnsRecord[]
      */
     protected $dkimDnsRecords;
     /**
-     * デフォルトドメイン名(default domain name)
+     * デフォルトドメイン名(Default Domain Name)
      *
      * @var string
      */
     protected $defaultDomainName;
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
      * @var string
      */
     protected $fromEmailAddress;
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class BasicInfo extends \ArrayObject
         return $this->domainName;
     }
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @param string $domainName
      *
@@ -77,7 +77,7 @@ class BasicInfo extends \ArrayObject
         return $this;
     }
     /**
-     * DNSレコードの検証結果(DNS record verification results)
+     * DNSレコードの検証結果(DNS Record Verification Results)
      *
      * @return bool
      */
@@ -86,7 +86,7 @@ class BasicInfo extends \ArrayObject
         return $this->isDnsValidated;
     }
     /**
-     * DNSレコードの検証結果(DNS record verification results)
+     * DNSレコードの検証結果(DNS Record Verification Results)
      *
      * @param bool $isDnsValidated
      *
@@ -143,7 +143,7 @@ class BasicInfo extends \ArrayObject
         return $this;
     }
     /**
-     * DKIM DNS レコード(DKIM DNS records)
+     * DKIM DNS レコード(DKIM DNS Records)
      *
      * @return DnsRecord[]
      */
@@ -152,7 +152,7 @@ class BasicInfo extends \ArrayObject
         return $this->dkimDnsRecords;
     }
     /**
-     * DKIM DNS レコード(DKIM DNS records)
+     * DKIM DNS レコード(DKIM DNS Records)
      *
      * @param DnsRecord[] $dkimDnsRecords
      *
@@ -165,7 +165,7 @@ class BasicInfo extends \ArrayObject
         return $this;
     }
     /**
-     * デフォルトドメイン名(default domain name)
+     * デフォルトドメイン名(Default Domain Name)
      *
      * @return string
      */
@@ -174,7 +174,7 @@ class BasicInfo extends \ArrayObject
         return $this->defaultDomainName;
     }
     /**
-     * デフォルトドメイン名(default domain name)
+     * デフォルトドメイン名(Default Domain Name)
      *
      * @param string $defaultDomainName
      *
@@ -187,7 +187,7 @@ class BasicInfo extends \ArrayObject
         return $this;
     }
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
      * @return string
      */
@@ -196,7 +196,7 @@ class BasicInfo extends \ArrayObject
         return $this->fromEmailAddress;
     }
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
      * @param string $fromEmailAddress
      *

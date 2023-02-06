@@ -13,19 +13,19 @@ class UpdateBasicInfoParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @var string
      */
     protected $domainName;
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
      * @var string
      */
     protected $fromEmailAddress;
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class UpdateBasicInfoParam extends \ArrayObject
         return $this->domainName;
     }
     /**
-     * ドメイン名(Domain name)
+     * ドメイン名(Domain Name)
      *
      * @param string $domainName
      *
@@ -47,7 +47,7 @@ class UpdateBasicInfoParam extends \ArrayObject
         return $this;
     }
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class UpdateBasicInfoParam extends \ArrayObject
         return $this->fromEmailAddress;
     }
     /**
-     * 認証メールの送信元メールアドレス(Sender email address of authentication email)
+     * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
      * @param string $fromEmailAddress
      *

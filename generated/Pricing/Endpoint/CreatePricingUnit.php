@@ -7,7 +7,7 @@ class CreatePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
     * プライシングユニットを作成します。
     
-    Create a Pricing Unit.
+    Create a pricing unit.
     
     *
     * @param null|\stdClass $requestBody 

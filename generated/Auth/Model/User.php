@@ -25,13 +25,13 @@ class User extends \ArrayObject
      */
     protected $tenantId;
     /**
-     * テナント名(Tenant name)
+     * テナント名(Tenant Name)
      *
      * @var string
      */
     protected $tenantName;
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @var string
      */
@@ -39,7 +39,7 @@ class User extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @var mixed[]
@@ -96,7 +96,7 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-     * テナント名(Tenant name)
+     * テナント名(Tenant Name)
      *
      * @return string
      */
@@ -105,7 +105,7 @@ class User extends \ArrayObject
         return $this->tenantName;
     }
     /**
-     * テナント名(Tenant name)
+     * テナント名(Tenant Name)
      *
      * @param string $tenantName
      *
@@ -118,7 +118,7 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @return string
      */
@@ -127,7 +127,7 @@ class User extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @param string $email
      *
@@ -142,7 +142,7 @@ class User extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @return mixed[]
@@ -154,7 +154,7 @@ class User extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @param mixed[] $attributes

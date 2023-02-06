@@ -14,7 +14,7 @@ class DeviceConfiguration extends \ArrayObject
     }
     /**
     * always: 常に記憶する(always remember)
-    userOptIn: ユーザーオプトイン(User opt-in)
+    userOptIn: ユーザーオプトイン(user opt-in)
     no: (don't save)
     
     *
@@ -23,7 +23,7 @@ class DeviceConfiguration extends \ArrayObject
     protected $deviceRemembering;
     /**
     * always: 常に記憶する(always remember)
-    userOptIn: ユーザーオプトイン(User opt-in)
+    userOptIn: ユーザーオプトイン(user opt-in)
     no: (don't save)
     
     *
@@ -35,7 +35,7 @@ class DeviceConfiguration extends \ArrayObject
     }
     /**
     * always: 常に記憶する(always remember)
-    userOptIn: ユーザーオプトイン(User opt-in)
+    userOptIn: ユーザーオプトイン(user opt-in)
     no: (don't save)
     
     *

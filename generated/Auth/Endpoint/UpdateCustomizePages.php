@@ -7,7 +7,7 @@ class UpdateCustomizePages extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
     /**
     * 認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を更新します。
     
-    Update the authentication screen setting information (new registration, login, password reset, etc.).
+    Update the authentication page setting information (new registration, login, password reset, etc.).
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam $requestBody 

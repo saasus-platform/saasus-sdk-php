@@ -8,7 +8,7 @@ class GetPricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\B
     /**
     * プライシング機能メニューを取得します。
     
-    Get the pricing features menu.
+    Get a pricing feature menu.
     
     *
     * @param string $menuId メニューID(menu ID)

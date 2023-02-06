@@ -9,8 +9,8 @@ class GetAllTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     * ユーザーIDからテナントに所属しているユーザー情報を取得します。
     複数テナントに所属している場合は別のオブジェクトとして返却されます。
     
-    Get the user information belonging to the tenant from the user ID.
-    If it belongs to multiple tenants, it will be returned as another object.
+    Get information on user belonging to the tenant from the user ID.
+    If the user belongs to multiple tenants, it will be returned as another object.
     
     *
     * @param string $userId ユーザーID(User ID)

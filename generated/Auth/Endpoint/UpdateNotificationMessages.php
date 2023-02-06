@@ -7,7 +7,7 @@ class UpdateNotificationMessages extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime
     /**
     * 各種通知メールテンプレート更新します。
     
-    Update the registered notification email template.
+    Update notification email template.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam $requestBody 

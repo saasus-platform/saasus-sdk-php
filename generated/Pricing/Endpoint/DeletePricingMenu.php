@@ -8,7 +8,7 @@ class DeletePricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
     * プライシング機能メニューを削除します。
     
-    Delete the Pricing Feature menu.
+    Delete pricing feature menu.
     
     *
     * @param string $menuId メニューID(menu ID)

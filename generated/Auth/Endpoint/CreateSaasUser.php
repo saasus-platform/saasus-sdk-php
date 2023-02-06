@@ -7,7 +7,7 @@ class CreateSaasUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
     /**
     * SaaSにユーザーを作成します。
     
-    Create a user to SaaS.
+    Create SaaS User.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam $requestBody 

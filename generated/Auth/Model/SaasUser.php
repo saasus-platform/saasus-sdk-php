@@ -19,7 +19,7 @@ class SaasUser extends \ArrayObject
      */
     protected $id;
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class SaasUser extends \ArrayObject
         return $this;
     }
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class SaasUser extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス(e-mail)
+     * メールアドレス(E-mail)
      *
      * @param string $email
      *

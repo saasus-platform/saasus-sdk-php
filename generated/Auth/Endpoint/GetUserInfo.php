@@ -12,12 +12,12 @@ class GetUserInfo extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEnd
     
     User information is obtained based on the ID token of the SaaS user (registered user).
     The ID token is passed to the Callback URL during login from the SaaSus Platform generated login screen.
-    By getting the ID token from the URL on the server side and calling this API, you can get the information of the user.
+    User information can be obtained from calling this API with an ID token from the URL on the server side.
     Since the acquired tenant, role (role), price plan, etc. are included, it is possible to implement authorization based on it.
     
     *
     * @param array $queryParameters {
-    *     @var string $token IDトークン(ID token)
+    *     @var string $token IDトークン(ID Token)
     * }
     */
     public function __construct(array $queryParameters = array())

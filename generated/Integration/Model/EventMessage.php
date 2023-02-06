@@ -19,7 +19,7 @@ class EventMessage extends \ArrayObject
      */
     protected $eventType;
     /**
-     * 詳細イベントタイプ(Detailed event type)
+     * 詳細イベントタイプ(detailed event type)
      *
      * @var string
      */
@@ -53,7 +53,7 @@ class EventMessage extends \ArrayObject
         return $this;
     }
     /**
-     * 詳細イベントタイプ(Detailed event type)
+     * 詳細イベントタイプ(detailed event type)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class EventMessage extends \ArrayObject
         return $this->eventDetailType;
     }
     /**
-     * 詳細イベントタイプ(Detailed event type)
+     * 詳細イベントタイプ(detailed event type)
      *
      * @param string $eventDetailType
      *

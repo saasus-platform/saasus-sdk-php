@@ -7,7 +7,7 @@ class CreatePricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
     * プライシング機能メニューを作成します。
     
-    Create a pricing features menu.
+    Create a pricing feature menu.
     
     *
     * @param null|\stdClass $requestBody 

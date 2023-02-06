@@ -13,10 +13,10 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * 更新方法(Update method)
+    * 更新方法(update method)
     add: 加算(addition)
-    sub: 減算(Subtract)
-    direct: 上書き(direct)
+    sub: 減算(subtraction)
+    direct: 上書き(overwrite)
     *
     * @var string
     */
@@ -28,10 +28,10 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
      */
     protected $count;
     /**
-    * 更新方法(Update method)
+    * 更新方法(update method)
     add: 加算(addition)
-    sub: 減算(Subtract)
-    direct: 上書き(direct)
+    sub: 減算(subtraction)
+    direct: 上書き(overwrite)
     *
     * @return string
     */
@@ -40,10 +40,10 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
         return $this->method;
     }
     /**
-    * 更新方法(Update method)
+    * 更新方法(update method)
     add: 加算(addition)
-    sub: 減算(Subtract)
-    direct: 上書き(direct)
+    sub: 減算(subtraction)
+    direct: 上書き(overwrite)
     *
     * @param string $method
     *

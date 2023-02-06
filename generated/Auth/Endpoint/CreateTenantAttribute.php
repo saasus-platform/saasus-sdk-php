@@ -9,7 +9,7 @@ class CreateTenantAttribute extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     例えばテナントの呼び名やメモなどをを持たせることができ、SaaSからSaaSus SDK/APIを利用して取得することができます。
     
     Register additional tenant attributes to be managed by SaaSus Platform.
-    For example, you can have a tenant name, memo, etc., and you can get it from SaaS using the SaaSus SDK/API.
+    For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API.
     
     *
     * @param null|\stdClass $requestBody 

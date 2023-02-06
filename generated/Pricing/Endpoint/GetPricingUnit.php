@@ -8,7 +8,7 @@ class GetPricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\B
     /**
     * プライシングユニットを取得します。
     
-    Get a Pricing Unit.
+    Get a pricing unit.
     
     *
     * @param string $pricingUnitId ユニットID(unit id)

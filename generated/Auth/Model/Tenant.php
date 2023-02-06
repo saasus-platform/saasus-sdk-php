@@ -25,13 +25,13 @@ class Tenant extends \ArrayObject
      */
     protected $planId;
     /**
-     * テナント名(Tenant name)
+     * テナント名(tenant name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 属性情報(Attribute info)
+     * 属性情報(attribute info)
      *
      * @var mixed[]
      */
@@ -44,14 +44,14 @@ class Tenant extends \ArrayObject
     protected $nextPlanId;
     /**
     * 次回料金プラン開始日時（stripe連携時、当月月初の0時（UTC）を指定すると当月月初開始のサブスクリプションを作成できます。ex. 2023年1月の場合は、1672531200 ）
-    (Next billing plan start time (When working with stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
+    (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
     * @var int
     */
     protected $usingNextPlanFrom;
     /**
-     * 事務管理部門スタッフメールアドレス(Administrative staff email address)
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
      * @var string
      */
@@ -107,7 +107,7 @@ class Tenant extends \ArrayObject
         return $this;
     }
     /**
-     * テナント名(Tenant name)
+     * テナント名(tenant name)
      *
      * @return string
      */
@@ -116,7 +116,7 @@ class Tenant extends \ArrayObject
         return $this->name;
     }
     /**
-     * テナント名(Tenant name)
+     * テナント名(tenant name)
      *
      * @param string $name
      *
@@ -129,7 +129,7 @@ class Tenant extends \ArrayObject
         return $this;
     }
     /**
-     * 属性情報(Attribute info)
+     * 属性情報(attribute info)
      *
      * @return mixed[]
      */
@@ -138,7 +138,7 @@ class Tenant extends \ArrayObject
         return $this->attributes;
     }
     /**
-     * 属性情報(Attribute info)
+     * 属性情報(attribute info)
      *
      * @param mixed[] $attributes
      *
@@ -174,7 +174,7 @@ class Tenant extends \ArrayObject
     }
     /**
     * 次回料金プラン開始日時（stripe連携時、当月月初の0時（UTC）を指定すると当月月初開始のサブスクリプションを作成できます。ex. 2023年1月の場合は、1672531200 ）
-    (Next billing plan start time (When working with stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
+    (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
     * @return int
@@ -185,7 +185,7 @@ class Tenant extends \ArrayObject
     }
     /**
     * 次回料金プラン開始日時（stripe連携時、当月月初の0時（UTC）を指定すると当月月初開始のサブスクリプションを作成できます。ex. 2023年1月の場合は、1672531200 ）
-    (Next billing plan start time (When working with stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
+    (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
     * @param int $usingNextPlanFrom
@@ -199,7 +199,7 @@ class Tenant extends \ArrayObject
         return $this;
     }
     /**
-     * 事務管理部門スタッフメールアドレス(Administrative staff email address)
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
      * @return string
      */
@@ -208,7 +208,7 @@ class Tenant extends \ArrayObject
         return $this->backOfficeStaffEmail;
     }
     /**
-     * 事務管理部門スタッフメールアドレス(Administrative staff email address)
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
      * @param string $backOfficeStaffEmail
      *

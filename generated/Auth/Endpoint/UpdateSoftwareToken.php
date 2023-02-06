@@ -8,7 +8,7 @@ class UpdateSoftwareToken extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
     /**
     * 認証アプリケーションを登録します。
     
-    Register an authenticator application.
+    Register an authentication application.
     
     *
     * @param string $userId ユーザーID(User ID)

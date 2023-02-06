@@ -12,12 +12,12 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     
     User information is obtained based on the ID token of the SaaS user (registered user).
     The ID token is passed to the Callback URL during login from the SaaSus Platform generated login screen.
-    By getting the ID token from the URL on the server side and calling this API, you can get the information of the user.
+    User information can be obtained from calling this API with an ID token from the URL on the server side.
     Since the acquired tenant, role (role), price plan, etc. are included, it is possible to implement authorization based on it.
     
     *
     * @param array $queryParameters {
-    *     @var string $token IDトークン(ID token)
+    *     @var string $token IDトークン(ID Token)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoUnauthorizedException
@@ -44,9 +44,9 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     CNAME レコードが生成されますので、 DNS に設定して下さい。
     既に稼働中の SaaS アプリケーションに設定している場合には、動作に影響があります。
     
-    Update the domain name set as a parameter based on the SaaS ID.
-    A CNAME record will be generated, so set it in your DNS.
-    If you set it on a SaaS application that is already running, it will affect your behavior.
+    Update the domain name that was set as a parameter based on the SaaS ID.
+    After the CNAME record is generated, set it in your DNS.
+    If it is set on a SaaS application that is already running, it will affect the behavior.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam $requestBody 
@@ -73,7 +73,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * ログイン後に認証情報を渡す SaaS の URL を登録します。
     ここで登録した URL に認証情報を渡し、SaaSus SDK を利用してこの Callback の実装をすることが可能となります。
     
-    Register a SaaS URL to pass authentication after login.
+    Register post-login SaaS URL for authentication information.
     It is possible to pass authentication information to the URL registered here and implement this Callback using the SaaSus SDK.
     
     *
@@ -100,7 +100,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSにユーザーを作成します。
     
-    Create a user to SaaS.
+    Create SaaS User.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam $requestBody 
@@ -117,7 +117,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * ユーザーIDを元に一致するユーザーをテナントからすべて削除し、SaaSからも削除します。
     
-    Deletes all matching users based on the user ID from the tenant and also deletes them from SaaS.
+    Delete all users with matching user ID from the tenant and SaaS.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -134,7 +134,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * ユーザーIDからユーザー情報を取得します。
     
-    Get user information from user ID.
+    Get user information based on user ID.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -151,7 +151,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * ユーザーのログインパスワードを変更します。
     
-    Change a user's login password.
+    Change user's login password.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -168,7 +168,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * ユーザーのメールアドレスを変更します。
     
-    Change a user's email.
+    Change user's email.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -185,7 +185,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 認証アプリケーションを登録します。
     
-    Register an authenticator application.
+    Register an authentication application.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -202,7 +202,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 認証アプリケーション登録用のシークレットコードを作成します。
     
-    Create a secret code for authenticator application registration.
+    Create a secret code for authentication application registration.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -235,7 +235,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * ユーザーのMFA設定を更新します。
     
-    Update the user's MFA settings.
+    Update user's MFA settings.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -263,8 +263,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * ユーザーIDからテナントに所属しているユーザー情報を取得します。
     複数テナントに所属している場合は別のオブジェクトとして返却されます。
     
-    Get the user information belonging to the tenant from the user ID.
-    If it belongs to multiple tenants, it will be returned as another object.
+    Get information on user belonging to the tenant from the user ID.
+    If the user belongs to multiple tenants, it will be returned as another object.
     
     *
     * @param string $userId ユーザーID(User ID)
@@ -281,8 +281,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * テナントに所属するユーザーを全件取得します。 idは一意です。
     
-    Get all users belonging to the tenant.
-    id is unique.
+    Get all the users belonging to the tenant.
+    Id is unique.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -299,8 +299,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * テナントにユーザーを作成します。
     attributesを空のオブジェクトにした場合、追加属性は空で作成されます。
     
-    Create a user in your tenant.
-    If attributes is an empty object, the additional attributes will be created empty.
+    Create a tenant user.
+    If attributes is empty, the additional attributes will be created empty.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -335,7 +335,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * テナントのユーザーをIDから一件取得します。
     
-    Acquires one tenant user by specifying the ID.
+    Get one tenant user by specific ID.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -353,7 +353,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * テナントのユーザー属性情報を更新します。
     
-    Update tenant user attribute information.
+    Update tenant user attributes.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -372,7 +372,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * テナントのユーザーに役割(ロール)を作成します。
     
-    Create roles for tenant users.
+    Create roles on tenant users.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -391,7 +391,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * テナントのユーザーから役割(ロール)を削除します。
     
-    Delete a role (role) from a tenant user.
+    Remove a role from a tenant user.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -441,7 +441,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 役割(ロール)を削除します。
     
-    Delete a role.
+    Delete role.
     
     *
     * @param string $roleName 役割(ロール)名(role name)
@@ -470,9 +470,9 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     例えば、ユーザー名を持たせる、誕生日を持たせるなど、ユーザーに紐付いた項目の定義を行うことができます。
     一方で、個人情報を SaaSus Platform 側に持たせたくない場合は、このユーザー属性定義を行わずに SaaS 側で個人情報を持つことを検討してください。
     
-    Register additional user attributes to be retained in the SaaSus Platform.
-    For example, you can define items associated with a user, such as having a user name, having a birthday, etc.
-    On the other hand, if you don't want to have personal information on the SaaS Platform side, consider having personal information on the SaaS side without this user attribute definition.
+    Create additional user attributes to be kept on the SaaSus Platform.
+    For example, you can define items associated with a user, such as user name, birthday, etc.
+    If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition.
     
     *
     * @param null|\stdClass $requestBody 
@@ -488,10 +488,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform にて保持するユーザーの追加属性を削除します。
     
-    Delete the additional attributes of the user retained by the SaaSus Platform.
+    Delete user attributes kept on the SaaSus Platform.
     
     *
-    * @param string $attributeName 属性名(attribute name)
+    * @param string $attributeName 属性名(Attribute Name)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteUserAttributeNotFoundException
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteUserAttributeInternalServerErrorException
@@ -517,7 +517,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     例えばテナントの呼び名やメモなどをを持たせることができ、SaaSからSaaSus SDK/APIを利用して取得することができます。
     
     Register additional tenant attributes to be managed by SaaSus Platform.
-    For example, you can have a tenant name, memo, etc., and you can get it from SaaS using the SaaSus SDK/API.
+    For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API.
     
     *
     * @param null|\stdClass $requestBody 
@@ -533,10 +533,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform で管理する、テナントの追加属性の削除を行います。
     
-    Deletes additional attributes of tenants managed by SaaSus Platform.
+    Deletes tenant attributes managed by SaaSus Platform.
     
     *
-    * @param string $attributeName 属性名(attribute name)
+    * @param string $attributeName 属性名(Attribute Name)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantAttributeNotFoundException
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantAttributeInternalServerErrorException
@@ -560,7 +560,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform で管理する、テナント情報を作成します。
     
-    Create tenant information in the SaaSus Platform.
+    Create a tenant managed by the SaaSus Platform.
     
     *
     * @param null|\stdClass $requestBody 
@@ -576,7 +576,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform で管理する、テナントの詳細情報を削除します。
     
-    Delete tenant information managed by SaaSus Platform.
+    Delete SaaSus Platform tenant.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -592,7 +592,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform で管理する、テナントの詳細情報を取得します。
     
-    Get detailed information about a tenant registered with the SaaSus Platform.
+    Get the details of tenant managed on the SaaSus Platform.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -609,7 +609,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * SaaSus Platform で管理する、テナントの詳細情報を更新します。
     
-    Update tenant details managed by the SaaSus Platform.
+    Update SaaSus Platform tenant details.
     
     *
     * @param string $tenantId テナントID(Tenant ID)
@@ -647,7 +647,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * サーバサイド用の API キーを削除します。
     
-    Delete API Keys.
+    Delete API Key.
     
     *
     * @param string $apiKey APIキー(API key)
@@ -693,7 +693,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 各種通知メールテンプレート更新します。
     
-    Update the registered notification email template.
+    Update notification email template.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam $requestBody 
@@ -743,8 +743,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * ユーザーパスワードの要件設定を更新します。
     アルファベット、数字、記号の組み合わせで、桁数を長くすれば解読されづらい安全なパスワードを設定することが可能となります。
     
-    Update user password requirement settings.
-    It is possible to set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.
+    Update user password requirements.
+    Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam $requestBody 
@@ -770,7 +770,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を更新します。
     
-    Update the authentication screen setting information (new registration, login, password reset, etc.).
+    Update the authentication page setting information (new registration, login, password reset, etc.).
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam $requestBody 
@@ -857,7 +857,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     /**
     * 環境情報の詳細を取得します。
     
-    Get environment information details.
+    Get environment details.
     
     *
     * @param int $envId 環境ID(Env ID)
@@ -901,6 +901,16 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteStripeTenantAndPricingInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteStripeTenantAndPricing(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteStripeTenantAndPricing(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetClientSecretInternalServerErrorException
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret|\Psr\Http\Message\ResponseInterface
@@ -920,13 +930,19 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateClientSecret(), $fetch);
     }
     /**
-    * 一時コードを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
+    * 一時コードまたはリフレッシュトークンを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
     
-    Get an ID token, access token, and refresh token using a temporary code.
+    Get ID token, access token, and refresh token using a temporary code or a refresh token.
     
     *
     * @param array $queryParameters {
-    *     @var string $code 一時コード(temp code)
+    *     @var string $auth-flow 認証フロー（Authentication Flow）
+    tempCodeAuth: 一時コードを利用した認証情報の取得
+    refreshTokenAuth: リフレッシュトークンを利用した認証情報の取得
+    指定されていない場合は tempCodeAuth になります
+    
+    *     @var string $code 一時コード(Temp Code)
+    *     @var string $refresh-token リフレッシュトークン(Refresh Token)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException
@@ -942,7 +958,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * 引数のIDトークン・アクセストークン・リフレッシュトークンを一時保存し取得用の一時コードを返却する。
     一時コードの有効期間は発行から10秒です。
     
-    Temporarily save the argument ID token, access token, and refresh token and return the temporary code for acquisition.
+    Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining.
     Temporary codes are valid for 10 seconds from issuance.
     
     *

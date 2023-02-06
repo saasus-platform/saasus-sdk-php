@@ -8,7 +8,7 @@ class UpdateSaasUserPassword extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cli
     /**
     * ユーザーのログインパスワードを変更します。
     
-    Change a user's login password.
+    Change user's login password.
     
     *
     * @param string $userId ユーザーID(User ID)

@@ -8,7 +8,7 @@ class GetSaasUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEnd
     /**
     * ユーザーIDからユーザー情報を取得します。
     
-    Get user information from user ID.
+    Get user information based on user ID.
     
     *
     * @param string $userId ユーザーID(User ID)

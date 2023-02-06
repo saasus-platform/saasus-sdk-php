@@ -8,10 +8,10 @@ class DeleteUserAttribute extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
     /**
     * SaaSus Platform にて保持するユーザーの追加属性を削除します。
     
-    Delete the additional attributes of the user retained by the SaaSus Platform.
+    Delete user attributes kept on the SaaSus Platform.
     
     *
-    * @param string $attributeName 属性名(attribute name)
+    * @param string $attributeName 属性名(Attribute Name)
     */
     public function __construct(string $attributeName)
     {

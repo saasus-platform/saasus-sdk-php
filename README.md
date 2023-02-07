@@ -1,4 +1,5 @@
 # PHP SaaSus SDK
+  [English page is here.](./README_en.md)
 
 ---
 
@@ -27,7 +28,7 @@ SAASUS_LOGIN_URL="https://auth.sample.saasus.jp/　（ログイン画面のURL�
 ```
 
 SAASUS_SAAS_ID, SAASUS_API_KEY, SAASUS_SECRET_KEY は SaaS 開発コンソール画面に表示されている SaaS ID、 API キー 　と　クライアントシークレットを、
-SAASUS_LOGIN_URL は、SaaSus コンソールで作成したログイン画面の URL を設定します。
+SAASUS_LOGIN_URL は、SaaS 開発コンソールで作成したログイン画面の URL を設定します。
 
 ### 認証モジュールの組み込み
 
@@ -60,6 +61,6 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
 ---
 
-# ユースケースサンプル
+## ユースケースサンプル
 
 準備中・・・

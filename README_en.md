@@ -19,7 +19,7 @@ composer require saasus-platform/saasus-sdk-php
 
 ### Define  Environment Variables
 
-```i
+```ini
 ### for SaaSus Platform
 SAASUS_SAAS_ID="(SaaS ID on Screen)"
 SAASUS_API_KEY="(API KEY on Screen)"

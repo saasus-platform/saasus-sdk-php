@@ -19,7 +19,7 @@ composer require saasus-platform/saasus-sdk-php
 
 ### 環境変数を定義
 
-```
+```ini
 ### for SaaSus Platform
 SAASUS_SAAS_ID="（画面のSaaS ID）"
 SAASUS_API_KEY="（画面のAPI KEY）"
@@ -34,7 +34,7 @@ SAASUS_LOGIN_URL は、SaaS 開発コンソールで作成したログイン画�
 
 api/routes/web.php
 
-```
+```php
 // SaaSus SDK標準のAuth Middlewareを利用する
 Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(function () {
     // 固有のロジックを記載する

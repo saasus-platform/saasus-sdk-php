@@ -35,7 +35,7 @@ For details (arguments, return values), [refer to the API document](https://docs
 - CreateSaasUser ... Create SaaS User
 - DeleteSaasUser ... Delete User
 
-- UpdateSaasUserPassword •Change Password
+- UpdateSaasUserPassword ... Change Password
 
 - UpdateSaasUserEmail ... Change Email
 

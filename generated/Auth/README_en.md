@@ -82,8 +82,8 @@ For details (arguments, return values), [refer to the API document](https://docs
 ## Tenant Info
 
 - GetTenants ... Get Tenants
-- GetTenant ... Create Tenant
-- CreateTenant ... Get Tenant Details
+- GetTenant ... Get Tenant Details
+- CreateTenant ... Create Tenant
 - UpdateTenant ... Update Tenant Details
 - DeleteTenant ... Delete Tenant
 
@@ -109,4 +109,4 @@ For details (arguments, return values), [refer to the API document](https://docs
 ## Authentication/Authorization Info
 
 - GetAuthCredentials ... Get Authentication/Authorization Information
-- CreateAuthCredentials ... Get Authentication/Authorization Information
+- CreateAuthCredentials ... Save Authentication/Authorization Information

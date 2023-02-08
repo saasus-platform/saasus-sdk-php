@@ -2,21 +2,21 @@
 
 For details (arguments, return values), [refer to the API document](https://docs.saasus.io/reference/getpricingunits)
 
-## Pricing Units
+## Pricing Unit
 
 - GetPricingUnits ... Get Pricing Units
 
 - GetPricingUnit ... Get Pricing Unit
 - CreatePricingUnit ... Create Pricing Unit
 
-## Pricing Feature Menus
+## Pricing Feature Menu
 
 - GetPricingMenus ... Get Pricing Feature Menus
 
 - GetPricingMenu ... Create a Pricing Feature Menu
 - CreatePricingMenu ... Get Pricing Feature Menu
 
-## Pricing Plans
+## Pricing Plan
 
 - GetPricingPlans ... Get Pricing Plans
 

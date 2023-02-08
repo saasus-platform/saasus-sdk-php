@@ -6,7 +6,7 @@ For details (arguments, return values), [refer to the API document](https://docs
 
 - GetUserInfo ... Get User Info
 
-## Basic Configurations
+## Basic Configuration
 
 - GetBasicInfo ... Get Basic Configurations
 - UpdateBasicInfo ... Update Basic Configurations
@@ -27,7 +27,7 @@ For details (arguments, return values), [refer to the API document](https://docs
 - GetSignInSettings ... Get Password Requirements
 - UpdateSignInSettings ... Update Password Requirements
 
-## SaaS Users Info
+## SaaS User Info
 
 - GetSaasUsers ... Get Users
 
@@ -67,13 +67,13 @@ For details (arguments, return values), [refer to the API document](https://docs
 - CreateRole ... Create Role
 - DeleteRole ... Delete Role
 
-## User Attributes
+## User Attribute
 
 - GetUserAttributes ... Get User Attributes
 - CreateUserAttribute ... Create User Attributes
 - DeleteUserAttribute ... Delete User Attribute
 
-## Tenant Attributes
+## Tenant Attribute
 
 - GetTenantAttributes ... Get Tenant Attributes
 - CreateTenantAttribute ... Create Tenant Attribute

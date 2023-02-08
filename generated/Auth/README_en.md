@@ -2,7 +2,7 @@
 
 For details (arguments, return values), [refer to the API document](https://docs.saasus.io/reference/getuserinfo)
 
-## Get User Info
+## User Info
 
 - GetUserInfo ... Get User Info
 

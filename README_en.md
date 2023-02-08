@@ -1,4 +1,4 @@
-# PHP SaaSus SDK
+# PHP SDK for SaaSus Platform
   [Japanese page is here.](./README.md)
 
 ---

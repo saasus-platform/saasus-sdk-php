@@ -16,14 +16,14 @@ For details (arguments, return values), [refer to the API document](https://docs
 - GetPricingMenu ... Create a Pricing Feature Menu
 - CreatePricingMenu ... Get Pricing Feature Menu
 
-## 料金プラン
+## Pricing Plans
 
 - GetPricingPlans ... Get Pricing Plans
 
 - GetPricingPlan ... Create Pricing Plan
 - CreatePricingPlan ... Get Pricing Plan
 
-## メータリング
+## Metering
 
 - GetMeteringUnitDateCountByTenantIdAndUnitNameAndDate ... Get Metering Unit Count for Specific Date
 - UpdateMeteringUnitTimestampCount ... Update Metering Unit Count for Specified Timestamp

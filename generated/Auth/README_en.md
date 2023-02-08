@@ -106,7 +106,7 @@ For details (arguments, return values), [refer to the API document](https://docs
 - UpdateEnv ... Update Env Info
 - DeleteEnv ... Delete Env Info
 
-## 認証・認可情報
+## Authentication/Authorization Info
 
 - GetAuthCredentials ... Get Authentication/Authorization Information
 - CreateAuthCredentials ... Get Authentication/Authorization Information

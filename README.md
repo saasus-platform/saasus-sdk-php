@@ -1,4 +1,6 @@
-# PHP SaaSus SDK
+# PHP SDK for SaaSus Platform
+
+[English page is here.](./README_en.md)
 
 ---
 
@@ -18,7 +20,7 @@ composer require saasus-platform/saasus-sdk-php
 
 ### 環境変数を定義
 
-```
+```ini
 ### for SaaSus Platform
 SAASUS_SAAS_ID="（画面のSaaS ID）"
 SAASUS_API_KEY="（画面のAPI KEY）"
@@ -27,13 +29,13 @@ SAASUS_LOGIN_URL="https://auth.sample.saasus.jp/　（ログイン画面のURL�
 ```
 
 SAASUS_SAAS_ID, SAASUS_API_KEY, SAASUS_SECRET_KEY は SaaS 開発コンソール画面に表示されている SaaS ID、 API キー 　と　クライアントシークレットを、
-SAASUS_LOGIN_URL は、SaaSus コンソールで作成したログイン画面の URL を設定します。
+SAASUS_LOGIN_URL は、SaaS 開発コンソールで作成したログイン画面の URL を設定します。
 
 ### 認証モジュールの組み込み
 
 api/routes/web.php
 
-```
+```php
 // SaaSus SDK標準のAuth Middlewareを利用する
 Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(function () {
     // 固有のロジックを記載する
@@ -60,6 +62,6 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
 ---
 
-# ユースケースサンプル
+## ユースケースサンプル
 
 準備中・・・

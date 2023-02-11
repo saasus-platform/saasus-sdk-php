@@ -1,5 +1,6 @@
 # PHP SDK for SaaSus Platform
-  [Japanese page is here.](./README.md)
+
+[Japanese page is here.](./README.md)
 
 ---
 
@@ -17,7 +18,7 @@ composer config repositories.saasus-platform/saasus-sdk-php vcs https://github.c
 composer require saasus-platform/saasus-sdk-php
 ```
 
-### Define  Environment Variables
+### Define Environment Variables
 
 ```ini
 ### for SaaSus Platform
@@ -62,4 +63,5 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 ---
 
 ## Use Case Sample
-  In Preparation···
+
+In Preparation···

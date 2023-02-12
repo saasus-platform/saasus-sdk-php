@@ -13,8 +13,8 @@ class MfaConfiguration extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * on: 全ユーザーがログイン時に適用(Apply when all users log in)
-    optional: MFA要素が有効になっている個別ユーザーに適用(Applies to individual users with MFA factor enabled)
+    * on: 全ユーザーがログイン時に適用(apply when all users log in)
+    optional: MFA要素が有効になっている個別ユーザーに適用(apply to individual users with MFA factor enabled)
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *
@@ -22,8 +22,8 @@ class MfaConfiguration extends \ArrayObject
     */
     protected $mfaConfiguration;
     /**
-    * on: 全ユーザーがログイン時に適用(Apply when all users log in)
-    optional: MFA要素が有効になっている個別ユーザーに適用(Applies to individual users with MFA factor enabled)
+    * on: 全ユーザーがログイン時に適用(apply when all users log in)
+    optional: MFA要素が有効になっている個別ユーザーに適用(apply to individual users with MFA factor enabled)
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *
@@ -34,8 +34,8 @@ class MfaConfiguration extends \ArrayObject
         return $this->mfaConfiguration;
     }
     /**
-    * on: 全ユーザーがログイン時に適用(Apply when all users log in)
-    optional: MFA要素が有効になっている個別ユーザーに適用(Applies to individual users with MFA factor enabled)
+    * on: 全ユーザーがログイン時に適用(apply when all users log in)
+    optional: MFA要素が有効になっている個別ユーザーに適用(apply to individual users with MFA factor enabled)
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *

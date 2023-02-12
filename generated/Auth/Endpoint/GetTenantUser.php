@@ -9,7 +9,7 @@ class GetTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseE
     /**
     * テナントのユーザーをIDから一件取得します。
     
-    Acquires one tenant user by specifying the ID.
+    Get one tenant user by specific ID.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

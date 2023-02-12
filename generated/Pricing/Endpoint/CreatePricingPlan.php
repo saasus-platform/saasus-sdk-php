@@ -7,7 +7,7 @@ class CreatePricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
     * 料金プランを作成します。
     
-    Create a pricing plan.
+    Create pricing plan.
     
     *
     * @param null|\stdClass $requestBody 

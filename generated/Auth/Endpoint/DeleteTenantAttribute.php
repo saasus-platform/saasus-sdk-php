@@ -8,10 +8,10 @@ class DeleteTenantAttribute extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     /**
     * SaaSus Platform で管理する、テナントの追加属性の削除を行います。
     
-    Deletes additional attributes of tenants managed by SaaSus Platform.
+    Deletes tenant attributes managed by SaaSus Platform.
     
     *
-    * @param string $attributeName 属性名(attribute name)
+    * @param string $attributeName 属性名(Attribute Name)
     */
     public function __construct(string $attributeName)
     {

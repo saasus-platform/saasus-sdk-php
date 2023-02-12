@@ -10,7 +10,7 @@ class UpdateMeteringUnitTimestampCount extends \AntiPatternInc\Saasus\Sdk\Pricin
     /**
     * 指定したタイムスタンプのメータリングユニットカウントを更新します。
     
-    Update the metering unit count for the specified timestamp.
+    Update metering unit count for the specified timestamp.
     
     *
     * @param string $tenantId テナントID(tenant id)

@@ -31,7 +31,7 @@ class PricingFixedUnit extends \ArrayObject
      */
     protected $unitAmount;
     /**
-    * 繰り返し期間(repeat period)
+    * 繰り返し期間(cycle)
     month: 月単位(monthly)
     year: 年単位(yearly)
     
@@ -58,7 +58,7 @@ class PricingFixedUnit extends \ArrayObject
      */
     protected $description;
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)
@@ -141,7 +141,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this;
     }
     /**
-    * 繰り返し期間(repeat period)
+    * 繰り返し期間(cycle)
     month: 月単位(monthly)
     year: 年単位(yearly)
     
@@ -153,7 +153,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this->recurringInterval;
     }
     /**
-    * 繰り返し期間(repeat period)
+    * 繰り返し期間(cycle)
     month: 月単位(monthly)
     year: 年単位(yearly)
     
@@ -235,7 +235,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this;
     }
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)
@@ -249,7 +249,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this->type;
     }
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)

@@ -8,8 +8,8 @@ class UpdateSignInSettings extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
     * ユーザーパスワードの要件設定を更新します。
     アルファベット、数字、記号の組み合わせで、桁数を長くすれば解読されづらい安全なパスワードを設定することが可能となります。
     
-    Update user password requirement settings.
-    It is possible to set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.
+    Update user password requirements.
+    Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam $requestBody 

@@ -13,7 +13,7 @@ class MeteringUnitDateCount extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 計測ユニット名(Metering unit name)
+     * 計測ユニット名(metering unit name)
      *
      * @var string
      */
@@ -31,7 +31,7 @@ class MeteringUnitDateCount extends \ArrayObject
      */
     protected $count;
     /**
-     * 計測ユニット名(Metering unit name)
+     * 計測ユニット名(metering unit name)
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class MeteringUnitDateCount extends \ArrayObject
         return $this->meteringUnitName;
     }
     /**
-     * 計測ユニット名(Metering unit name)
+     * 計測ユニット名(metering unit name)
      *
      * @param string $meteringUnitName
      *

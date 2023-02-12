@@ -10,7 +10,7 @@ class GetMeteringUnitDateCountByTenantIdAndUnitNameAndDate extends \AntiPatternI
     /**
     * 指定した日付のメータリングユニットカウントを取得します。
     
-    Gets the metering unit count for the specified date.
+    Gets the metering unit count for specific date.
     
     *
     * @param string $tenantId テナントID(tenant id)

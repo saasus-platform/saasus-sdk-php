@@ -21,7 +21,7 @@ class CreateTenantUserParam extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @var mixed[]
@@ -52,7 +52,7 @@ class CreateTenantUserParam extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @return mixed[]
@@ -64,7 +64,7 @@ class CreateTenantUserParam extends \ArrayObject
     /**
     * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
     
-    Attribute information (Obtain the information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
     
     *
     * @param mixed[] $attributes

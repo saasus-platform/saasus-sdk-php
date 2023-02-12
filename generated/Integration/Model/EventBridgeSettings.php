@@ -13,7 +13,7 @@ class EventBridgeSettings extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * AWSアカウントID(AWS account ID)
+     * AWSアカウントID(AWS Account ID)
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class EventBridgeSettings extends \ArrayObject
     */
     protected $awsRegion;
     /**
-     * AWSアカウントID(AWS account ID)
+     * AWSアカウントID(AWS Account ID)
      *
      * @return string
      */
@@ -37,7 +37,7 @@ class EventBridgeSettings extends \ArrayObject
         return $this->awsAccountId;
     }
     /**
-     * AWSアカウントID(AWS account ID)
+     * AWSアカウントID(AWS Account ID)
      *
      * @param string $awsAccountId
      *

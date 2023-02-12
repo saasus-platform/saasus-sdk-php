@@ -8,7 +8,7 @@ class CreateSecretCode extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     /**
     * 認証アプリケーション登録用のシークレットコードを作成します。
     
-    Create a secret code for authenticator application registration.
+    Create a secret code for authentication application registration.
     
     *
     * @param string $userId ユーザーID(User ID)

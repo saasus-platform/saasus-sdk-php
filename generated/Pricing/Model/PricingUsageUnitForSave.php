@@ -19,7 +19,7 @@ class PricingUsageUnitForSave extends \ArrayObject
      */
     protected $upperCount;
     /**
-     * 使用量あたりの金額(Amount per usage)
+     * 使用量あたりの金額(amount per usage)
      *
      * @var int
      */
@@ -49,7 +49,7 @@ class PricingUsageUnitForSave extends \ArrayObject
      */
     protected $description;
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)
@@ -88,7 +88,7 @@ class PricingUsageUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-     * 使用量あたりの金額(Amount per usage)
+     * 使用量あたりの金額(amount per usage)
      *
      * @return int
      */
@@ -97,7 +97,7 @@ class PricingUsageUnitForSave extends \ArrayObject
         return $this->unitAmount;
     }
     /**
-     * 使用量あたりの金額(Amount per usage)
+     * 使用量あたりの金額(amount per usage)
      *
      * @param int $unitAmount
      *
@@ -198,7 +198,7 @@ class PricingUsageUnitForSave extends \ArrayObject
         return $this;
     }
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)
@@ -212,7 +212,7 @@ class PricingUsageUnitForSave extends \ArrayObject
         return $this->type;
     }
     /**
-    * 計測単位の種別(Type of unit of measurement)
+    * 計測単位の種別(unit of measurement type)
     fixed: 固定ユニット(fixed unit)
     usage: 使用量ユニット(usage unit)
     tiered: 段階ユニット(tiered unit)

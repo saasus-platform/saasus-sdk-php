@@ -17,7 +17,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシングユニットを作成します。
     
-    Create a Pricing Unit.
+    Create a pricing unit.
     
     *
     * @param null|\stdClass $requestBody 
@@ -33,7 +33,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシングユニットを削除します。
     
-    Delete a Pricing Unit.
+    Delete a pricing unit.
     
     *
     * @param string $pricingUnitId ユニットID(unit id)
@@ -49,7 +49,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシングユニットを取得します。
     
-    Get a Pricing Unit.
+    Get a pricing unit.
     
     *
     * @param string $pricingUnitId ユニットID(unit id)
@@ -65,7 +65,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシングユニット情報を更新します。
     
-    Update Pricing Unit information.
+    Update pricing unit.
     
     *
     * @param string $pricingUnitId ユニットID(unit id)
@@ -92,7 +92,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシング機能メニューを作成します。
     
-    Create a pricing features menu.
+    Create a pricing feature menu.
     
     *
     * @param null|\stdClass $requestBody 
@@ -108,7 +108,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシング機能メニューを削除します。
     
-    Delete the Pricing Feature menu.
+    Delete pricing feature menu.
     
     *
     * @param string $menuId メニューID(menu ID)
@@ -125,7 +125,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * プライシング機能メニューを取得します。
     
-    Get the pricing features menu.
+    Get a pricing feature menu.
     
     *
     * @param string $menuId メニューID(menu ID)
@@ -168,7 +168,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 料金プランを作成します。
     
-    Create a pricing plan.
+    Create pricing plan.
     
     *
     * @param null|\stdClass $requestBody 
@@ -184,10 +184,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 料金プランを削除します。
     
-    Delete a Pricing plan.
+    Delete pricing plan.
     
     *
-    * @param string $planId 料金プランID(Price plan ID)
+    * @param string $planId 料金プランID(price plan ID)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeletePricingPlanNotFoundException
     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeletePricingPlanInternalServerErrorException
@@ -201,10 +201,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 料金プランを取得します。
     
-    Get a Pricing plan.
+    Get pricing plan.
     
     *
-    * @param string $planId 料金プランID(Price plan ID)
+    * @param string $planId 料金プランID(price plan ID)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetPricingPlanInternalServerErrorException
     *
@@ -217,10 +217,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 料金プランを更新します。
     
-    Update Pricing plan.
+    Update pricing plan.
     
     *
-    * @param string $planId 料金プランID(Price plan ID)
+    * @param string $planId 料金プランID(price plan ID)
     * @param null|\stdClass $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdatePricingPlanInternalServerErrorException
@@ -234,7 +234,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 料金プランと配下のメニュー・ユニットを使用済みに更新します。
     
-    Updates the price plan and feature menu/pricing unit to used.
+    Update price plan and feature menu/pricing unit to used.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody 
@@ -258,9 +258,19 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\LinkPlanToStripe(), $fetch);
     }
     /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteStripePlanInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteStripePlan(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\DeleteStripePlan(), $fetch);
+    }
+    /**
     * 指定した日付のメータリングユニットカウントを取得します。
     
-    Gets the metering unit count for the specified date.
+    Gets the metering unit count for specific date.
     
     *
     * @param string $tenantId テナントID(tenant id)
@@ -278,7 +288,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 指定したタイムスタンプのメータリングユニットカウントを削除します。
     
-    Deletes the metering unit count for the specified timestamp.
+    Deletes metering unit count for the specified timestamp.
     
     *
     * @param string $tenantId テナントID(tenant id)
@@ -296,7 +306,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     /**
     * 指定したタイムスタンプのメータリングユニットカウントを更新します。
     
-    Update the metering unit count for the specified timestamp.
+    Update metering unit count for the specified timestamp.
     
     *
     * @param string $tenantId テナントID(tenant id)

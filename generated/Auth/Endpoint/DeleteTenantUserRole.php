@@ -11,7 +11,7 @@ class DeleteTenantUserRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
     /**
     * テナントのユーザーから役割(ロール)を削除します。
     
-    Delete a role (role) from a tenant user.
+    Remove a role from a tenant user.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

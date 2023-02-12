@@ -10,7 +10,7 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     /**
     * テナントのユーザーに役割(ロール)を作成します。
     
-    Create roles for tenant users.
+    Create roles on tenant users.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

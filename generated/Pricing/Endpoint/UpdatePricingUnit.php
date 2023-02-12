@@ -8,7 +8,7 @@ class UpdatePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
     /**
     * プライシングユニット情報を更新します。
     
-    Update Pricing Unit information.
+    Update pricing unit.
     
     *
     * @param string $pricingUnitId ユニットID(unit id)

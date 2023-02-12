@@ -13,33 +13,33 @@ class SavePricingPlanParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 料金プラン名(Pricing plan name)
+     * 料金プラン名(pricing plan name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 料金プラン表示名(Pricing plan display name)
+     * 料金プラン表示名(pricing plan display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 料金プラン説明(Pricing plan description)
+     * 料金プラン説明(pricing plan description)
      *
      * @var string
      */
     protected $description;
     /**
     * メニューID（料金プランに追加するメニューIDを設定）
-    Menu ID (set the menu ID to be added to the pricing plan)
+    Menu ID (menu ID to be added to the pricing plan)
     
     *
     * @var string[]
     */
     protected $menuIds;
     /**
-     * 料金プラン名(Pricing plan name)
+     * 料金プラン名(pricing plan name)
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->name;
     }
     /**
-     * 料金プラン名(Pricing plan name)
+     * 料金プラン名(pricing plan name)
      *
      * @param string $name
      *
@@ -61,7 +61,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プラン表示名(Pricing plan display name)
+     * 料金プラン表示名(pricing plan display name)
      *
      * @return string
      */
@@ -70,7 +70,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 料金プラン表示名(Pricing plan display name)
+     * 料金プラン表示名(pricing plan display name)
      *
      * @param string $displayName
      *
@@ -83,7 +83,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プラン説明(Pricing plan description)
+     * 料金プラン説明(pricing plan description)
      *
      * @return string
      */
@@ -92,7 +92,7 @@ class SavePricingPlanParam extends \ArrayObject
         return $this->description;
     }
     /**
-     * 料金プラン説明(Pricing plan description)
+     * 料金プラン説明(pricing plan description)
      *
      * @param string $description
      *
@@ -106,7 +106,7 @@ class SavePricingPlanParam extends \ArrayObject
     }
     /**
     * メニューID（料金プランに追加するメニューIDを設定）
-    Menu ID (set the menu ID to be added to the pricing plan)
+    Menu ID (menu ID to be added to the pricing plan)
     
     *
     * @return string[]
@@ -117,7 +117,7 @@ class SavePricingPlanParam extends \ArrayObject
     }
     /**
     * メニューID（料金プランに追加するメニューIDを設定）
-    Menu ID (set the menu ID to be added to the pricing plan)
+    Menu ID (menu ID to be added to the pricing plan)
     
     *
     * @param string[] $menuIds

@@ -15,7 +15,7 @@ class AccountVerification extends \ArrayObject
     /**
     * code: 検証コード(verification code)
     link: 検証リンク(verification link)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @var string
@@ -24,7 +24,7 @@ class AccountVerification extends \ArrayObject
     /**
     * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール(Email if SMS is not possible)
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @var string
@@ -33,7 +33,7 @@ class AccountVerification extends \ArrayObject
     /**
     * code: 検証コード(verification code)
     link: 検証リンク(verification link)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @return string
@@ -45,7 +45,7 @@ class AccountVerification extends \ArrayObject
     /**
     * code: 検証コード(verification code)
     link: 検証リンク(verification link)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @param string $verificationMethod
@@ -61,7 +61,7 @@ class AccountVerification extends \ArrayObject
     /**
     * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール(Email if SMS is not possible)
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @return string
@@ -73,7 +73,7 @@ class AccountVerification extends \ArrayObject
     /**
     * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール(Email if SMS is not possible)
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @param string $sendingTo

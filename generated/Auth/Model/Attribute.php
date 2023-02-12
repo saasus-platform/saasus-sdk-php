@@ -19,14 +19,14 @@ class Attribute extends \ArrayObject
      */
     protected $attributeName;
     /**
-     * 表示名(Display name)
+     * 表示名(display name)
      *
      * @var string
      */
     protected $displayName;
     /**
     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-    (Type (date can be used in YYYY-MM-DD format.))
+    (Type (date can be set to YYYY-MM-DD format.))
     
     *
     * @var string
@@ -55,7 +55,7 @@ class Attribute extends \ArrayObject
         return $this;
     }
     /**
-     * 表示名(Display name)
+     * 表示名(display name)
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class Attribute extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 表示名(Display name)
+     * 表示名(display name)
      *
      * @param string $displayName
      *
@@ -78,7 +78,7 @@ class Attribute extends \ArrayObject
     }
     /**
     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-    (Type (date can be used in YYYY-MM-DD format.))
+    (Type (date can be set to YYYY-MM-DD format.))
     
     *
     * @return string
@@ -89,7 +89,7 @@ class Attribute extends \ArrayObject
     }
     /**
     * 型（dateはYYYY-MM-DDの形式で使用する事ができます。）
-    (Type (date can be used in YYYY-MM-DD format.))
+    (Type (date can be set to YYYY-MM-DD format.))
     
     *
     * @param string $attributeType

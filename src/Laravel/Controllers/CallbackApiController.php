@@ -27,7 +27,9 @@ class CallbackApiController extends BaseController
     $client = new ApiClient();
     $authApi = $client->getAuthClient();
     try {
-      $res = $authApi->getAuthCredentials(['code' => $request->code], $authApi::FETCH_RESPONSE);
+      $res = $authApi->getAuthCredentials([
+        'code' => $request->code, 'auth-flow' => 'tempCodeAuth',
+      ], $authApi::FETCH_RESPONSE);
       return json_decode($res->getBody(), true);
     } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
       if (get_class($e) == 'GetAuthCredentialsNotFoundException') {

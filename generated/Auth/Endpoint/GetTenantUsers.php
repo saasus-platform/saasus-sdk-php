@@ -8,8 +8,8 @@ class GetTenantUsers extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
     /**
     * テナントに所属するユーザーを全件取得します。 idは一意です。
     
-    Get all users belonging to the tenant.
-    id is unique.
+    Get all the users belonging to the tenant.
+    Id is unique.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

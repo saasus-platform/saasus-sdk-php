@@ -28,8 +28,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
     * 請求業務で使う外部SaaSとの連携情報を更新します。
     現在は Stripe と連携が可能です。
     
-    Updates information on linkage with external SaaS used in billing operations.
-    Currently, it is possible to linkage with Stripe.
+    Updates information on connection with external billing SaaS.
+    Currently possible to connect to Stripe.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody 

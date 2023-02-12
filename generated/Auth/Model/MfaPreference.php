@@ -13,7 +13,7 @@ class MfaPreference extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * MFAを有効にするか否か(Whether to enable MFA)
+     * MFAを有効にするか否か(enable MFA)
      *
      * @var bool
      */
@@ -25,7 +25,7 @@ class MfaPreference extends \ArrayObject
      */
     protected $method;
     /**
-     * MFAを有効にするか否か(Whether to enable MFA)
+     * MFAを有効にするか否か(enable MFA)
      *
      * @return bool
      */
@@ -34,7 +34,7 @@ class MfaPreference extends \ArrayObject
         return $this->enabled;
     }
     /**
-     * MFAを有効にするか否か(Whether to enable MFA)
+     * MFAを有効にするか否か(enable MFA)
      *
      * @param bool $enabled
      *

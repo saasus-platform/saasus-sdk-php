@@ -8,7 +8,7 @@ class UpdateUserMfaPreference extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cl
     /**
     * ユーザーのMFA設定を更新します。
     
-    Update the user's MFA settings.
+    Update user's MFA settings.
     
     *
     * @param string $userId ユーザーID(User ID)

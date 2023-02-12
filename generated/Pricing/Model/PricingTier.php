@@ -19,13 +19,13 @@ class PricingTier extends \ArrayObject
      */
     protected $upTo;
     /**
-     * 単位金額(Amount per unit)
+     * 単位金額(amount per unit)
      *
      * @var int
      */
     protected $unitAmount;
     /**
-     * 固定金額(Fixed Amount)
+     * 固定金額(fixed Amount)
      *
      * @var int
      */
@@ -59,7 +59,7 @@ class PricingTier extends \ArrayObject
         return $this;
     }
     /**
-     * 単位金額(Amount per unit)
+     * 単位金額(amount per unit)
      *
      * @return int
      */
@@ -68,7 +68,7 @@ class PricingTier extends \ArrayObject
         return $this->unitAmount;
     }
     /**
-     * 単位金額(Amount per unit)
+     * 単位金額(amount per unit)
      *
      * @param int $unitAmount
      *
@@ -81,7 +81,7 @@ class PricingTier extends \ArrayObject
         return $this;
     }
     /**
-     * 固定金額(Fixed Amount)
+     * 固定金額(fixed Amount)
      *
      * @return int
      */
@@ -90,7 +90,7 @@ class PricingTier extends \ArrayObject
         return $this->flatAmount;
     }
     /**
-     * 固定金額(Fixed Amount)
+     * 固定金額(fixed Amount)
      *
      * @param int $flatAmount
      *

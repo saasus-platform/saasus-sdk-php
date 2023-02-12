@@ -8,7 +8,7 @@ class UpdateSaasUserEmail extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
     /**
     * ユーザーのメールアドレスを変更します。
     
-    Change a user's email.
+    Change user's email.
     
     *
     * @param string $userId ユーザーID(User ID)

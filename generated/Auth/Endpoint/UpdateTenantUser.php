@@ -9,7 +9,7 @@ class UpdateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     /**
     * テナントのユーザー属性情報を更新します。
     
-    Update tenant user attribute information.
+    Update tenant user attributes.
     
     *
     * @param string $tenantId テナントID(Tenant ID)

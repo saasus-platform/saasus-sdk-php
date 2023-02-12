@@ -19,14 +19,14 @@ class SignInSettings extends \ArrayObject
      */
     protected $passwordPolicy;
     /**
-     * 信頼済みデバイスの記憶の設定(Settings for remembering trusted devices)
+     * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
      * @var DeviceConfiguration
      */
     protected $deviceConfiguration;
     /**
     * MFAデバイス認証設定(MFA device authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @var MfaConfiguration
@@ -34,22 +34,22 @@ class SignInSettings extends \ArrayObject
     protected $mfaConfiguration;
     /**
     * reCAPTCHA認証設定(reCAPTCHA authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @var RecaptchaProps
     */
     protected $recaptchaProps;
     /**
-    * アカウント認証設定(Account authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    * アカウント認証設定(account authentication settings)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @var AccountVerification
     */
     protected $accountVerification;
     /**
-     * セルフサインアップを許可設定(Self sign-up permission setting)
+     * セルフサインアップを許可設定(self sign-up permission)
      *
      * @var SelfRegist
      */
@@ -77,7 +77,7 @@ class SignInSettings extends \ArrayObject
         return $this;
     }
     /**
-     * 信頼済みデバイスの記憶の設定(Settings for remembering trusted devices)
+     * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
      * @return DeviceConfiguration
      */
@@ -86,7 +86,7 @@ class SignInSettings extends \ArrayObject
         return $this->deviceConfiguration;
     }
     /**
-     * 信頼済みデバイスの記憶の設定(Settings for remembering trusted devices)
+     * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
      * @param DeviceConfiguration $deviceConfiguration
      *
@@ -100,7 +100,7 @@ class SignInSettings extends \ArrayObject
     }
     /**
     * MFAデバイス認証設定(MFA device authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @return MfaConfiguration
@@ -111,7 +111,7 @@ class SignInSettings extends \ArrayObject
     }
     /**
     * MFAデバイス認証設定(MFA device authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @param MfaConfiguration $mfaConfiguration
@@ -126,7 +126,7 @@ class SignInSettings extends \ArrayObject
     }
     /**
     * reCAPTCHA認証設定(reCAPTCHA authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @return RecaptchaProps
@@ -137,7 +137,7 @@ class SignInSettings extends \ArrayObject
     }
     /**
     * reCAPTCHA認証設定(reCAPTCHA authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @param RecaptchaProps $recaptchaProps
@@ -151,8 +151,8 @@ class SignInSettings extends \ArrayObject
         return $this;
     }
     /**
-    * アカウント認証設定(Account authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    * アカウント認証設定(account authentication settings)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @return AccountVerification
@@ -162,8 +162,8 @@ class SignInSettings extends \ArrayObject
         return $this->accountVerification;
     }
     /**
-    * アカウント認証設定(Account authentication settings)
-    ※ 未提供の機能のため、変更・保存はできません(Unable to change/save due to unprovided function)
+    * アカウント認証設定(account authentication settings)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @param AccountVerification $accountVerification
@@ -177,7 +177,7 @@ class SignInSettings extends \ArrayObject
         return $this;
     }
     /**
-     * セルフサインアップを許可設定(Self sign-up permission setting)
+     * セルフサインアップを許可設定(self sign-up permission)
      *
      * @return SelfRegist
      */
@@ -186,7 +186,7 @@ class SignInSettings extends \ArrayObject
         return $this->selfRegist;
     }
     /**
-     * セルフサインアップを許可設定(Self sign-up permission setting)
+     * セルフサインアップを許可設定(self sign-up permission)
      *
      * @param SelfRegist $selfRegist
      *

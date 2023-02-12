@@ -8,7 +8,7 @@ class GetEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint
     /**
     * 環境情報の詳細を取得します。
     
-    Get environment information details.
+    Get environment details.
     
     *
     * @param int $envId 環境ID(Env ID)

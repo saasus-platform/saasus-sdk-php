@@ -8,7 +8,7 @@ class DeleteRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndp
     /**
     * 役割(ロール)を削除します。
     
-    Delete a role.
+    Delete role.
     
     *
     * @param string $roleName 役割(ロール)名(role name)

@@ -19,31 +19,31 @@ class PasswordPolicy extends \ArrayObject
      */
     protected $minimumLength;
     /**
-     * 一文字以上の小文字を含むが設定されているか(Contains one or more lowercase characters is set)
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @var bool
      */
     protected $isRequireLowercase;
     /**
-     * 一文字以上の数字を含むが設定されているか(Contains one or more numeric characters is set)
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @var bool
      */
     protected $isRequireNumbers;
     /**
-     * 一文字以上の特殊文字を含むが設定されているか(Contains one or more special characters is set)
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @var bool
      */
     protected $isRequireSymbols;
     /**
-     * 一文字以上の大文字を含むが設定されているか(Contains one or more uppercase letters is set)
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @var bool
      */
     protected $isRequireUppercase;
     /**
-     * 仮パスワードの有効期限(Temporary password expiration date)
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @var int
      */
@@ -71,7 +71,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の小文字を含むが設定されているか(Contains one or more lowercase characters is set)
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @return bool
      */
@@ -80,7 +80,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireLowercase;
     }
     /**
-     * 一文字以上の小文字を含むが設定されているか(Contains one or more lowercase characters is set)
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @param bool $isRequireLowercase
      *
@@ -93,7 +93,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の数字を含むが設定されているか(Contains one or more numeric characters is set)
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @return bool
      */
@@ -102,7 +102,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireNumbers;
     }
     /**
-     * 一文字以上の数字を含むが設定されているか(Contains one or more numeric characters is set)
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @param bool $isRequireNumbers
      *
@@ -115,7 +115,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の特殊文字を含むが設定されているか(Contains one or more special characters is set)
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @return bool
      */
@@ -124,7 +124,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireSymbols;
     }
     /**
-     * 一文字以上の特殊文字を含むが設定されているか(Contains one or more special characters is set)
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @param bool $isRequireSymbols
      *
@@ -137,7 +137,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の大文字を含むが設定されているか(Contains one or more uppercase letters is set)
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @return bool
      */
@@ -146,7 +146,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireUppercase;
     }
     /**
-     * 一文字以上の大文字を含むが設定されているか(Contains one or more uppercase letters is set)
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @param bool $isRequireUppercase
      *
@@ -159,7 +159,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 仮パスワードの有効期限(Temporary password expiration date)
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @return int
      */
@@ -168,7 +168,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->temporaryPasswordValidityDays;
     }
     /**
-     * 仮パスワードの有効期限(Temporary password expiration date)
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @param int $temporaryPasswordValidityDays
      *

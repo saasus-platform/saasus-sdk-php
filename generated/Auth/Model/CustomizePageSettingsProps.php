@@ -13,19 +13,19 @@ class CustomizePageSettingsProps extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * サービス名(Service name)
+     * サービス名(service name)
      *
      * @var string
      */
     protected $title;
     /**
-     * 利用規約URL(Terms of use URL)
+     * 利用規約URL(terms of service URL)
      *
      * @var string
      */
     protected $termsOfServiceUrl;
     /**
-     * プライバシーポリシーURL(Privacy Policy URL)
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @var string
      */
@@ -37,7 +37,7 @@ class CustomizePageSettingsProps extends \ArrayObject
      */
     protected $googleTagManagerContainerId;
     /**
-     * サービス名(Service name)
+     * サービス名(service name)
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->title;
     }
     /**
-     * サービス名(Service name)
+     * サービス名(service name)
      *
      * @param string $title
      *
@@ -59,7 +59,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this;
     }
     /**
-     * 利用規約URL(Terms of use URL)
+     * 利用規約URL(terms of service URL)
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->termsOfServiceUrl;
     }
     /**
-     * 利用規約URL(Terms of use URL)
+     * 利用規約URL(terms of service URL)
      *
      * @param string $termsOfServiceUrl
      *
@@ -81,7 +81,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this;
     }
     /**
-     * プライバシーポリシーURL(Privacy Policy URL)
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class CustomizePageSettingsProps extends \ArrayObject
         return $this->privacyPolicyUrl;
     }
     /**
-     * プライバシーポリシーURL(Privacy Policy URL)
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @param string $privacyPolicyUrl
      *

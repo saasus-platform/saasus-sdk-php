@@ -8,7 +8,7 @@ class CreateAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     * 引数のIDトークン・アクセストークン・リフレッシュトークンを一時保存し取得用の一時コードを返却する。
     一時コードの有効期間は発行から10秒です。
     
-    Temporarily save the argument ID token, access token, and refresh token and return the temporary code for acquisition.
+    Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining.
     Temporary codes are valid for 10 seconds from issuance.
     
     *

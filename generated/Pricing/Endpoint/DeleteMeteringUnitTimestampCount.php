@@ -10,7 +10,7 @@ class DeleteMeteringUnitTimestampCount extends \AntiPatternInc\Saasus\Sdk\Pricin
     /**
     * 指定したタイムスタンプのメータリングユニットカウントを削除します。
     
-    Deletes the metering unit count for the specified timestamp.
+    Deletes metering unit count for the specified timestamp.
     
     *
     * @param string $tenantId テナントID(tenant id)

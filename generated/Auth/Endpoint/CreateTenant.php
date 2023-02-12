@@ -7,7 +7,7 @@ class CreateTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
     /**
     * SaaSus Platform で管理する、テナント情報を作成します。
     
-    Create tenant information in the SaaSus Platform.
+    Create a tenant managed by the SaaSus Platform.
     
     *
     * @param null|\stdClass $requestBody 

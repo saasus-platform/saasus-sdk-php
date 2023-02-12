@@ -11,12 +11,12 @@ class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
     
     *
     * @param array $queryParameters {
+    *     @var string $code 一時コード(Temp Code)
     *     @var string $auth-flow 認証フロー（Authentication Flow）
     tempCodeAuth: 一時コードを利用した認証情報の取得
     refreshTokenAuth: リフレッシュトークンを利用した認証情報の取得
     指定されていない場合は tempCodeAuth になります
     
-    *     @var string $code 一時コード(Temp Code)
     *     @var string $refresh-token リフレッシュトークン(Refresh Token)
     * }
     */
@@ -44,11 +44,11 @@ class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('auth-flow', 'code', 'refresh-token'));
+        $optionsResolver->setDefined(array('code', 'auth-flow', 'refresh-token'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('auth-flow', array('string'));
         $optionsResolver->addAllowedTypes('code', array('string'));
+        $optionsResolver->addAllowedTypes('auth-flow', array('string'));
         $optionsResolver->addAllowedTypes('refresh-token', array('string'));
         return $optionsResolver;
     }

@@ -936,12 +936,12 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     
     *
     * @param array $queryParameters {
+    *     @var string $code 一時コード(Temp Code)
     *     @var string $auth-flow 認証フロー（Authentication Flow）
     tempCodeAuth: 一時コードを利用した認証情報の取得
     refreshTokenAuth: リフレッシュトークンを利用した認証情報の取得
     指定されていない場合は tempCodeAuth になります
     
-    *     @var string $code 一時コード(Temp Code)
     *     @var string $refresh-token リフレッシュトークン(Refresh Token)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

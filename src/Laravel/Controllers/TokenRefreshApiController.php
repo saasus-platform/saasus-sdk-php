@@ -14,34 +14,29 @@ use Symfony\Component\HttpFoundation\Response;
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
 use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
 use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
+use Error;
 
-class CallbackApiController extends BaseController
+class TokenRefreshApiController extends BaseController
 {
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
   public function index(Request $request)
   {
-    if (empty($request->code)) {
-      return response()->json('code is not provided by query parameter', Response::HTTP_BAD_REQUEST);
+    $refreshToken = $request->cookie('saasus_refresh_token');
+    if (empty($refreshToken)) {
+      return response()->json('saasus_refresh_token cookie is required', Response::HTTP_BAD_REQUEST);
     }
     $client = new ApiClient();
     $authApi = $client->getAuthClient();
     try {
       $res = $authApi->getAuthCredentials([
-        'code' => $request->code, 'auth-flow' => 'tempCodeAuth',
+        'refresh-token' => $refreshToken, 'auth-flow' => 'refreshTokenAuth',
       ], $authApi::FETCH_RESPONSE);
       $body = json_decode($res->getBody(), true);
-      if (empty($body['refresh_token'])) {
-        return response()->json($body, Response::HTTP_OK);
+      if (empty($body['id_token']) || empty($body['access_token'])) {
+        throw new Error('failed to get new credentials');
       }
-      $arr_cookie_options = array(
-        'expires' => time() + 60 * 60 * 24 * 30,
-        'path' => '/api/new-tokens',
-        'secure' => true,
-        'httponly' => true,
-        'samesite' => 'None'
-      );
-      return response()->json($body, Response::HTTP_OK)->cookie('saasus_refresh_token', $body['refresh_token'], $arr_cookie_options);
+      return response()->json($body, Response::HTTP_OK);
     } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
       if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
         Log::info('Type: Not Found, Message: ' . $e->getError());

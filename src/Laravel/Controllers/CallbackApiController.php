@@ -41,7 +41,8 @@ class CallbackApiController extends BaseController
         'httponly' => true,
         'samesite' => 'None'
       );
-      return response()->json($body, Response::HTTP_OK)->cookie('saasus_refresh_token', $body['refresh_token'], $arr_cookie_options);
+      setcookie('saasus_refresh_token', $body['refresh_token'], $arr_cookie_options);
+      return response()->json($body, Response::HTTP_OK);
     } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
       if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
         Log::info('Type: Not Found, Message: ' . $e->getError());

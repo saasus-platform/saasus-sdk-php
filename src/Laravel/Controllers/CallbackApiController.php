@@ -36,7 +36,7 @@ class CallbackApiController extends BaseController
       }
       $arr_cookie_options = array(
         'expires' => time() + 60 * 60 * 24 * 30,
-        'path' => '/api/new-tokens',
+        'path' => '/api/token/refresh',
         'secure' => true,
         'httponly' => true,
         'samesite' => 'None'

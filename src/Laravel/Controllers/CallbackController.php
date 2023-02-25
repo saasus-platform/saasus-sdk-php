@@ -53,7 +53,7 @@ class CallbackController extends BaseController
         );
         $refreshTokenCookieOptions = array(
             'expires' => time() + 60 * 60 * 24 * 30,
-            'path' => '/new-tokens',
+            'path' => '/token/refresh',
             'secure' => true,
             'httponly' => true,
             'samesite' => 'Strict',

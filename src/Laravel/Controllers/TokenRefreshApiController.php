@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
 use Error;
+use Http\Client\Exception\HttpException;
 
 class TokenRefreshApiController extends BaseController
 {
@@ -37,12 +36,17 @@ class TokenRefreshApiController extends BaseController
         throw new Error('failed to get new credentials');
       }
       return response()->json($body, Response::HTTP_OK);
-    } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
-      if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
-        Log::info('Type: Not Found, Message: ' . $e->getError());
-        return response()->json('credentials not found', Response::HTTP_NOT_FOUND);
+    } catch (\Exception $e) {
+      if ($e instanceof HttpException) {
+        $statusCode = $e->getResponse()->getStatusCode();
+        if ($statusCode == Response::HTTP_NOT_FOUND) {
+          Log::info('Type: Not Found, Message: ' . $e->getResponse());
+          return response()->json("Credentials Not Found", Response::HTTP_NOT_FOUND);
+        }
+        Log::info('Type: Internal Server Error, Message: ' . $e->getResponse());
+        return response()->json('Internal Server Error', Response::HTTP_INTERNAL_SERVER_ERROR);
       }
-      return response()->json('internal server error', Response::HTTP_INTERNAL_SERVER_ERROR);
+      return response()->json('Internal Server Error', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
   }
 }

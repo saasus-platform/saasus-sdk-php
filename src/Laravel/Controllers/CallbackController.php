@@ -10,8 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
+use Http\Client\Exception\HttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 class CallbackController extends BaseController
 {
@@ -30,12 +30,16 @@ class CallbackController extends BaseController
                 'code' => $request->code, 'auth-flow' => 'tempCodeAuth',
             ]);
             $idToken = $res->getIdToken();
-        } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
-            if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
-                Log::info('Type: Not Found, Message: ' . $e->getError());
+        } catch (\Exception $e) {
+            if ($e instanceof HttpException) {
+                $statusCode = $e->getResponse()->getStatusCode();
+                if ($statusCode == Response::HTTP_NOT_FOUND) {
+                    Log::info('Type: Not Found, Message: ' . $e->getResponse());
+                    return redirect(getenv('SAASUS_LOGIN_URL'));
+                }
+                Log::info('Type: Internal Server Error, Message: ' . $e->getResponse());
                 return redirect(getenv('SAASUS_LOGIN_URL'));
             }
-            Log::info('Type: Internal Server Error, Message: ' . $e->getError());
             return redirect(getenv('SAASUS_LOGIN_URL'));
         }
         $arr_cookie_options = array(

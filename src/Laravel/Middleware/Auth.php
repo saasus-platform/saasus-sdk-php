@@ -5,9 +5,7 @@ namespace AntiPatternInc\Saasus\Laravel\Middleware;
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
 use Closure;
 
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoUnauthorizedException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoInternalServerErrorException;
-
+use Http\Client\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Log;
@@ -43,17 +41,21 @@ class Auth
         $authApiClient = $client->getAuthClient();
         try {
             $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);
-        } catch (GetUserInfoUnauthorizedException | GetUserInfoInternalServerErrorException $e) {
-            if (get_class($e) == "GetUserInfoUnauthorizedException") {
-                Log::info('Type: Unauthorized, Message: ' . $e->getError());
-                if (getenv('SAASUS_AUTH_MODE') == "api") {
-                    return response()->json('Invalid ID Token.', Response::HTTP_UNAUTHORIZED);
-                } else {
-                    return redirect(getenv('SAASUS_LOGIN_URL'));
+        } catch (\Exception $e) {
+            if ($e instanceof HttpException) {
+                $statusCode = $e->getResponse()->getStatusCode();
+                if ($statusCode == Response::HTTP_UNAUTHORIZED) {
+                    Log::info('Type: Unauthorized, Message: ' . $e->getResponse());
+                    if (getenv('SAASUS_AUTH_MODE') == "api") {
+                        return response()->json('Invalid ID Token.', Response::HTTP_UNAUTHORIZED);
+                    } else {
+                        return redirect(getenv('SAASUS_LOGIN_URL'));
+                    }
                 }
+                Log::info('Type: Intenal Server Error, Message: ' . $e->getResponse());
+                return response()->json('Unexpected response: ' . $e->getResponse(), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
-            Log::info('Type: Intenal Server Error, Message: ' . $e->getError());
-            return response()->json('Unexpected response: ' . $e->getError(), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $userinfo = $response->getBody();

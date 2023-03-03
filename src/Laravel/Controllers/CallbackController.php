@@ -23,7 +23,6 @@ class CallbackController extends BaseController
             return redirect(getenv('SAASUS_LOGIN_URL'));
         }
         $idToken = '';
-        $refreshToken = '';
         $client = new ApiClient;
         $authApiClient = $client->getAuthClient();
         try {
@@ -31,7 +30,6 @@ class CallbackController extends BaseController
                 'code' => $request->code, 'auth-flow' => 'tempCodeAuth',
             ]);
             $idToken = $res->getIdToken();
-            $refreshToken = $res->getRefreshToken();
         } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
             if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
                 Log::info('Type: Not Found, Message: ' . $e->getError());
@@ -40,28 +38,18 @@ class CallbackController extends BaseController
             Log::info('Type: Internal Server Error, Message: ' . $e->getError());
             return redirect(getenv('SAASUS_LOGIN_URL'));
         }
-        $idTokenCookieOptions = array(
+        $arr_cookie_options = array(
+            //            'expires' => time() + 60 * 60 * 24 * 30,
             'path' => '/',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict'
+            //            'domain' => '.example.com', // leading dot for compatibility or use subdomain
+            'secure' => false,     // or false
+            'httponly' => true,    // or false
+            'samesite' => 'Strict' // None || Lax  || Strict
         );
         setcookie(
             'SaaSus_idToken',
             $idToken,
-            $idTokenCookieOptions
-        );
-        $refreshTokenCookieOptions = array(
-            'expires' => time() + 60 * 60 * 24 * 30,
-            'path' => '/token/refresh',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict',
-        );
-        setcookie(
-            'SaaSus_refreshToken',
-            $refreshToken,
-            $refreshTokenCookieOptions,
+            $arr_cookie_options
         );
 
         return response()->view('saasus_default_callback', ['idToken' => $idToken]);

@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
 use Http\Client\Exception\HttpException;
 
 class CallbackApiController extends BaseController

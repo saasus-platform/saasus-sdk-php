@@ -33,11 +33,13 @@ class CallbackController extends BaseController
         } catch (\Exception $e) {
             if ($e instanceof HttpException) {
                 $statusCode = $e->getResponse()->getStatusCode();
+                $type = json_decode($e->getResponse()->getBody(), true)["type"];
+                $message = json_decode($e->getResponse()->getBody(), true)["message"];
                 if ($statusCode == Response::HTTP_NOT_FOUND) {
-                    Log::info('Type: Not Found, Message: ' . $e->getResponse());
+                    Log::info('Type: ' . $type . ', Message: ' . $message);
                     return redirect(getenv('SAASUS_LOGIN_URL'));
                 }
-                Log::info('Type: Internal Server Error, Message: ' . $e->getResponse());
+                Log::info('Type: ' . $type . ', Message: ' . $message);
                 return redirect(getenv('SAASUS_LOGIN_URL'));
             }
             return redirect(getenv('SAASUS_LOGIN_URL'));

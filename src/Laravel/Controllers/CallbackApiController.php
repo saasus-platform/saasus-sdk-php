@@ -47,14 +47,16 @@ class CallbackApiController extends BaseController
     } catch (\Exception $e) {
       if ($e instanceof HttpException) {
         $statusCode = $e->getResponse()->getStatusCode();
+        $type = json_decode($e->getResponse()->getBody(), true)["type"];
+        $message = json_decode($e->getResponse()->getBody(), true)["message"];
         if ($statusCode == Response::HTTP_NOT_FOUND) {
-          Log::info('Type: Not Found, Message: ' . $e->getResponse());
-          return response()->json("Credentials Not Found", Response::HTTP_NOT_FOUND);
+          Log::info('Type: ' . $type . ', Message: ' . $message);
+          return response()->json(['type' => $type, 'message' => $message], Response::HTTP_NOT_FOUND);
         }
-        Log::info('Type: Internal Server Error, Message: ' . $e->getResponse());
-        return response()->json('Internal Server Error', Response::HTTP_INTERNAL_SERVER_ERROR);
+        Log::info('Type: ' . $type . ', Message: ' . $message);
+        return response()->json(['type' => $type, 'message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
       }
-      return response()->json('Internal Server Error', Response::HTTP_INTERNAL_SERVER_ERROR);
+      return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
   }
 }

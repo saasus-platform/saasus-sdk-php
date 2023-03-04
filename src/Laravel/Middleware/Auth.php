@@ -44,16 +44,18 @@ class Auth
         } catch (\Exception $e) {
             if ($e instanceof HttpException) {
                 $statusCode = $e->getResponse()->getStatusCode();
+                $type = json_decode($e->getResponse()->getBody(), true)["type"];
+                $message = json_decode($e->getResponse()->getBody(), true)["message"];
                 if ($statusCode == Response::HTTP_UNAUTHORIZED) {
-                    Log::info('Type: Unauthorized, Message: ' . $e->getResponse());
+                    Log::info('Type: ' . $type . ', Message: ' . $message);
                     if (getenv('SAASUS_AUTH_MODE') == "api") {
-                        return response()->json('Invalid ID Token.', Response::HTTP_UNAUTHORIZED);
+                        return response()->json(['type' => $type, 'message' => $message], Response::HTTP_UNAUTHORIZED);
                     } else {
                         return redirect(getenv('SAASUS_LOGIN_URL'));
                     }
                 }
-                Log::info('Type: Intenal Server Error, Message: ' . $e->getResponse());
-                return response()->json('Unexpected response: ' . $e->getResponse(), Response::HTTP_INTERNAL_SERVER_ERROR);
+                Log::info('Type: ' . $type . ', Message: ' . $message);
+                return response()->json(['type' => $type, 'message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
             return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }

@@ -48,6 +48,7 @@ class TokenRefreshApiController extends BaseController
         Log::info('Type: ' . $type . ', Message: ' . $message);
         return response()->json(['type' => $type, 'message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
       }
+      Log::info('Uncaught error: ' . $e);
       return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
   }

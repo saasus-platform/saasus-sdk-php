@@ -42,6 +42,7 @@ class CallbackController extends BaseController
                 Log::info('Type: ' . $type . ', Message: ' . $message);
                 return redirect(getenv('SAASUS_LOGIN_URL'));
             }
+            Log::info('Uncaught error: ' . $e);
             return redirect(getenv('SAASUS_LOGIN_URL'));
         }
         $arr_cookie_options = array(

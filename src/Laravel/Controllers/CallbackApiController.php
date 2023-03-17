@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
+use Http\Client\Exception\HttpException;
 
 class CallbackApiController extends BaseController
 {
@@ -43,12 +42,20 @@ class CallbackApiController extends BaseController
       );
       setcookie('saasus_refresh_token', $body['refresh_token'], $arr_cookie_options);
       return response()->json($body, Response::HTTP_OK);
-    } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
-      if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
-        Log::info('Type: Not Found, Message: ' . $e->getError());
-        return response()->json('credentials not found', Response::HTTP_NOT_FOUND);
+    } catch (\Exception $e) {
+      if ($e instanceof HttpException) {
+        $statusCode = $e->getResponse()->getStatusCode();
+        $type = json_decode($e->getResponse()->getBody(), true)["type"];
+        $message = json_decode($e->getResponse()->getBody(), true)["message"];
+        if ($statusCode == Response::HTTP_NOT_FOUND) {
+          Log::info('Type: ' . $type . ', Message: ' . $message);
+          return response()->json(['type' => $type, 'message' => $message], Response::HTTP_NOT_FOUND);
+        }
+        Log::info('Type: ' . $type . ', Message: ' . $message);
+        return response()->json(['type' => $type, 'message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
       }
-      return response()->json('internal server error', Response::HTTP_INTERNAL_SERVER_ERROR);
+      Log::info('Uncaught error: ' . $e);
+      return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
   }
 }

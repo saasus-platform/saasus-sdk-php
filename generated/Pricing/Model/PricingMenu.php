@@ -19,25 +19,25 @@ class PricingMenu extends \ArrayObject
      */
     protected $id;
     /**
-     * メニュー名
+     * メニュー名(menu name)
      *
      * @var string
      */
     protected $name;
     /**
-     * メニュー表示名
+     * メニュー表示名(menu display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * メニュー説明
+     * メニュー説明(menu description)
      *
      * @var string
      */
     protected $description;
     /**
-     * メニューの使用済み設定
+     * メニューの使用済み設定(menu used settings)
      *
      * @var bool
      */
@@ -71,7 +71,7 @@ class PricingMenu extends \ArrayObject
         return $this;
     }
     /**
-     * メニュー名
+     * メニュー名(menu name)
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class PricingMenu extends \ArrayObject
         return $this->name;
     }
     /**
-     * メニュー名
+     * メニュー名(menu name)
      *
      * @param string $name
      *
@@ -93,7 +93,7 @@ class PricingMenu extends \ArrayObject
         return $this;
     }
     /**
-     * メニュー表示名
+     * メニュー表示名(menu display name)
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class PricingMenu extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * メニュー表示名
+     * メニュー表示名(menu display name)
      *
      * @param string $displayName
      *
@@ -115,7 +115,7 @@ class PricingMenu extends \ArrayObject
         return $this;
     }
     /**
-     * メニュー説明
+     * メニュー説明(menu description)
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class PricingMenu extends \ArrayObject
         return $this->description;
     }
     /**
-     * メニュー説明
+     * メニュー説明(menu description)
      *
      * @param string $description
      *
@@ -137,7 +137,7 @@ class PricingMenu extends \ArrayObject
         return $this;
     }
     /**
-     * メニューの使用済み設定
+     * メニューの使用済み設定(menu used settings)
      *
      * @return bool
      */
@@ -146,7 +146,7 @@ class PricingMenu extends \ArrayObject
         return $this->used;
     }
     /**
-     * メニューの使用済み設定
+     * メニューの使用済み設定(menu used settings)
      *
      * @param bool $used
      *

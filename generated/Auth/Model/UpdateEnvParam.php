@@ -13,13 +13,13 @@ class UpdateEnvParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * 環境名(env name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 
+     * 環境名(env name)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class UpdateEnvParam extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
+     * 環境名(env name)
      *
      * @param string $name
      *

@@ -13,7 +13,7 @@ class User extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * ユーザーID
+     * ユーザーID(User ID)
      *
      * @var string
      */
@@ -25,22 +25,25 @@ class User extends \ArrayObject
      */
     protected $tenantId;
     /**
-     * テナント名
+     * テナント名(Tenant Name)
      *
      * @var string
      */
     protected $tenantName;
     /**
-     * メールアドレス
+     * メールアドレス(E-mail)
      *
      * @var string
      */
     protected $email;
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定された情報を取得します）
-     *
-     * @var mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @var mixed[]
+    */
     protected $attributes;
     /**
      * 
@@ -49,7 +52,7 @@ class User extends \ArrayObject
      */
     protected $envs;
     /**
-     * ユーザーID
+     * ユーザーID(User ID)
      *
      * @return string
      */
@@ -58,7 +61,7 @@ class User extends \ArrayObject
         return $this->id;
     }
     /**
-     * ユーザーID
+     * ユーザーID(User ID)
      *
      * @param string $id
      *
@@ -93,7 +96,7 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-     * テナント名
+     * テナント名(Tenant Name)
      *
      * @return string
      */
@@ -102,7 +105,7 @@ class User extends \ArrayObject
         return $this->tenantName;
     }
     /**
-     * テナント名
+     * テナント名(Tenant Name)
      *
      * @param string $tenantName
      *
@@ -115,7 +118,7 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-     * メールアドレス
+     * メールアドレス(E-mail)
      *
      * @return string
      */
@@ -124,7 +127,7 @@ class User extends \ArrayObject
         return $this->email;
     }
     /**
-     * メールアドレス
+     * メールアドレス(E-mail)
      *
      * @param string $email
      *
@@ -137,21 +140,27 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定された情報を取得します）
-     *
-     * @return mixed[]
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @return mixed[]
+    */
     public function getAttributes() : iterable
     {
         return $this->attributes;
     }
     /**
-     * 属性情報（SaaSus コンソールでテナント属性定義を行い設定された情報を取得します）
-     *
-     * @param mixed[] $attributes
-     *
-     * @return self
-     */
+    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    
+    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    
+    *
+    * @param mixed[] $attributes
+    *
+    * @return self
+    */
     public function setAttributes(iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;

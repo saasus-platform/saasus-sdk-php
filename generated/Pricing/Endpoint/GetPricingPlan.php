@@ -6,10 +6,13 @@ class GetPricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\B
 {
     protected $plan_id;
     /**
-     * 料金プランを取得します。
-     *
-     * @param string $planId 料金プランID
-     */
+    * 料金プランを取得します。
+    
+    Get pricing plan.
+    
+    *
+    * @param string $planId 料金プランID(price plan ID)
+    */
     public function __construct(string $planId)
     {
         $this->plan_id = $planId;

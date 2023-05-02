@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Pricing\Endpoint;
 class CreatePricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
 {
     /**
-     * プライシング機能メニューを作成します
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * プライシング機能メニューを作成します。
+    
+    Create a pricing feature menu.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

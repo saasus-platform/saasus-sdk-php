@@ -13,43 +13,43 @@ class PasswordPolicy extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 最小文字数
+     * 最小文字数(minimum number of characters)
      *
      * @var int
      */
     protected $minimumLength;
     /**
-     * 一文字以上の小文字を含むが設定されているか
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @var bool
      */
     protected $isRequireLowercase;
     /**
-     * 一文字以上の数字を含むが設定されているか
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @var bool
      */
     protected $isRequireNumbers;
     /**
-     * 一文字以上の特殊文字を含むが設定されているか
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @var bool
      */
     protected $isRequireSymbols;
     /**
-     * 一文字以上の大文字を含むが設定されているか
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @var bool
      */
     protected $isRequireUppercase;
     /**
-     * 仮パスワードの有効期限
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @var int
      */
     protected $temporaryPasswordValidityDays;
     /**
-     * 最小文字数
+     * 最小文字数(minimum number of characters)
      *
      * @return int
      */
@@ -58,7 +58,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->minimumLength;
     }
     /**
-     * 最小文字数
+     * 最小文字数(minimum number of characters)
      *
      * @param int $minimumLength
      *
@@ -71,7 +71,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の小文字を含むが設定されているか
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @return bool
      */
@@ -80,7 +80,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireLowercase;
     }
     /**
-     * 一文字以上の小文字を含むが設定されているか
+     * 一文字以上の小文字を含むが設定されているか(contains one or more lowercase characters)
      *
      * @param bool $isRequireLowercase
      *
@@ -93,7 +93,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の数字を含むが設定されているか
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @return bool
      */
@@ -102,7 +102,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireNumbers;
     }
     /**
-     * 一文字以上の数字を含むが設定されているか
+     * 一文字以上の数字を含むが設定されているか(contains one or more numeric characters)
      *
      * @param bool $isRequireNumbers
      *
@@ -115,7 +115,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の特殊文字を含むが設定されているか
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @return bool
      */
@@ -124,7 +124,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireSymbols;
     }
     /**
-     * 一文字以上の特殊文字を含むが設定されているか
+     * 一文字以上の特殊文字を含むが設定されているか(contains one or more special characters)
      *
      * @param bool $isRequireSymbols
      *
@@ -137,7 +137,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 一文字以上の大文字を含むが設定されているか
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @return bool
      */
@@ -146,7 +146,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->isRequireUppercase;
     }
     /**
-     * 一文字以上の大文字を含むが設定されているか
+     * 一文字以上の大文字を含むが設定されているか(contains one or more uppercase letters)
      *
      * @param bool $isRequireUppercase
      *
@@ -159,7 +159,7 @@ class PasswordPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 仮パスワードの有効期限
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @return int
      */
@@ -168,7 +168,7 @@ class PasswordPolicy extends \ArrayObject
         return $this->temporaryPasswordValidityDays;
     }
     /**
-     * 仮パスワードの有効期限
+     * 仮パスワードの有効期限(temporary password expiration date)
      *
      * @param int $temporaryPasswordValidityDays
      *

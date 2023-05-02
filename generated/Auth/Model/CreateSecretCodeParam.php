@@ -13,13 +13,13 @@ class CreateSecretCodeParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @var string
      */
     protected $accessToken;
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class CreateSecretCodeParam extends \ArrayObject
         return $this->accessToken;
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @param string $accessToken
      *

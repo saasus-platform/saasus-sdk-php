@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Pricing\Endpoint;
 class CreatePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
 {
     /**
-     * プライシングユニットを作成します。
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * プライシングユニットを作成します。
+    
+    Create a pricing unit.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

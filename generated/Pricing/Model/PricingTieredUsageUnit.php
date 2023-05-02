@@ -25,9 +25,9 @@ class PricingTieredUsageUnit extends \ArrayObject
      */
     protected $meteringUnitId;
     /**
-    * 繰り返し期間
-    month: 月単位
-    year: 年単位
+    * 繰り返し期間(cycle)
+    month: 月単位(monthly)
+    year: 年単位(yearly)
     
     *
     * @var string
@@ -40,48 +40,48 @@ class PricingTieredUsageUnit extends \ArrayObject
      */
     protected $used;
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @var int
      */
     protected $upperCount;
     /**
-     * 
+     * 計測ユニット名(metering unit name)
      *
      * @var string
      */
     protected $meteringUnitName;
     /**
-     * 
+     * 名前(name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 
+     * 表示名(display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 
+     * 説明(description)
      *
      * @var string
      */
     protected $description;
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(unit of measurement type)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @var string
     */
     protected $type;
     /**
-     * 
+     * 通貨(currency)
      *
      * @var string
      */
@@ -137,9 +137,9 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-    * 繰り返し期間
-    month: 月単位
-    year: 年単位
+    * 繰り返し期間(cycle)
+    month: 月単位(monthly)
+    year: 年単位(yearly)
     
     *
     * @return string
@@ -149,9 +149,9 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->recurringInterval;
     }
     /**
-    * 繰り返し期間
-    month: 月単位
-    year: 年単位
+    * 繰り返し期間(cycle)
+    month: 月単位(monthly)
+    year: 年単位(yearly)
     
     *
     * @param string $recurringInterval
@@ -187,7 +187,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @return int
      */
@@ -196,7 +196,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->upperCount;
     }
     /**
-     * 上限値
+     * 上限値(upper limit)
      *
      * @param int $upperCount
      *
@@ -209,7 +209,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 計測ユニット名(metering unit name)
      *
      * @return string
      */
@@ -218,7 +218,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->meteringUnitName;
     }
     /**
-     * 
+     * 計測ユニット名(metering unit name)
      *
      * @param string $meteringUnitName
      *
@@ -231,7 +231,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 名前(name)
      *
      * @return string
      */
@@ -240,7 +240,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
+     * 名前(name)
      *
      * @param string $name
      *
@@ -253,7 +253,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 表示名(display name)
      *
      * @return string
      */
@@ -262,7 +262,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 
+     * 表示名(display name)
      *
      * @param string $displayName
      *
@@ -275,7 +275,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 説明(description)
      *
      * @return string
      */
@@ -284,7 +284,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
+     * 説明(description)
      *
      * @param string $description
      *
@@ -297,11 +297,11 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(unit of measurement type)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @return string
@@ -311,11 +311,11 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->type;
     }
     /**
-    * 計測単位の種別
-    fixed: 固定ユニット
-    usage: 使用量ユニット
-    tiered: 段階ユニット
-    tiered_usage: 段階的使用量ユニット
+    * 計測単位の種別(unit of measurement type)
+    fixed: 固定ユニット(fixed unit)
+    usage: 使用量ユニット(usage unit)
+    tiered: 段階ユニット(tiered unit)
+    tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
     * @param string $type
@@ -329,7 +329,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 通貨(currency)
      *
      * @return string
      */
@@ -338,7 +338,7 @@ class PricingTieredUsageUnit extends \ArrayObject
         return $this->currency;
     }
     /**
-     * 
+     * 通貨(currency)
      *
      * @param string $currency
      *

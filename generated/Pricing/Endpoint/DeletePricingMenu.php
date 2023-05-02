@@ -6,10 +6,13 @@ class DeletePricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $menu_id;
     /**
-     * プライシング機能メニューを削除します。
-     *
-     * @param string $menuId メニューID
-     */
+    * プライシング機能メニューを削除します。
+    
+    Delete pricing feature menu.
+    
+    *
+    * @param string $menuId メニューID(menu ID)
+    */
     public function __construct(string $menuId)
     {
         $this->menu_id = $menuId;

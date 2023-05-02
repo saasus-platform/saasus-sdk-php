@@ -13,31 +13,31 @@ class PricingTier extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 上限
+     * 上限(upper limit)
      *
      * @var int
      */
     protected $upTo;
     /**
-     * 単位金額
+     * 単位金額(amount per unit)
      *
      * @var int
      */
     protected $unitAmount;
     /**
-     * 固定金額
+     * 固定金額(fixed Amount)
      *
      * @var int
      */
     protected $flatAmount;
     /**
-     * inf /確認/
+     * inf
      *
      * @var bool
      */
     protected $inf;
     /**
-     * 上限
+     * 上限(upper limit)
      *
      * @return int
      */
@@ -46,7 +46,7 @@ class PricingTier extends \ArrayObject
         return $this->upTo;
     }
     /**
-     * 上限
+     * 上限(upper limit)
      *
      * @param int $upTo
      *
@@ -59,7 +59,7 @@ class PricingTier extends \ArrayObject
         return $this;
     }
     /**
-     * 単位金額
+     * 単位金額(amount per unit)
      *
      * @return int
      */
@@ -68,7 +68,7 @@ class PricingTier extends \ArrayObject
         return $this->unitAmount;
     }
     /**
-     * 単位金額
+     * 単位金額(amount per unit)
      *
      * @param int $unitAmount
      *
@@ -81,7 +81,7 @@ class PricingTier extends \ArrayObject
         return $this;
     }
     /**
-     * 固定金額
+     * 固定金額(fixed Amount)
      *
      * @return int
      */
@@ -90,7 +90,7 @@ class PricingTier extends \ArrayObject
         return $this->flatAmount;
     }
     /**
-     * 固定金額
+     * 固定金額(fixed Amount)
      *
      * @param int $flatAmount
      *
@@ -103,7 +103,7 @@ class PricingTier extends \ArrayObject
         return $this;
     }
     /**
-     * inf /確認/
+     * inf
      *
      * @return bool
      */
@@ -112,7 +112,7 @@ class PricingTier extends \ArrayObject
         return $this->inf;
     }
     /**
-     * inf /確認/
+     * inf
      *
      * @param bool $inf
      *

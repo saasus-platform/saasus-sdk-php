@@ -6,10 +6,13 @@ class DeletePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $pricing_unit_id;
     /**
-     * プライシングユニットを削除します。
-     *
-     * @param string $pricingUnitId ユニットID
-     */
+    * プライシングユニットを削除します。
+    
+    Delete a pricing unit.
+    
+    *
+    * @param string $pricingUnitId ユニットID(unit id)
+    */
     public function __construct(string $pricingUnitId)
     {
         $this->pricing_unit_id = $pricingUnitId;

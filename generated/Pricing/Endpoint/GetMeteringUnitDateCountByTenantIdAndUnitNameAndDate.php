@@ -8,12 +8,15 @@ class GetMeteringUnitDateCountByTenantIdAndUnitNameAndDate extends \AntiPatternI
     protected $metering_unit_name;
     protected $date;
     /**
-     * 指定した日付のメータリングユニットカウントを取得します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $meteringUnitName 計測ユニット名
-     * @param string $date 日
-     */
+    * 指定した日付のメータリングユニットカウントを取得します。
+    
+    Gets the metering unit count for specific date.
+    
+    *
+    * @param string $tenantId テナントID(tenant id)
+    * @param string $meteringUnitName 計測ユニット名(metering unit name)
+    * @param string $date 日(date)
+    */
     public function __construct(string $tenantId, string $meteringUnitName, string $date)
     {
         $this->tenant_id = $tenantId;

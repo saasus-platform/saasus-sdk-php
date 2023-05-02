@@ -6,10 +6,14 @@ class GetTenantUsers extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
 {
     protected $tenant_id;
     /**
-     * テナントに所属するユーザーを全件取得します。 idは一意です。
-     *
-     * @param string $tenantId テナントID
-     */
+    * テナントに所属するユーザーを全件取得します。 idは一意です。
+    
+    Get all the users belonging to the tenant.
+    Id is unique.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    */
     public function __construct(string $tenantId)
     {
         $this->tenant_id = $tenantId;

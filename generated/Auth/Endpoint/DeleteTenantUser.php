@@ -7,11 +7,14 @@ class DeleteTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     protected $tenant_id;
     protected $user_id;
     /**
-     * テナントからユーザーを削除します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $userId ユーザーID
-     */
+    * テナントからユーザーを削除します。
+    
+    Delete a user from your tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $userId ユーザーID(User ID)
+    */
     public function __construct(string $tenantId, string $userId)
     {
         $this->tenant_id = $tenantId;

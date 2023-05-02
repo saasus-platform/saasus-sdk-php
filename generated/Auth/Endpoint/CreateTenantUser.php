@@ -6,11 +6,16 @@ class CreateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
 {
     protected $tenant_id;
     /**
-     * テナントにユーザーを作成します。attributesを空のオブジェクトにした場合、追加属性は空で作成されます。
-     *
-     * @param string $tenantId テナントID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam $requestBody 
-     */
+    * テナントにユーザーを作成します。
+    attributesを空のオブジェクトにした場合、追加属性は空で作成されます。
+    
+    Create a tenant user.
+    If attributes is empty, the additional attributes will be created empty.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam $requestBody 
+    */
     public function __construct(string $tenantId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam $requestBody = null)
     {
         $this->tenant_id = $tenantId;

@@ -6,10 +6,13 @@ class DeleteRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndp
 {
     protected $role_name;
     /**
-     * 役割を削除します。
-     *
-     * @param string $roleName 役割名
-     */
+    * 役割(ロール)を削除します。
+    
+    Delete role.
+    
+    *
+    * @param string $roleName 役割(ロール)名(role name)
+    */
     public function __construct(string $roleName)
     {
         $this->role_name = $roleName;

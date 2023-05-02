@@ -5,12 +5,21 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 認証・認可情報の取得
-     *
-     * @param array $queryParameters {
-     *     @var string $code 認可コード
-     * }
-     */
+    * 一時コードまたはリフレッシュトークンを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
+    
+    Get ID token, access token, and refresh token using a temporary code or a refresh token.
+    
+    *
+    * @param array $queryParameters {
+    *     @var string $code 一時コード(Temp Code)
+    *     @var string $auth-flow 認証フロー（Authentication Flow）
+    tempCodeAuth: 一時コードを利用した認証情報の取得
+    refreshTokenAuth: リフレッシュトークンを利用した認証情報の取得
+    指定されていない場合は tempCodeAuth になります
+    
+    *     @var string $refresh-token リフレッシュトークン(Refresh Token)
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -35,10 +44,12 @@ class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('code'));
-        $optionsResolver->setRequired(array('code'));
+        $optionsResolver->setDefined(array('code', 'auth-flow', 'refresh-token'));
+        $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->addAllowedTypes('code', array('string'));
+        $optionsResolver->addAllowedTypes('auth-flow', array('string'));
+        $optionsResolver->addAllowedTypes('refresh-token', array('string'));
         return $optionsResolver;
     }
     /**

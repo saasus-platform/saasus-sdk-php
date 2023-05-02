@@ -6,11 +6,14 @@ class UpdateSoftwareToken extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
 {
     protected $user_id;
     /**
-     * 認証アプリケーションの登録
-     *
-     * @param string $userId ユーザーID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam $requestBody 
-     */
+    * 認証アプリケーションを登録します。
+    
+    Register an authentication application.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam $requestBody 
+    */
     public function __construct(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam $requestBody = null)
     {
         $this->user_id = $userId;

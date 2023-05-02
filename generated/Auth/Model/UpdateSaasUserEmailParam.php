@@ -13,13 +13,13 @@ class UpdateSaasUserEmailParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * メールアドレス(e-mail)
      *
      * @var string
      */
     protected $email;
     /**
-     * 
+     * メールアドレス(e-mail)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class UpdateSaasUserEmailParam extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
+     * メールアドレス(e-mail)
      *
      * @param string $email
      *

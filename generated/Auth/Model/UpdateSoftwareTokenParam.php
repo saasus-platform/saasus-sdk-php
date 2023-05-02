@@ -13,19 +13,19 @@ class UpdateSoftwareTokenParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @var string
      */
     protected $accessToken;
     /**
-     * 
+     * 検証コード(verification code)
      *
      * @var string
      */
     protected $verificationCode;
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class UpdateSoftwareTokenParam extends \ArrayObject
         return $this->accessToken;
     }
     /**
-     * 
+     * アクセストークン(access token)
      *
      * @param string $accessToken
      *
@@ -47,7 +47,7 @@ class UpdateSoftwareTokenParam extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 検証コード(verification code)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class UpdateSoftwareTokenParam extends \ArrayObject
         return $this->verificationCode;
     }
     /**
-     * 
+     * 検証コード(verification code)
      *
      * @param string $verificationCode
      *

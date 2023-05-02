@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Pricing\Endpoint;
 class UpdatePricingPlansUsed extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
 {
     /**
-     * 料金プランと配下のメニュー・ユニットを使用済みに更新します。
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody 
-     */
+    * 料金プランと配下のメニュー・ユニットを使用済みに更新します。
+    
+    Update price plan and feature menu/pricing unit to used.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody = null)
     {
         $this->body = $requestBody;

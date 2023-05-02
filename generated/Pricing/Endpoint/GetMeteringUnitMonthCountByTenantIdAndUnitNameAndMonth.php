@@ -8,12 +8,15 @@ class GetMeteringUnitMonthCountByTenantIdAndUnitNameAndMonth extends \AntiPatter
     protected $metering_unit_name;
     protected $month;
     /**
-     * 指定した月のメータリングユニットカウントを取得します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $meteringUnitName 計測ユニット名
-     * @param string $month 月
-     */
+    * 指定した月のメータリングユニットカウントを取得します。
+    
+    Gets the metering unit count for the specified month.
+    
+    *
+    * @param string $tenantId テナントID(tenant id)
+    * @param string $meteringUnitName 計測ユニット名(metering unit name)
+    * @param string $month 月(month)
+    */
     public function __construct(string $tenantId, string $meteringUnitName, string $month)
     {
         $this->tenant_id = $tenantId;

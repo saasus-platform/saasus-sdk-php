@@ -13,25 +13,27 @@ class AccountVerification extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * code: 検証コード
-    link: 検証リンク
+    * code: 検証コード(verification code)
+    link: 検証リンク(verification link)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @var string
     */
     protected $verificationMethod;
     /**
-    * email: Eメール
+    * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @var string
     */
     protected $sendingTo;
     /**
-    * code: 検証コード
-    link: 検証リンク
+    * code: 検証コード(verification code)
+    link: 検証リンク(verification link)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @return string
@@ -41,8 +43,9 @@ class AccountVerification extends \ArrayObject
         return $this->verificationMethod;
     }
     /**
-    * code: 検証コード
-    link: 検証リンク
+    * code: 検証コード(verification code)
+    link: 検証リンク(verification link)
+    ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
     * @param string $verificationMethod
@@ -56,9 +59,9 @@ class AccountVerification extends \ArrayObject
         return $this;
     }
     /**
-    * email: Eメール
+    * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @return string
@@ -68,9 +71,9 @@ class AccountVerification extends \ArrayObject
         return $this->sendingTo;
     }
     /**
-    * email: Eメール
+    * email: Eメール(e-mail)
     sms: SMS
-    smsOrEmail: SMS不可の場合にEメール
+    smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
     * @param string $sendingTo

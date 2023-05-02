@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class UpdateCustomizePageSettings extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-     * 認証認可基本情報を更新します。
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam $requestBody 
-     */
+    * 認証認可基本情報を更新します。
+    
+    Update authentication authorization basic information.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam $requestBody = null)
     {
         $this->body = $requestBody;

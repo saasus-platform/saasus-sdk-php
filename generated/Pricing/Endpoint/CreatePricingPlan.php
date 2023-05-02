@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Pricing\Endpoint;
 class CreatePricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Endpoint
 {
     /**
-     * 料金プランを作成します。
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * 料金プランを作成します。
+    
+    Create pricing plan.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;

@@ -6,11 +6,14 @@ class UpdateEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
 {
     protected $env_id;
     /**
-     * 環境情報を更新します。
-     *
-     * @param int $envId 環境ID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam $requestBody 
-     */
+    * 環境情報を更新します。
+    
+    Update env info.
+    
+    *
+    * @param int $envId 環境ID(Env ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam $requestBody 
+    */
     public function __construct(int $envId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam $requestBody = null)
     {
         $this->env_id = $envId;

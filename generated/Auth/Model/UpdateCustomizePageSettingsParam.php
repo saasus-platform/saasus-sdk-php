@@ -13,43 +13,43 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * サービスアイコン
+     * サービスアイコン(service icon)
      *
      * @var string
      */
     protected $icon;
     /**
-     * ファビコン
+     * ファビコン(favicon)
      *
      * @var string
      */
     protected $favicon;
     /**
-     * サービス名
+     * サービス名(service name)
      *
      * @var string
      */
     protected $title;
     /**
-     * 利用規約URL
+     * 利用規約URL(terms of service URL)
      *
      * @var string
      */
     protected $termsOfServiceUrl;
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @var string
      */
     protected $privacyPolicyUrl;
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @var string
      */
     protected $googleTagManagerContainerId;
     /**
-     * サービスアイコン
+     * サービスアイコン(service icon)
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->icon;
     }
     /**
-     * サービスアイコン
+     * サービスアイコン(service icon)
      *
      * @param string $icon
      *
@@ -71,7 +71,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this;
     }
     /**
-     * ファビコン
+     * ファビコン(favicon)
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->favicon;
     }
     /**
-     * ファビコン
+     * ファビコン(favicon)
      *
      * @param string $favicon
      *
@@ -93,7 +93,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this;
     }
     /**
-     * サービス名
+     * サービス名(service name)
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->title;
     }
     /**
-     * サービス名
+     * サービス名(service name)
      *
      * @param string $title
      *
@@ -115,7 +115,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this;
     }
     /**
-     * 利用規約URL
+     * 利用規約URL(terms of service URL)
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->termsOfServiceUrl;
     }
     /**
-     * 利用規約URL
+     * 利用規約URL(terms of service URL)
      *
      * @param string $termsOfServiceUrl
      *
@@ -137,7 +137,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this;
     }
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @return string
      */
@@ -146,7 +146,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->privacyPolicyUrl;
     }
     /**
-     * プライバシーポリシーURL
+     * プライバシーポリシーURL(privacy policy URL)
      *
      * @param string $privacyPolicyUrl
      *
@@ -159,7 +159,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this;
     }
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @return string
      */
@@ -168,7 +168,7 @@ class UpdateCustomizePageSettingsParam extends \ArrayObject
         return $this->googleTagManagerContainerId;
     }
     /**
-     * Google Tag Manager コンテナ ID
+     * Google Tag Manager コンテナ ID(Google Tag Manager container ID)
      *
      * @param string $googleTagManagerContainerId
      *

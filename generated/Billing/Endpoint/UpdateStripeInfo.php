@@ -5,10 +5,15 @@ namespace AntiPatternInc\Saasus\Sdk\Billing\Endpoint;
 class UpdateStripeInfo extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Endpoint
 {
     /**
-     * Stripeの連携情報を更新
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody 
-     */
+    * 請求業務で使う外部SaaSとの連携情報を更新します。
+    現在は Stripe と連携が可能です。
+    
+    Updates information on connection with external billing SaaS.
+    Currently possible to connect to Stripe.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Billing\Model\UpdateStripeInfoParam $requestBody = null)
     {
         $this->body = $requestBody;

@@ -6,11 +6,14 @@ class UpdateSaasUserEmail extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client
 {
     protected $user_id;
     /**
-     * ユーザーのメールアドレスを変更します。
-     *
-     * @param string $userId ユーザーID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody 
-     */
+    * ユーザーのメールアドレスを変更します。
+    
+    Change user's email.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody 
+    */
     public function __construct(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody = null)
     {
         $this->user_id = $userId;

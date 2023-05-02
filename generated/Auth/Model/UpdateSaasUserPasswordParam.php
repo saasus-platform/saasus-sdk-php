@@ -13,13 +13,13 @@ class UpdateSaasUserPasswordParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * パスワード(password)
      *
      * @var string
      */
     protected $password;
     /**
-     * 
+     * パスワード(password)
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class UpdateSaasUserPasswordParam extends \ArrayObject
         return $this->password;
     }
     /**
-     * 
+     * パスワード(password)
      *
      * @param string $password
      *

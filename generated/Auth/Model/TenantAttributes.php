@@ -13,13 +13,13 @@ class TenantAttributes extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * テナント属性定義
+     * テナント属性定義(Tenant Attribute Definition)
      *
      * @var Attribute[]
      */
     protected $tenantAttributes;
     /**
-     * テナント属性定義
+     * テナント属性定義(Tenant Attribute Definition)
      *
      * @return Attribute[]
      */
@@ -28,7 +28,7 @@ class TenantAttributes extends \ArrayObject
         return $this->tenantAttributes;
     }
     /**
-     * テナント属性定義
+     * テナント属性定義(Tenant Attribute Definition)
      *
      * @param Attribute[] $tenantAttributes
      *

@@ -19,7 +19,7 @@ class Env extends \ArrayObject
      */
     protected $id;
     /**
-     * 環境名
+     * 環境名(env name)
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class Env extends \ArrayObject
         return $this;
     }
     /**
-     * 環境名
+     * 環境名(env name)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class Env extends \ArrayObject
         return $this->name;
     }
     /**
-     * 環境名
+     * 環境名(env name)
      *
      * @param string $name
      *

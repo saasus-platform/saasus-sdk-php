@@ -10,8 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException;
-use AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException;
+use Http\Client\Exception\HttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 class CallbackController extends BaseController
 {
@@ -26,14 +26,23 @@ class CallbackController extends BaseController
         $client = new ApiClient;
         $authApiClient = $client->getAuthClient();
         try {
-            $res = $authApiClient->getAuthCredentials(['code' => $request->code]);
+            $res = $authApiClient->getAuthCredentials([
+                'code' => $request->code, 'auth-flow' => 'tempCodeAuth',
+            ]);
             $idToken = $res->getIdToken();
-        } catch (GetAuthCredentialsNotFoundException | GetAuthCredentialsInternalServerErrorException $e) {
-            if (get_class($e) == 'GetAuthCredentialsNotFoundException') {
-                Log::info('Type: Not Found, Message: ' . $e->getError());
+        } catch (\Exception $e) {
+            if ($e instanceof HttpException) {
+                $statusCode = $e->getResponse()->getStatusCode();
+                $type = json_decode($e->getResponse()->getBody(), true)["type"];
+                $message = json_decode($e->getResponse()->getBody(), true)["message"];
+                if ($statusCode == Response::HTTP_NOT_FOUND) {
+                    Log::info('Type: ' . $type . ', Message: ' . $message);
+                    return redirect(getenv('SAASUS_LOGIN_URL'));
+                }
+                Log::info('Type: ' . $type . ', Message: ' . $message);
                 return redirect(getenv('SAASUS_LOGIN_URL'));
             }
-            Log::info('Type: Internal Server Error, Message: ' . $e->getError());
+            Log::info('Uncaught error: ' . $e);
             return redirect(getenv('SAASUS_LOGIN_URL'));
         }
         $arr_cookie_options = array(

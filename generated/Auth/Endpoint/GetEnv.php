@@ -6,10 +6,13 @@ class GetEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint
 {
     protected $env_id;
     /**
-     * 環境情報の詳細を取得します。
-     *
-     * @param int $envId 環境ID
-     */
+    * 環境情報の詳細を取得します。
+    
+    Get environment details.
+    
+    *
+    * @param int $envId 環境ID(Env ID)
+    */
     public function __construct(int $envId)
     {
         $this->env_id = $envId;

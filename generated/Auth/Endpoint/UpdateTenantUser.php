@@ -7,12 +7,15 @@ class UpdateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     protected $tenant_id;
     protected $user_id;
     /**
-     * テナントのユーザー属性情報を更新します。
-     *
-     * @param string $tenantId テナントID
-     * @param string $userId ユーザーID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody 
-     */
+    * テナントのユーザー属性情報を更新します。
+    
+    Update tenant user attributes.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody 
+    */
     public function __construct(string $tenantId, string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody = null)
     {
         $this->tenant_id = $tenantId;

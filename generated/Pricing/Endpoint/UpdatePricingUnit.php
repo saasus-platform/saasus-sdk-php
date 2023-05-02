@@ -6,11 +6,14 @@ class UpdatePricingUnit extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
 {
     protected $pricing_unit_id;
     /**
-     * プライシングユニット情報を更新します。
-     *
-     * @param string $pricingUnitId ユニットID
-     * @param null|\stdClass $requestBody 
-     */
+    * プライシングユニット情報を更新します。
+    
+    Update pricing unit.
+    
+    *
+    * @param string $pricingUnitId ユニットID(unit id)
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(string $pricingUnitId, ?\stdClass $requestBody = null)
     {
         $this->pricing_unit_id = $pricingUnitId;

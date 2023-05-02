@@ -13,25 +13,25 @@ class PricingPlanProps extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 料金プラン名
+     * 料金プラン名(pricing plan name)
      *
      * @var string
      */
     protected $name;
     /**
-     * 
+     * 料金プラン表示名(pricing plan display name)
      *
      * @var string
      */
     protected $displayName;
     /**
-     * 料金プラン説明
+     * 料金プラン説明(pricing plan description)
      *
      * @var string
      */
     protected $description;
     /**
-     * 料金プランの使用済み設定
+     * 料金プランの使用済み設定(pricing plan used settings)
      *
      * @var bool
      */
@@ -43,7 +43,7 @@ class PricingPlanProps extends \ArrayObject
      */
     protected $pricingMenus;
     /**
-     * 料金プラン名
+     * 料金プラン名(pricing plan name)
      *
      * @return string
      */
@@ -52,7 +52,7 @@ class PricingPlanProps extends \ArrayObject
         return $this->name;
     }
     /**
-     * 料金プラン名
+     * 料金プラン名(pricing plan name)
      *
      * @param string $name
      *
@@ -65,7 +65,7 @@ class PricingPlanProps extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * 料金プラン表示名(pricing plan display name)
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class PricingPlanProps extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 
+     * 料金プラン表示名(pricing plan display name)
      *
      * @param string $displayName
      *
@@ -87,7 +87,7 @@ class PricingPlanProps extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プラン説明
+     * 料金プラン説明(pricing plan description)
      *
      * @return string
      */
@@ -96,7 +96,7 @@ class PricingPlanProps extends \ArrayObject
         return $this->description;
     }
     /**
-     * 料金プラン説明
+     * 料金プラン説明(pricing plan description)
      *
      * @param string $description
      *
@@ -109,7 +109,7 @@ class PricingPlanProps extends \ArrayObject
         return $this;
     }
     /**
-     * 料金プランの使用済み設定
+     * 料金プランの使用済み設定(pricing plan used settings)
      *
      * @return bool
      */
@@ -118,7 +118,7 @@ class PricingPlanProps extends \ArrayObject
         return $this->used;
     }
     /**
-     * 料金プランの使用済み設定
+     * 料金プランの使用済み設定(pricing plan used settings)
      *
      * @param bool $used
      *

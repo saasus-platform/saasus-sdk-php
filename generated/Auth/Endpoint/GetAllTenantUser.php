@@ -6,10 +6,15 @@ class GetAllTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
 {
     protected $user_id;
     /**
-     * ユーザーIDからテナントに所属しているユーザー情報を取得します。複数テナントに所属している場合は別のオブジェクトとして返却されます。
-     *
-     * @param string $userId ユーザーID
-     */
+    * ユーザーIDからテナントに所属しているユーザー情報を取得します。
+    複数テナントに所属している場合は別のオブジェクトとして返却されます。
+    
+    Get information on user belonging to the tenant from the user ID.
+    If the user belongs to multiple tenants, it will be returned as another object.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    */
     public function __construct(string $userId)
     {
         $this->user_id = $userId;

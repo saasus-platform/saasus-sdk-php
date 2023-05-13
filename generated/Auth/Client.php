@@ -250,6 +250,23 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateUserMfaPreference($userId, $requestBody), $fetch);
     }
     /**
+    * 外部IDプロバイダの連携を解除します。
+    
+    Unlink external identity providers.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param string $providerName 外部IDプロバイダ名(External Identity Provider Name)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UnlinkProviderInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function unlinkProvider(string $userId, string $providerName, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UnlinkProvider($userId, $providerName), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUsersInternalServerErrorException
      *
@@ -625,6 +642,44 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenant($tenantId, $requestBody), $fetch);
     }
     /**
+    * SaaSus Platform で管理しているテナントのプラン情報を更新します。
+    
+    Update SaaSus Platform tenant plan information.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantPlanBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantPlanNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantPlanInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function updateTenantPlan(string $tenantId, ?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenantPlan($tenantId, $requestBody), $fetch);
+    }
+    /**
+    * SaaSus Platform で管理しているテナントの請求先情報を更新します。
+    
+    Update SaaSus Platform tenant billing information.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantBillingInfoBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantBillingInfoNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantBillingInfoInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function updateTenantBillingInfo(string $tenantId, ?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenantBillingInfo($tenantId, $requestBody), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetApiKeysInternalServerErrorException
      *
@@ -973,6 +1028,48 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function createAuthCredentials(?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateAuthCredentials($requestBody), $fetch);
+    }
+    /**
+    * ユーザーを新規登録します。登録されたメールアドレスに対して仮パスワードを送信します。
+    
+    Register a new user. A temporary password will be sent to the registered email.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SignUpInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser|\Psr\Http\Message\ResponseInterface
+    */
+    public function signUp(?\AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SignUp($requestBody), $fetch);
+    }
+    /**
+    * 新規登録時の仮パスワードを再送信します。
+    
+    Resend temporary password for the new registered user.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ResendSignUpConfirmationEmailInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function resendSignUpConfirmationEmail(?\AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ResendSignUpConfirmationEmail($requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ReturnInternalServerErrorInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function returnInternalServerError(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ReturnInternalServerError(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {

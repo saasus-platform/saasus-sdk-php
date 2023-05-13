@@ -42,6 +42,16 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\UpdateStripeInfo($requestBody), $fetch);
     }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Billing\Exception\ReturnInternalServerErrorInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function returnInternalServerError(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\ReturnInternalServerError(), $fetch);
+    }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {
         if (null === $httpClient) {

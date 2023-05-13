@@ -23,6 +23,8 @@ For details (arguments, return values), [refer to the API document](https://docs
 - GetPricingPlan ... Create Pricing Plan
 - CreatePricingPlan ... Get Pricing Plan
 
+- DeleteAllPlansAndMenusAndUnitsAndMeters ... Delete all Plans, Menus, Units, Meters
+
 ## Metering
 
 - GetMeteringUnitDateCountByTenantIdAndUnitNameAndDate ... Get Metering Unit Count for Specific Date

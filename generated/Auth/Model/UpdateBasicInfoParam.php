@@ -25,6 +25,12 @@ class UpdateBasicInfoParam extends \ArrayObject
      */
     protected $fromEmailAddress;
     /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @var string
+     */
+    protected $replyEmailAddress;
+    /**
      * ドメイン名(Domain Name)
      *
      * @return string
@@ -66,6 +72,28 @@ class UpdateBasicInfoParam extends \ArrayObject
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
+        return $this;
+    }
+    /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @return string
+     */
+    public function getReplyEmailAddress() : string
+    {
+        return $this->replyEmailAddress;
+    }
+    /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @param string $replyEmailAddress
+     *
+     * @return self
+     */
+    public function setReplyEmailAddress(string $replyEmailAddress) : self
+    {
+        $this->initialized['replyEmailAddress'] = true;
+        $this->replyEmailAddress = $replyEmailAddress;
         return $this;
     }
 }

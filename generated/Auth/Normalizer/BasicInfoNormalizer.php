@@ -73,6 +73,14 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setFromEmailAddress($data['from_email_address']);
             unset($data['from_email_address']);
         }
+        if (\array_key_exists('reply_email_address', $data)) {
+            $object->setReplyEmailAddress($data['reply_email_address']);
+            unset($data['reply_email_address']);
+        }
+        if (\array_key_exists('is_ses_sandbox_granted', $data)) {
+            $object->setIsSesSandboxGranted($data['is_ses_sandbox_granted']);
+            unset($data['is_ses_sandbox_granted']);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -97,6 +105,8 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['dkim_dns_records'] = $values;
         $data['default_domain_name'] = $object->getDefaultDomainName();
         $data['from_email_address'] = $object->getFromEmailAddress();
+        $data['reply_email_address'] = $object->getReplyEmailAddress();
+        $data['is_ses_sandbox_granted'] = $object->getIsSesSandboxGranted();
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

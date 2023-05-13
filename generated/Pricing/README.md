@@ -23,6 +23,8 @@
 - GetPricingPlan ・・・料金プランを取得
 - CreatePricingPlan ・・・料金プランを作成
 
+- DeleteAllPlansAndMenusAndUnitsAndMeters ・・・全ての Plans,Menus,Units,Meters の削除
+
 ## メータリング
 
 - GetMeteringUnitDateCountByTenantIdAndUnitNameAndDate ・・・指定した日付のメータリングユニットカウントを取得

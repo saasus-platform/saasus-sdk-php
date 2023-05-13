@@ -55,6 +55,14 @@ class SignInSettings extends \ArrayObject
      */
     protected $selfRegist;
     /**
+    * 外部IDプロバイダを利用したサインインの設定をするために必要な情報です。(This information is required to set up sign-in using an external identity provider.)
+    変更はできません。(It cannot be changed.)
+    
+    *
+    * @var IdentityProviderConfiguration
+    */
+    protected $identityProviderConfiguration;
+    /**
      * パスワードポリシー(password policy)
      *
      * @return PasswordPolicy
@@ -196,6 +204,32 @@ class SignInSettings extends \ArrayObject
     {
         $this->initialized['selfRegist'] = true;
         $this->selfRegist = $selfRegist;
+        return $this;
+    }
+    /**
+    * 外部IDプロバイダを利用したサインインの設定をするために必要な情報です。(This information is required to set up sign-in using an external identity provider.)
+    変更はできません。(It cannot be changed.)
+    
+    *
+    * @return IdentityProviderConfiguration
+    */
+    public function getIdentityProviderConfiguration() : IdentityProviderConfiguration
+    {
+        return $this->identityProviderConfiguration;
+    }
+    /**
+    * 外部IDプロバイダを利用したサインインの設定をするために必要な情報です。(This information is required to set up sign-in using an external identity provider.)
+    変更はできません。(It cannot be changed.)
+    
+    *
+    * @param IdentityProviderConfiguration $identityProviderConfiguration
+    *
+    * @return self
+    */
+    public function setIdentityProviderConfiguration(IdentityProviderConfiguration $identityProviderConfiguration) : self
+    {
+        $this->initialized['identityProviderConfiguration'] = true;
+        $this->identityProviderConfiguration = $identityProviderConfiguration;
         return $this;
     }
 }

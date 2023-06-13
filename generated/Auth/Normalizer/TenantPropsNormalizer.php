@@ -53,14 +53,6 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setAttributes($values);
             unset($data['attributes']);
         }
-        if (\array_key_exists('next_plan_id', $data)) {
-            $object->setNextPlanId($data['next_plan_id']);
-            unset($data['next_plan_id']);
-        }
-        if (\array_key_exists('using_next_plan_from', $data)) {
-            $object->setUsingNextPlanFrom($data['using_next_plan_from']);
-            unset($data['using_next_plan_from']);
-        }
         if (\array_key_exists('back_office_staff_email', $data)) {
             $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
             unset($data['back_office_staff_email']);
@@ -84,12 +76,6 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[$key] = $value;
         }
         $data['attributes'] = $values;
-        if ($object->isInitialized('nextPlanId') && null !== $object->getNextPlanId()) {
-            $data['next_plan_id'] = $object->getNextPlanId();
-        }
-        if ($object->isInitialized('usingNextPlanFrom') && null !== $object->getUsingNextPlanFrom()) {
-            $data['using_next_plan_from'] = $object->getUsingNextPlanFrom();
-        }
         $data['back_office_staff_email'] = $object->getBackOfficeStaffEmail();
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

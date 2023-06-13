@@ -66,6 +66,16 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Clien
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\CreateEventBridgeTestEvent(), $fetch);
     }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\ReturnInternalServerErrorInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function returnInternalServerError(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\ReturnInternalServerError(), $fetch);
+    }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {
         if (null === $httpClient) {

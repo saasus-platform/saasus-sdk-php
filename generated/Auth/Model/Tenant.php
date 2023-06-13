@@ -25,6 +25,12 @@ class Tenant extends \ArrayObject
      */
     protected $planId;
     /**
+     * 
+     *
+     * @var BillingInfo
+     */
+    protected $billingInfo;
+    /**
      * テナント名(tenant name)
      *
      * @var string
@@ -36,6 +42,12 @@ class Tenant extends \ArrayObject
      * @var mixed[]
      */
     protected $attributes;
+    /**
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
+     *
+     * @var string
+     */
+    protected $backOfficeStaffEmail;
     /**
      * 
      *
@@ -50,12 +62,6 @@ class Tenant extends \ArrayObject
     * @var int
     */
     protected $usingNextPlanFrom;
-    /**
-     * 事務管理部門スタッフメールアドレス(administrative staff email address)
-     *
-     * @var string
-     */
-    protected $backOfficeStaffEmail;
     /**
      * 料金プラン履歴
      *
@@ -107,6 +113,28 @@ class Tenant extends \ArrayObject
         return $this;
     }
     /**
+     * 
+     *
+     * @return BillingInfo
+     */
+    public function getBillingInfo() : BillingInfo
+    {
+        return $this->billingInfo;
+    }
+    /**
+     * 
+     *
+     * @param BillingInfo $billingInfo
+     *
+     * @return self
+     */
+    public function setBillingInfo(BillingInfo $billingInfo) : self
+    {
+        $this->initialized['billingInfo'] = true;
+        $this->billingInfo = $billingInfo;
+        return $this;
+    }
+    /**
      * テナント名(tenant name)
      *
      * @return string
@@ -148,6 +176,28 @@ class Tenant extends \ArrayObject
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
+        return $this;
+    }
+    /**
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
+     *
+     * @return string
+     */
+    public function getBackOfficeStaffEmail() : string
+    {
+        return $this->backOfficeStaffEmail;
+    }
+    /**
+     * 事務管理部門スタッフメールアドレス(administrative staff email address)
+     *
+     * @param string $backOfficeStaffEmail
+     *
+     * @return self
+     */
+    public function setBackOfficeStaffEmail(string $backOfficeStaffEmail) : self
+    {
+        $this->initialized['backOfficeStaffEmail'] = true;
+        $this->backOfficeStaffEmail = $backOfficeStaffEmail;
         return $this;
     }
     /**
@@ -196,28 +246,6 @@ class Tenant extends \ArrayObject
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
-        return $this;
-    }
-    /**
-     * 事務管理部門スタッフメールアドレス(administrative staff email address)
-     *
-     * @return string
-     */
-    public function getBackOfficeStaffEmail() : string
-    {
-        return $this->backOfficeStaffEmail;
-    }
-    /**
-     * 事務管理部門スタッフメールアドレス(administrative staff email address)
-     *
-     * @param string $backOfficeStaffEmail
-     *
-     * @return self
-     */
-    public function setBackOfficeStaffEmail(string $backOfficeStaffEmail) : self
-    {
-        $this->initialized['backOfficeStaffEmail'] = true;
-        $this->backOfficeStaffEmail = $backOfficeStaffEmail;
         return $this;
     }
     /**

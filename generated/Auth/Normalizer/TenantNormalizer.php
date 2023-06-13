@@ -49,6 +49,10 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
+        if (\array_key_exists('billing_info', $data)) {
+            $object->setBillingInfo($this->denormalizer->denormalize($data['billing_info'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingInfo', 'json', $context));
+            unset($data['billing_info']);
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
             unset($data['name']);
@@ -61,6 +65,10 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAttributes($values);
             unset($data['attributes']);
         }
+        if (\array_key_exists('back_office_staff_email', $data)) {
+            $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
+            unset($data['back_office_staff_email']);
+        }
         if (\array_key_exists('next_plan_id', $data)) {
             $object->setNextPlanId($data['next_plan_id']);
             unset($data['next_plan_id']);
@@ -68,10 +76,6 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('using_next_plan_from', $data)) {
             $object->setUsingNextPlanFrom($data['using_next_plan_from']);
             unset($data['using_next_plan_from']);
-        }
-        if (\array_key_exists('back_office_staff_email', $data)) {
-            $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
-            unset($data['back_office_staff_email']);
         }
         if (\array_key_exists('plan_histories', $data)) {
             $values_1 = array();
@@ -98,19 +102,22 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($object->isInitialized('planId') && null !== $object->getPlanId()) {
             $data['plan_id'] = $object->getPlanId();
         }
+        if ($object->isInitialized('billingInfo') && null !== $object->getBillingInfo()) {
+            $data['billing_info'] = $this->normalizer->normalize($object->getBillingInfo(), 'json', $context);
+        }
         $data['name'] = $object->getName();
         $values = array();
         foreach ($object->getAttributes() as $key => $value) {
             $values[$key] = $value;
         }
         $data['attributes'] = $values;
+        $data['back_office_staff_email'] = $object->getBackOfficeStaffEmail();
         if ($object->isInitialized('nextPlanId') && null !== $object->getNextPlanId()) {
             $data['next_plan_id'] = $object->getNextPlanId();
         }
         if ($object->isInitialized('usingNextPlanFrom') && null !== $object->getUsingNextPlanFrom()) {
             $data['using_next_plan_from'] = $object->getUsingNextPlanFrom();
         }
-        $data['back_office_staff_email'] = $object->getBackOfficeStaffEmail();
         $values_1 = array();
         foreach ($object->getPlanHistories() as $value_1) {
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

@@ -65,6 +65,10 @@ class SignInSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setSelfRegist($this->denormalizer->denormalize($data['self_regist'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SelfRegist', 'json', $context));
             unset($data['self_regist']);
         }
+        if (\array_key_exists('identity_provider_configuration', $data)) {
+            $object->setIdentityProviderConfiguration($this->denormalizer->denormalize($data['identity_provider_configuration'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration', 'json', $context));
+            unset($data['identity_provider_configuration']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -84,6 +88,7 @@ class SignInSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         $data['recaptcha_props'] = $this->normalizer->normalize($object->getRecaptchaProps(), 'json', $context);
         $data['account_verification'] = $this->normalizer->normalize($object->getAccountVerification(), 'json', $context);
         $data['self_regist'] = $this->normalizer->normalize($object->getSelfRegist(), 'json', $context);
+        $data['identity_provider_configuration'] = $this->normalizer->normalize($object->getIdentityProviderConfiguration(), 'json', $context);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

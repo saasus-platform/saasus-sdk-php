@@ -69,7 +69,7 @@ class PricingFixedUnit extends \ArrayObject
     */
     protected $type;
     /**
-     * 通貨(currency)
+     * 計測単位の通貨(unit of currency)
      *
      * @var string
      */
@@ -267,7 +267,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this;
     }
     /**
-     * 通貨(currency)
+     * 計測単位の通貨(unit of currency)
      *
      * @return string
      */
@@ -276,7 +276,7 @@ class PricingFixedUnit extends \ArrayObject
         return $this->currency;
     }
     /**
-     * 通貨(currency)
+     * 計測単位の通貨(unit of currency)
      *
      * @param string $currency
      *

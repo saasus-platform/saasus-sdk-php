@@ -55,6 +55,18 @@ class BasicInfo extends \ArrayObject
      */
     protected $fromEmailAddress;
     /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @var string
+     */
+    protected $replyEmailAddress;
+    /**
+     * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
+     *
+     * @var bool
+     */
+    protected $isSesSandboxGranted;
+    /**
      * ドメイン名(Domain Name)
      *
      * @return string
@@ -206,6 +218,50 @@ class BasicInfo extends \ArrayObject
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
+        return $this;
+    }
+    /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @return string
+     */
+    public function getReplyEmailAddress() : string
+    {
+        return $this->replyEmailAddress;
+    }
+    /**
+     * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
+     *
+     * @param string $replyEmailAddress
+     *
+     * @return self
+     */
+    public function setReplyEmailAddress(string $replyEmailAddress) : self
+    {
+        $this->initialized['replyEmailAddress'] = true;
+        $this->replyEmailAddress = $replyEmailAddress;
+        return $this;
+    }
+    /**
+     * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
+     *
+     * @return bool
+     */
+    public function getIsSesSandboxGranted() : bool
+    {
+        return $this->isSesSandboxGranted;
+    }
+    /**
+     * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
+     *
+     * @param bool $isSesSandboxGranted
+     *
+     * @return self
+     */
+    public function setIsSesSandboxGranted(bool $isSesSandboxGranted) : self
+    {
+        $this->initialized['isSesSandboxGranted'] = true;
+        $this->isSesSandboxGranted = $isSesSandboxGranted;
         return $this;
     }
 }

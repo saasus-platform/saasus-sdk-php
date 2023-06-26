@@ -60,6 +60,14 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   It is used for referencing/updating information related to external SaaS used in billing operations.
 
+- [Integration](./generated/Integration/README_en.md)
+
+  It is used for referencing/updating information related to Amazon EventBridge.
+
+- [AwsMarketplace](./generated/AwsMarketplace/README_en.md)
+
+  It is used for referencing/updating information related to AWS Marketplace.
+
 ---
 
 ## Use Case Sample

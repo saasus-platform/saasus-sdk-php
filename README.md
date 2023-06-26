@@ -64,6 +64,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   EventBridge 連携設定の参照・更新に利用します。
 
+- [AwsMarketplace](./generated/AwsMarketplace/README.md)
+
+  AWS Marketplace 連携設定の参照・更新に利用します。
+
 ---
 
 ## ユースケースサンプル

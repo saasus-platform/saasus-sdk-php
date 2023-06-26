@@ -23,7 +23,7 @@
 - GetPricingPlan ・・・料金プランを取得
 - CreatePricingPlan ・・・料金プランを作成
 
-- DeleteAllPlansAndMenusAndUnitsAndMeters ・・・全ての Plans,Menus,Units,Meters の削除
+- DeleteAllPlansAndMenusAndUnitsAndMetersAndTaxRates ・・・全ての Plans,Menus,Units,Meters,Tax Rates の削除
 
 ## メータリング
 

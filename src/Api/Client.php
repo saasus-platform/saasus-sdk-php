@@ -6,6 +6,7 @@ use AntiPatternInc\Saasus\Sdk\Auth;
 use AntiPatternInc\Saasus\Sdk\Billing;
 use AntiPatternInc\Saasus\Sdk\Pricing;
 use AntiPatternInc\Saasus\Sdk\Integration;
+use AntiPatternInc\Saasus\Sdk\AwsMarketplace;
 use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
@@ -17,6 +18,7 @@ class Client
     protected Billing\Client $billingClient;
     protected Pricing\Client $pricingClient;
     protected Integration\Client $integrationClient;
+    protected AwsMarketplace\Client $awsMarketplaceClient;
 
     protected GuzzleClient $guzzleClient;
 
@@ -61,6 +63,7 @@ class Client
         $this->billingClient = Billing\Client::create($this->createApiClient($this->apibase . "/v1/billing"));
         $this->pricingClient = Pricing\Client::create($this->createApiClient($this->apibase . "/v1/pricing"));
         $this->integrationClient = Integration\Client::create($this->createApiClient($this->apibase . "/v1/integration"));
+        $this->awsMarketplaceClient = AwsMarketplace\Client::create($this->createApiClient($this->apibase . "/v1/awsmarketplace"));
     }
 
     protected function createApiClient($apibase)
@@ -91,5 +94,10 @@ class Client
     public function getIntegrationClient()
     {
         return $this->integrationClient;
+    }
+
+    public function getAwsMarketplaceClient()
+    {
+        return $this->awsMarketplaceClient;
     }
 }

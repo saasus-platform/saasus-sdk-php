@@ -2,7 +2,7 @@
 
 namespace AntiPatternInc\Saasus\Sdk\Pricing\Exception;
 
-class DeleteAllPlansAndMenusAndUnitsAndMetersInternalServerErrorException extends InternalServerErrorException
+class CreateTaxRateInternalServerErrorException extends InternalServerErrorException
 {
     /**
      * @var \AntiPatternInc\Saasus\Sdk\Pricing\Model\Error

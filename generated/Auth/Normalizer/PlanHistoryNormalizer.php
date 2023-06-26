@@ -49,6 +49,10 @@ class PlanHistoryNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setPlanAppliedAt($data['plan_applied_at']);
             unset($data['plan_applied_at']);
         }
+        if (\array_key_exists('tax_rate_id', $data)) {
+            $object->setTaxRateId($data['tax_rate_id']);
+            unset($data['tax_rate_id']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -64,6 +68,9 @@ class PlanHistoryNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data = array();
         $data['plan_id'] = $object->getPlanId();
         $data['plan_applied_at'] = $object->getPlanAppliedAt();
+        if ($object->isInitialized('taxRateId') && null !== $object->getTaxRateId()) {
+            $data['tax_rate_id'] = $object->getTaxRateId();
+        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

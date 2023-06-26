@@ -463,6 +463,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     *
     * @param string $roleName 役割(ロール)名(role name)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleBadRequestException
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleNotFoundException
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleInternalServerErrorException
     *
@@ -1060,6 +1061,60 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function resendSignUpConfirmationEmail(?\AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ResendSignUpConfirmationEmail($requestBody), $fetch);
+    }
+    /**
+    * AWS Marketplaceと連携したユーザーを新規登録します。登録されたメールアドレスに対して仮パスワードを送信します。
+    Registration Tokenが有効でない場合はエラーを返却します。
+    
+    Register a new user linked to AWS Marketplace. A temporary password will be sent to the registered email.
+    If the Registration Token is not valid, an error is returned.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SignUpWithAwsMarketplaceInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser|\Psr\Http\Message\ResponseInterface
+    */
+    public function signUpWithAwsMarketplace(?\AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SignUpWithAwsMarketplace($requestBody), $fetch);
+    }
+    /**
+    * AWS Marketplaceと連携したユーザー新規登録を確定します。AWS Marketplaceと連携したテナントを新規作成します。
+    Registration Tokenが有効でない場合はエラーを返却します。
+    
+    Confirm a new use registeration linked to AWS Marketplace. Create a new tenant linked to AWS Marketplace.
+    If the Registration Token is not valid, an error is returned.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmSignUpWithAwsMarketplaceInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant|\Psr\Http\Message\ResponseInterface
+    */
+    public function confirmSignUpWithAwsMarketplace(?\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ConfirmSignUpWithAwsMarketplace($requestBody), $fetch);
+    }
+    /**
+    * AWS Marketplaceと既存のテナントを連携します。
+    Registration Tokenが有効でない場合はエラーを返却します。
+    
+    Link an existing tenant with AWS Marketplace.
+    If the Registration Token is not valid, an error is returned.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\LinkAwsMarketplaceInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function linkAwsMarketplace(?\AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\LinkAwsMarketplace($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

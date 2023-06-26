@@ -77,6 +77,10 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setUsingNextPlanFrom($data['using_next_plan_from']);
             unset($data['using_next_plan_from']);
         }
+        if (\array_key_exists('next_plan_tax_rate_id', $data)) {
+            $object->setNextPlanTaxRateId($data['next_plan_tax_rate_id']);
+            unset($data['next_plan_tax_rate_id']);
+        }
         if (\array_key_exists('plan_histories', $data)) {
             $values_1 = array();
             foreach ($data['plan_histories'] as $value_1) {
@@ -117,6 +121,9 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if ($object->isInitialized('usingNextPlanFrom') && null !== $object->getUsingNextPlanFrom()) {
             $data['using_next_plan_from'] = $object->getUsingNextPlanFrom();
+        }
+        if ($object->isInitialized('nextPlanTaxRateId') && null !== $object->getNextPlanTaxRateId()) {
+            $data['next_plan_tax_rate_id'] = $object->getNextPlanTaxRateId();
         }
         $values_1 = array();
         foreach ($object->getPlanHistories() as $value_1) {

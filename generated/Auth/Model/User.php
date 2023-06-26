@@ -37,9 +37,9 @@ class User extends \ArrayObject
      */
     protected $email;
     /**
-    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    * 属性情報（SaaS 開発コンソールでユーザー属性定義を行い設定された情報を取得します）
     
-    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
     * @var mixed[]
@@ -140,9 +140,9 @@ class User extends \ArrayObject
         return $this;
     }
     /**
-    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    * 属性情報（SaaS 開発コンソールでユーザー属性定義を行い設定された情報を取得します）
     
-    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
     * @return mixed[]
@@ -152,9 +152,9 @@ class User extends \ArrayObject
         return $this->attributes;
     }
     /**
-    * 属性情報（SaaS 開発コンソールでテナント属性定義を行い設定された情報を取得します）
+    * 属性情報（SaaS 開発コンソールでユーザー属性定義を行い設定された情報を取得します）
     
-    Attribute information (Get information set by defining tenant attributes in the SaaS development console)
+    Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
     * @param mixed[] $attributes

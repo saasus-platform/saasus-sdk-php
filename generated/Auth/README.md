@@ -100,16 +100,6 @@
 - UpdateTenantBillingInfo ・・・テナントの請求先情報を更新
 - DeleteTenant ・・・テナント情報を削除
 
-## SaaSus 情報
-
-- GetApiKeys ・・・API キー一覧を取得
-- CreateApiKey ・・・API キーを作成
-- DeleteApiKey ・・・API キーを削除
-- GetSaasId ・・・SaasID を取得
-- UpdateSaasId ・・・SaasID を更新
-- GetClientSecret ・・・クライアントシークレットを取得
-- UpdateClientSecret ・・・クライアントシークレットを更新
-
 ## 環境情報
 
 - GetEnvs ・・・環境情報一覧を取得

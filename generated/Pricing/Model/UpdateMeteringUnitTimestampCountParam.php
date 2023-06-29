@@ -17,6 +17,7 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     add: 加算(addition)
     sub: 減算(subtraction)
     direct: 上書き(overwrite)
+    
     *
     * @var string
     */
@@ -32,6 +33,7 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     add: 加算(addition)
     sub: 減算(subtraction)
     direct: 上書き(overwrite)
+    
     *
     * @return string
     */
@@ -44,6 +46,7 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     add: 加算(addition)
     sub: 減算(subtraction)
     direct: 上書き(overwrite)
+    
     *
     * @param string $method
     *

@@ -26,6 +26,8 @@
 - UpdateAuthInfo ・・・認証情報を更新
 - GetSignInSettings ・・・パスワード要件を取得
 - UpdateSignInSettings ・・・パスワード要件を更新
+- GetIdentityProviders ・・・外部プロバイダ経由のサインイン情報取得
+- UpdateIdentityProvider ・・・外部プロバイダ経由のサインイン情報更新
 
 ## SaaS ユーザー情報
 
@@ -49,6 +51,10 @@
 - ResendSignUpConfirmationEmail ・・・新規登録時の確認メール再送信
 
 - UnlinkProvider ・・・外部 ID プロバイダの連携解除
+
+- SignUpWithAwsMarketplace ・・・AWS Marketplace によるユーザー新規登録
+- ConfirmSignUpWithAwsMarketplace ・・・AWS Marketplace によるユーザー新規登録の確定
+- LinkAwsMarketplace ・・・AWS Marketplace と既存のテナントの連携
 
 ### Tenant ユーザー情報
 
@@ -93,16 +99,6 @@
 - UpdateTenantPlan ・・・テナントのプラン情報を更新
 - UpdateTenantBillingInfo ・・・テナントの請求先情報を更新
 - DeleteTenant ・・・テナント情報を削除
-
-## SaaSus 情報
-
-- GetApiKeys ・・・API キー一覧を取得
-- CreateApiKey ・・・API キーを作成
-- DeleteApiKey ・・・API キーを削除
-- GetSaasId ・・・SaasID を取得
-- UpdateSaasId ・・・SaasID を更新
-- GetClientSecret ・・・クライアントシークレットを取得
-- UpdateClientSecret ・・・クライアントシークレットを更新
 
 ## 環境情報
 

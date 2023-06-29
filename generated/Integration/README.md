@@ -4,7 +4,7 @@
 
 ## EventBridge 連携設定
 
-- getEventBridgeSettings ・・・イベント連携設定を取得
-- saveEventBridgeSettings ・・・イベント連携設定を更新
-- deleteEventBridgeSettings ・・・イベント連携設定を削除
-- createEventBridgeTestEvent ・・・イベント連携のテスト送信
+- GetEventBridgeSettings ・・・イベント連携設定を取得
+- SaveEventBridgeSettings ・・・イベント連携設定を更新
+- DeleteEventBridgeSettings ・・・イベント連携設定を削除
+- CreateEventBridgeTestEvent ・・・イベント連携のテスト送信

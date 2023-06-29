@@ -29,6 +29,12 @@ class PlanReservation extends \ArrayObject
     /**
      * 
      *
+     * @var string
+     */
+    protected $nextPlanTaxRateId;
+    /**
+     * 
+     *
      * @return string
      */
     public function getNextPlanId() : string
@@ -72,6 +78,28 @@ class PlanReservation extends \ArrayObject
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getNextPlanTaxRateId() : string
+    {
+        return $this->nextPlanTaxRateId;
+    }
+    /**
+     * 
+     *
+     * @param string $nextPlanTaxRateId
+     *
+     * @return self
+     */
+    public function setNextPlanTaxRateId(string $nextPlanTaxRateId) : self
+    {
+        $this->initialized['nextPlanTaxRateId'] = true;
+        $this->nextPlanTaxRateId = $nextPlanTaxRateId;
         return $this;
     }
 }

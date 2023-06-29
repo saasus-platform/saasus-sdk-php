@@ -37,6 +37,7 @@ class DeleteRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndp
     /**
      * {@inheritdoc}
      *
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleBadRequestException
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleNotFoundException
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleInternalServerErrorException
      *
@@ -46,6 +47,9 @@ class DeleteRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndp
     {
         if (200 === $status) {
             return null;
+        }
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleBadRequestException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteRoleNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));

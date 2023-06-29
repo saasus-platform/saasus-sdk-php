@@ -63,6 +63,12 @@ class Tenant extends \ArrayObject
     */
     protected $usingNextPlanFrom;
     /**
+     * 
+     *
+     * @var string
+     */
+    protected $nextPlanTaxRateId;
+    /**
      * 料金プラン履歴
      *
      * @var PlanHistory[]
@@ -246,6 +252,28 @@ class Tenant extends \ArrayObject
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getNextPlanTaxRateId() : string
+    {
+        return $this->nextPlanTaxRateId;
+    }
+    /**
+     * 
+     *
+     * @param string $nextPlanTaxRateId
+     *
+     * @return self
+     */
+    public function setNextPlanTaxRateId(string $nextPlanTaxRateId) : self
+    {
+        $this->initialized['nextPlanTaxRateId'] = true;
+        $this->nextPlanTaxRateId = $nextPlanTaxRateId;
         return $this;
     }
     /**

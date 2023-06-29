@@ -27,6 +27,12 @@ class PlanHistory extends \ArrayObject
     /**
      * 
      *
+     * @var string
+     */
+    protected $taxRateId;
+    /**
+     * 
+     *
      * @return string
      */
     public function getPlanId() : string
@@ -66,6 +72,28 @@ class PlanHistory extends \ArrayObject
     {
         $this->initialized['planAppliedAt'] = true;
         $this->planAppliedAt = $planAppliedAt;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getTaxRateId() : string
+    {
+        return $this->taxRateId;
+    }
+    /**
+     * 
+     *
+     * @param string $taxRateId
+     *
+     * @return self
+     */
+    public function setTaxRateId(string $taxRateId) : self
+    {
+        $this->initialized['taxRateId'] = true;
+        $this->taxRateId = $taxRateId;
         return $this;
     }
 }

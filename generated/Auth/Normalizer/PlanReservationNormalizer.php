@@ -49,6 +49,10 @@ class PlanReservationNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setUsingNextPlanFrom($data['using_next_plan_from']);
             unset($data['using_next_plan_from']);
         }
+        if (\array_key_exists('next_plan_tax_rate_id', $data)) {
+            $object->setNextPlanTaxRateId($data['next_plan_tax_rate_id']);
+            unset($data['next_plan_tax_rate_id']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -67,6 +71,9 @@ class PlanReservationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('usingNextPlanFrom') && null !== $object->getUsingNextPlanFrom()) {
             $data['using_next_plan_from'] = $object->getUsingNextPlanFrom();
+        }
+        if ($object->isInitialized('nextPlanTaxRateId') && null !== $object->getNextPlanTaxRateId()) {
+            $data['next_plan_tax_rate_id'] = $object->getNextPlanTaxRateId();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

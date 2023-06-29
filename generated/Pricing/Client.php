@@ -428,13 +428,40 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteAllPlansAndMenusAndUnitsAndMetersInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteAllPlansAndMenusAndUnitsAndMetersAndTaxRatesInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteAllPlansAndMenusAndUnitsAndMeters(string $fetch = self::FETCH_OBJECT)
+    public function deleteAllPlansAndMenusAndUnitsAndMetersAndTaxRates(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\DeleteAllPlansAndMenusAndUnitsAndMeters(), $fetch);
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\DeleteAllPlansAndMenusAndUnitsAndMetersAndTaxRates(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetTaxRatesInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRates|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaxRates(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\GetTaxRates(), $fetch);
+    }
+    /**
+    * 税率を作成します。
+    
+    Creates a tax rate.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\CreateTaxRateBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\CreateTaxRateInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRate|\Psr\Http\Message\ResponseInterface
+    */
+    public function createTaxRate(?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\CreateTaxRate($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

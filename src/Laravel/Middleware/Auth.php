@@ -36,8 +36,13 @@ class Auth
             }
         }
 
+        $referer = $request->headers->get('referer');
+        if (empty($referer)) {
+            $referer = "";
+        }
+
         // リクエスト送信
-        $client = new ApiClient();
+        $client = new ApiClient($referer);
         $authApiClient = $client->getAuthClient();
         try {
             $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);

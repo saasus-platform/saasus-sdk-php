@@ -41,6 +41,9 @@
 
 - UpdateSaasUserEmail ・・・メールアドレスを変更
 
+- RequestEmailUpdate ・・・ユーザーのメールアドレス変更要求
+- ConfirmEmailUpdate ・・・ユーザーのメールアドレス変更確認
+
 - CreateSecretCode ・・・認証アプリケーション登録用のシークレットコードを作成
 - UpdateSoftwareToken ・・・認証アプリケーションを登録
 
@@ -51,6 +54,9 @@
 - ResendSignUpConfirmationEmail ・・・新規登録時の確認メール再送信
 
 - UnlinkProvider ・・・外部 ID プロバイダの連携解除
+
+- RequestExternalUserLink ・・・外部アカウントのユーザー連携要求
+- ConfirmExternalUserLink ・・・外部アカウントのユーザーの連携確認
 
 - SignUpWithAwsMarketplace ・・・AWS Marketplace によるユーザー新規登録
 - ConfirmSignUpWithAwsMarketplace ・・・AWS Marketplace によるユーザー新規登録の確定
@@ -98,7 +104,18 @@
 - UpdateTenant ・・・テナント情報を更新
 - UpdateTenantPlan ・・・テナントのプラン情報を更新
 - UpdateTenantBillingInfo ・・・テナントの請求先情報を更新
+- GetTenantIdentityProviders ・・・テナント毎の外部IDプロバイダ取得
+- UpdateTenantIdentityProvider ・・・テナント毎の外部IDプロバイダ更新
 - DeleteTenant ・・・テナント情報を削除
+
+## Tenant 招待情報
+
+- GetTenantInvitations ・・・テナントの招待一覧を取得
+- CreateTenantInvitation ・・・テナントへの招待を作成
+- GetTenantInvitation ・・・テナントの招待情報を取得
+- DeleteTenantInvitation ・・・テナントへの招待を削除
+- GetInvitationValidity ・・・テナントへの招待の有効性を取得
+- ValidateInvitation ・・・テナントへの招待を検証
 
 ## 環境情報
 

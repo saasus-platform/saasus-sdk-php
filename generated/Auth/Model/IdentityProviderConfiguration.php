@@ -25,6 +25,18 @@ class IdentityProviderConfiguration extends \ArrayObject
      */
     protected $redirectUrl;
     /**
+     * 識別子(entity ID)
+     *
+     * @var string
+     */
+    protected $entityId;
+    /**
+     * 応答URL(reply URL)
+     *
+     * @var string
+     */
+    protected $replyUrl;
+    /**
      * ドメイン(domain)
      *
      * @return string
@@ -66,6 +78,50 @@ class IdentityProviderConfiguration extends \ArrayObject
     {
         $this->initialized['redirectUrl'] = true;
         $this->redirectUrl = $redirectUrl;
+        return $this;
+    }
+    /**
+     * 識別子(entity ID)
+     *
+     * @return string
+     */
+    public function getEntityId() : string
+    {
+        return $this->entityId;
+    }
+    /**
+     * 識別子(entity ID)
+     *
+     * @param string $entityId
+     *
+     * @return self
+     */
+    public function setEntityId(string $entityId) : self
+    {
+        $this->initialized['entityId'] = true;
+        $this->entityId = $entityId;
+        return $this;
+    }
+    /**
+     * 応答URL(reply URL)
+     *
+     * @return string
+     */
+    public function getReplyUrl() : string
+    {
+        return $this->replyUrl;
+    }
+    /**
+     * 応答URL(reply URL)
+     *
+     * @param string $replyUrl
+     *
+     * @return self
+     */
+    public function setReplyUrl(string $replyUrl) : self
+    {
+        $this->initialized['replyUrl'] = true;
+        $this->replyUrl = $replyUrl;
         return $this;
     }
 }

@@ -6,9 +6,9 @@ class DeleteEnv extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
 {
     protected $env_id;
     /**
-    * 環境情報を削除します。
+    * 環境情報を削除します。idが3の環境は削除できません。
     
-    Delete env info.
+    Delete env info. Env with id 3 cannot be deleted.
     
     *
     * @param int $envId 環境ID(Env ID)

@@ -5,13 +5,10 @@ namespace AntiPatternInc\Saasus\Sdk\Integration\Endpoint;
 class CreateEventBridgeEvent extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Endpoint
 {
     /**
-    * Amazon EventBridge へイベントを送信します。
-    
-    Send events to Amazon EventBridge.
-    
-    *
-    * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
-    */
+     * 監視対象となっている全ホストの状態を Amazon EventBridge 経由でイベントを送信します
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
+     */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody = null)
     {
         $this->body = $requestBody;

@@ -81,6 +81,14 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setNextPlanTaxRateId($data['next_plan_tax_rate_id']);
             unset($data['next_plan_tax_rate_id']);
         }
+        if (\array_key_exists('proration_behavior', $data)) {
+            $object->setProrationBehavior($data['proration_behavior']);
+            unset($data['proration_behavior']);
+        }
+        if (\array_key_exists('delete_usage', $data)) {
+            $object->setDeleteUsage($data['delete_usage']);
+            unset($data['delete_usage']);
+        }
         if (\array_key_exists('plan_histories', $data)) {
             $values_1 = array();
             foreach ($data['plan_histories'] as $value_1) {
@@ -124,6 +132,12 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if ($object->isInitialized('nextPlanTaxRateId') && null !== $object->getNextPlanTaxRateId()) {
             $data['next_plan_tax_rate_id'] = $object->getNextPlanTaxRateId();
+        }
+        if ($object->isInitialized('prorationBehavior') && null !== $object->getProrationBehavior()) {
+            $data['proration_behavior'] = $object->getProrationBehavior();
+        }
+        if ($object->isInitialized('deleteUsage') && null !== $object->getDeleteUsage()) {
+            $data['delete_usage'] = $object->getDeleteUsage();
         }
         $values_1 = array();
         foreach ($object->getPlanHistories() as $value_1) {

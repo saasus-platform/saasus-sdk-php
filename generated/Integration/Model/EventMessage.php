@@ -13,25 +13,25 @@ class EventMessage extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * イベントタイプ(event type)
+     * イベントタイプ
      *
      * @var string
      */
     protected $eventType;
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * 詳細イベントタイプ
      *
      * @var string
      */
     protected $eventDetailType;
     /**
-     * イベントメッセージ(event message)
+     * イベントメッセージ
      *
      * @var string
      */
     protected $message;
     /**
-     * イベントタイプ(event type)
+     * イベントタイプ
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class EventMessage extends \ArrayObject
         return $this->eventType;
     }
     /**
-     * イベントタイプ(event type)
+     * イベントタイプ
      *
      * @param string $eventType
      *
@@ -53,7 +53,7 @@ class EventMessage extends \ArrayObject
         return $this;
     }
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * 詳細イベントタイプ
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class EventMessage extends \ArrayObject
         return $this->eventDetailType;
     }
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * 詳細イベントタイプ
      *
      * @param string $eventDetailType
      *
@@ -75,7 +75,7 @@ class EventMessage extends \ArrayObject
         return $this;
     }
     /**
-     * イベントメッセージ(event message)
+     * イベントメッセージ
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class EventMessage extends \ArrayObject
         return $this->message;
     }
     /**
-     * イベントメッセージ(event message)
+     * イベントメッセージ
      *
      * @param string $message
      *

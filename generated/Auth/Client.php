@@ -183,6 +183,48 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasUserEmail($userId, $requestBody), $fetch);
     }
     /**
+    * ユーザーのメールアドレス変更を要求します。
+    要求されたメールアドレスに対して検証コードを送信します。
+    ユーザーのアクセストークンが必要です。
+    検証コードの有効期限は24時間です。
+    
+    Request to update the user's email address.
+    Sends a verification code to the requested email address.
+    Requires the user's access token.
+    The verification code is valid for 24 hours.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\RequestEmailUpdateInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function requestEmailUpdate(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\RequestEmailUpdate($userId, $requestBody), $fetch);
+    }
+    /**
+    * ユーザーのメールアドレス変更確認のためにコードを検証します。
+    ユーザーのアクセストークンが必要です。
+    
+    Verify the code to confirm the user's email address update.
+    Requires the user's access token.
+    
+    *
+    * @param string $userId ユーザーID(User ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmEmailUpdateInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function confirmEmailUpdate(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ConfirmEmailUpdate($userId, $requestBody), $fetch);
+    }
+    /**
     * 認証アプリケーションを登録します。
     
     Register an authentication application.
@@ -255,16 +297,16 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     Unlink external identity providers.
     
     *
+    * @param string $providerName 
     * @param string $userId ユーザーID(User ID)
-    * @param string $providerName 外部IDプロバイダ名(External Identity Provider Name)
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UnlinkProviderInternalServerErrorException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function unlinkProvider(string $userId, string $providerName, string $fetch = self::FETCH_OBJECT)
+    public function unlinkProvider(string $providerName, string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UnlinkProvider($userId, $providerName), $fetch);
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UnlinkProvider($providerName, $userId), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -618,7 +660,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantNotFoundException
     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantInternalServerErrorException
     *
-    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant|\Psr\Http\Message\ResponseInterface
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail|\Psr\Http\Message\ResponseInterface
     */
     public function getTenant(string $tenantId, string $fetch = self::FETCH_OBJECT)
     {
@@ -679,6 +721,183 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function updateTenantBillingInfo(string $tenantId, ?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenantBillingInfo($tenantId, $requestBody), $fetch);
+    }
+    /**
+    * テナントへの招待一覧を取得します。
+    
+    Get a list of invitations to the tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantInvitationsInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Invitations|\Psr\Http\Message\ResponseInterface
+    */
+    public function getTenantInvitations(string $tenantId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenantInvitations($tenantId), $fetch);
+    }
+    /**
+    * テナントへの招待を作成します。
+    
+    Create an invitation to the tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantInvitationBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantInvitationInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation|\Psr\Http\Message\ResponseInterface
+    */
+    public function createTenantInvitation(string $tenantId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateTenantInvitation($tenantId, $requestBody), $fetch);
+    }
+    /**
+    * テナントへの招待を削除します。
+    
+    Delete an invitation to the tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $invitationId 招待ID(Invitation ID)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function deleteTenantInvitation(string $tenantId, string $invitationId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteTenantInvitation($tenantId, $invitationId), $fetch);
+    }
+    /**
+    * テナントへの招待情報を取得します。
+    
+    Get invitation information to the tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $invitationId 招待ID(Invitation ID)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantInvitationNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantInvitationInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation|\Psr\Http\Message\ResponseInterface
+    */
+    public function getTenantInvitation(string $tenantId, string $invitationId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenantInvitation($tenantId, $invitationId), $fetch);
+    }
+    /**
+    * テナントへの招待の有効性を取得します。
+    
+    Get the validity of an invitation to the tenant.
+    
+    *
+    * @param string $invitationId 招待ID(Invitation ID)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity|\Psr\Http\Message\ResponseInterface
+    */
+    public function getInvitationValidity(string $invitationId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetInvitationValidity($invitationId), $fetch);
+    }
+    /**
+    * テナントへの招待を検証します。
+    
+    Validate an invitation to the tenant.
+    
+    *
+    * @param string $invitationId 招待ID(Invitation ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function validateInvitation(string $invitationId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ValidateInvitation($invitationId, $requestBody), $fetch);
+    }
+    /**
+    * テナント毎の外部IDプロバイダ経由のサインイン情報を取得します。
+    
+    Get sign-in information via external identity provider per tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantIdentityProvidersInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProviders|\Psr\Http\Message\ResponseInterface
+    */
+    public function getTenantIdentityProviders(string $tenantId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenantIdentityProviders($tenantId), $fetch);
+    }
+    /**
+    * テナント毎の外部IDプロバイダ経由のサインイン情報を更新します。
+    
+    Update sign-in information via external identity provider per tenant.
+    
+    *
+    * @param string $tenantId テナントID(Tenant ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantIdentityProviderInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function updateTenantIdentityProvider(string $tenantId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenantIdentityProvider($tenantId, $requestBody), $fetch);
+    }
+    /**
+    * 外部アカウントのユーザー連携を要求します。
+    アクセストークンから連携するユーザーのメールアドレスを取得し、そのメールアドレスに対して検証コードを送信します。
+    検証コードの有効期限は24時間です。
+    
+    Request to link an external account user.
+    Get the email address of the user to be linked from the access token and send a verification code to that email address.
+    The verification code is valid for 24 hours.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\RequestExternalUserLinkBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\RequestExternalUserLinkInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function requestExternalUserLink(?\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\RequestExternalUserLink($requestBody), $fetch);
+    }
+    /**
+    * 外部アカウントのユーザー連携確認のためにコードを検証します。
+    
+    Verify the code for external account user link confirmation.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmExternalUserLinkBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmExternalUserLinkInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function confirmExternalUserLink(?\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ConfirmExternalUserLink($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -894,9 +1113,9 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateEnv($requestBody), $fetch);
     }
     /**
-    * 環境情報を削除します。
+    * 環境情報を削除します。idが3の環境は削除できません。
     
-    Delete env info.
+    Delete env info. Env with id 3 cannot be deleted.
     
     *
     * @param int $envId 環境ID(Env ID)
@@ -1115,6 +1334,16 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function linkAwsMarketplace(?\AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\LinkAwsMarketplace($requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ResetPlanInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function resetPlan(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ResetPlan(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

@@ -69,6 +69,14 @@ class UpdateNotificationMessagesParamNormalizer implements DenormalizerInterface
             $object->setAuthenticationMfa($this->denormalizer->denormalize($data['authentication_mfa'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['authentication_mfa']);
         }
+        if (\array_key_exists('invite_tenant_user', $data)) {
+            $object->setInviteTenantUser($this->denormalizer->denormalize($data['invite_tenant_user'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
+            unset($data['invite_tenant_user']);
+        }
+        if (\array_key_exists('verify_external_user', $data)) {
+            $object->setVerifyExternalUser($this->denormalizer->denormalize($data['verify_external_user'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
+            unset($data['verify_external_user']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -102,6 +110,12 @@ class UpdateNotificationMessagesParamNormalizer implements DenormalizerInterface
         }
         if ($object->isInitialized('authenticationMfa') && null !== $object->getAuthenticationMfa()) {
             $data['authentication_mfa'] = $this->normalizer->normalize($object->getAuthenticationMfa(), 'json', $context);
+        }
+        if ($object->isInitialized('inviteTenantUser') && null !== $object->getInviteTenantUser()) {
+            $data['invite_tenant_user'] = $this->normalizer->normalize($object->getInviteTenantUser(), 'json', $context);
+        }
+        if ($object->isInitialized('verifyExternalUser') && null !== $object->getVerifyExternalUser()) {
+            $data['verify_external_user'] = $this->normalizer->normalize($object->getVerifyExternalUser(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

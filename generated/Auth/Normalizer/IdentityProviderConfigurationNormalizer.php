@@ -49,6 +49,14 @@ class IdentityProviderConfigurationNormalizer implements DenormalizerInterface, 
             $object->setRedirectUrl($data['redirect_url']);
             unset($data['redirect_url']);
         }
+        if (\array_key_exists('entity_id', $data)) {
+            $object->setEntityId($data['entity_id']);
+            unset($data['entity_id']);
+        }
+        if (\array_key_exists('reply_url', $data)) {
+            $object->setReplyUrl($data['reply_url']);
+            unset($data['reply_url']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -64,6 +72,8 @@ class IdentityProviderConfigurationNormalizer implements DenormalizerInterface, 
         $data = array();
         $data['domain'] = $object->getDomain();
         $data['redirect_url'] = $object->getRedirectUrl();
+        $data['entity_id'] = $object->getEntityId();
+        $data['reply_url'] = $object->getReplyUrl();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

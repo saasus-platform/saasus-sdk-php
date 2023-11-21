@@ -77,6 +77,10 @@ class UserAvailableTenantNormalizer implements DenormalizerInterface, Normalizer
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
+        if (\array_key_exists('is_paid', $data)) {
+            $object->setIsPaid($data['is_paid']);
+            unset($data['is_paid']);
+        }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $object[$key_1] = $value_2;
@@ -106,6 +110,9 @@ class UserAvailableTenantNormalizer implements DenormalizerInterface, Normalizer
         $data['back_office_staff_email'] = $object->getBackOfficeStaffEmail();
         if ($object->isInitialized('planId') && null !== $object->getPlanId()) {
             $data['plan_id'] = $object->getPlanId();
+        }
+        if ($object->isInitialized('isPaid') && null !== $object->getIsPaid()) {
+            $data['is_paid'] = $object->getIsPaid();
         }
         foreach ($object as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

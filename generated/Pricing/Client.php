@@ -464,6 +464,45 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\CreateTaxRate($requestBody), $fetch);
     }
     /**
+    * 税率を更新します。
+    
+    Update tax rate.
+    
+    *
+    * @param string $taxRateId 税率ID(tax rate ID)
+    * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateTaxRateParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdateTaxRateBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdateTaxRateInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function updateTaxRate(string $taxRateId, ?\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateTaxRateParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\UpdateTaxRate($taxRateId, $requestBody), $fetch);
+    }
+    /**
+    * 指定した日時期間のメータリングユニットカウントを取得します。
+    
+    Obtain metering unit counts for a specified date/time period.
+    
+    *
+    * @param string $tenantId テナントID(tenant id)
+    * @param string $meteringUnitName 計測ユニット名(metering unit name)
+    * @param array $queryParameters {
+    *     @var int $start_timestamp 開始日時(timestamp)
+    *     @var int $end_timestamp 終了日時(timestamp)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriodInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDatePeriodCounts|\Psr\Http\Message\ResponseInterface
+    */
+    public function getMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriod(string $tenantId, string $meteringUnitName, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriod($tenantId, $meteringUnitName, $queryParameters), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\ReturnInternalServerErrorInternalServerErrorException
      *

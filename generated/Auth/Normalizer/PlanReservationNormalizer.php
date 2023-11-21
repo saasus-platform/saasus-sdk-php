@@ -53,6 +53,14 @@ class PlanReservationNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setNextPlanTaxRateId($data['next_plan_tax_rate_id']);
             unset($data['next_plan_tax_rate_id']);
         }
+        if (\array_key_exists('proration_behavior', $data)) {
+            $object->setProrationBehavior($data['proration_behavior']);
+            unset($data['proration_behavior']);
+        }
+        if (\array_key_exists('delete_usage', $data)) {
+            $object->setDeleteUsage($data['delete_usage']);
+            unset($data['delete_usage']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -74,6 +82,12 @@ class PlanReservationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('nextPlanTaxRateId') && null !== $object->getNextPlanTaxRateId()) {
             $data['next_plan_tax_rate_id'] = $object->getNextPlanTaxRateId();
+        }
+        if ($object->isInitialized('prorationBehavior') && null !== $object->getProrationBehavior()) {
+            $data['proration_behavior'] = $object->getProrationBehavior();
+        }
+        if ($object->isInitialized('deleteUsage') && null !== $object->getDeleteUsage()) {
+            $data['delete_usage'] = $object->getDeleteUsage();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

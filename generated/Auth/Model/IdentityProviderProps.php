@@ -33,6 +33,12 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * 
      *
+     * @var bool
+     */
+    protected $isButtonHidden;
+    /**
+     * 
+     *
      * @return string
      */
     public function getApplicationId() : string
@@ -94,6 +100,28 @@ class IdentityProviderProps extends \ArrayObject
     {
         $this->initialized['approvalScope'] = true;
         $this->approvalScope = $approvalScope;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return bool
+     */
+    public function getIsButtonHidden() : bool
+    {
+        return $this->isButtonHidden;
+    }
+    /**
+     * 
+     *
+     * @param bool $isButtonHidden
+     *
+     * @return self
+     */
+    public function setIsButtonHidden(bool $isButtonHidden) : self
+    {
+        $this->initialized['isButtonHidden'] = true;
+        $this->isButtonHidden = $isButtonHidden;
         return $this;
     }
 }

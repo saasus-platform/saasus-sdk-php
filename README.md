@@ -68,6 +68,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   AWS Marketplace 連携設定の参照・更新に利用します。
 
+- [Communication](./generated/Communication/README.md)
+
+  ユーザーからフィードバックを収集したり、回答するプラットフォームの作成に利用します。
+
 ---
 
 ## ユースケースサンプル

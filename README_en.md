@@ -68,6 +68,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   It is used for referencing/updating information related to AWS Marketplace.
 
+- [Communication](./generated/Communication/README.md)
+
+  It is used to create a responsive platform for handling user feedback.
+
 ---
 
 ## Use Case Sample

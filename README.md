@@ -72,6 +72,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   ユーザーからフィードバックを収集したり、回答するプラットフォームの作成に利用します。
 
+- [ApiLog](./generated/ApiLog/README.md)
+
+  SaaSus Platformで提供しているAPIを実行した際のログ履歴の確認に利用します。
+  
 ---
 
 ## ユースケースサンプル

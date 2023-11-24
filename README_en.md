@@ -72,6 +72,10 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
   It is used to create a responsive platform for handling user feedback.
 
+- [ApiLog](./generated/ApiLog/README.md)
+
+  It is used to check the log history when executing the API provided by SaaSus Platform.
+
 ---
 
 ## Use Case Sample

@@ -7,6 +7,7 @@ use AntiPatternInc\Saasus\Sdk\Billing;
 use AntiPatternInc\Saasus\Sdk\Pricing;
 use AntiPatternInc\Saasus\Sdk\Integration;
 use AntiPatternInc\Saasus\Sdk\AwsMarketplace;
+use AntiPatternInc\Saasus\Sdk\Communication;
 use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
@@ -19,6 +20,7 @@ class Client
     protected Pricing\Client $pricingClient;
     protected Integration\Client $integrationClient;
     protected AwsMarketplace\Client $awsMarketplaceClient;
+    protected Communication\Client $communicationClient;
 
     protected GuzzleClient $guzzleClient;
 
@@ -68,6 +70,7 @@ class Client
         $this->pricingClient = Pricing\Client::create($this->createApiClient($this->apibase . "/v1/pricing"));
         $this->integrationClient = Integration\Client::create($this->createApiClient($this->apibase . "/v1/integration"));
         $this->awsMarketplaceClient = AwsMarketplace\Client::create($this->createApiClient($this->apibase . "/v1/awsmarketplace"));
+        $this->communicationClient = Communication\Client::create($this->createApiClient($this->apibase . "/v1/communication"));
     }
 
     protected function createApiClient($apibase)
@@ -103,5 +106,10 @@ class Client
     public function getAwsMarketplaceClient()
     {
         return $this->awsMarketplaceClient;
+    }
+
+    public function getCommunicationClient()
+    {
+        return $this->communicationClient;
     }
 }

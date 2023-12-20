@@ -49,6 +49,10 @@ class UserAvailableEnvNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setName($data['name']);
             unset($data['name']);
         }
+        if (\array_key_exists('display_name', $data)) {
+            $object->setDisplayName($data['display_name']);
+            unset($data['display_name']);
+        }
         if (\array_key_exists('roles', $data)) {
             $values = array();
             foreach ($data['roles'] as $value) {
@@ -72,6 +76,9 @@ class UserAvailableEnvNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
+        if ($object->isInitialized('displayName') && null !== $object->getDisplayName()) {
+            $data['display_name'] = $object->getDisplayName();
+        }
         $values = array();
         foreach ($object->getRoles() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);

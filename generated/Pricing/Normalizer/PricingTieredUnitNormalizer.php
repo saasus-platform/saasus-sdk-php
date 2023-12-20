@@ -65,6 +65,10 @@ class PricingTieredUnitNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setMeteringUnitName($data['metering_unit_name']);
             unset($data['metering_unit_name']);
         }
+        if (\array_key_exists('aggregate_usage', $data)) {
+            $object->setAggregateUsage($data['aggregate_usage']);
+            unset($data['aggregate_usage']);
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
             unset($data['name']);
@@ -112,6 +116,9 @@ class PricingTieredUnitNormalizer implements DenormalizerInterface, NormalizerIn
         $data['used'] = $object->getUsed();
         $data['upper_count'] = $object->getUpperCount();
         $data['metering_unit_name'] = $object->getMeteringUnitName();
+        if ($object->isInitialized('aggregateUsage') && null !== $object->getAggregateUsage()) {
+            $data['aggregate_usage'] = $object->getAggregateUsage();
+        }
         $data['name'] = $object->getName();
         $data['display_name'] = $object->getDisplayName();
         $data['description'] = $object->getDescription();

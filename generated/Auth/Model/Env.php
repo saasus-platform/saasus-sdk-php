@@ -25,6 +25,12 @@ class Env extends \ArrayObject
      */
     protected $name;
     /**
+     * 環境表示名(env display name)
+     *
+     * @var string
+     */
+    protected $displayName;
+    /**
      * 
      *
      * @return int
@@ -66,6 +72,28 @@ class Env extends \ArrayObject
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+        return $this;
+    }
+    /**
+     * 環境表示名(env display name)
+     *
+     * @return string
+     */
+    public function getDisplayName() : string
+    {
+        return $this->displayName;
+    }
+    /**
+     * 環境表示名(env display name)
+     *
+     * @param string $displayName
+     *
+     * @return self
+     */
+    public function setDisplayName(string $displayName) : self
+    {
+        $this->initialized['displayName'] = true;
+        $this->displayName = $displayName;
         return $this;
     }
 }

@@ -53,6 +53,10 @@ class IdentityProviderPropsNormalizer implements DenormalizerInterface, Normaliz
             $object->setApprovalScope($data['approval_scope']);
             unset($data['approval_scope']);
         }
+        if (\array_key_exists('is_button_hidden', $data)) {
+            $object->setIsButtonHidden($data['is_button_hidden']);
+            unset($data['is_button_hidden']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -69,6 +73,9 @@ class IdentityProviderPropsNormalizer implements DenormalizerInterface, Normaliz
         $data['application_id'] = $object->getApplicationId();
         $data['application_secret'] = $object->getApplicationSecret();
         $data['approval_scope'] = $object->getApprovalScope();
+        if ($object->isInitialized('isButtonHidden') && null !== $object->getIsButtonHidden()) {
+            $data['is_button_hidden'] = $object->getIsButtonHidden();
+        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

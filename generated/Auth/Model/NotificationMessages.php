@@ -57,6 +57,18 @@ class NotificationMessages extends \ArrayObject
     /**
      * 
      *
+     * @var MessageTemplate
+     */
+    protected $inviteTenantUser;
+    /**
+     * 
+     *
+     * @var MessageTemplate
+     */
+    protected $verifyExternalUser;
+    /**
+     * 
+     *
      * @return MessageTemplate
      */
     public function getSignUp() : MessageTemplate
@@ -206,6 +218,50 @@ class NotificationMessages extends \ArrayObject
     {
         $this->initialized['authenticationMfa'] = true;
         $this->authenticationMfa = $authenticationMfa;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return MessageTemplate
+     */
+    public function getInviteTenantUser() : MessageTemplate
+    {
+        return $this->inviteTenantUser;
+    }
+    /**
+     * 
+     *
+     * @param MessageTemplate $inviteTenantUser
+     *
+     * @return self
+     */
+    public function setInviteTenantUser(MessageTemplate $inviteTenantUser) : self
+    {
+        $this->initialized['inviteTenantUser'] = true;
+        $this->inviteTenantUser = $inviteTenantUser;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return MessageTemplate
+     */
+    public function getVerifyExternalUser() : MessageTemplate
+    {
+        return $this->verifyExternalUser;
+    }
+    /**
+     * 
+     *
+     * @param MessageTemplate $verifyExternalUser
+     *
+     * @return self
+     */
+    public function setVerifyExternalUser(MessageTemplate $verifyExternalUser) : self
+    {
+        $this->initialized['verifyExternalUser'] = true;
+        $this->verifyExternalUser = $verifyExternalUser;
         return $this;
     }
 }

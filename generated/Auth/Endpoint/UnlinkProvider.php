@@ -4,21 +4,21 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 
 class UnlinkProvider extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
-    protected $user_id;
     protected $provider_name;
+    protected $user_id;
     /**
     * 外部IDプロバイダの連携を解除します。
     
     Unlink external identity providers.
     
     *
+    * @param string $providerName 
     * @param string $userId ユーザーID(User ID)
-    * @param string $providerName 外部IDプロバイダ名(External Identity Provider Name)
     */
-    public function __construct(string $userId, string $providerName)
+    public function __construct(string $providerName, string $userId)
     {
-        $this->user_id = $userId;
         $this->provider_name = $providerName;
+        $this->user_id = $userId;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -27,7 +27,7 @@ class UnlinkProvider extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
     }
     public function getUri() : string
     {
-        return str_replace(array('{user_id}', '{provider_name}'), array($this->user_id, $this->provider_name), '/users/{user_id}/providers/{provider_name}');
+        return str_replace(array('{provider_name}', '{user_id}'), array($this->provider_name, $this->user_id), '/users/{user_id}/providers/{provider_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

@@ -49,6 +49,10 @@ class EnvNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->setName($data['name']);
             unset($data['name']);
         }
+        if (\array_key_exists('display_name', $data)) {
+            $object->setDisplayName($data['display_name']);
+            unset($data['display_name']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -64,6 +68,9 @@ class EnvNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
+        if ($object->isInitialized('displayName') && null !== $object->getDisplayName()) {
+            $data['display_name'] = $object->getDisplayName();
+        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

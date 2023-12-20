@@ -58,6 +58,15 @@ class PricingUsageUnit extends \ArrayObject
      */
     protected $meteringUnitName;
     /**
+    * 使用量の集計方法(aggregate usage)
+    sum: 期間内の使用量の合計(total usage during the period)
+    max: 期間内の使用量の最大値(maximum usage during the period)
+    
+    *
+    * @var string
+    */
+    protected $aggregateUsage;
+    /**
      * 名前(name)
      *
      * @var string
@@ -250,6 +259,34 @@ class PricingUsageUnit extends \ArrayObject
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
+        return $this;
+    }
+    /**
+    * 使用量の集計方法(aggregate usage)
+    sum: 期間内の使用量の合計(total usage during the period)
+    max: 期間内の使用量の最大値(maximum usage during the period)
+    
+    *
+    * @return string
+    */
+    public function getAggregateUsage() : string
+    {
+        return $this->aggregateUsage;
+    }
+    /**
+    * 使用量の集計方法(aggregate usage)
+    sum: 期間内の使用量の合計(total usage during the period)
+    max: 期間内の使用量の最大値(maximum usage during the period)
+    
+    *
+    * @param string $aggregateUsage
+    *
+    * @return self
+    */
+    public function setAggregateUsage(string $aggregateUsage) : self
+    {
+        $this->initialized['aggregateUsage'] = true;
+        $this->aggregateUsage = $aggregateUsage;
         return $this;
     }
     /**

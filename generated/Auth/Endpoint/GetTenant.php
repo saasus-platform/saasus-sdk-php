@@ -40,12 +40,12 @@ class GetTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpo
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantNotFoundException
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantInternalServerErrorException
      *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Tenant', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantDetail', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'));

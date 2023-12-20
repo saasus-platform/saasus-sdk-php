@@ -55,6 +55,14 @@ class UserAvailableTenant extends \ArrayObject
      */
     protected $planId;
     /**
+    * テナントの支払い状況(tenant payment status)
+    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    
+    *
+    * @var bool
+    */
+    protected $isPaid;
+    /**
      * 
      *
      * @return string
@@ -206,6 +214,32 @@ class UserAvailableTenant extends \ArrayObject
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
+        return $this;
+    }
+    /**
+    * テナントの支払い状況(tenant payment status)
+    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    
+    *
+    * @return bool
+    */
+    public function getIsPaid() : bool
+    {
+        return $this->isPaid;
+    }
+    /**
+    * テナントの支払い状況(tenant payment status)
+    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    
+    *
+    * @param bool $isPaid
+    *
+    * @return self
+    */
+    public function setIsPaid(bool $isPaid) : self
+    {
+        $this->initialized['isPaid'] = true;
+        $this->isPaid = $isPaid;
         return $this;
     }
 }

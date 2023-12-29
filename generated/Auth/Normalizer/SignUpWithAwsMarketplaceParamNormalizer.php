@@ -41,13 +41,19 @@ class SignUpWithAwsMarketplaceParamNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
         }
-        if (\array_key_exists('registration_token', $data)) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('registration_token', $data) && $data['registration_token'] !== null) {
             $object->setRegistrationToken($data['registration_token']);
             unset($data['registration_token']);
+        }
+        elseif (\array_key_exists('registration_token', $data) && $data['registration_token'] === null) {
+            $object->setRegistrationToken(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

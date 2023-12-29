@@ -41,13 +41,16 @@ class PlanHistoriesNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('plan_histories', $data)) {
+        if (\array_key_exists('plan_histories', $data) && $data['plan_histories'] !== null) {
             $values = array();
             foreach ($data['plan_histories'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory', 'json', $context);
             }
             $object->setPlanHistories($values);
             unset($data['plan_histories']);
+        }
+        elseif (\array_key_exists('plan_histories', $data) && $data['plan_histories'] === null) {
+            $object->setPlanHistories(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

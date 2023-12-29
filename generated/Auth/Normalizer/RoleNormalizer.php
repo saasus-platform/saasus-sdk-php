@@ -41,13 +41,19 @@ class RoleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('role_name', $data)) {
+        if (\array_key_exists('role_name', $data) && $data['role_name'] !== null) {
             $object->setRoleName($data['role_name']);
             unset($data['role_name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('role_name', $data) && $data['role_name'] === null) {
+            $object->setRoleName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
+        }
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

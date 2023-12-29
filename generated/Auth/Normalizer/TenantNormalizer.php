@@ -41,23 +41,35 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('plan_id', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('plan_id', $data) && $data['plan_id'] !== null) {
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
-        if (\array_key_exists('billing_info', $data)) {
+        elseif (\array_key_exists('plan_id', $data) && $data['plan_id'] === null) {
+            $object->setPlanId(null);
+        }
+        if (\array_key_exists('billing_info', $data) && $data['billing_info'] !== null) {
             $object->setBillingInfo($this->denormalizer->denormalize($data['billing_info'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingInfo', 'json', $context));
             unset($data['billing_info']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('billing_info', $data) && $data['billing_info'] === null) {
+            $object->setBillingInfo(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('attributes', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['attributes'] as $key => $value) {
                 $values[$key] = $value;
@@ -65,37 +77,61 @@ class TenantNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAttributes($values);
             unset($data['attributes']);
         }
-        if (\array_key_exists('back_office_staff_email', $data)) {
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+            $object->setAttributes(null);
+        }
+        if (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] !== null) {
             $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
             unset($data['back_office_staff_email']);
         }
-        if (\array_key_exists('next_plan_id', $data)) {
+        elseif (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] === null) {
+            $object->setBackOfficeStaffEmail(null);
+        }
+        if (\array_key_exists('next_plan_id', $data) && $data['next_plan_id'] !== null) {
             $object->setNextPlanId($data['next_plan_id']);
             unset($data['next_plan_id']);
         }
-        if (\array_key_exists('using_next_plan_from', $data)) {
+        elseif (\array_key_exists('next_plan_id', $data) && $data['next_plan_id'] === null) {
+            $object->setNextPlanId(null);
+        }
+        if (\array_key_exists('using_next_plan_from', $data) && $data['using_next_plan_from'] !== null) {
             $object->setUsingNextPlanFrom($data['using_next_plan_from']);
             unset($data['using_next_plan_from']);
         }
-        if (\array_key_exists('next_plan_tax_rate_id', $data)) {
+        elseif (\array_key_exists('using_next_plan_from', $data) && $data['using_next_plan_from'] === null) {
+            $object->setUsingNextPlanFrom(null);
+        }
+        if (\array_key_exists('next_plan_tax_rate_id', $data) && $data['next_plan_tax_rate_id'] !== null) {
             $object->setNextPlanTaxRateId($data['next_plan_tax_rate_id']);
             unset($data['next_plan_tax_rate_id']);
         }
-        if (\array_key_exists('proration_behavior', $data)) {
+        elseif (\array_key_exists('next_plan_tax_rate_id', $data) && $data['next_plan_tax_rate_id'] === null) {
+            $object->setNextPlanTaxRateId(null);
+        }
+        if (\array_key_exists('proration_behavior', $data) && $data['proration_behavior'] !== null) {
             $object->setProrationBehavior($data['proration_behavior']);
             unset($data['proration_behavior']);
         }
-        if (\array_key_exists('delete_usage', $data)) {
+        elseif (\array_key_exists('proration_behavior', $data) && $data['proration_behavior'] === null) {
+            $object->setProrationBehavior(null);
+        }
+        if (\array_key_exists('delete_usage', $data) && $data['delete_usage'] !== null) {
             $object->setDeleteUsage($data['delete_usage']);
             unset($data['delete_usage']);
         }
-        if (\array_key_exists('plan_histories', $data)) {
+        elseif (\array_key_exists('delete_usage', $data) && $data['delete_usage'] === null) {
+            $object->setDeleteUsage(null);
+        }
+        if (\array_key_exists('plan_histories', $data) && $data['plan_histories'] !== null) {
             $values_1 = array();
             foreach ($data['plan_histories'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory', 'json', $context);
             }
             $object->setPlanHistories($values_1);
             unset($data['plan_histories']);
+        }
+        elseif (\array_key_exists('plan_histories', $data) && $data['plan_histories'] === null) {
+            $object->setPlanHistories(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

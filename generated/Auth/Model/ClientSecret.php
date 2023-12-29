@@ -15,26 +15,26 @@ class ClientSecret extends \ArrayObject
     /**
      * クライアントシークレット(client secret)
      *
-     * @var string
+     * @var string|null
      */
     protected $clientSecret;
     /**
      * クライアントシークレット(client secret)
      *
-     * @return string
+     * @return string|null
      */
-    public function getClientSecret() : string
+    public function getClientSecret() : ?string
     {
         return $this->clientSecret;
     }
     /**
      * クライアントシークレット(client secret)
      *
-     * @param string $clientSecret
+     * @param string|null $clientSecret
      *
      * @return self
      */
-    public function setClientSecret(string $clientSecret) : self
+    public function setClientSecret(?string $clientSecret) : self
     {
         $this->initialized['clientSecret'] = true;
         $this->clientSecret = $clientSecret;

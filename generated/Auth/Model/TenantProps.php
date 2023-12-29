@@ -15,38 +15,38 @@ class TenantProps extends \ArrayObject
     /**
      * テナント名(tenant name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 属性情報(attribute info)
      *
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $attributes;
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @var string
+     * @var string|null
      */
     protected $backOfficeStaffEmail;
     /**
      * テナント名(tenant name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * テナント名(tenant name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -55,20 +55,20 @@ class TenantProps extends \ArrayObject
     /**
      * 属性情報(attribute info)
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
-    public function getAttributes() : iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
     /**
      * 属性情報(attribute info)
      *
-     * @param mixed[] $attributes
+     * @param mixed[]|null $attributes
      *
      * @return self
      */
-    public function setAttributes(iterable $attributes) : self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -77,20 +77,20 @@ class TenantProps extends \ArrayObject
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @return string
+     * @return string|null
      */
-    public function getBackOfficeStaffEmail() : string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @param string $backOfficeStaffEmail
+     * @param string|null $backOfficeStaffEmail
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(string $backOfficeStaffEmail) : self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;

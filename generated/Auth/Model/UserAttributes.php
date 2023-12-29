@@ -15,26 +15,26 @@ class UserAttributes extends \ArrayObject
     /**
      * ユーザー属性定義(User attribute definition)
      *
-     * @var Attribute[]
+     * @var Attribute[]|null
      */
     protected $userAttributes;
     /**
      * ユーザー属性定義(User attribute definition)
      *
-     * @return Attribute[]
+     * @return Attribute[]|null
      */
-    public function getUserAttributes() : array
+    public function getUserAttributes() : ?array
     {
         return $this->userAttributes;
     }
     /**
      * ユーザー属性定義(User attribute definition)
      *
-     * @param Attribute[] $userAttributes
+     * @param Attribute[]|null $userAttributes
      *
      * @return self
      */
-    public function setUserAttributes(array $userAttributes) : self
+    public function setUserAttributes(?array $userAttributes) : self
     {
         $this->initialized['userAttributes'] = true;
         $this->userAttributes = $userAttributes;

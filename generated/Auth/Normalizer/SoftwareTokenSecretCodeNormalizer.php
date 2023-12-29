@@ -41,9 +41,12 @@ class SoftwareTokenSecretCodeNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('secret_code', $data)) {
+        if (\array_key_exists('secret_code', $data) && $data['secret_code'] !== null) {
             $object->setSecretCode($data['secret_code']);
             unset($data['secret_code']);
+        }
+        elseif (\array_key_exists('secret_code', $data) && $data['secret_code'] === null) {
+            $object->setSecretCode(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

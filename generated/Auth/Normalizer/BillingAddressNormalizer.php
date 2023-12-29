@@ -41,29 +41,47 @@ class BillingAddressNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('street', $data)) {
+        if (\array_key_exists('street', $data) && $data['street'] !== null) {
             $object->setStreet($data['street']);
             unset($data['street']);
         }
-        if (\array_key_exists('city', $data)) {
+        elseif (\array_key_exists('street', $data) && $data['street'] === null) {
+            $object->setStreet(null);
+        }
+        if (\array_key_exists('city', $data) && $data['city'] !== null) {
             $object->setCity($data['city']);
             unset($data['city']);
         }
-        if (\array_key_exists('state', $data)) {
+        elseif (\array_key_exists('city', $data) && $data['city'] === null) {
+            $object->setCity(null);
+        }
+        if (\array_key_exists('state', $data) && $data['state'] !== null) {
             $object->setState($data['state']);
             unset($data['state']);
         }
-        if (\array_key_exists('country', $data)) {
+        elseif (\array_key_exists('state', $data) && $data['state'] === null) {
+            $object->setState(null);
+        }
+        if (\array_key_exists('country', $data) && $data['country'] !== null) {
             $object->setCountry($data['country']);
             unset($data['country']);
         }
-        if (\array_key_exists('additional_address_info', $data)) {
+        elseif (\array_key_exists('country', $data) && $data['country'] === null) {
+            $object->setCountry(null);
+        }
+        if (\array_key_exists('additional_address_info', $data) && $data['additional_address_info'] !== null) {
             $object->setAdditionalAddressInfo($data['additional_address_info']);
             unset($data['additional_address_info']);
         }
-        if (\array_key_exists('postal_code', $data)) {
+        elseif (\array_key_exists('additional_address_info', $data) && $data['additional_address_info'] === null) {
+            $object->setAdditionalAddressInfo(null);
+        }
+        if (\array_key_exists('postal_code', $data) && $data['postal_code'] !== null) {
             $object->setPostalCode($data['postal_code']);
             unset($data['postal_code']);
+        }
+        elseif (\array_key_exists('postal_code', $data) && $data['postal_code'] === null) {
+            $object->setPostalCode(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

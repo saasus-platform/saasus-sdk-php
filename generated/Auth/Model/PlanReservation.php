@@ -15,7 +15,7 @@ class PlanReservation extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $nextPlanId;
     /**
@@ -23,13 +23,13 @@ class PlanReservation extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @var int
+    * @var int|null
     */
     protected $usingNextPlanFrom;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $nextPlanTaxRateId;
     /**
@@ -40,7 +40,7 @@ class PlanReservation extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $prorationBehavior;
     /**
@@ -53,26 +53,26 @@ class PlanReservation extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @var bool
+    * @var bool|null
     */
     protected $deleteUsage;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getNextPlanId() : string
+    public function getNextPlanId() : ?string
     {
         return $this->nextPlanId;
     }
     /**
      * 
      *
-     * @param string $nextPlanId
+     * @param string|null $nextPlanId
      *
      * @return self
      */
-    public function setNextPlanId(string $nextPlanId) : self
+    public function setNextPlanId(?string $nextPlanId) : self
     {
         $this->initialized['nextPlanId'] = true;
         $this->nextPlanId = $nextPlanId;
@@ -83,9 +83,9 @@ class PlanReservation extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @return int
+    * @return int|null
     */
-    public function getUsingNextPlanFrom() : int
+    public function getUsingNextPlanFrom() : ?int
     {
         return $this->usingNextPlanFrom;
     }
@@ -94,11 +94,11 @@ class PlanReservation extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @param int $usingNextPlanFrom
+    * @param int|null $usingNextPlanFrom
     *
     * @return self
     */
-    public function setUsingNextPlanFrom(int $usingNextPlanFrom) : self
+    public function setUsingNextPlanFrom(?int $usingNextPlanFrom) : self
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
@@ -107,20 +107,20 @@ class PlanReservation extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getNextPlanTaxRateId() : string
+    public function getNextPlanTaxRateId() : ?string
     {
         return $this->nextPlanTaxRateId;
     }
     /**
      * 
      *
-     * @param string $nextPlanTaxRateId
+     * @param string|null $nextPlanTaxRateId
      *
      * @return self
      */
-    public function setNextPlanTaxRateId(string $nextPlanTaxRateId) : self
+    public function setNextPlanTaxRateId(?string $nextPlanTaxRateId) : self
     {
         $this->initialized['nextPlanTaxRateId'] = true;
         $this->nextPlanTaxRateId = $nextPlanTaxRateId;
@@ -134,9 +134,9 @@ class PlanReservation extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getProrationBehavior() : string
+    public function getProrationBehavior() : ?string
     {
         return $this->prorationBehavior;
     }
@@ -148,11 +148,11 @@ class PlanReservation extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @param string $prorationBehavior
+    * @param string|null $prorationBehavior
     *
     * @return self
     */
-    public function setProrationBehavior(string $prorationBehavior) : self
+    public function setProrationBehavior(?string $prorationBehavior) : self
     {
         $this->initialized['prorationBehavior'] = true;
         $this->prorationBehavior = $prorationBehavior;
@@ -168,9 +168,9 @@ class PlanReservation extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @return bool
+    * @return bool|null
     */
-    public function getDeleteUsage() : bool
+    public function getDeleteUsage() : ?bool
     {
         return $this->deleteUsage;
     }
@@ -184,11 +184,11 @@ class PlanReservation extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @param bool $deleteUsage
+    * @param bool|null $deleteUsage
     *
     * @return self
     */
-    public function setDeleteUsage(bool $deleteUsage) : self
+    public function setDeleteUsage(?bool $deleteUsage) : self
     {
         $this->initialized['deleteUsage'] = true;
         $this->deleteUsage = $deleteUsage;

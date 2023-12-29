@@ -41,7 +41,7 @@ class TenantsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tenants', $data)) {
+        if (\array_key_exists('tenants', $data) && $data['tenants'] !== null) {
             $values = array();
             foreach ($data['tenants'] as $value) {
                 $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -52,6 +52,9 @@ class TenantsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->setTenants($values);
             unset($data['tenants']);
+        }
+        elseif (\array_key_exists('tenants', $data) && $data['tenants'] === null) {
+            $object->setTenants(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

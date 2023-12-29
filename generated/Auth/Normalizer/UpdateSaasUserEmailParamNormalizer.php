@@ -41,9 +41,12 @@ class UpdateSaasUserEmailParamNormalizer implements DenormalizerInterface, Norma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
+        }
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

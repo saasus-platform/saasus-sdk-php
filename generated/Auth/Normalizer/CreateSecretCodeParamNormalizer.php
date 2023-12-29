@@ -41,9 +41,12 @@ class CreateSecretCodeParamNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access_token', $data)) {
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
+        }
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

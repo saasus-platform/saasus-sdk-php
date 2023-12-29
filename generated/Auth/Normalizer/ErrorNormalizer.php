@@ -41,21 +41,30 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('message', $data)) {
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
             unset($data['message']);
         }
-        if (\array_key_exists('data', $data)) {
+        elseif (\array_key_exists('message', $data) && $data['message'] === null) {
+            $object->setMessage(null);
+        }
+        if (\array_key_exists('data', $data) && $data['data'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['data'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setData($values);
             unset($data['data']);
+        }
+        elseif (\array_key_exists('data', $data) && $data['data'] === null) {
+            $object->setData(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

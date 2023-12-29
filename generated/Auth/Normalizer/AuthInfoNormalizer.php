@@ -41,9 +41,12 @@ class AuthInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('callback_url', $data)) {
+        if (\array_key_exists('callback_url', $data) && $data['callback_url'] !== null) {
             $object->setCallbackUrl($data['callback_url']);
             unset($data['callback_url']);
+        }
+        elseif (\array_key_exists('callback_url', $data) && $data['callback_url'] === null) {
+            $object->setCallbackUrl(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

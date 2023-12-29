@@ -41,13 +41,19 @@ class ConfirmExternalUserLinkParamNormalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access_token', $data)) {
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
         }
-        if (\array_key_exists('code', $data)) {
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
+        }
+        if (\array_key_exists('code', $data) && $data['code'] !== null) {
             $object->setCode($data['code']);
             unset($data['code']);
+        }
+        elseif (\array_key_exists('code', $data) && $data['code'] === null) {
+            $object->setCode(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

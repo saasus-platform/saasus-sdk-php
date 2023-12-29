@@ -41,13 +41,19 @@ class MessageTemplateNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('subject', $data)) {
+        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
             $object->setSubject($data['subject']);
             unset($data['subject']);
         }
-        if (\array_key_exists('message', $data)) {
+        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
+            $object->setSubject(null);
+        }
+        if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
             unset($data['message']);
+        }
+        elseif (\array_key_exists('message', $data) && $data['message'] === null) {
+            $object->setMessage(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

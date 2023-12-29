@@ -41,9 +41,12 @@ class AuthorizationTempCodeNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('code', $data)) {
+        if (\array_key_exists('code', $data) && $data['code'] !== null) {
             $object->setCode($data['code']);
             unset($data['code']);
+        }
+        elseif (\array_key_exists('code', $data) && $data['code'] === null) {
+            $object->setCode(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

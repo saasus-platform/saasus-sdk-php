@@ -15,7 +15,7 @@ class CreateTenantUserParam extends \ArrayObject
     /**
      * メールアドレス(e-mail)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
@@ -24,26 +24,26 @@ class CreateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @var mixed[]
+    * @var mixed[]|null
     */
     protected $attributes;
     /**
      * メールアドレス(e-mail)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(e-mail)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -55,9 +55,9 @@ class CreateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @return mixed[]
+    * @return mixed[]|null
     */
-    public function getAttributes() : iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -67,11 +67,11 @@ class CreateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @param mixed[] $attributes
+    * @param mixed[]|null $attributes
     *
     * @return self
     */
-    public function setAttributes(iterable $attributes) : self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;

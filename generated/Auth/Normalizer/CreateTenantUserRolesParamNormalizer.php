@@ -41,13 +41,16 @@ class CreateTenantUserRolesParamNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('role_names', $data)) {
+        if (\array_key_exists('role_names', $data) && $data['role_names'] !== null) {
             $values = array();
             foreach ($data['role_names'] as $value) {
                 $values[] = $value;
             }
             $object->setRoleNames($values);
             unset($data['role_names']);
+        }
+        elseif (\array_key_exists('role_names', $data) && $data['role_names'] === null) {
+            $object->setRoleNames(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

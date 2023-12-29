@@ -41,9 +41,12 @@ class UpdateSaasUserPasswordParamNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('password', $data)) {
+        if (\array_key_exists('password', $data) && $data['password'] !== null) {
             $object->setPassword($data['password']);
             unset($data['password']);
+        }
+        elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+            $object->setPassword(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

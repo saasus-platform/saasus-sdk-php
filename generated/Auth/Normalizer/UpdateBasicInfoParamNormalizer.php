@@ -41,17 +41,26 @@ class UpdateBasicInfoParamNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('domain_name', $data)) {
+        if (\array_key_exists('domain_name', $data) && $data['domain_name'] !== null) {
             $object->setDomainName($data['domain_name']);
             unset($data['domain_name']);
         }
-        if (\array_key_exists('from_email_address', $data)) {
+        elseif (\array_key_exists('domain_name', $data) && $data['domain_name'] === null) {
+            $object->setDomainName(null);
+        }
+        if (\array_key_exists('from_email_address', $data) && $data['from_email_address'] !== null) {
             $object->setFromEmailAddress($data['from_email_address']);
             unset($data['from_email_address']);
         }
-        if (\array_key_exists('reply_email_address', $data)) {
+        elseif (\array_key_exists('from_email_address', $data) && $data['from_email_address'] === null) {
+            $object->setFromEmailAddress(null);
+        }
+        if (\array_key_exists('reply_email_address', $data) && $data['reply_email_address'] !== null) {
             $object->setReplyEmailAddress($data['reply_email_address']);
             unset($data['reply_email_address']);
+        }
+        elseif (\array_key_exists('reply_email_address', $data) && $data['reply_email_address'] === null) {
+            $object->setReplyEmailAddress(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

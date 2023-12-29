@@ -41,13 +41,16 @@ class UserAttributesNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('user_attributes', $data)) {
+        if (\array_key_exists('user_attributes', $data) && $data['user_attributes'] !== null) {
             $values = array();
             foreach ($data['user_attributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute', 'json', $context);
             }
             $object->setUserAttributes($values);
             unset($data['user_attributes']);
+        }
+        elseif (\array_key_exists('user_attributes', $data) && $data['user_attributes'] === null) {
+            $object->setUserAttributes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

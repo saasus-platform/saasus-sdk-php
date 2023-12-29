@@ -41,19 +41,28 @@ class InvitationNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('email', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
         }
-        if (\array_key_exists('invitation_url', $data)) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('invitation_url', $data) && $data['invitation_url'] !== null) {
             $object->setInvitationUrl($data['invitation_url']);
             unset($data['invitation_url']);
         }
-        if (\array_key_exists('envs', $data)) {
+        elseif (\array_key_exists('invitation_url', $data) && $data['invitation_url'] === null) {
+            $object->setInvitationUrl(null);
+        }
+        if (\array_key_exists('envs', $data) && $data['envs'] !== null) {
             $values = array();
             foreach ($data['envs'] as $value) {
                 $values[] = $value;
@@ -61,13 +70,22 @@ class InvitationNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setEnvs($values);
             unset($data['envs']);
         }
-        if (\array_key_exists('expired_at', $data)) {
+        elseif (\array_key_exists('envs', $data) && $data['envs'] === null) {
+            $object->setEnvs(null);
+        }
+        if (\array_key_exists('expired_at', $data) && $data['expired_at'] !== null) {
             $object->setExpiredAt($data['expired_at']);
             unset($data['expired_at']);
         }
-        if (\array_key_exists('status', $data)) {
+        elseif (\array_key_exists('expired_at', $data) && $data['expired_at'] === null) {
+            $object->setExpiredAt(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

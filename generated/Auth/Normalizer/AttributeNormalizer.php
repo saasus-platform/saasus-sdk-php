@@ -41,17 +41,26 @@ class AttributeNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('attribute_name', $data)) {
+        if (\array_key_exists('attribute_name', $data) && $data['attribute_name'] !== null) {
             $object->setAttributeName($data['attribute_name']);
             unset($data['attribute_name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('attribute_name', $data) && $data['attribute_name'] === null) {
+            $object->setAttributeName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
         }
-        if (\array_key_exists('attribute_type', $data)) {
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
+        }
+        if (\array_key_exists('attribute_type', $data) && $data['attribute_type'] !== null) {
             $object->setAttributeType($data['attribute_type']);
             unset($data['attribute_type']);
+        }
+        elseif (\array_key_exists('attribute_type', $data) && $data['attribute_type'] === null) {
+            $object->setAttributeType(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

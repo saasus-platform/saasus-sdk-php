@@ -15,26 +15,26 @@ class IdentityProviders extends \ArrayObject
     /**
      * 
      *
-     * @var IdentityProviderProps
+     * @var IdentityProviderProps|null
      */
     protected $google;
     /**
      * 
      *
-     * @return IdentityProviderProps
+     * @return IdentityProviderProps|null
      */
-    public function getGoogle() : IdentityProviderProps
+    public function getGoogle() : ?IdentityProviderProps
     {
         return $this->google;
     }
     /**
      * 
      *
-     * @param IdentityProviderProps $google
+     * @param IdentityProviderProps|null $google
      *
      * @return self
      */
-    public function setGoogle(IdentityProviderProps $google) : self
+    public function setGoogle(?IdentityProviderProps $google) : self
     {
         $this->initialized['google'] = true;
         $this->google = $google;

@@ -41,13 +41,16 @@ class InvitationsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('invitations', $data)) {
+        if (\array_key_exists('invitations', $data) && $data['invitations'] !== null) {
             $values = array();
             foreach ($data['invitations'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Invitation', 'json', $context);
             }
             $object->setInvitations($values);
             unset($data['invitations']);
+        }
+        elseif (\array_key_exists('invitations', $data) && $data['invitations'] === null) {
+            $object->setInvitations(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

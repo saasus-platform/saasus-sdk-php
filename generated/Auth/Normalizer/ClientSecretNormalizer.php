@@ -41,9 +41,12 @@ class ClientSecretNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('client_secret', $data)) {
+        if (\array_key_exists('client_secret', $data) && $data['client_secret'] !== null) {
             $object->setClientSecret($data['client_secret']);
             unset($data['client_secret']);
+        }
+        elseif (\array_key_exists('client_secret', $data) && $data['client_secret'] === null) {
+            $object->setClientSecret(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

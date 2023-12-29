@@ -15,26 +15,26 @@ class RequestExternalUserLinkParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * 
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;

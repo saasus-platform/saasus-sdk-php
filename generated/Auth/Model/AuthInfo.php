@@ -15,26 +15,26 @@ class AuthInfo extends \ArrayObject
     /**
      * 認証後遷移先(Redirect After Authentication)
      *
-     * @var string
+     * @var string|null
      */
     protected $callbackUrl;
     /**
      * 認証後遷移先(Redirect After Authentication)
      *
-     * @return string
+     * @return string|null
      */
-    public function getCallbackUrl() : string
+    public function getCallbackUrl() : ?string
     {
         return $this->callbackUrl;
     }
     /**
      * 認証後遷移先(Redirect After Authentication)
      *
-     * @param string $callbackUrl
+     * @param string|null $callbackUrl
      *
      * @return self
      */
-    public function setCallbackUrl(string $callbackUrl) : self
+    public function setCallbackUrl(?string $callbackUrl) : self
     {
         $this->initialized['callbackUrl'] = true;
         $this->callbackUrl = $callbackUrl;

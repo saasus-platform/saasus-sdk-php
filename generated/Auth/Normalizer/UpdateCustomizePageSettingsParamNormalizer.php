@@ -41,29 +41,47 @@ class UpdateCustomizePageSettingsParamNormalizer implements DenormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('icon', $data)) {
+        if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
             $object->setIcon($data['icon']);
             unset($data['icon']);
         }
-        if (\array_key_exists('favicon', $data)) {
+        elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
+            $object->setIcon(null);
+        }
+        if (\array_key_exists('favicon', $data) && $data['favicon'] !== null) {
             $object->setFavicon($data['favicon']);
             unset($data['favicon']);
         }
-        if (\array_key_exists('title', $data)) {
+        elseif (\array_key_exists('favicon', $data) && $data['favicon'] === null) {
+            $object->setFavicon(null);
+        }
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
             unset($data['title']);
         }
-        if (\array_key_exists('terms_of_service_url', $data)) {
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
+        }
+        if (\array_key_exists('terms_of_service_url', $data) && $data['terms_of_service_url'] !== null) {
             $object->setTermsOfServiceUrl($data['terms_of_service_url']);
             unset($data['terms_of_service_url']);
         }
-        if (\array_key_exists('privacy_policy_url', $data)) {
+        elseif (\array_key_exists('terms_of_service_url', $data) && $data['terms_of_service_url'] === null) {
+            $object->setTermsOfServiceUrl(null);
+        }
+        if (\array_key_exists('privacy_policy_url', $data) && $data['privacy_policy_url'] !== null) {
             $object->setPrivacyPolicyUrl($data['privacy_policy_url']);
             unset($data['privacy_policy_url']);
         }
-        if (\array_key_exists('google_tag_manager_container_id', $data)) {
+        elseif (\array_key_exists('privacy_policy_url', $data) && $data['privacy_policy_url'] === null) {
+            $object->setPrivacyPolicyUrl(null);
+        }
+        if (\array_key_exists('google_tag_manager_container_id', $data) && $data['google_tag_manager_container_id'] !== null) {
             $object->setGoogleTagManagerContainerId($data['google_tag_manager_container_id']);
             unset($data['google_tag_manager_container_id']);
+        }
+        elseif (\array_key_exists('google_tag_manager_container_id', $data) && $data['google_tag_manager_container_id'] === null) {
+            $object->setGoogleTagManagerContainerId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

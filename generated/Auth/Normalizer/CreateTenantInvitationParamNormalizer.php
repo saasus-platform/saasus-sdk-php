@@ -41,21 +41,30 @@ class CreateTenantInvitationParamNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
         }
-        if (\array_key_exists('access_token', $data)) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
         }
-        if (\array_key_exists('envs', $data)) {
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
+        }
+        if (\array_key_exists('envs', $data) && $data['envs'] !== null) {
             $values = array();
             foreach ($data['envs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem', 'json', $context);
             }
             $object->setEnvs($values);
             unset($data['envs']);
+        }
+        elseif (\array_key_exists('envs', $data) && $data['envs'] === null) {
+            $object->setEnvs(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

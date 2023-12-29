@@ -41,13 +41,16 @@ class TenantAttributesNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tenant_attributes', $data)) {
+        if (\array_key_exists('tenant_attributes', $data) && $data['tenant_attributes'] !== null) {
             $values = array();
             foreach ($data['tenant_attributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute', 'json', $context);
             }
             $object->setTenantAttributes($values);
             unset($data['tenant_attributes']);
+        }
+        elseif (\array_key_exists('tenant_attributes', $data) && $data['tenant_attributes'] === null) {
+            $object->setTenantAttributes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

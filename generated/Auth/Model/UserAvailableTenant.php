@@ -15,43 +15,43 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * テナント名(tenant name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $completedSignUp;
     /**
      * 環境情報、役割(ロール)情報(environmental info, role info)
      *
-     * @var UserAvailableEnv[]
+     * @var UserAvailableEnv[]|null
      */
     protected $envs;
     /**
      * ユーザー追加属性(user additional attributes)
      *
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $userAttribute;
     /**
      * バックオフィス担当者のメール(back office contact email)
      *
-     * @var string
+     * @var string|null
      */
     protected $backOfficeStaffEmail;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $planId;
     /**
@@ -59,26 +59,26 @@ class UserAvailableTenant extends \ArrayObject
     ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
     
     *
-    * @var bool
+    * @var bool|null
     */
     protected $isPaid;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -87,20 +87,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * テナント名(tenant name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * テナント名(tenant name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -109,20 +109,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getCompletedSignUp() : bool
+    public function getCompletedSignUp() : ?bool
     {
         return $this->completedSignUp;
     }
     /**
      * 
      *
-     * @param bool $completedSignUp
+     * @param bool|null $completedSignUp
      *
      * @return self
      */
-    public function setCompletedSignUp(bool $completedSignUp) : self
+    public function setCompletedSignUp(?bool $completedSignUp) : self
     {
         $this->initialized['completedSignUp'] = true;
         $this->completedSignUp = $completedSignUp;
@@ -131,20 +131,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * 環境情報、役割(ロール)情報(environmental info, role info)
      *
-     * @return UserAvailableEnv[]
+     * @return UserAvailableEnv[]|null
      */
-    public function getEnvs() : array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
     /**
      * 環境情報、役割(ロール)情報(environmental info, role info)
      *
-     * @param UserAvailableEnv[] $envs
+     * @param UserAvailableEnv[]|null $envs
      *
      * @return self
      */
-    public function setEnvs(array $envs) : self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;
@@ -153,20 +153,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * ユーザー追加属性(user additional attributes)
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
-    public function getUserAttribute() : iterable
+    public function getUserAttribute() : ?iterable
     {
         return $this->userAttribute;
     }
     /**
      * ユーザー追加属性(user additional attributes)
      *
-     * @param mixed[] $userAttribute
+     * @param mixed[]|null $userAttribute
      *
      * @return self
      */
-    public function setUserAttribute(iterable $userAttribute) : self
+    public function setUserAttribute(?iterable $userAttribute) : self
     {
         $this->initialized['userAttribute'] = true;
         $this->userAttribute = $userAttribute;
@@ -175,20 +175,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * バックオフィス担当者のメール(back office contact email)
      *
-     * @return string
+     * @return string|null
      */
-    public function getBackOfficeStaffEmail() : string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
     /**
      * バックオフィス担当者のメール(back office contact email)
      *
-     * @param string $backOfficeStaffEmail
+     * @param string|null $backOfficeStaffEmail
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(string $backOfficeStaffEmail) : self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;
@@ -197,20 +197,20 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlanId() : string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
     /**
      * 
      *
-     * @param string $planId
+     * @param string|null $planId
      *
      * @return self
      */
-    public function setPlanId(string $planId) : self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -221,9 +221,9 @@ class UserAvailableTenant extends \ArrayObject
     ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
     
     *
-    * @return bool
+    * @return bool|null
     */
-    public function getIsPaid() : bool
+    public function getIsPaid() : ?bool
     {
         return $this->isPaid;
     }
@@ -232,11 +232,11 @@ class UserAvailableTenant extends \ArrayObject
     ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
     
     *
-    * @param bool $isPaid
+    * @param bool|null $isPaid
     *
     * @return self
     */
-    public function setIsPaid(bool $isPaid) : self
+    public function setIsPaid(?bool $isPaid) : self
     {
         $this->initialized['isPaid'] = true;
         $this->isPaid = $isPaid;

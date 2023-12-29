@@ -15,32 +15,32 @@ class RecaptchaProps extends \ArrayObject
     /**
      * サイトキー(site key)
      *
-     * @var string
+     * @var string|null
      */
     protected $siteKey;
     /**
      * シークレットキー(secret key)
      *
-     * @var string
+     * @var string|null
      */
     protected $secretKey;
     /**
      * サイトキー(site key)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSiteKey() : string
+    public function getSiteKey() : ?string
     {
         return $this->siteKey;
     }
     /**
      * サイトキー(site key)
      *
-     * @param string $siteKey
+     * @param string|null $siteKey
      *
      * @return self
      */
-    public function setSiteKey(string $siteKey) : self
+    public function setSiteKey(?string $siteKey) : self
     {
         $this->initialized['siteKey'] = true;
         $this->siteKey = $siteKey;
@@ -49,20 +49,20 @@ class RecaptchaProps extends \ArrayObject
     /**
      * シークレットキー(secret key)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSecretKey() : string
+    public function getSecretKey() : ?string
     {
         return $this->secretKey;
     }
     /**
      * シークレットキー(secret key)
      *
-     * @param string $secretKey
+     * @param string|null $secretKey
      *
      * @return self
      */
-    public function setSecretKey(string $secretKey) : self
+    public function setSecretKey(?string $secretKey) : self
     {
         $this->initialized['secretKey'] = true;
         $this->secretKey = $secretKey;

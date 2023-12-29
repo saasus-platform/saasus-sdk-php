@@ -15,26 +15,26 @@ class Roles extends \ArrayObject
     /**
      * 
      *
-     * @var Role[]
+     * @var Role[]|null
      */
     protected $roles;
     /**
      * 
      *
-     * @return Role[]
+     * @return Role[]|null
      */
-    public function getRoles() : array
+    public function getRoles() : ?array
     {
         return $this->roles;
     }
     /**
      * 
      *
-     * @param Role[] $roles
+     * @param Role[]|null $roles
      *
      * @return self
      */
-    public function setRoles(array $roles) : self
+    public function setRoles(?array $roles) : self
     {
         $this->initialized['roles'] = true;
         $this->roles = $roles;

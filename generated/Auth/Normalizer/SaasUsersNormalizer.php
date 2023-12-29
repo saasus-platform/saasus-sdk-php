@@ -41,13 +41,16 @@ class SaasUsersNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('users', $data)) {
+        if (\array_key_exists('users', $data) && $data['users'] !== null) {
             $values = array();
             foreach ($data['users'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUser', 'json', $context);
             }
             $object->setUsers($values);
             unset($data['users']);
+        }
+        elseif (\array_key_exists('users', $data) && $data['users'] === null) {
+            $object->setUsers(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

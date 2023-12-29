@@ -15,44 +15,44 @@ class IdentityProviderConfiguration extends \ArrayObject
     /**
      * ドメイン(domain)
      *
-     * @var string
+     * @var string|null
      */
     protected $domain;
     /**
      * リダイレクトURL(redirect URL)
      *
-     * @var string
+     * @var string|null
      */
     protected $redirectUrl;
     /**
      * 識別子(entity ID)
      *
-     * @var string
+     * @var string|null
      */
     protected $entityId;
     /**
      * 応答URL(reply URL)
      *
-     * @var string
+     * @var string|null
      */
     protected $replyUrl;
     /**
      * ドメイン(domain)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDomain() : string
+    public function getDomain() : ?string
     {
         return $this->domain;
     }
     /**
      * ドメイン(domain)
      *
-     * @param string $domain
+     * @param string|null $domain
      *
      * @return self
      */
-    public function setDomain(string $domain) : self
+    public function setDomain(?string $domain) : self
     {
         $this->initialized['domain'] = true;
         $this->domain = $domain;
@@ -61,20 +61,20 @@ class IdentityProviderConfiguration extends \ArrayObject
     /**
      * リダイレクトURL(redirect URL)
      *
-     * @return string
+     * @return string|null
      */
-    public function getRedirectUrl() : string
+    public function getRedirectUrl() : ?string
     {
         return $this->redirectUrl;
     }
     /**
      * リダイレクトURL(redirect URL)
      *
-     * @param string $redirectUrl
+     * @param string|null $redirectUrl
      *
      * @return self
      */
-    public function setRedirectUrl(string $redirectUrl) : self
+    public function setRedirectUrl(?string $redirectUrl) : self
     {
         $this->initialized['redirectUrl'] = true;
         $this->redirectUrl = $redirectUrl;
@@ -83,20 +83,20 @@ class IdentityProviderConfiguration extends \ArrayObject
     /**
      * 識別子(entity ID)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEntityId() : string
+    public function getEntityId() : ?string
     {
         return $this->entityId;
     }
     /**
      * 識別子(entity ID)
      *
-     * @param string $entityId
+     * @param string|null $entityId
      *
      * @return self
      */
-    public function setEntityId(string $entityId) : self
+    public function setEntityId(?string $entityId) : self
     {
         $this->initialized['entityId'] = true;
         $this->entityId = $entityId;
@@ -105,20 +105,20 @@ class IdentityProviderConfiguration extends \ArrayObject
     /**
      * 応答URL(reply URL)
      *
-     * @return string
+     * @return string|null
      */
-    public function getReplyUrl() : string
+    public function getReplyUrl() : ?string
     {
         return $this->replyUrl;
     }
     /**
      * 応答URL(reply URL)
      *
-     * @param string $replyUrl
+     * @param string|null $replyUrl
      *
      * @return self
      */
-    public function setReplyUrl(string $replyUrl) : self
+    public function setReplyUrl(?string $replyUrl) : self
     {
         $this->initialized['replyUrl'] = true;
         $this->replyUrl = $replyUrl;

@@ -15,32 +15,32 @@ class SaasUser extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * メールアドレス(E-mail)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -49,20 +49,20 @@ class SaasUser extends \ArrayObject
     /**
      * メールアドレス(E-mail)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(E-mail)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;

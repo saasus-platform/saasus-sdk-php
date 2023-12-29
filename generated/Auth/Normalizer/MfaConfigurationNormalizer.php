@@ -41,9 +41,12 @@ class MfaConfigurationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('mfa_configuration', $data)) {
+        if (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] !== null) {
             $object->setMfaConfiguration($data['mfa_configuration']);
             unset($data['mfa_configuration']);
+        }
+        elseif (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] === null) {
+            $object->setMfaConfiguration(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

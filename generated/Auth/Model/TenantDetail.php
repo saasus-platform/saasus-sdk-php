@@ -15,55 +15,55 @@ class TenantDetail extends \ArrayObject
     /**
      * 現在のプランの開始日時(current plan period start)
      *
-     * @var int
+     * @var int|null
      */
     protected $currentPlanPeriodStart;
     /**
      * 現在のプランの終了日時(current plan period end)
      *
-     * @var int
+     * @var int|null
      */
     protected $currentPlanPeriodEnd;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $planId;
     /**
      * 
      *
-     * @var BillingInfo
+     * @var BillingInfo|null
      */
     protected $billingInfo;
     /**
      * テナント名(tenant name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 属性情報(attribute info)
      *
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $attributes;
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @var string
+     * @var string|null
      */
     protected $backOfficeStaffEmail;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $nextPlanId;
     /**
@@ -71,13 +71,13 @@ class TenantDetail extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @var int
+    * @var int|null
     */
     protected $usingNextPlanFrom;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $nextPlanTaxRateId;
     /**
@@ -88,7 +88,7 @@ class TenantDetail extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $prorationBehavior;
     /**
@@ -101,32 +101,32 @@ class TenantDetail extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @var bool
+    * @var bool|null
     */
     protected $deleteUsage;
     /**
      * 料金プラン履歴
      *
-     * @var PlanHistory[]
+     * @var PlanHistory[]|null
      */
     protected $planHistories;
     /**
      * 現在のプランの開始日時(current plan period start)
      *
-     * @return int
+     * @return int|null
      */
-    public function getCurrentPlanPeriodStart() : int
+    public function getCurrentPlanPeriodStart() : ?int
     {
         return $this->currentPlanPeriodStart;
     }
     /**
      * 現在のプランの開始日時(current plan period start)
      *
-     * @param int $currentPlanPeriodStart
+     * @param int|null $currentPlanPeriodStart
      *
      * @return self
      */
-    public function setCurrentPlanPeriodStart(int $currentPlanPeriodStart) : self
+    public function setCurrentPlanPeriodStart(?int $currentPlanPeriodStart) : self
     {
         $this->initialized['currentPlanPeriodStart'] = true;
         $this->currentPlanPeriodStart = $currentPlanPeriodStart;
@@ -135,20 +135,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 現在のプランの終了日時(current plan period end)
      *
-     * @return int
+     * @return int|null
      */
-    public function getCurrentPlanPeriodEnd() : int
+    public function getCurrentPlanPeriodEnd() : ?int
     {
         return $this->currentPlanPeriodEnd;
     }
     /**
      * 現在のプランの終了日時(current plan period end)
      *
-     * @param int $currentPlanPeriodEnd
+     * @param int|null $currentPlanPeriodEnd
      *
      * @return self
      */
-    public function setCurrentPlanPeriodEnd(int $currentPlanPeriodEnd) : self
+    public function setCurrentPlanPeriodEnd(?int $currentPlanPeriodEnd) : self
     {
         $this->initialized['currentPlanPeriodEnd'] = true;
         $this->currentPlanPeriodEnd = $currentPlanPeriodEnd;
@@ -157,20 +157,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -179,20 +179,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlanId() : string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
     /**
      * 
      *
-     * @param string $planId
+     * @param string|null $planId
      *
      * @return self
      */
-    public function setPlanId(string $planId) : self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -201,20 +201,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 
      *
-     * @return BillingInfo
+     * @return BillingInfo|null
      */
-    public function getBillingInfo() : BillingInfo
+    public function getBillingInfo() : ?BillingInfo
     {
         return $this->billingInfo;
     }
     /**
      * 
      *
-     * @param BillingInfo $billingInfo
+     * @param BillingInfo|null $billingInfo
      *
      * @return self
      */
-    public function setBillingInfo(BillingInfo $billingInfo) : self
+    public function setBillingInfo(?BillingInfo $billingInfo) : self
     {
         $this->initialized['billingInfo'] = true;
         $this->billingInfo = $billingInfo;
@@ -223,20 +223,20 @@ class TenantDetail extends \ArrayObject
     /**
      * テナント名(tenant name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * テナント名(tenant name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -245,20 +245,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 属性情報(attribute info)
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
-    public function getAttributes() : iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
     /**
      * 属性情報(attribute info)
      *
-     * @param mixed[] $attributes
+     * @param mixed[]|null $attributes
      *
      * @return self
      */
-    public function setAttributes(iterable $attributes) : self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -267,20 +267,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @return string
+     * @return string|null
      */
-    public function getBackOfficeStaffEmail() : string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
     /**
      * 事務管理部門スタッフメールアドレス(administrative staff email address)
      *
-     * @param string $backOfficeStaffEmail
+     * @param string|null $backOfficeStaffEmail
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(string $backOfficeStaffEmail) : self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;
@@ -289,20 +289,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getNextPlanId() : string
+    public function getNextPlanId() : ?string
     {
         return $this->nextPlanId;
     }
     /**
      * 
      *
-     * @param string $nextPlanId
+     * @param string|null $nextPlanId
      *
      * @return self
      */
-    public function setNextPlanId(string $nextPlanId) : self
+    public function setNextPlanId(?string $nextPlanId) : self
     {
         $this->initialized['nextPlanId'] = true;
         $this->nextPlanId = $nextPlanId;
@@ -313,9 +313,9 @@ class TenantDetail extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @return int
+    * @return int|null
     */
-    public function getUsingNextPlanFrom() : int
+    public function getUsingNextPlanFrom() : ?int
     {
         return $this->usingNextPlanFrom;
     }
@@ -324,11 +324,11 @@ class TenantDetail extends \ArrayObject
     (Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.))
     
     *
-    * @param int $usingNextPlanFrom
+    * @param int|null $usingNextPlanFrom
     *
     * @return self
     */
-    public function setUsingNextPlanFrom(int $usingNextPlanFrom) : self
+    public function setUsingNextPlanFrom(?int $usingNextPlanFrom) : self
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
@@ -337,20 +337,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getNextPlanTaxRateId() : string
+    public function getNextPlanTaxRateId() : ?string
     {
         return $this->nextPlanTaxRateId;
     }
     /**
      * 
      *
-     * @param string $nextPlanTaxRateId
+     * @param string|null $nextPlanTaxRateId
      *
      * @return self
      */
-    public function setNextPlanTaxRateId(string $nextPlanTaxRateId) : self
+    public function setNextPlanTaxRateId(?string $nextPlanTaxRateId) : self
     {
         $this->initialized['nextPlanTaxRateId'] = true;
         $this->nextPlanTaxRateId = $nextPlanTaxRateId;
@@ -364,9 +364,9 @@ class TenantDetail extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getProrationBehavior() : string
+    public function getProrationBehavior() : ?string
     {
         return $this->prorationBehavior;
     }
@@ -378,11 +378,11 @@ class TenantDetail extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @param string $prorationBehavior
+    * @param string|null $prorationBehavior
     *
     * @return self
     */
-    public function setProrationBehavior(string $prorationBehavior) : self
+    public function setProrationBehavior(?string $prorationBehavior) : self
     {
         $this->initialized['prorationBehavior'] = true;
         $this->prorationBehavior = $prorationBehavior;
@@ -398,9 +398,9 @@ class TenantDetail extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @return bool
+    * @return bool|null
     */
-    public function getDeleteUsage() : bool
+    public function getDeleteUsage() : ?bool
     {
         return $this->deleteUsage;
     }
@@ -414,11 +414,11 @@ class TenantDetail extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @param bool $deleteUsage
+    * @param bool|null $deleteUsage
     *
     * @return self
     */
-    public function setDeleteUsage(bool $deleteUsage) : self
+    public function setDeleteUsage(?bool $deleteUsage) : self
     {
         $this->initialized['deleteUsage'] = true;
         $this->deleteUsage = $deleteUsage;
@@ -427,20 +427,20 @@ class TenantDetail extends \ArrayObject
     /**
      * 料金プラン履歴
      *
-     * @return PlanHistory[]
+     * @return PlanHistory[]|null
      */
-    public function getPlanHistories() : array
+    public function getPlanHistories() : ?array
     {
         return $this->planHistories;
     }
     /**
      * 料金プラン履歴
      *
-     * @param PlanHistory[] $planHistories
+     * @param PlanHistory[]|null $planHistories
      *
      * @return self
      */
-    public function setPlanHistories(array $planHistories) : self
+    public function setPlanHistories(?array $planHistories) : self
     {
         $this->initialized['planHistories'] = true;
         $this->planHistories = $planHistories;

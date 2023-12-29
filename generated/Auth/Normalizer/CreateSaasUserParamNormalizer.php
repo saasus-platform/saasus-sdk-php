@@ -41,13 +41,19 @@ class CreateSaasUserParamNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
         }
-        if (\array_key_exists('password', $data)) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('password', $data) && $data['password'] !== null) {
             $object->setPassword($data['password']);
             unset($data['password']);
+        }
+        elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+            $object->setPassword(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

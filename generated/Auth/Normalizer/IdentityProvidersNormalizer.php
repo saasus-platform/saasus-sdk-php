@@ -41,9 +41,12 @@ class IdentityProvidersNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('google', $data)) {
+        if (\array_key_exists('google', $data) && $data['google'] !== null) {
             $object->setGoogle($this->denormalizer->denormalize($data['google'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderProps', 'json', $context));
             unset($data['google']);
+        }
+        elseif (\array_key_exists('google', $data) && $data['google'] === null) {
+            $object->setGoogle(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

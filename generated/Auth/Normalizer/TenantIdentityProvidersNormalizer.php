@@ -41,13 +41,16 @@ class TenantIdentityProvidersNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('saml', $data)) {
+        if (\array_key_exists('saml', $data) && $data['saml'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['saml'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setSaml($values);
             unset($data['saml']);
+        }
+        elseif (\array_key_exists('saml', $data) && $data['saml'] === null) {
+            $object->setSaml(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

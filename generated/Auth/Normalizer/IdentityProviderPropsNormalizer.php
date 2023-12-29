@@ -41,21 +41,33 @@ class IdentityProviderPropsNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('application_id', $data)) {
+        if (\array_key_exists('application_id', $data) && $data['application_id'] !== null) {
             $object->setApplicationId($data['application_id']);
             unset($data['application_id']);
         }
-        if (\array_key_exists('application_secret', $data)) {
+        elseif (\array_key_exists('application_id', $data) && $data['application_id'] === null) {
+            $object->setApplicationId(null);
+        }
+        if (\array_key_exists('application_secret', $data) && $data['application_secret'] !== null) {
             $object->setApplicationSecret($data['application_secret']);
             unset($data['application_secret']);
         }
-        if (\array_key_exists('approval_scope', $data)) {
+        elseif (\array_key_exists('application_secret', $data) && $data['application_secret'] === null) {
+            $object->setApplicationSecret(null);
+        }
+        if (\array_key_exists('approval_scope', $data) && $data['approval_scope'] !== null) {
             $object->setApprovalScope($data['approval_scope']);
             unset($data['approval_scope']);
         }
-        if (\array_key_exists('is_button_hidden', $data)) {
+        elseif (\array_key_exists('approval_scope', $data) && $data['approval_scope'] === null) {
+            $object->setApprovalScope(null);
+        }
+        if (\array_key_exists('is_button_hidden', $data) && $data['is_button_hidden'] !== null) {
             $object->setIsButtonHidden($data['is_button_hidden']);
             unset($data['is_button_hidden']);
+        }
+        elseif (\array_key_exists('is_button_hidden', $data) && $data['is_button_hidden'] === null) {
+            $object->setIsButtonHidden(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -15,26 +15,26 @@ class PlanHistories extends \ArrayObject
     /**
      * 料金プラン履歴
      *
-     * @var PlanHistory[]
+     * @var PlanHistory[]|null
      */
     protected $planHistories;
     /**
      * 料金プラン履歴
      *
-     * @return PlanHistory[]
+     * @return PlanHistory[]|null
      */
-    public function getPlanHistories() : array
+    public function getPlanHistories() : ?array
     {
         return $this->planHistories;
     }
     /**
      * 料金プラン履歴
      *
-     * @param PlanHistory[] $planHistories
+     * @param PlanHistory[]|null $planHistories
      *
      * @return self
      */
-    public function setPlanHistories(array $planHistories) : self
+    public function setPlanHistories(?array $planHistories) : self
     {
         $this->initialized['planHistories'] = true;
         $this->planHistories = $planHistories;

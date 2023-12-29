@@ -15,38 +15,38 @@ class UpdateBasicInfoParam extends \ArrayObject
     /**
      * ドメイン名(Domain Name)
      *
-     * @var string
+     * @var string|null
      */
     protected $domainName;
     /**
      * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
-     * @var string
+     * @var string|null
      */
     protected $fromEmailAddress;
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @var string
+     * @var string|null
      */
     protected $replyEmailAddress;
     /**
      * ドメイン名(Domain Name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDomainName() : string
+    public function getDomainName() : ?string
     {
         return $this->domainName;
     }
     /**
      * ドメイン名(Domain Name)
      *
-     * @param string $domainName
+     * @param string|null $domainName
      *
      * @return self
      */
-    public function setDomainName(string $domainName) : self
+    public function setDomainName(?string $domainName) : self
     {
         $this->initialized['domainName'] = true;
         $this->domainName = $domainName;
@@ -55,20 +55,20 @@ class UpdateBasicInfoParam extends \ArrayObject
     /**
      * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
-     * @return string
+     * @return string|null
      */
-    public function getFromEmailAddress() : string
+    public function getFromEmailAddress() : ?string
     {
         return $this->fromEmailAddress;
     }
     /**
      * 認証メールの送信元メールアドレス(Sender email of authentication email)
      *
-     * @param string $fromEmailAddress
+     * @param string|null $fromEmailAddress
      *
      * @return self
      */
-    public function setFromEmailAddress(string $fromEmailAddress) : self
+    public function setFromEmailAddress(?string $fromEmailAddress) : self
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
@@ -77,20 +77,20 @@ class UpdateBasicInfoParam extends \ArrayObject
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @return string
+     * @return string|null
      */
-    public function getReplyEmailAddress() : string
+    public function getReplyEmailAddress() : ?string
     {
         return $this->replyEmailAddress;
     }
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @param string $replyEmailAddress
+     * @param string|null $replyEmailAddress
      *
      * @return self
      */
-    public function setReplyEmailAddress(string $replyEmailAddress) : self
+    public function setReplyEmailAddress(?string $replyEmailAddress) : self
     {
         $this->initialized['replyEmailAddress'] = true;
         $this->replyEmailAddress = $replyEmailAddress;

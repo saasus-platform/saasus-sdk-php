@@ -41,9 +41,12 @@ class DeviceConfigurationNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('device_remembering', $data)) {
+        if (\array_key_exists('device_remembering', $data) && $data['device_remembering'] !== null) {
             $object->setDeviceRemembering($data['device_remembering']);
             unset($data['device_remembering']);
+        }
+        elseif (\array_key_exists('device_remembering', $data) && $data['device_remembering'] === null) {
+            $object->setDeviceRemembering(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

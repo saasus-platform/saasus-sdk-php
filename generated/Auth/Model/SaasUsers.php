@@ -15,26 +15,26 @@ class SaasUsers extends \ArrayObject
     /**
      * 
      *
-     * @var SaasUser[]
+     * @var SaasUser[]|null
      */
     protected $users;
     /**
      * 
      *
-     * @return SaasUser[]
+     * @return SaasUser[]|null
      */
-    public function getUsers() : array
+    public function getUsers() : ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param SaasUser[] $users
+     * @param SaasUser[]|null $users
      *
      * @return self
      */
-    public function setUsers(array $users) : self
+    public function setUsers(?array $users) : self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

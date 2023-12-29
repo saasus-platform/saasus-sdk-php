@@ -41,9 +41,12 @@ class InvitationValidityNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('is_valid', $data)) {
+        if (\array_key_exists('is_valid', $data) && $data['is_valid'] !== null) {
             $object->setIsValid($data['is_valid']);
             unset($data['is_valid']);
+        }
+        elseif (\array_key_exists('is_valid', $data) && $data['is_valid'] === null) {
+            $object->setIsValid(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

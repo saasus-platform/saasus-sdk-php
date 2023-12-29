@@ -15,26 +15,26 @@ class CreateTenantUserRolesParam extends \ArrayObject
     /**
      * 役割(ロール)情報(Role Info)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $roleNames;
     /**
      * 役割(ロール)情報(Role Info)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getRoleNames() : array
+    public function getRoleNames() : ?array
     {
         return $this->roleNames;
     }
     /**
      * 役割(ロール)情報(Role Info)
      *
-     * @param string[] $roleNames
+     * @param string[]|null $roleNames
      *
      * @return self
      */
-    public function setRoleNames(array $roleNames) : self
+    public function setRoleNames(?array $roleNames) : self
     {
         $this->initialized['roleNames'] = true;
         $this->roleNames = $roleNames;

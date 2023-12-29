@@ -41,17 +41,26 @@ class BillingInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('address', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingAddress', 'json', $context));
             unset($data['address']);
         }
-        if (\array_key_exists('invoice_language', $data)) {
+        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+            $object->setAddress(null);
+        }
+        if (\array_key_exists('invoice_language', $data) && $data['invoice_language'] !== null) {
             $object->setInvoiceLanguage($data['invoice_language']);
             unset($data['invoice_language']);
+        }
+        elseif (\array_key_exists('invoice_language', $data) && $data['invoice_language'] === null) {
+            $object->setInvoiceLanguage(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

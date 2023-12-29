@@ -41,19 +41,28 @@ class UserAvailableTenantNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('completed_sign_up', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('completed_sign_up', $data) && $data['completed_sign_up'] !== null) {
             $object->setCompletedSignUp($data['completed_sign_up']);
             unset($data['completed_sign_up']);
         }
-        if (\array_key_exists('envs', $data)) {
+        elseif (\array_key_exists('completed_sign_up', $data) && $data['completed_sign_up'] === null) {
+            $object->setCompletedSignUp(null);
+        }
+        if (\array_key_exists('envs', $data) && $data['envs'] !== null) {
             $values = array();
             foreach ($data['envs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAvailableEnv', 'json', $context);
@@ -61,7 +70,10 @@ class UserAvailableTenantNormalizer implements DenormalizerInterface, Normalizer
             $object->setEnvs($values);
             unset($data['envs']);
         }
-        if (\array_key_exists('user_attribute', $data)) {
+        elseif (\array_key_exists('envs', $data) && $data['envs'] === null) {
+            $object->setEnvs(null);
+        }
+        if (\array_key_exists('user_attribute', $data) && $data['user_attribute'] !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['user_attribute'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
@@ -69,17 +81,29 @@ class UserAvailableTenantNormalizer implements DenormalizerInterface, Normalizer
             $object->setUserAttribute($values_1);
             unset($data['user_attribute']);
         }
-        if (\array_key_exists('back_office_staff_email', $data)) {
+        elseif (\array_key_exists('user_attribute', $data) && $data['user_attribute'] === null) {
+            $object->setUserAttribute(null);
+        }
+        if (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] !== null) {
             $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
             unset($data['back_office_staff_email']);
         }
-        if (\array_key_exists('plan_id', $data)) {
+        elseif (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] === null) {
+            $object->setBackOfficeStaffEmail(null);
+        }
+        if (\array_key_exists('plan_id', $data) && $data['plan_id'] !== null) {
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
-        if (\array_key_exists('is_paid', $data)) {
+        elseif (\array_key_exists('plan_id', $data) && $data['plan_id'] === null) {
+            $object->setPlanId(null);
+        }
+        if (\array_key_exists('is_paid', $data) && $data['is_paid'] !== null) {
             $object->setIsPaid($data['is_paid']);
             unset($data['is_paid']);
+        }
+        elseif (\array_key_exists('is_paid', $data) && $data['is_paid'] === null) {
+            $object->setIsPaid(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

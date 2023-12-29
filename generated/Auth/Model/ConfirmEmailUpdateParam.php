@@ -15,32 +15,32 @@ class ConfirmEmailUpdateParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $code;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getCode() : string
+    public function getCode() : ?string
     {
         return $this->code;
     }
     /**
      * 
      *
-     * @param string $code
+     * @param string|null $code
      *
      * @return self
      */
-    public function setCode(string $code) : self
+    public function setCode(?string $code) : self
     {
         $this->initialized['code'] = true;
         $this->code = $code;
@@ -49,20 +49,20 @@ class ConfirmEmailUpdateParam extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * 
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;

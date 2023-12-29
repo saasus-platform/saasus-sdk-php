@@ -41,17 +41,26 @@ class CustomizePagePropsNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('html_contents', $data)) {
+        if (\array_key_exists('html_contents', $data) && $data['html_contents'] !== null) {
             $object->setHtmlContents($data['html_contents']);
             unset($data['html_contents']);
         }
-        if (\array_key_exists('is_terms_of_service', $data)) {
+        elseif (\array_key_exists('html_contents', $data) && $data['html_contents'] === null) {
+            $object->setHtmlContents(null);
+        }
+        if (\array_key_exists('is_terms_of_service', $data) && $data['is_terms_of_service'] !== null) {
             $object->setIsTermsOfService($data['is_terms_of_service']);
             unset($data['is_terms_of_service']);
         }
-        if (\array_key_exists('is_privacy_policy', $data)) {
+        elseif (\array_key_exists('is_terms_of_service', $data) && $data['is_terms_of_service'] === null) {
+            $object->setIsTermsOfService(null);
+        }
+        if (\array_key_exists('is_privacy_policy', $data) && $data['is_privacy_policy'] !== null) {
             $object->setIsPrivacyPolicy($data['is_privacy_policy']);
             unset($data['is_privacy_policy']);
+        }
+        elseif (\array_key_exists('is_privacy_policy', $data) && $data['is_privacy_policy'] === null) {
+            $object->setIsPrivacyPolicy(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

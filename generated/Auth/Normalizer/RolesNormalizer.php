@@ -41,13 +41,16 @@ class RolesNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('roles', $data)) {
+        if (\array_key_exists('roles', $data) && $data['roles'] !== null) {
             $values = array();
             foreach ($data['roles'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Role', 'json', $context);
             }
             $object->setRoles($values);
             unset($data['roles']);
+        }
+        elseif (\array_key_exists('roles', $data) && $data['roles'] === null) {
+            $object->setRoles(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

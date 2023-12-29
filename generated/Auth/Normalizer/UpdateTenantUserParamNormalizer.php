@@ -41,13 +41,16 @@ class UpdateTenantUserParamNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('attributes', $data)) {
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['attributes'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setAttributes($values);
             unset($data['attributes']);
+        }
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+            $object->setAttributes(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -15,38 +15,38 @@ class SaasId extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $tenantId;
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $envId;
     /**
      * saas id
      *
-     * @var string
+     * @var string|null
      */
     protected $saasId;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTenantId() : string
+    public function getTenantId() : ?string
     {
         return $this->tenantId;
     }
     /**
      * 
      *
-     * @param string $tenantId
+     * @param string|null $tenantId
      *
      * @return self
      */
-    public function setTenantId(string $tenantId) : self
+    public function setTenantId(?string $tenantId) : self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;
@@ -55,20 +55,20 @@ class SaasId extends \ArrayObject
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getEnvId() : int
+    public function getEnvId() : ?int
     {
         return $this->envId;
     }
     /**
      * 
      *
-     * @param int $envId
+     * @param int|null $envId
      *
      * @return self
      */
-    public function setEnvId(int $envId) : self
+    public function setEnvId(?int $envId) : self
     {
         $this->initialized['envId'] = true;
         $this->envId = $envId;
@@ -77,20 +77,20 @@ class SaasId extends \ArrayObject
     /**
      * saas id
      *
-     * @return string
+     * @return string|null
      */
-    public function getSaasId() : string
+    public function getSaasId() : ?string
     {
         return $this->saasId;
     }
     /**
      * saas id
      *
-     * @param string $saasId
+     * @param string|null $saasId
      *
      * @return self
      */
-    public function setSaasId(string $saasId) : self
+    public function setSaasId(?string $saasId) : self
     {
         $this->initialized['saasId'] = true;
         $this->saasId = $saasId;

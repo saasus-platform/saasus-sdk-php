@@ -41,9 +41,12 @@ class SelfRegistNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('enable', $data)) {
+        if (\array_key_exists('enable', $data) && $data['enable'] !== null) {
             $object->setEnable($data['enable']);
             unset($data['enable']);
+        }
+        elseif (\array_key_exists('enable', $data) && $data['enable'] === null) {
+            $object->setEnable(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

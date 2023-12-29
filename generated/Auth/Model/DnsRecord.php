@@ -15,38 +15,38 @@ class DnsRecord extends \ArrayObject
     /**
      * CNAMEリソースレコード(CNAME Resource Record)
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * レコード名(Record Name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 値(Value)
      *
-     * @var string
+     * @var string|null
      */
     protected $value;
     /**
      * CNAMEリソースレコード(CNAME Resource Record)
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * CNAMEリソースレコード(CNAME Resource Record)
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -55,20 +55,20 @@ class DnsRecord extends \ArrayObject
     /**
      * レコード名(Record Name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * レコード名(Record Name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -77,20 +77,20 @@ class DnsRecord extends \ArrayObject
     /**
      * 値(Value)
      *
-     * @return string
+     * @return string|null
      */
-    public function getValue() : string
+    public function getValue() : ?string
     {
         return $this->value;
     }
     /**
      * 値(Value)
      *
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */
-    public function setValue(string $value) : self
+    public function setValue(?string $value) : self
     {
         $this->initialized['value'] = true;
         $this->value = $value;

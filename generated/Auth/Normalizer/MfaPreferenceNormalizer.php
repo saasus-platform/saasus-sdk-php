@@ -41,13 +41,19 @@ class MfaPreferenceNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('enabled', $data)) {
+        if (\array_key_exists('enabled', $data) && $data['enabled'] !== null) {
             $object->setEnabled($data['enabled']);
             unset($data['enabled']);
         }
-        if (\array_key_exists('method', $data)) {
+        elseif (\array_key_exists('enabled', $data) && $data['enabled'] === null) {
+            $object->setEnabled(null);
+        }
+        if (\array_key_exists('method', $data) && $data['method'] !== null) {
             $object->setMethod($data['method']);
             unset($data['method']);
+        }
+        elseif (\array_key_exists('method', $data) && $data['method'] === null) {
+            $object->setMethod(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

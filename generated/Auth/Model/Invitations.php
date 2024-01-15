@@ -15,26 +15,26 @@ class Invitations extends \ArrayObject
     /**
      * 招待一覧(invitation list)
      *
-     * @var Invitation[]
+     * @var Invitation[]|null
      */
     protected $invitations;
     /**
      * 招待一覧(invitation list)
      *
-     * @return Invitation[]
+     * @return Invitation[]|null
      */
-    public function getInvitations() : array
+    public function getInvitations() : ?array
     {
         return $this->invitations;
     }
     /**
      * 招待一覧(invitation list)
      *
-     * @param Invitation[] $invitations
+     * @param Invitation[]|null $invitations
      *
      * @return self
      */
-    public function setInvitations(array $invitations) : self
+    public function setInvitations(?array $invitations) : self
     {
         $this->initialized['invitations'] = true;
         $this->invitations = $invitations;

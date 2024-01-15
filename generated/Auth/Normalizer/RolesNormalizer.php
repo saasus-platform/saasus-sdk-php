@@ -18,11 +18,11 @@ class RolesNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Roles';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Roles';
     }
@@ -41,13 +41,16 @@ class RolesNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('roles', $data)) {
+        if (\array_key_exists('roles', $data) && $data['roles'] !== null) {
             $values = array();
             foreach ($data['roles'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Role', 'json', $context);
             }
             $object->setRoles($values);
             unset($data['roles']);
+        }
+        elseif (\array_key_exists('roles', $data) && $data['roles'] === null) {
+            $object->setRoles(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class RolesNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Roles' => false);
     }
 }

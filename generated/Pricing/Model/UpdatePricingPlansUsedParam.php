@@ -15,26 +15,26 @@ class UpdatePricingPlansUsedParam extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $planIds;
     /**
      * 
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getPlanIds() : array
+    public function getPlanIds() : ?array
     {
         return $this->planIds;
     }
     /**
      * 
      *
-     * @param string[] $planIds
+     * @param string[]|null $planIds
      *
      * @return self
      */
-    public function setPlanIds(array $planIds) : self
+    public function setPlanIds(?array $planIds) : self
     {
         $this->initialized['planIds'] = true;
         $this->planIds = $planIds;

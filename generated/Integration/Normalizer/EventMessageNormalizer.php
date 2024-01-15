@@ -18,11 +18,11 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage';
     }
@@ -41,17 +41,26 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('event_type', $data)) {
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
             $object->setEventType($data['event_type']);
             unset($data['event_type']);
         }
-        if (\array_key_exists('event_detail_type', $data)) {
+        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+            $object->setEventType(null);
+        }
+        if (\array_key_exists('event_detail_type', $data) && $data['event_detail_type'] !== null) {
             $object->setEventDetailType($data['event_detail_type']);
             unset($data['event_detail_type']);
         }
-        if (\array_key_exists('message', $data)) {
+        elseif (\array_key_exists('event_detail_type', $data) && $data['event_detail_type'] === null) {
+            $object->setEventDetailType(null);
+        }
+        if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
             unset($data['message']);
+        }
+        elseif (\array_key_exists('message', $data) && $data['message'] === null) {
+            $object->setMessage(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage' => false);
     }
 }

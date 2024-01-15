@@ -18,11 +18,11 @@ class DnsRecordNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord';
     }
@@ -41,17 +41,26 @@ class DnsRecordNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('type', $data)) {
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('value', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
             unset($data['value']);
+        }
+        elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+            $object->setValue(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class DnsRecordNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord' => false);
     }
 }

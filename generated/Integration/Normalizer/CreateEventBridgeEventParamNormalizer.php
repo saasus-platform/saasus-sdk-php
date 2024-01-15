@@ -18,11 +18,11 @@ class CreateEventBridgeEventParamNormalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\CreateEventBridgeEventParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\CreateEventBridgeEventParam';
     }
@@ -41,13 +41,16 @@ class CreateEventBridgeEventParamNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('event_messages', $data)) {
+        if (\array_key_exists('event_messages', $data) && $data['event_messages'] !== null) {
             $values = array();
             foreach ($data['event_messages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage', 'json', $context);
             }
             $object->setEventMessages($values);
             unset($data['event_messages']);
+        }
+        elseif (\array_key_exists('event_messages', $data) && $data['event_messages'] === null) {
+            $object->setEventMessages(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class CreateEventBridgeEventParamNormalizer implements DenormalizerInterface, No
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\CreateEventBridgeEventParam' => false);
     }
 }

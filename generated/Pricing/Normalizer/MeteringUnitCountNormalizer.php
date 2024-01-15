@@ -18,11 +18,11 @@ class MeteringUnitCountNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitCount';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitCount';
     }
@@ -41,13 +41,19 @@ class MeteringUnitCountNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('timestamp', $data)) {
+        if (\array_key_exists('timestamp', $data) && $data['timestamp'] !== null) {
             $object->setTimestamp($data['timestamp']);
             unset($data['timestamp']);
         }
-        if (\array_key_exists('count', $data)) {
+        elseif (\array_key_exists('timestamp', $data) && $data['timestamp'] === null) {
+            $object->setTimestamp(null);
+        }
+        if (\array_key_exists('count', $data) && $data['count'] !== null) {
             $object->setCount($data['count']);
             unset($data['count']);
+        }
+        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+            $object->setCount(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class MeteringUnitCountNormalizer implements DenormalizerInterface, NormalizerIn
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitCount' => false);
     }
 }

@@ -18,11 +18,11 @@ class SaasIdNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId';
     }
@@ -41,17 +41,26 @@ class SaasIdNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tenant_id', $data)) {
+        if (\array_key_exists('tenant_id', $data) && $data['tenant_id'] !== null) {
             $object->setTenantId($data['tenant_id']);
             unset($data['tenant_id']);
         }
-        if (\array_key_exists('env_id', $data)) {
+        elseif (\array_key_exists('tenant_id', $data) && $data['tenant_id'] === null) {
+            $object->setTenantId(null);
+        }
+        if (\array_key_exists('env_id', $data) && $data['env_id'] !== null) {
             $object->setEnvId($data['env_id']);
             unset($data['env_id']);
         }
-        if (\array_key_exists('saas_id', $data)) {
+        elseif (\array_key_exists('env_id', $data) && $data['env_id'] === null) {
+            $object->setEnvId(null);
+        }
+        if (\array_key_exists('saas_id', $data) && $data['saas_id'] !== null) {
             $object->setSaasId($data['saas_id']);
             unset($data['saas_id']);
+        }
+        elseif (\array_key_exists('saas_id', $data) && $data['saas_id'] === null) {
+            $object->setSaasId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class SaasIdNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId' => false);
     }
 }

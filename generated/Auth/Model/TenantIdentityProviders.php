@@ -15,26 +15,26 @@ class TenantIdentityProviders extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>|null
      */
     protected $saml;
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>|null
      */
-    public function getSaml() : iterable
+    public function getSaml() : ?iterable
     {
         return $this->saml;
     }
     /**
      * 
      *
-     * @param mixed[] $saml
+     * @param array<string, mixed>|null $saml
      *
      * @return self
      */
-    public function setSaml(iterable $saml) : self
+    public function setSaml(?iterable $saml) : self
     {
         $this->initialized['saml'] = true;
         $this->saml = $saml;

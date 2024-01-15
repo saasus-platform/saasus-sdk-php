@@ -18,11 +18,11 @@ class SettingsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Settings';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Settings';
     }
@@ -41,41 +41,68 @@ class SettingsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('product_code', $data)) {
+        if (\array_key_exists('product_code', $data) && $data['product_code'] !== null) {
             $object->setProductCode($data['product_code']);
             unset($data['product_code']);
         }
-        if (\array_key_exists('role_arn', $data)) {
+        elseif (\array_key_exists('product_code', $data) && $data['product_code'] === null) {
+            $object->setProductCode(null);
+        }
+        if (\array_key_exists('role_arn', $data) && $data['role_arn'] !== null) {
             $object->setRoleArn($data['role_arn']);
             unset($data['role_arn']);
         }
-        if (\array_key_exists('role_external_id', $data)) {
+        elseif (\array_key_exists('role_arn', $data) && $data['role_arn'] === null) {
+            $object->setRoleArn(null);
+        }
+        if (\array_key_exists('role_external_id', $data) && $data['role_external_id'] !== null) {
             $object->setRoleExternalId($data['role_external_id']);
             unset($data['role_external_id']);
         }
-        if (\array_key_exists('sns_topic_arn', $data)) {
+        elseif (\array_key_exists('role_external_id', $data) && $data['role_external_id'] === null) {
+            $object->setRoleExternalId(null);
+        }
+        if (\array_key_exists('sns_topic_arn', $data) && $data['sns_topic_arn'] !== null) {
             $object->setSnsTopicArn($data['sns_topic_arn']);
             unset($data['sns_topic_arn']);
         }
-        if (\array_key_exists('cas_bucket_name', $data)) {
+        elseif (\array_key_exists('sns_topic_arn', $data) && $data['sns_topic_arn'] === null) {
+            $object->setSnsTopicArn(null);
+        }
+        if (\array_key_exists('cas_bucket_name', $data) && $data['cas_bucket_name'] !== null) {
             $object->setCasBucketName($data['cas_bucket_name']);
             unset($data['cas_bucket_name']);
         }
-        if (\array_key_exists('cas_sns_topic_arn', $data)) {
+        elseif (\array_key_exists('cas_bucket_name', $data) && $data['cas_bucket_name'] === null) {
+            $object->setCasBucketName(null);
+        }
+        if (\array_key_exists('cas_sns_topic_arn', $data) && $data['cas_sns_topic_arn'] !== null) {
             $object->setCasSnsTopicArn($data['cas_sns_topic_arn']);
             unset($data['cas_sns_topic_arn']);
         }
-        if (\array_key_exists('seller_sns_topic_arn', $data)) {
+        elseif (\array_key_exists('cas_sns_topic_arn', $data) && $data['cas_sns_topic_arn'] === null) {
+            $object->setCasSnsTopicArn(null);
+        }
+        if (\array_key_exists('seller_sns_topic_arn', $data) && $data['seller_sns_topic_arn'] !== null) {
             $object->setSellerSnsTopicArn($data['seller_sns_topic_arn']);
             unset($data['seller_sns_topic_arn']);
         }
-        if (\array_key_exists('redirect_sign_up_page_function_url', $data)) {
+        elseif (\array_key_exists('seller_sns_topic_arn', $data) && $data['seller_sns_topic_arn'] === null) {
+            $object->setSellerSnsTopicArn(null);
+        }
+        if (\array_key_exists('redirect_sign_up_page_function_url', $data) && $data['redirect_sign_up_page_function_url'] !== null) {
             $object->setRedirectSignUpPageFunctionUrl($data['redirect_sign_up_page_function_url']);
             unset($data['redirect_sign_up_page_function_url']);
         }
-        if (\array_key_exists('sqs_arn', $data)) {
+        elseif (\array_key_exists('redirect_sign_up_page_function_url', $data) && $data['redirect_sign_up_page_function_url'] === null) {
+            $object->setRedirectSignUpPageFunctionUrl(null);
+        }
+        if (\array_key_exists('sqs_arn', $data) && $data['sqs_arn'] !== null) {
             $object->setSqsArn($data['sqs_arn']);
             unset($data['sqs_arn']);
+        }
+        elseif (\array_key_exists('sqs_arn', $data) && $data['sqs_arn'] === null) {
+            $object->setSqsArn(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -105,5 +132,9 @@ class SettingsNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Settings' => false);
     }
 }

@@ -18,11 +18,11 @@ class ConfirmExternalUserLinkParamNormalizer implements DenormalizerInterface, N
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmExternalUserLinkParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmExternalUserLinkParam';
     }
@@ -41,13 +41,19 @@ class ConfirmExternalUserLinkParamNormalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('access_token', $data)) {
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
         }
-        if (\array_key_exists('code', $data)) {
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
+        }
+        if (\array_key_exists('code', $data) && $data['code'] !== null) {
             $object->setCode($data['code']);
             unset($data['code']);
+        }
+        elseif (\array_key_exists('code', $data) && $data['code'] === null) {
+            $object->setCode(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class ConfirmExternalUserLinkParamNormalizer implements DenormalizerInterface, N
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmExternalUserLinkParam' => false);
     }
 }

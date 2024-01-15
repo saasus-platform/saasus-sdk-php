@@ -18,11 +18,11 @@ class SavePricingMenuParamNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\SavePricingMenuParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\SavePricingMenuParam';
     }
@@ -41,25 +41,37 @@ class SavePricingMenuParamNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        if (\array_key_exists('unit_ids', $data)) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('unit_ids', $data) && $data['unit_ids'] !== null) {
             $values = array();
             foreach ($data['unit_ids'] as $value) {
                 $values[] = $value;
             }
             $object->setUnitIds($values);
             unset($data['unit_ids']);
+        }
+        elseif (\array_key_exists('unit_ids', $data) && $data['unit_ids'] === null) {
+            $object->setUnitIds(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -88,5 +100,9 @@ class SavePricingMenuParamNormalizer implements DenormalizerInterface, Normalize
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\SavePricingMenuParam' => false);
     }
 }

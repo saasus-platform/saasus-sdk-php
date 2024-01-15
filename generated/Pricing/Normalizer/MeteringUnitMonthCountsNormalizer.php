@@ -18,11 +18,11 @@ class MeteringUnitMonthCountsNormalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitMonthCounts';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitMonthCounts';
     }
@@ -41,13 +41,16 @@ class MeteringUnitMonthCountsNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('counts', $data)) {
+        if (\array_key_exists('counts', $data) && $data['counts'] !== null) {
             $values = array();
             foreach ($data['counts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitMonthCount', 'json', $context);
             }
             $object->setCounts($values);
             unset($data['counts']);
+        }
+        elseif (\array_key_exists('counts', $data) && $data['counts'] === null) {
+            $object->setCounts(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class MeteringUnitMonthCountsNormalizer implements DenormalizerInterface, Normal
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitMonthCounts' => false);
     }
 }

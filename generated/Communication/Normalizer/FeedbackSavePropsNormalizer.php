@@ -18,11 +18,11 @@ class FeedbackSavePropsNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\FeedbackSaveProps';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\FeedbackSaveProps';
     }
@@ -41,13 +41,19 @@ class FeedbackSavePropsNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('feedback_title', $data)) {
+        if (\array_key_exists('feedback_title', $data) && $data['feedback_title'] !== null) {
             $object->setFeedbackTitle($data['feedback_title']);
             unset($data['feedback_title']);
         }
-        if (\array_key_exists('feedback_description', $data)) {
+        elseif (\array_key_exists('feedback_title', $data) && $data['feedback_title'] === null) {
+            $object->setFeedbackTitle(null);
+        }
+        if (\array_key_exists('feedback_description', $data) && $data['feedback_description'] !== null) {
             $object->setFeedbackDescription($data['feedback_description']);
             unset($data['feedback_description']);
+        }
+        elseif (\array_key_exists('feedback_description', $data) && $data['feedback_description'] === null) {
+            $object->setFeedbackDescription(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class FeedbackSavePropsNormalizer implements DenormalizerInterface, NormalizerIn
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\FeedbackSaveProps' => false);
     }
 }

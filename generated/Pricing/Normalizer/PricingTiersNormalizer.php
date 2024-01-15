@@ -18,11 +18,11 @@ class PricingTiersNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTiers';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTiers';
     }
@@ -41,13 +41,16 @@ class PricingTiersNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tiers', $data)) {
+        if (\array_key_exists('tiers', $data) && $data['tiers'] !== null) {
             $values = array();
             foreach ($data['tiers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTier', 'json', $context);
             }
             $object->setTiers($values);
             unset($data['tiers']);
+        }
+        elseif (\array_key_exists('tiers', $data) && $data['tiers'] === null) {
+            $object->setTiers(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class PricingTiersNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTiers' => false);
     }
 }

@@ -15,32 +15,32 @@ class CreateSaasUserParam extends \ArrayObject
     /**
      * メールアドレス(E-mail)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * パスワード(Password)
      *
-     * @var string
+     * @var string|null
      */
     protected $password;
     /**
      * メールアドレス(E-mail)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(E-mail)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -49,20 +49,20 @@ class CreateSaasUserParam extends \ArrayObject
     /**
      * パスワード(Password)
      *
-     * @return string
+     * @return string|null
      */
-    public function getPassword() : string
+    public function getPassword() : ?string
     {
         return $this->password;
     }
     /**
      * パスワード(Password)
      *
-     * @param string $password
+     * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(string $password) : self
+    public function setPassword(?string $password) : self
     {
         $this->initialized['password'] = true;
         $this->password = $password;

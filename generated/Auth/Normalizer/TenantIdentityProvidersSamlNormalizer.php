@@ -18,11 +18,11 @@ class TenantIdentityProvidersSamlNormalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProvidersSaml';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProvidersSaml';
     }
@@ -41,17 +41,26 @@ class TenantIdentityProvidersSamlNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('sign_in_url', $data)) {
+        if (\array_key_exists('sign_in_url', $data) && $data['sign_in_url'] !== null) {
             $object->setSignInUrl($data['sign_in_url']);
             unset($data['sign_in_url']);
         }
-        if (\array_key_exists('metadata_url', $data)) {
+        elseif (\array_key_exists('sign_in_url', $data) && $data['sign_in_url'] === null) {
+            $object->setSignInUrl(null);
+        }
+        if (\array_key_exists('metadata_url', $data) && $data['metadata_url'] !== null) {
             $object->setMetadataUrl($data['metadata_url']);
             unset($data['metadata_url']);
         }
-        if (\array_key_exists('email_attribute', $data)) {
+        elseif (\array_key_exists('metadata_url', $data) && $data['metadata_url'] === null) {
+            $object->setMetadataUrl(null);
+        }
+        if (\array_key_exists('email_attribute', $data) && $data['email_attribute'] !== null) {
             $object->setEmailAttribute($data['email_attribute']);
             unset($data['email_attribute']);
+        }
+        elseif (\array_key_exists('email_attribute', $data) && $data['email_attribute'] === null) {
+            $object->setEmailAttribute(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class TenantIdentityProvidersSamlNormalizer implements DenormalizerInterface, No
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProvidersSaml' => false);
     }
 }

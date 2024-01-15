@@ -15,26 +15,26 @@ class SoftwareTokenSecretCode extends \ArrayObject
     /**
      * シークレットコード(secret code)
      *
-     * @var string
+     * @var string|null
      */
     protected $secretCode;
     /**
      * シークレットコード(secret code)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSecretCode() : string
+    public function getSecretCode() : ?string
     {
         return $this->secretCode;
     }
     /**
      * シークレットコード(secret code)
      *
-     * @param string $secretCode
+     * @param string|null $secretCode
      *
      * @return self
      */
-    public function setSecretCode(string $secretCode) : self
+    public function setSecretCode(?string $secretCode) : self
     {
         $this->initialized['secretCode'] = true;
         $this->secretCode = $secretCode;

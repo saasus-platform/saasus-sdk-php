@@ -46,13 +46,15 @@ class UpdatePricingPlan extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Clien
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdatePricingPlanInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdatePricingPlanInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

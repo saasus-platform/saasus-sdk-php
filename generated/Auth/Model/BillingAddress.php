@@ -18,7 +18,7 @@ class BillingAddress extends \ArrayObject
     Street address, apartment or suite number.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $street;
     /**
@@ -27,7 +27,7 @@ class BillingAddress extends \ArrayObject
     City, district, suburb, town, or village.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $city;
     /**
@@ -36,7 +36,7 @@ class BillingAddress extends \ArrayObject
     State name or abbreviation.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $state;
     /**
@@ -45,7 +45,7 @@ class BillingAddress extends \ArrayObject
     Country of the address using ISO 3166-1 alpha-2 code.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $country;
     /**
@@ -54,7 +54,7 @@ class BillingAddress extends \ArrayObject
     Additional information about the address, such as a building name, floor, or department name.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $additionalAddressInfo;
     /**
@@ -63,7 +63,7 @@ class BillingAddress extends \ArrayObject
     ZIP or postal code.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $postalCode;
     /**
@@ -72,9 +72,9 @@ class BillingAddress extends \ArrayObject
     Street address, apartment or suite number.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getStreet() : string
+    public function getStreet() : ?string
     {
         return $this->street;
     }
@@ -84,11 +84,11 @@ class BillingAddress extends \ArrayObject
     Street address, apartment or suite number.
     
     *
-    * @param string $street
+    * @param string|null $street
     *
     * @return self
     */
-    public function setStreet(string $street) : self
+    public function setStreet(?string $street) : self
     {
         $this->initialized['street'] = true;
         $this->street = $street;
@@ -100,9 +100,9 @@ class BillingAddress extends \ArrayObject
     City, district, suburb, town, or village.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getCity() : string
+    public function getCity() : ?string
     {
         return $this->city;
     }
@@ -112,11 +112,11 @@ class BillingAddress extends \ArrayObject
     City, district, suburb, town, or village.
     
     *
-    * @param string $city
+    * @param string|null $city
     *
     * @return self
     */
-    public function setCity(string $city) : self
+    public function setCity(?string $city) : self
     {
         $this->initialized['city'] = true;
         $this->city = $city;
@@ -128,9 +128,9 @@ class BillingAddress extends \ArrayObject
     State name or abbreviation.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getState() : string
+    public function getState() : ?string
     {
         return $this->state;
     }
@@ -140,11 +140,11 @@ class BillingAddress extends \ArrayObject
     State name or abbreviation.
     
     *
-    * @param string $state
+    * @param string|null $state
     *
     * @return self
     */
-    public function setState(string $state) : self
+    public function setState(?string $state) : self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -156,9 +156,9 @@ class BillingAddress extends \ArrayObject
     Country of the address using ISO 3166-1 alpha-2 code.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getCountry() : string
+    public function getCountry() : ?string
     {
         return $this->country;
     }
@@ -168,11 +168,11 @@ class BillingAddress extends \ArrayObject
     Country of the address using ISO 3166-1 alpha-2 code.
     
     *
-    * @param string $country
+    * @param string|null $country
     *
     * @return self
     */
-    public function setCountry(string $country) : self
+    public function setCountry(?string $country) : self
     {
         $this->initialized['country'] = true;
         $this->country = $country;
@@ -184,9 +184,9 @@ class BillingAddress extends \ArrayObject
     Additional information about the address, such as a building name, floor, or department name.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getAdditionalAddressInfo() : string
+    public function getAdditionalAddressInfo() : ?string
     {
         return $this->additionalAddressInfo;
     }
@@ -196,11 +196,11 @@ class BillingAddress extends \ArrayObject
     Additional information about the address, such as a building name, floor, or department name.
     
     *
-    * @param string $additionalAddressInfo
+    * @param string|null $additionalAddressInfo
     *
     * @return self
     */
-    public function setAdditionalAddressInfo(string $additionalAddressInfo) : self
+    public function setAdditionalAddressInfo(?string $additionalAddressInfo) : self
     {
         $this->initialized['additionalAddressInfo'] = true;
         $this->additionalAddressInfo = $additionalAddressInfo;
@@ -212,9 +212,9 @@ class BillingAddress extends \ArrayObject
     ZIP or postal code.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getPostalCode() : string
+    public function getPostalCode() : ?string
     {
         return $this->postalCode;
     }
@@ -224,11 +224,11 @@ class BillingAddress extends \ArrayObject
     ZIP or postal code.
     
     *
-    * @param string $postalCode
+    * @param string|null $postalCode
     *
     * @return self
     */
-    public function setPostalCode(string $postalCode) : self
+    public function setPostalCode(?string $postalCode) : self
     {
         $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;

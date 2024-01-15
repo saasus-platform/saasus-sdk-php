@@ -15,26 +15,26 @@ class Tenants extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $tenants;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getTenants() : array
+    public function getTenants() : ?array
     {
         return $this->tenants;
     }
     /**
      * 
      *
-     * @param mixed[][] $tenants
+     * @param array<string, mixed>[]|null $tenants
      *
      * @return self
      */
-    public function setTenants(array $tenants) : self
+    public function setTenants(?array $tenants) : self
     {
         $this->initialized['tenants'] = true;
         $this->tenants = $tenants;

@@ -18,11 +18,11 @@ class UpdateTenantUserParamNormalizer implements DenormalizerInterface, Normaliz
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantUserParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantUserParam';
     }
@@ -41,13 +41,16 @@ class UpdateTenantUserParamNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('attributes', $data)) {
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['attributes'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setAttributes($values);
             unset($data['attributes']);
+        }
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+            $object->setAttributes(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -73,5 +76,9 @@ class UpdateTenantUserParamNormalizer implements DenormalizerInterface, Normaliz
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantUserParam' => false);
     }
 }

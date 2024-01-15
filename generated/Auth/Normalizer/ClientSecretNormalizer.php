@@ -18,11 +18,11 @@ class ClientSecretNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ClientSecret';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ClientSecret';
     }
@@ -41,9 +41,12 @@ class ClientSecretNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('client_secret', $data)) {
+        if (\array_key_exists('client_secret', $data) && $data['client_secret'] !== null) {
             $object->setClientSecret($data['client_secret']);
             unset($data['client_secret']);
+        }
+        elseif (\array_key_exists('client_secret', $data) && $data['client_secret'] === null) {
+            $object->setClientSecret(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class ClientSecretNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ClientSecret' => false);
     }
 }

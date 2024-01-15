@@ -15,26 +15,26 @@ class Comments extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $comments;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getComments() : array
+    public function getComments() : ?array
     {
         return $this->comments;
     }
     /**
      * 
      *
-     * @param mixed[][] $comments
+     * @param array<string, mixed>[]|null $comments
      *
      * @return self
      */
-    public function setComments(array $comments) : self
+    public function setComments(?array $comments) : self
     {
         $this->initialized['comments'] = true;
         $this->comments = $comments;

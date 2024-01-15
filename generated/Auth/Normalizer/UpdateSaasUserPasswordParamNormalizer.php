@@ -18,11 +18,11 @@ class UpdateSaasUserPasswordParamNormalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserPasswordParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserPasswordParam';
     }
@@ -41,9 +41,12 @@ class UpdateSaasUserPasswordParamNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('password', $data)) {
+        if (\array_key_exists('password', $data) && $data['password'] !== null) {
             $object->setPassword($data['password']);
             unset($data['password']);
+        }
+        elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+            $object->setPassword(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class UpdateSaasUserPasswordParamNormalizer implements DenormalizerInterface, No
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserPasswordParam' => false);
     }
 }

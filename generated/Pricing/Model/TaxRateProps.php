@@ -15,56 +15,56 @@ class TaxRateProps extends \ArrayObject
     /**
      * 税率の名前(name of tax rate)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 表示名(display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 税率(percentage)
      *
-     * @var float
+     * @var float|null
      */
     protected $percentage;
     /**
      * 内税かどうか(inclusive or not)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $inclusive;
     /**
      * ISO 3166-1 alpha-2 の国コード(Country code of ISO 3166-1 alpha-2)
      *
-     * @var string
+     * @var string|null
      */
     protected $country;
     /**
      * 説明(description)
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * 税率の名前(name of tax rate)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 税率の名前(name of tax rate)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -73,20 +73,20 @@ class TaxRateProps extends \ArrayObject
     /**
      * 表示名(display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 表示名(display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -95,20 +95,20 @@ class TaxRateProps extends \ArrayObject
     /**
      * 税率(percentage)
      *
-     * @return float
+     * @return float|null
      */
-    public function getPercentage() : float
+    public function getPercentage() : ?float
     {
         return $this->percentage;
     }
     /**
      * 税率(percentage)
      *
-     * @param float $percentage
+     * @param float|null $percentage
      *
      * @return self
      */
-    public function setPercentage(float $percentage) : self
+    public function setPercentage(?float $percentage) : self
     {
         $this->initialized['percentage'] = true;
         $this->percentage = $percentage;
@@ -117,20 +117,20 @@ class TaxRateProps extends \ArrayObject
     /**
      * 内税かどうか(inclusive or not)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getInclusive() : bool
+    public function getInclusive() : ?bool
     {
         return $this->inclusive;
     }
     /**
      * 内税かどうか(inclusive or not)
      *
-     * @param bool $inclusive
+     * @param bool|null $inclusive
      *
      * @return self
      */
-    public function setInclusive(bool $inclusive) : self
+    public function setInclusive(?bool $inclusive) : self
     {
         $this->initialized['inclusive'] = true;
         $this->inclusive = $inclusive;
@@ -139,20 +139,20 @@ class TaxRateProps extends \ArrayObject
     /**
      * ISO 3166-1 alpha-2 の国コード(Country code of ISO 3166-1 alpha-2)
      *
-     * @return string
+     * @return string|null
      */
-    public function getCountry() : string
+    public function getCountry() : ?string
     {
         return $this->country;
     }
     /**
      * ISO 3166-1 alpha-2 の国コード(Country code of ISO 3166-1 alpha-2)
      *
-     * @param string $country
+     * @param string|null $country
      *
      * @return self
      */
-    public function setCountry(string $country) : self
+    public function setCountry(?string $country) : self
     {
         $this->initialized['country'] = true;
         $this->country = $country;
@@ -161,20 +161,20 @@ class TaxRateProps extends \ArrayObject
     /**
      * 説明(description)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * 説明(description)
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;

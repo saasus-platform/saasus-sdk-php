@@ -15,26 +15,26 @@ class Plans extends \ArrayObject
     /**
      * 
      *
-     * @var Plan[]
+     * @var Plan[]|null
      */
     protected $plans;
     /**
      * 
      *
-     * @return Plan[]
+     * @return Plan[]|null
      */
-    public function getPlans() : array
+    public function getPlans() : ?array
     {
         return $this->plans;
     }
     /**
      * 
      *
-     * @param Plan[] $plans
+     * @param Plan[]|null $plans
      *
      * @return self
      */
-    public function setPlans(array $plans) : self
+    public function setPlans(?array $plans) : self
     {
         $this->initialized['plans'] = true;
         $this->plans = $plans;

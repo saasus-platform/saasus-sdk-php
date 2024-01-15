@@ -18,7 +18,7 @@ class AccountVerification extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $verificationMethod;
     /**
@@ -27,7 +27,7 @@ class AccountVerification extends \ArrayObject
     smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $sendingTo;
     /**
@@ -36,9 +36,9 @@ class AccountVerification extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getVerificationMethod() : string
+    public function getVerificationMethod() : ?string
     {
         return $this->verificationMethod;
     }
@@ -48,11 +48,11 @@ class AccountVerification extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @param string $verificationMethod
+    * @param string|null $verificationMethod
     *
     * @return self
     */
-    public function setVerificationMethod(string $verificationMethod) : self
+    public function setVerificationMethod(?string $verificationMethod) : self
     {
         $this->initialized['verificationMethod'] = true;
         $this->verificationMethod = $verificationMethod;
@@ -64,9 +64,9 @@ class AccountVerification extends \ArrayObject
     smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getSendingTo() : string
+    public function getSendingTo() : ?string
     {
         return $this->sendingTo;
     }
@@ -76,11 +76,11 @@ class AccountVerification extends \ArrayObject
     smsOrEmail: SMS不可の場合にEメール(email if SMS is not possible)
     
     *
-    * @param string $sendingTo
+    * @param string|null $sendingTo
     *
     * @return self
     */
-    public function setSendingTo(string $sendingTo) : self
+    public function setSendingTo(?string $sendingTo) : self
     {
         $this->initialized['sendingTo'] = true;
         $this->sendingTo = $sendingTo;

@@ -18,11 +18,11 @@ class PlanHistoryNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory';
     }
@@ -41,25 +41,40 @@ class PlanHistoryNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('plan_id', $data)) {
+        if (\array_key_exists('plan_id', $data) && $data['plan_id'] !== null) {
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
-        if (\array_key_exists('plan_applied_at', $data)) {
+        elseif (\array_key_exists('plan_id', $data) && $data['plan_id'] === null) {
+            $object->setPlanId(null);
+        }
+        if (\array_key_exists('plan_applied_at', $data) && $data['plan_applied_at'] !== null) {
             $object->setPlanAppliedAt($data['plan_applied_at']);
             unset($data['plan_applied_at']);
         }
-        if (\array_key_exists('tax_rate_id', $data)) {
+        elseif (\array_key_exists('plan_applied_at', $data) && $data['plan_applied_at'] === null) {
+            $object->setPlanAppliedAt(null);
+        }
+        if (\array_key_exists('tax_rate_id', $data) && $data['tax_rate_id'] !== null) {
             $object->setTaxRateId($data['tax_rate_id']);
             unset($data['tax_rate_id']);
         }
-        if (\array_key_exists('proration_behavior', $data)) {
+        elseif (\array_key_exists('tax_rate_id', $data) && $data['tax_rate_id'] === null) {
+            $object->setTaxRateId(null);
+        }
+        if (\array_key_exists('proration_behavior', $data) && $data['proration_behavior'] !== null) {
             $object->setProrationBehavior($data['proration_behavior']);
             unset($data['proration_behavior']);
         }
-        if (\array_key_exists('delete_usage', $data)) {
+        elseif (\array_key_exists('proration_behavior', $data) && $data['proration_behavior'] === null) {
+            $object->setProrationBehavior(null);
+        }
+        if (\array_key_exists('delete_usage', $data) && $data['delete_usage'] !== null) {
             $object->setDeleteUsage($data['delete_usage']);
             unset($data['delete_usage']);
+        }
+        elseif (\array_key_exists('delete_usage', $data) && $data['delete_usage'] === null) {
+            $object->setDeleteUsage(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -91,5 +106,9 @@ class PlanHistoryNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory' => false);
     }
 }

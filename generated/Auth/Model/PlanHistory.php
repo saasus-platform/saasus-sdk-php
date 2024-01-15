@@ -15,19 +15,19 @@ class PlanHistory extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $planId;
     /**
      * 登録日時
      *
-     * @var int
+     * @var int|null
      */
     protected $planAppliedAt;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $taxRateId;
     /**
@@ -38,7 +38,7 @@ class PlanHistory extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $prorationBehavior;
     /**
@@ -51,26 +51,26 @@ class PlanHistory extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @var bool
+    * @var bool|null
     */
     protected $deleteUsage;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlanId() : string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
     /**
      * 
      *
-     * @param string $planId
+     * @param string|null $planId
      *
      * @return self
      */
-    public function setPlanId(string $planId) : self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -79,20 +79,20 @@ class PlanHistory extends \ArrayObject
     /**
      * 登録日時
      *
-     * @return int
+     * @return int|null
      */
-    public function getPlanAppliedAt() : int
+    public function getPlanAppliedAt() : ?int
     {
         return $this->planAppliedAt;
     }
     /**
      * 登録日時
      *
-     * @param int $planAppliedAt
+     * @param int|null $planAppliedAt
      *
      * @return self
      */
-    public function setPlanAppliedAt(int $planAppliedAt) : self
+    public function setPlanAppliedAt(?int $planAppliedAt) : self
     {
         $this->initialized['planAppliedAt'] = true;
         $this->planAppliedAt = $planAppliedAt;
@@ -101,20 +101,20 @@ class PlanHistory extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTaxRateId() : string
+    public function getTaxRateId() : ?string
     {
         return $this->taxRateId;
     }
     /**
      * 
      *
-     * @param string $taxRateId
+     * @param string|null $taxRateId
      *
      * @return self
      */
-    public function setTaxRateId(string $taxRateId) : self
+    public function setTaxRateId(?string $taxRateId) : self
     {
         $this->initialized['taxRateId'] = true;
         $this->taxRateId = $taxRateId;
@@ -128,9 +128,9 @@ class PlanHistory extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getProrationBehavior() : string
+    public function getProrationBehavior() : ?string
     {
         return $this->prorationBehavior;
     }
@@ -142,11 +142,11 @@ class PlanHistory extends \ArrayObject
     When a plan is changed, you can set whether to prorate the billing amount and reflect it on the next invoice, to issue a prorated invoice immediately, or not to prorate at all.
     
     *
-    * @param string $prorationBehavior
+    * @param string|null $prorationBehavior
     *
     * @return self
     */
-    public function setProrationBehavior(string $prorationBehavior) : self
+    public function setProrationBehavior(?string $prorationBehavior) : self
     {
         $this->initialized['prorationBehavior'] = true;
         $this->prorationBehavior = $prorationBehavior;
@@ -162,9 +162,9 @@ class PlanHistory extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @return bool
+    * @return bool|null
     */
-    public function getDeleteUsage() : bool
+    public function getDeleteUsage() : ?bool
     {
         return $this->deleteUsage;
     }
@@ -178,11 +178,11 @@ class PlanHistory extends \ArrayObject
     The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled.
     
     *
-    * @param bool $deleteUsage
+    * @param bool|null $deleteUsage
     *
     * @return self
     */
-    public function setDeleteUsage(bool $deleteUsage) : self
+    public function setDeleteUsage(?bool $deleteUsage) : self
     {
         $this->initialized['deleteUsage'] = true;
         $this->deleteUsage = $deleteUsage;

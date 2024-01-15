@@ -18,11 +18,11 @@ class ConfirmSignUpWithAwsMarketplaceParamNormalizer implements DenormalizerInte
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmSignUpWithAwsMarketplaceParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmSignUpWithAwsMarketplaceParam';
     }
@@ -41,17 +41,26 @@ class ConfirmSignUpWithAwsMarketplaceParamNormalizer implements DenormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tenant_name', $data)) {
+        if (\array_key_exists('tenant_name', $data) && $data['tenant_name'] !== null) {
             $object->setTenantName($data['tenant_name']);
             unset($data['tenant_name']);
         }
-        if (\array_key_exists('access_token', $data)) {
+        elseif (\array_key_exists('tenant_name', $data) && $data['tenant_name'] === null) {
+            $object->setTenantName(null);
+        }
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
         }
-        if (\array_key_exists('registration_token', $data)) {
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
+        }
+        if (\array_key_exists('registration_token', $data) && $data['registration_token'] !== null) {
             $object->setRegistrationToken($data['registration_token']);
             unset($data['registration_token']);
+        }
+        elseif (\array_key_exists('registration_token', $data) && $data['registration_token'] === null) {
+            $object->setRegistrationToken(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -77,5 +86,9 @@ class ConfirmSignUpWithAwsMarketplaceParamNormalizer implements DenormalizerInte
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmSignUpWithAwsMarketplaceParam' => false);
     }
 }

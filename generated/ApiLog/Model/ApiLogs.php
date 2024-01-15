@@ -15,26 +15,26 @@ class ApiLogs extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $apiLogs;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getApiLogs() : array
+    public function getApiLogs() : ?array
     {
         return $this->apiLogs;
     }
     /**
      * 
      *
-     * @param mixed[][] $apiLogs
+     * @param array<string, mixed>[]|null $apiLogs
      *
      * @return self
      */
-    public function setApiLogs(array $apiLogs) : self
+    public function setApiLogs(?array $apiLogs) : self
     {
         $this->initialized['apiLogs'] = true;
         $this->apiLogs = $apiLogs;

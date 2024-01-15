@@ -18,11 +18,11 @@ class ApiLogsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\ApiLogs';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\ApiLogs';
     }
@@ -41,7 +41,7 @@ class ApiLogsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('api_logs', $data)) {
+        if (\array_key_exists('api_logs', $data) && $data['api_logs'] !== null) {
             $values = array();
             foreach ($data['api_logs'] as $value) {
                 $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -52,6 +52,9 @@ class ApiLogsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->setApiLogs($values);
             unset($data['api_logs']);
+        }
+        elseif (\array_key_exists('api_logs', $data) && $data['api_logs'] === null) {
+            $object->setApiLogs(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -81,5 +84,9 @@ class ApiLogsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\ApiLogs' => false);
     }
 }

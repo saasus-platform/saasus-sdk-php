@@ -18,11 +18,11 @@ class AccountVerificationNormalizer implements DenormalizerInterface, Normalizer
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification';
     }
@@ -41,13 +41,19 @@ class AccountVerificationNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('verification_method', $data)) {
+        if (\array_key_exists('verification_method', $data) && $data['verification_method'] !== null) {
             $object->setVerificationMethod($data['verification_method']);
             unset($data['verification_method']);
         }
-        if (\array_key_exists('sending_to', $data)) {
+        elseif (\array_key_exists('verification_method', $data) && $data['verification_method'] === null) {
+            $object->setVerificationMethod(null);
+        }
+        if (\array_key_exists('sending_to', $data) && $data['sending_to'] !== null) {
             $object->setSendingTo($data['sending_to']);
             unset($data['sending_to']);
+        }
+        elseif (\array_key_exists('sending_to', $data) && $data['sending_to'] === null) {
+            $object->setSendingTo(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class AccountVerificationNormalizer implements DenormalizerInterface, Normalizer
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification' => false);
     }
 }

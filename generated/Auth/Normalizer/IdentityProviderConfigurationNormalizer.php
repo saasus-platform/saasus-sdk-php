@@ -18,11 +18,11 @@ class IdentityProviderConfigurationNormalizer implements DenormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration';
     }
@@ -41,21 +41,33 @@ class IdentityProviderConfigurationNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('domain', $data)) {
+        if (\array_key_exists('domain', $data) && $data['domain'] !== null) {
             $object->setDomain($data['domain']);
             unset($data['domain']);
         }
-        if (\array_key_exists('redirect_url', $data)) {
+        elseif (\array_key_exists('domain', $data) && $data['domain'] === null) {
+            $object->setDomain(null);
+        }
+        if (\array_key_exists('redirect_url', $data) && $data['redirect_url'] !== null) {
             $object->setRedirectUrl($data['redirect_url']);
             unset($data['redirect_url']);
         }
-        if (\array_key_exists('entity_id', $data)) {
+        elseif (\array_key_exists('redirect_url', $data) && $data['redirect_url'] === null) {
+            $object->setRedirectUrl(null);
+        }
+        if (\array_key_exists('entity_id', $data) && $data['entity_id'] !== null) {
             $object->setEntityId($data['entity_id']);
             unset($data['entity_id']);
         }
-        if (\array_key_exists('reply_url', $data)) {
+        elseif (\array_key_exists('entity_id', $data) && $data['entity_id'] === null) {
+            $object->setEntityId(null);
+        }
+        if (\array_key_exists('reply_url', $data) && $data['reply_url'] !== null) {
             $object->setReplyUrl($data['reply_url']);
             unset($data['reply_url']);
+        }
+        elseif (\array_key_exists('reply_url', $data) && $data['reply_url'] === null) {
+            $object->setReplyUrl(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -80,5 +92,9 @@ class IdentityProviderConfigurationNormalizer implements DenormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration' => false);
     }
 }

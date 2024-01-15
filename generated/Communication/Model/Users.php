@@ -15,26 +15,26 @@ class Users extends \ArrayObject
     /**
      * 
      *
-     * @var User[]
+     * @var User[]|null
      */
     protected $users;
     /**
      * 
      *
-     * @return User[]
+     * @return User[]|null
      */
-    public function getUsers() : array
+    public function getUsers() : ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param User[] $users
+     * @param User[]|null $users
      *
      * @return self
      */
-    public function setUsers(array $users) : self
+    public function setUsers(?array $users) : self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

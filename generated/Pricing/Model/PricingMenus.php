@@ -15,26 +15,26 @@ class PricingMenus extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $pricingMenus;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getPricingMenus() : array
+    public function getPricingMenus() : ?array
     {
         return $this->pricingMenus;
     }
     /**
      * 
      *
-     * @param mixed[][] $pricingMenus
+     * @param array<string, mixed>[]|null $pricingMenus
      *
      * @return self
      */
-    public function setPricingMenus(array $pricingMenus) : self
+    public function setPricingMenus(?array $pricingMenus) : self
     {
         $this->initialized['pricingMenus'] = true;
         $this->pricingMenus = $pricingMenus;

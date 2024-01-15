@@ -15,26 +15,26 @@ class CatalogEntityVisibility extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $visibility;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getVisibility() : string
+    public function getVisibility() : ?string
     {
         return $this->visibility;
     }
     /**
      * 
      *
-     * @param string $visibility
+     * @param string|null $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(?string $visibility) : self
     {
         $this->initialized['visibility'] = true;
         $this->visibility = $visibility;

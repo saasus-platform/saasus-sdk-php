@@ -15,19 +15,19 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $used;
     /**
      * 料金(price)
      *
-     * @var int
+     * @var int|null
      */
     protected $unitAmount;
     /**
@@ -36,25 +36,25 @@ class PricingFixedUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $recurringInterval;
     /**
      * 名前(name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 表示名(display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 説明(description)
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -65,32 +65,32 @@ class PricingFixedUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $type;
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @var string
+     * @var string|null
      */
     protected $currency;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -99,20 +99,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getUsed() : bool
+    public function getUsed() : ?bool
     {
         return $this->used;
     }
     /**
      * 
      *
-     * @param bool $used
+     * @param bool|null $used
      *
      * @return self
      */
-    public function setUsed(bool $used) : self
+    public function setUsed(?bool $used) : self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
@@ -121,20 +121,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 料金(price)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitAmount() : int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
     /**
      * 料金(price)
      *
-     * @param int $unitAmount
+     * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -146,9 +146,9 @@ class PricingFixedUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getRecurringInterval() : string
+    public function getRecurringInterval() : ?string
     {
         return $this->recurringInterval;
     }
@@ -158,11 +158,11 @@ class PricingFixedUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @param string $recurringInterval
+    * @param string|null $recurringInterval
     *
     * @return self
     */
-    public function setRecurringInterval(string $recurringInterval) : self
+    public function setRecurringInterval(?string $recurringInterval) : self
     {
         $this->initialized['recurringInterval'] = true;
         $this->recurringInterval = $recurringInterval;
@@ -171,20 +171,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 名前(name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 名前(name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -193,20 +193,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 表示名(display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 表示名(display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -215,20 +215,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 説明(description)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * 説明(description)
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -242,9 +242,9 @@ class PricingFixedUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -256,11 +256,11 @@ class PricingFixedUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @param string $type
+    * @param string|null $type
     *
     * @return self
     */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -269,20 +269,20 @@ class PricingFixedUnit extends \ArrayObject
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency() : string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
-    public function setCurrency(string $currency) : self
+    public function setCurrency(?string $currency) : self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

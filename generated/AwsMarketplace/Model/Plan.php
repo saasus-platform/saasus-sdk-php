@@ -15,32 +15,32 @@ class Plan extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $planId;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $planName;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlanId() : string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
     /**
      * 
      *
-     * @param string $planId
+     * @param string|null $planId
      *
      * @return self
      */
-    public function setPlanId(string $planId) : self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -49,20 +49,20 @@ class Plan extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlanName() : string
+    public function getPlanName() : ?string
     {
         return $this->planName;
     }
     /**
      * 
      *
-     * @param string $planName
+     * @param string|null $planName
      *
      * @return self
      */
-    public function setPlanName(string $planName) : self
+    public function setPlanName(?string $planName) : self
     {
         $this->initialized['planName'] = true;
         $this->planName = $planName;

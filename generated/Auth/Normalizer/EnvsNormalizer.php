@@ -18,11 +18,11 @@ class EnvsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Envs';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Envs';
     }
@@ -41,13 +41,16 @@ class EnvsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('envs', $data)) {
+        if (\array_key_exists('envs', $data) && $data['envs'] !== null) {
             $values = array();
             foreach ($data['envs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Env', 'json', $context);
             }
             $object->setEnvs($values);
             unset($data['envs']);
+        }
+        elseif (\array_key_exists('envs', $data) && $data['envs'] === null) {
+            $object->setEnvs(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class EnvsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Envs' => false);
     }
 }

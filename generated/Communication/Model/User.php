@@ -15,26 +15,26 @@ class User extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $userId;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getUserId() : string
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
     /**
      * 
      *
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */
-    public function setUserId(string $userId) : self
+    public function setUserId(?string $userId) : self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;

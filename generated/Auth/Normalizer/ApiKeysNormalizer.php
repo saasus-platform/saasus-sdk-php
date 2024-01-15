@@ -18,11 +18,11 @@ class ApiKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ApiKeys';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ApiKeys';
     }
@@ -41,13 +41,16 @@ class ApiKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('api_keys', $data)) {
+        if (\array_key_exists('api_keys', $data) && $data['api_keys'] !== null) {
             $values = array();
             foreach ($data['api_keys'] as $value) {
                 $values[] = $value;
             }
             $object->setApiKeys($values);
             unset($data['api_keys']);
+        }
+        elseif (\array_key_exists('api_keys', $data) && $data['api_keys'] === null) {
+            $object->setApiKeys(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class ApiKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ApiKeys' => false);
     }
 }

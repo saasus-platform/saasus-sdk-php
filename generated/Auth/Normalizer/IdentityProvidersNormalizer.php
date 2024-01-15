@@ -18,11 +18,11 @@ class IdentityProvidersNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviders';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviders';
     }
@@ -41,9 +41,12 @@ class IdentityProvidersNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('google', $data)) {
+        if (\array_key_exists('google', $data) && $data['google'] !== null) {
             $object->setGoogle($this->denormalizer->denormalize($data['google'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderProps', 'json', $context));
             unset($data['google']);
+        }
+        elseif (\array_key_exists('google', $data) && $data['google'] === null) {
+            $object->setGoogle(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class IdentityProvidersNormalizer implements DenormalizerInterface, NormalizerIn
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviders' => false);
     }
 }

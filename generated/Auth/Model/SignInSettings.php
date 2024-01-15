@@ -15,13 +15,13 @@ class SignInSettings extends \ArrayObject
     /**
      * パスワードポリシー(password policy)
      *
-     * @var PasswordPolicy
+     * @var PasswordPolicy|null
      */
     protected $passwordPolicy;
     /**
      * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
-     * @var DeviceConfiguration
+     * @var DeviceConfiguration|null
      */
     protected $deviceConfiguration;
     /**
@@ -29,7 +29,7 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @var MfaConfiguration
+    * @var MfaConfiguration|null
     */
     protected $mfaConfiguration;
     /**
@@ -37,7 +37,7 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @var RecaptchaProps
+    * @var RecaptchaProps|null
     */
     protected $recaptchaProps;
     /**
@@ -45,13 +45,13 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @var AccountVerification
+    * @var AccountVerification|null
     */
     protected $accountVerification;
     /**
      * セルフサインアップを許可設定(self sign-up permission)
      *
-     * @var SelfRegist
+     * @var SelfRegist|null
      */
     protected $selfRegist;
     /**
@@ -59,26 +59,26 @@ class SignInSettings extends \ArrayObject
     変更はできません。(It cannot be changed.)
     
     *
-    * @var IdentityProviderConfiguration
+    * @var IdentityProviderConfiguration|null
     */
     protected $identityProviderConfiguration;
     /**
      * パスワードポリシー(password policy)
      *
-     * @return PasswordPolicy
+     * @return PasswordPolicy|null
      */
-    public function getPasswordPolicy() : PasswordPolicy
+    public function getPasswordPolicy() : ?PasswordPolicy
     {
         return $this->passwordPolicy;
     }
     /**
      * パスワードポリシー(password policy)
      *
-     * @param PasswordPolicy $passwordPolicy
+     * @param PasswordPolicy|null $passwordPolicy
      *
      * @return self
      */
-    public function setPasswordPolicy(PasswordPolicy $passwordPolicy) : self
+    public function setPasswordPolicy(?PasswordPolicy $passwordPolicy) : self
     {
         $this->initialized['passwordPolicy'] = true;
         $this->passwordPolicy = $passwordPolicy;
@@ -87,20 +87,20 @@ class SignInSettings extends \ArrayObject
     /**
      * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
-     * @return DeviceConfiguration
+     * @return DeviceConfiguration|null
      */
-    public function getDeviceConfiguration() : DeviceConfiguration
+    public function getDeviceConfiguration() : ?DeviceConfiguration
     {
         return $this->deviceConfiguration;
     }
     /**
      * 信頼済みデバイスの記憶の設定(settings for remembering trusted devices)
      *
-     * @param DeviceConfiguration $deviceConfiguration
+     * @param DeviceConfiguration|null $deviceConfiguration
      *
      * @return self
      */
-    public function setDeviceConfiguration(DeviceConfiguration $deviceConfiguration) : self
+    public function setDeviceConfiguration(?DeviceConfiguration $deviceConfiguration) : self
     {
         $this->initialized['deviceConfiguration'] = true;
         $this->deviceConfiguration = $deviceConfiguration;
@@ -111,9 +111,9 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @return MfaConfiguration
+    * @return MfaConfiguration|null
     */
-    public function getMfaConfiguration() : MfaConfiguration
+    public function getMfaConfiguration() : ?MfaConfiguration
     {
         return $this->mfaConfiguration;
     }
@@ -122,11 +122,11 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @param MfaConfiguration $mfaConfiguration
+    * @param MfaConfiguration|null $mfaConfiguration
     *
     * @return self
     */
-    public function setMfaConfiguration(MfaConfiguration $mfaConfiguration) : self
+    public function setMfaConfiguration(?MfaConfiguration $mfaConfiguration) : self
     {
         $this->initialized['mfaConfiguration'] = true;
         $this->mfaConfiguration = $mfaConfiguration;
@@ -137,9 +137,9 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @return RecaptchaProps
+    * @return RecaptchaProps|null
     */
-    public function getRecaptchaProps() : RecaptchaProps
+    public function getRecaptchaProps() : ?RecaptchaProps
     {
         return $this->recaptchaProps;
     }
@@ -148,11 +148,11 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @param RecaptchaProps $recaptchaProps
+    * @param RecaptchaProps|null $recaptchaProps
     *
     * @return self
     */
-    public function setRecaptchaProps(RecaptchaProps $recaptchaProps) : self
+    public function setRecaptchaProps(?RecaptchaProps $recaptchaProps) : self
     {
         $this->initialized['recaptchaProps'] = true;
         $this->recaptchaProps = $recaptchaProps;
@@ -163,9 +163,9 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @return AccountVerification
+    * @return AccountVerification|null
     */
-    public function getAccountVerification() : AccountVerification
+    public function getAccountVerification() : ?AccountVerification
     {
         return $this->accountVerification;
     }
@@ -174,11 +174,11 @@ class SignInSettings extends \ArrayObject
     ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.)
     
     *
-    * @param AccountVerification $accountVerification
+    * @param AccountVerification|null $accountVerification
     *
     * @return self
     */
-    public function setAccountVerification(AccountVerification $accountVerification) : self
+    public function setAccountVerification(?AccountVerification $accountVerification) : self
     {
         $this->initialized['accountVerification'] = true;
         $this->accountVerification = $accountVerification;
@@ -187,20 +187,20 @@ class SignInSettings extends \ArrayObject
     /**
      * セルフサインアップを許可設定(self sign-up permission)
      *
-     * @return SelfRegist
+     * @return SelfRegist|null
      */
-    public function getSelfRegist() : SelfRegist
+    public function getSelfRegist() : ?SelfRegist
     {
         return $this->selfRegist;
     }
     /**
      * セルフサインアップを許可設定(self sign-up permission)
      *
-     * @param SelfRegist $selfRegist
+     * @param SelfRegist|null $selfRegist
      *
      * @return self
      */
-    public function setSelfRegist(SelfRegist $selfRegist) : self
+    public function setSelfRegist(?SelfRegist $selfRegist) : self
     {
         $this->initialized['selfRegist'] = true;
         $this->selfRegist = $selfRegist;
@@ -211,9 +211,9 @@ class SignInSettings extends \ArrayObject
     変更はできません。(It cannot be changed.)
     
     *
-    * @return IdentityProviderConfiguration
+    * @return IdentityProviderConfiguration|null
     */
-    public function getIdentityProviderConfiguration() : IdentityProviderConfiguration
+    public function getIdentityProviderConfiguration() : ?IdentityProviderConfiguration
     {
         return $this->identityProviderConfiguration;
     }
@@ -222,11 +222,11 @@ class SignInSettings extends \ArrayObject
     変更はできません。(It cannot be changed.)
     
     *
-    * @param IdentityProviderConfiguration $identityProviderConfiguration
+    * @param IdentityProviderConfiguration|null $identityProviderConfiguration
     *
     * @return self
     */
-    public function setIdentityProviderConfiguration(IdentityProviderConfiguration $identityProviderConfiguration) : self
+    public function setIdentityProviderConfiguration(?IdentityProviderConfiguration $identityProviderConfiguration) : self
     {
         $this->initialized['identityProviderConfiguration'] = true;
         $this->identityProviderConfiguration = $identityProviderConfiguration;

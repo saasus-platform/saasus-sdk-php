@@ -15,26 +15,26 @@ class PricingTiers extends \ArrayObject
     /**
      * 
      *
-     * @var PricingTier[]
+     * @var PricingTier[]|null
      */
     protected $tiers;
     /**
      * 
      *
-     * @return PricingTier[]
+     * @return PricingTier[]|null
      */
-    public function getTiers() : array
+    public function getTiers() : ?array
     {
         return $this->tiers;
     }
     /**
      * 
      *
-     * @param PricingTier[] $tiers
+     * @param PricingTier[]|null $tiers
      *
      * @return self
      */
-    public function setTiers(array $tiers) : self
+    public function setTiers(?array $tiers) : self
     {
         $this->initialized['tiers'] = true;
         $this->tiers = $tiers;

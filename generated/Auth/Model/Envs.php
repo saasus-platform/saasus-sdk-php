@@ -15,26 +15,26 @@ class Envs extends \ArrayObject
     /**
      * 
      *
-     * @var Env[]
+     * @var Env[]|null
      */
     protected $envs;
     /**
      * 
      *
-     * @return Env[]
+     * @return Env[]|null
      */
-    public function getEnvs() : array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
     /**
      * 
      *
-     * @param Env[] $envs
+     * @param Env[]|null $envs
      *
      * @return self
      */
-    public function setEnvs(array $envs) : self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;

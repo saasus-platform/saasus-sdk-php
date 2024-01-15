@@ -6,7 +6,7 @@ class GetFeedback extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Clien
 {
     protected $feedback_id;
     /**
-     * フィードバックの取得
+     * フィードバックの取得をします。
      *
      * @param string $feedbackId 
      */
@@ -39,16 +39,18 @@ class GetFeedback extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Clien
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\Communication\Model\Feedback
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Feedback', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\GetFeedbackNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\GetFeedbackNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\GetFeedbackInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\GetFeedbackInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

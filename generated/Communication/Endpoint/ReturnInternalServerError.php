@@ -28,10 +28,12 @@ class ReturnInternalServerError extends \AntiPatternInc\Saasus\Sdk\Communication
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\ReturnInternalServerErrorInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\ReturnInternalServerErrorInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

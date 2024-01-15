@@ -18,7 +18,7 @@ class MfaConfiguration extends \ArrayObject
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $mfaConfiguration;
     /**
@@ -27,9 +27,9 @@ class MfaConfiguration extends \ArrayObject
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getMfaConfiguration() : string
+    public function getMfaConfiguration() : ?string
     {
         return $this->mfaConfiguration;
     }
@@ -39,11 +39,11 @@ class MfaConfiguration extends \ArrayObject
     ※ パラメータは現在optionalで固定となります。(The parameter is currently optional and fixed.)
     
     *
-    * @param string $mfaConfiguration
+    * @param string|null $mfaConfiguration
     *
     * @return self
     */
-    public function setMfaConfiguration(string $mfaConfiguration) : self
+    public function setMfaConfiguration(?string $mfaConfiguration) : self
     {
         $this->initialized['mfaConfiguration'] = true;
         $this->mfaConfiguration = $mfaConfiguration;

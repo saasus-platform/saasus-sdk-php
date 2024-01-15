@@ -18,11 +18,11 @@ class PricingTieredUnitNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTieredUnit';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTieredUnit';
     }
@@ -41,61 +41,100 @@ class PricingTieredUnitNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('metering_unit_id', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('metering_unit_id', $data) && $data['metering_unit_id'] !== null) {
             $object->setMeteringUnitId($data['metering_unit_id']);
             unset($data['metering_unit_id']);
         }
-        if (\array_key_exists('recurring_interval', $data)) {
+        elseif (\array_key_exists('metering_unit_id', $data) && $data['metering_unit_id'] === null) {
+            $object->setMeteringUnitId(null);
+        }
+        if (\array_key_exists('recurring_interval', $data) && $data['recurring_interval'] !== null) {
             $object->setRecurringInterval($data['recurring_interval']);
             unset($data['recurring_interval']);
         }
-        if (\array_key_exists('used', $data)) {
+        elseif (\array_key_exists('recurring_interval', $data) && $data['recurring_interval'] === null) {
+            $object->setRecurringInterval(null);
+        }
+        if (\array_key_exists('used', $data) && $data['used'] !== null) {
             $object->setUsed($data['used']);
             unset($data['used']);
         }
-        if (\array_key_exists('upper_count', $data)) {
+        elseif (\array_key_exists('used', $data) && $data['used'] === null) {
+            $object->setUsed(null);
+        }
+        if (\array_key_exists('upper_count', $data) && $data['upper_count'] !== null) {
             $object->setUpperCount($data['upper_count']);
             unset($data['upper_count']);
         }
-        if (\array_key_exists('metering_unit_name', $data)) {
+        elseif (\array_key_exists('upper_count', $data) && $data['upper_count'] === null) {
+            $object->setUpperCount(null);
+        }
+        if (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] !== null) {
             $object->setMeteringUnitName($data['metering_unit_name']);
             unset($data['metering_unit_name']);
         }
-        if (\array_key_exists('aggregate_usage', $data)) {
+        elseif (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] === null) {
+            $object->setMeteringUnitName(null);
+        }
+        if (\array_key_exists('aggregate_usage', $data) && $data['aggregate_usage'] !== null) {
             $object->setAggregateUsage($data['aggregate_usage']);
             unset($data['aggregate_usage']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('aggregate_usage', $data) && $data['aggregate_usage'] === null) {
+            $object->setAggregateUsage(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        if (\array_key_exists('type', $data)) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('currency', $data)) {
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
             $object->setCurrency($data['currency']);
             unset($data['currency']);
         }
-        if (\array_key_exists('tiers', $data)) {
+        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
+            $object->setCurrency(null);
+        }
+        if (\array_key_exists('tiers', $data) && $data['tiers'] !== null) {
             $values = array();
             foreach ($data['tiers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTier', 'json', $context);
             }
             $object->setTiers($values);
             unset($data['tiers']);
+        }
+        elseif (\array_key_exists('tiers', $data) && $data['tiers'] === null) {
+            $object->setTiers(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -135,5 +174,9 @@ class PricingTieredUnitNormalizer implements DenormalizerInterface, NormalizerIn
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTieredUnit' => false);
     }
 }

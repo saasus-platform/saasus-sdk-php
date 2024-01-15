@@ -18,11 +18,11 @@ class PlanHistoriesNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistories';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistories';
     }
@@ -41,13 +41,16 @@ class PlanHistoriesNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('plan_histories', $data)) {
+        if (\array_key_exists('plan_histories', $data) && $data['plan_histories'] !== null) {
             $values = array();
             foreach ($data['plan_histories'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory', 'json', $context);
             }
             $object->setPlanHistories($values);
             unset($data['plan_histories']);
+        }
+        elseif (\array_key_exists('plan_histories', $data) && $data['plan_histories'] === null) {
+            $object->setPlanHistories(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class PlanHistoriesNormalizer implements DenormalizerInterface, NormalizerInterf
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistories' => false);
     }
 }

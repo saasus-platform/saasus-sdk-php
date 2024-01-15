@@ -18,11 +18,11 @@ class UpdateFeedbackStatusParamNormalizer implements DenormalizerInterface, Norm
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\UpdateFeedbackStatusParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\UpdateFeedbackStatusParam';
     }
@@ -41,9 +41,12 @@ class UpdateFeedbackStatusParamNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('status', $data)) {
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class UpdateFeedbackStatusParamNormalizer implements DenormalizerInterface, Norm
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\UpdateFeedbackStatusParam' => false);
     }
 }

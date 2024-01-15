@@ -15,26 +15,26 @@ class UpdateFeedbackCommentParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $body;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getBody() : string
+    public function getBody() : ?string
     {
         return $this->body;
     }
     /**
      * 
      *
-     * @param string $body
+     * @param string|null $body
      *
      * @return self
      */
-    public function setBody(string $body) : self
+    public function setBody(?string $body) : self
     {
         $this->initialized['body'] = true;
         $this->body = $body;

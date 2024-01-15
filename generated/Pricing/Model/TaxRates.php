@@ -15,26 +15,26 @@ class TaxRates extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $taxRates;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getTaxRates() : array
+    public function getTaxRates() : ?array
     {
         return $this->taxRates;
     }
     /**
      * 
      *
-     * @param mixed[][] $taxRates
+     * @param array<string, mixed>[]|null $taxRates
      *
      * @return self
      */
-    public function setTaxRates(array $taxRates) : self
+    public function setTaxRates(?array $taxRates) : self
     {
         $this->initialized['taxRates'] = true;
         $this->taxRates = $taxRates;

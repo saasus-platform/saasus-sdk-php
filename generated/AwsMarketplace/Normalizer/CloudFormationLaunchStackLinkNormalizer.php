@@ -18,11 +18,11 @@ class CloudFormationLaunchStackLinkNormalizer implements DenormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CloudFormationLaunchStackLink';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CloudFormationLaunchStackLink';
     }
@@ -41,9 +41,12 @@ class CloudFormationLaunchStackLinkNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('link', $data)) {
+        if (\array_key_exists('link', $data) && $data['link'] !== null) {
             $object->setLink($data['link']);
             unset($data['link']);
+        }
+        elseif (\array_key_exists('link', $data) && $data['link'] === null) {
+            $object->setLink(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class CloudFormationLaunchStackLinkNormalizer implements DenormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CloudFormationLaunchStackLink' => false);
     }
 }

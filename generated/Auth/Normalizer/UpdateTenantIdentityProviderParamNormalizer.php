@@ -18,11 +18,11 @@ class UpdateTenantIdentityProviderParamNormalizer implements DenormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantIdentityProviderParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantIdentityProviderParam';
     }
@@ -41,17 +41,23 @@ class UpdateTenantIdentityProviderParamNormalizer implements DenormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('provider_type', $data)) {
+        if (\array_key_exists('provider_type', $data) && $data['provider_type'] !== null) {
             $object->setProviderType($data['provider_type']);
             unset($data['provider_type']);
         }
-        if (\array_key_exists('identity_provider_props', $data)) {
+        elseif (\array_key_exists('provider_type', $data) && $data['provider_type'] === null) {
+            $object->setProviderType(null);
+        }
+        if (\array_key_exists('identity_provider_props', $data) && $data['identity_provider_props'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['identity_provider_props'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setIdentityProviderProps($values);
             unset($data['identity_provider_props']);
+        }
+        elseif (\array_key_exists('identity_provider_props', $data) && $data['identity_provider_props'] === null) {
+            $object->setIdentityProviderProps(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -80,5 +86,9 @@ class UpdateTenantIdentityProviderParamNormalizer implements DenormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantIdentityProviderParam' => false);
     }
 }

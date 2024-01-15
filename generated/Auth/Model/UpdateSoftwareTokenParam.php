@@ -15,32 +15,32 @@ class UpdateSoftwareTokenParam extends \ArrayObject
     /**
      * アクセストークン(access token)
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * 検証コード(verification code)
      *
-     * @var string
+     * @var string|null
      */
     protected $verificationCode;
     /**
      * アクセストークン(access token)
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * アクセストークン(access token)
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -49,20 +49,20 @@ class UpdateSoftwareTokenParam extends \ArrayObject
     /**
      * 検証コード(verification code)
      *
-     * @return string
+     * @return string|null
      */
-    public function getVerificationCode() : string
+    public function getVerificationCode() : ?string
     {
         return $this->verificationCode;
     }
     /**
      * 検証コード(verification code)
      *
-     * @param string $verificationCode
+     * @param string|null $verificationCode
      *
      * @return self
      */
-    public function setVerificationCode(string $verificationCode) : self
+    public function setVerificationCode(?string $verificationCode) : self
     {
         $this->initialized['verificationCode'] = true;
         $this->verificationCode = $verificationCode;

@@ -18,13 +18,13 @@ class BillingInfo extends \ArrayObject
     Tenant name for billing
     
     *
-    * @var string
+    * @var string|null
     */
     protected $name;
     /**
      * 
      *
-     * @var BillingAddress
+     * @var BillingAddress|null
      */
     protected $address;
     /**
@@ -33,7 +33,7 @@ class BillingInfo extends \ArrayObject
     Language of invoice
     
     *
-    * @var string
+    * @var string|null
     */
     protected $invoiceLanguage;
     /**
@@ -42,9 +42,9 @@ class BillingInfo extends \ArrayObject
     Tenant name for billing
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -54,11 +54,11 @@ class BillingInfo extends \ArrayObject
     Tenant name for billing
     
     *
-    * @param string $name
+    * @param string|null $name
     *
     * @return self
     */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -67,20 +67,20 @@ class BillingInfo extends \ArrayObject
     /**
      * 
      *
-     * @return BillingAddress
+     * @return BillingAddress|null
      */
-    public function getAddress() : BillingAddress
+    public function getAddress() : ?BillingAddress
     {
         return $this->address;
     }
     /**
      * 
      *
-     * @param BillingAddress $address
+     * @param BillingAddress|null $address
      *
      * @return self
      */
-    public function setAddress(BillingAddress $address) : self
+    public function setAddress(?BillingAddress $address) : self
     {
         $this->initialized['address'] = true;
         $this->address = $address;
@@ -92,9 +92,9 @@ class BillingInfo extends \ArrayObject
     Language of invoice
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getInvoiceLanguage() : string
+    public function getInvoiceLanguage() : ?string
     {
         return $this->invoiceLanguage;
     }
@@ -104,11 +104,11 @@ class BillingInfo extends \ArrayObject
     Language of invoice
     
     *
-    * @param string $invoiceLanguage
+    * @param string|null $invoiceLanguage
     *
     * @return self
     */
-    public function setInvoiceLanguage(string $invoiceLanguage) : self
+    public function setInvoiceLanguage(?string $invoiceLanguage) : self
     {
         $this->initialized['invoiceLanguage'] = true;
         $this->invoiceLanguage = $invoiceLanguage;

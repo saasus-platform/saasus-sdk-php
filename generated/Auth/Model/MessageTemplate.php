@@ -15,32 +15,32 @@ class MessageTemplate extends \ArrayObject
     /**
      * タイトル(title)
      *
-     * @var string
+     * @var string|null
      */
     protected $subject;
     /**
      * メッセージ(message)
      *
-     * @var string
+     * @var string|null
      */
     protected $message;
     /**
      * タイトル(title)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSubject() : string
+    public function getSubject() : ?string
     {
         return $this->subject;
     }
     /**
      * タイトル(title)
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
-    public function setSubject(string $subject) : self
+    public function setSubject(?string $subject) : self
     {
         $this->initialized['subject'] = true;
         $this->subject = $subject;
@@ -49,20 +49,20 @@ class MessageTemplate extends \ArrayObject
     /**
      * メッセージ(message)
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage() : string
+    public function getMessage() : ?string
     {
         return $this->message;
     }
     /**
      * メッセージ(message)
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */
-    public function setMessage(string $message) : self
+    public function setMessage(?string $message) : self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\Error' => 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Normalizer\\ErrorNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\StripeInfo' => 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Normalizer\\StripeInfoNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\UpdateStripeInfoParam' => 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Normalizer\\UpdateStripeInfoParamNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\AntiPatternInc\\Saasus\\Sdk\\Billing\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
@@ -54,5 +54,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\Error' => false, 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\StripeInfo' => false, 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\UpdateStripeInfoParam' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
     }
 }

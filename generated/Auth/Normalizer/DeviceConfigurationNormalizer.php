@@ -18,11 +18,11 @@ class DeviceConfigurationNormalizer implements DenormalizerInterface, Normalizer
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration';
     }
@@ -41,9 +41,12 @@ class DeviceConfigurationNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('device_remembering', $data)) {
+        if (\array_key_exists('device_remembering', $data) && $data['device_remembering'] !== null) {
             $object->setDeviceRemembering($data['device_remembering']);
             unset($data['device_remembering']);
+        }
+        elseif (\array_key_exists('device_remembering', $data) && $data['device_remembering'] === null) {
+            $object->setDeviceRemembering(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class DeviceConfigurationNormalizer implements DenormalizerInterface, Normalizer
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration' => false);
     }
 }

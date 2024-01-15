@@ -18,11 +18,11 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User';
     }
@@ -41,23 +41,35 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('tenant_id', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('tenant_id', $data) && $data['tenant_id'] !== null) {
             $object->setTenantId($data['tenant_id']);
             unset($data['tenant_id']);
         }
-        if (\array_key_exists('tenant_name', $data)) {
+        elseif (\array_key_exists('tenant_id', $data) && $data['tenant_id'] === null) {
+            $object->setTenantId(null);
+        }
+        if (\array_key_exists('tenant_name', $data) && $data['tenant_name'] !== null) {
             $object->setTenantName($data['tenant_name']);
             unset($data['tenant_name']);
         }
-        if (\array_key_exists('email', $data)) {
+        elseif (\array_key_exists('tenant_name', $data) && $data['tenant_name'] === null) {
+            $object->setTenantName(null);
+        }
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
         }
-        if (\array_key_exists('attributes', $data)) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['attributes'] as $key => $value) {
                 $values[$key] = $value;
@@ -65,13 +77,19 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setAttributes($values);
             unset($data['attributes']);
         }
-        if (\array_key_exists('envs', $data)) {
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+            $object->setAttributes(null);
+        }
+        if (\array_key_exists('envs', $data) && $data['envs'] !== null) {
             $values_1 = array();
             foreach ($data['envs'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setEnvs($values_1);
             unset($data['envs']);
+        }
+        elseif (\array_key_exists('envs', $data) && $data['envs'] === null) {
+            $object->setEnvs(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -106,5 +124,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User' => false);
     }
 }

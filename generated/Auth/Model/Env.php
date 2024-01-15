@@ -15,38 +15,38 @@ class Env extends \ArrayObject
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * 環境名(env name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 環境表示名(env display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId() : ?int
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -55,20 +55,20 @@ class Env extends \ArrayObject
     /**
      * 環境名(env name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 環境名(env name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -77,20 +77,20 @@ class Env extends \ArrayObject
     /**
      * 環境表示名(env display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 環境表示名(env display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;

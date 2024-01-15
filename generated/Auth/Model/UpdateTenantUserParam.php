@@ -18,7 +18,7 @@ class UpdateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>|null
     */
     protected $attributes;
     /**
@@ -27,9 +27,9 @@ class UpdateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>|null
     */
-    public function getAttributes() : iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -39,11 +39,11 @@ class UpdateTenantUserParam extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @param mixed[] $attributes
+    * @param array<string, mixed>|null $attributes
     *
     * @return self
     */
-    public function setAttributes(iterable $attributes) : self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;

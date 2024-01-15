@@ -18,11 +18,11 @@ class CatalogEntityVisibilityNormalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CatalogEntityVisibility';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CatalogEntityVisibility';
     }
@@ -41,9 +41,12 @@ class CatalogEntityVisibilityNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('visibility', $data)) {
+        if (\array_key_exists('visibility', $data) && $data['visibility'] !== null) {
             $object->setVisibility($data['visibility']);
             unset($data['visibility']);
+        }
+        elseif (\array_key_exists('visibility', $data) && $data['visibility'] === null) {
+            $object->setVisibility(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class CatalogEntityVisibilityNormalizer implements DenormalizerInterface, Normal
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CatalogEntityVisibility' => false);
     }
 }

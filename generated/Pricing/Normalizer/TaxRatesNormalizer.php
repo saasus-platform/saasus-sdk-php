@@ -18,11 +18,11 @@ class TaxRatesNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRates';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRates';
     }
@@ -41,7 +41,7 @@ class TaxRatesNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tax_rates', $data)) {
+        if (\array_key_exists('tax_rates', $data) && $data['tax_rates'] !== null) {
             $values = array();
             foreach ($data['tax_rates'] as $value) {
                 $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -52,6 +52,9 @@ class TaxRatesNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->setTaxRates($values);
             unset($data['tax_rates']);
+        }
+        elseif (\array_key_exists('tax_rates', $data) && $data['tax_rates'] === null) {
+            $object->setTaxRates(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -81,5 +84,9 @@ class TaxRatesNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRates' => false);
     }
 }

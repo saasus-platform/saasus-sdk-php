@@ -18,11 +18,11 @@ class MfaConfigurationNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration';
     }
@@ -41,9 +41,12 @@ class MfaConfigurationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('mfa_configuration', $data)) {
+        if (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] !== null) {
             $object->setMfaConfiguration($data['mfa_configuration']);
             unset($data['mfa_configuration']);
+        }
+        elseif (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] === null) {
+            $object->setMfaConfiguration(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class MfaConfigurationNormalizer implements DenormalizerInterface, NormalizerInt
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration' => false);
     }
 }

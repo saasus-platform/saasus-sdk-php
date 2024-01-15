@@ -18,11 +18,11 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BasicInfo';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BasicInfo';
     }
@@ -41,23 +41,35 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('domain_name', $data)) {
+        if (\array_key_exists('domain_name', $data) && $data['domain_name'] !== null) {
             $object->setDomainName($data['domain_name']);
             unset($data['domain_name']);
         }
-        if (\array_key_exists('is_dns_validated', $data)) {
+        elseif (\array_key_exists('domain_name', $data) && $data['domain_name'] === null) {
+            $object->setDomainName(null);
+        }
+        if (\array_key_exists('is_dns_validated', $data) && $data['is_dns_validated'] !== null) {
             $object->setIsDnsValidated($data['is_dns_validated']);
             unset($data['is_dns_validated']);
         }
-        if (\array_key_exists('certificate_dns_record', $data)) {
+        elseif (\array_key_exists('is_dns_validated', $data) && $data['is_dns_validated'] === null) {
+            $object->setIsDnsValidated(null);
+        }
+        if (\array_key_exists('certificate_dns_record', $data) && $data['certificate_dns_record'] !== null) {
             $object->setCertificateDnsRecord($this->denormalizer->denormalize($data['certificate_dns_record'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord', 'json', $context));
             unset($data['certificate_dns_record']);
         }
-        if (\array_key_exists('cloud_front_dns_record', $data)) {
+        elseif (\array_key_exists('certificate_dns_record', $data) && $data['certificate_dns_record'] === null) {
+            $object->setCertificateDnsRecord(null);
+        }
+        if (\array_key_exists('cloud_front_dns_record', $data) && $data['cloud_front_dns_record'] !== null) {
             $object->setCloudFrontDnsRecord($this->denormalizer->denormalize($data['cloud_front_dns_record'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord', 'json', $context));
             unset($data['cloud_front_dns_record']);
         }
-        if (\array_key_exists('dkim_dns_records', $data)) {
+        elseif (\array_key_exists('cloud_front_dns_record', $data) && $data['cloud_front_dns_record'] === null) {
+            $object->setCloudFrontDnsRecord(null);
+        }
+        if (\array_key_exists('dkim_dns_records', $data) && $data['dkim_dns_records'] !== null) {
             $values = array();
             foreach ($data['dkim_dns_records'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord', 'json', $context);
@@ -65,21 +77,36 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDkimDnsRecords($values);
             unset($data['dkim_dns_records']);
         }
-        if (\array_key_exists('default_domain_name', $data)) {
+        elseif (\array_key_exists('dkim_dns_records', $data) && $data['dkim_dns_records'] === null) {
+            $object->setDkimDnsRecords(null);
+        }
+        if (\array_key_exists('default_domain_name', $data) && $data['default_domain_name'] !== null) {
             $object->setDefaultDomainName($data['default_domain_name']);
             unset($data['default_domain_name']);
         }
-        if (\array_key_exists('from_email_address', $data)) {
+        elseif (\array_key_exists('default_domain_name', $data) && $data['default_domain_name'] === null) {
+            $object->setDefaultDomainName(null);
+        }
+        if (\array_key_exists('from_email_address', $data) && $data['from_email_address'] !== null) {
             $object->setFromEmailAddress($data['from_email_address']);
             unset($data['from_email_address']);
         }
-        if (\array_key_exists('reply_email_address', $data)) {
+        elseif (\array_key_exists('from_email_address', $data) && $data['from_email_address'] === null) {
+            $object->setFromEmailAddress(null);
+        }
+        if (\array_key_exists('reply_email_address', $data) && $data['reply_email_address'] !== null) {
             $object->setReplyEmailAddress($data['reply_email_address']);
             unset($data['reply_email_address']);
         }
-        if (\array_key_exists('is_ses_sandbox_granted', $data)) {
+        elseif (\array_key_exists('reply_email_address', $data) && $data['reply_email_address'] === null) {
+            $object->setReplyEmailAddress(null);
+        }
+        if (\array_key_exists('is_ses_sandbox_granted', $data) && $data['is_ses_sandbox_granted'] !== null) {
             $object->setIsSesSandboxGranted($data['is_ses_sandbox_granted']);
             unset($data['is_ses_sandbox_granted']);
+        }
+        elseif (\array_key_exists('is_ses_sandbox_granted', $data) && $data['is_ses_sandbox_granted'] === null) {
+            $object->setIsSesSandboxGranted(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -113,5 +140,9 @@ class BasicInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BasicInfo' => false);
     }
 }

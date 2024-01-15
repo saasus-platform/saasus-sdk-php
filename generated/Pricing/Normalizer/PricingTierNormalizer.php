@@ -18,11 +18,11 @@ class PricingTierNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTier';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTier';
     }
@@ -41,21 +41,33 @@ class PricingTierNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('up_to', $data)) {
+        if (\array_key_exists('up_to', $data) && $data['up_to'] !== null) {
             $object->setUpTo($data['up_to']);
             unset($data['up_to']);
         }
-        if (\array_key_exists('unit_amount', $data)) {
+        elseif (\array_key_exists('up_to', $data) && $data['up_to'] === null) {
+            $object->setUpTo(null);
+        }
+        if (\array_key_exists('unit_amount', $data) && $data['unit_amount'] !== null) {
             $object->setUnitAmount($data['unit_amount']);
             unset($data['unit_amount']);
         }
-        if (\array_key_exists('flat_amount', $data)) {
+        elseif (\array_key_exists('unit_amount', $data) && $data['unit_amount'] === null) {
+            $object->setUnitAmount(null);
+        }
+        if (\array_key_exists('flat_amount', $data) && $data['flat_amount'] !== null) {
             $object->setFlatAmount($data['flat_amount']);
             unset($data['flat_amount']);
         }
-        if (\array_key_exists('inf', $data)) {
+        elseif (\array_key_exists('flat_amount', $data) && $data['flat_amount'] === null) {
+            $object->setFlatAmount(null);
+        }
+        if (\array_key_exists('inf', $data) && $data['inf'] !== null) {
             $object->setInf($data['inf']);
             unset($data['inf']);
+        }
+        elseif (\array_key_exists('inf', $data) && $data['inf'] === null) {
+            $object->setInf(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -80,5 +92,9 @@ class PricingTierNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingTier' => false);
     }
 }

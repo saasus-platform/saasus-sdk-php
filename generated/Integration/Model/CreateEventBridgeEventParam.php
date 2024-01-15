@@ -13,28 +13,28 @@ class CreateEventBridgeEventParam extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * イベントメッセージ
+     * イベントメッセージ(event message)
      *
-     * @var EventMessage[]
+     * @var EventMessage[]|null
      */
     protected $eventMessages;
     /**
-     * イベントメッセージ
+     * イベントメッセージ(event message)
      *
-     * @return EventMessage[]
+     * @return EventMessage[]|null
      */
-    public function getEventMessages() : array
+    public function getEventMessages() : ?array
     {
         return $this->eventMessages;
     }
     /**
-     * イベントメッセージ
+     * イベントメッセージ(event message)
      *
-     * @param EventMessage[] $eventMessages
+     * @param EventMessage[]|null $eventMessages
      *
      * @return self
      */
-    public function setEventMessages(array $eventMessages) : self
+    public function setEventMessages(?array $eventMessages) : self
     {
         $this->initialized['eventMessages'] = true;
         $this->eventMessages = $eventMessages;

@@ -15,19 +15,19 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 上限値(upper limit)
      *
-     * @var int
+     * @var int|null
      */
     protected $upperCount;
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @var int
+     * @var int|null
      */
     protected $unitAmount;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $meteringUnitName;
     /**
@@ -36,25 +36,25 @@ class PricingUsageUnitForSave extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $aggregateUsage;
     /**
      * 名前(name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 表示名(display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 説明(description)
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -65,32 +65,32 @@ class PricingUsageUnitForSave extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $type;
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @var string
+     * @var string|null
      */
     protected $currency;
     /**
      * 上限値(upper limit)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUpperCount() : int
+    public function getUpperCount() : ?int
     {
         return $this->upperCount;
     }
     /**
      * 上限値(upper limit)
      *
-     * @param int $upperCount
+     * @param int|null $upperCount
      *
      * @return self
      */
-    public function setUpperCount(int $upperCount) : self
+    public function setUpperCount(?int $upperCount) : self
     {
         $this->initialized['upperCount'] = true;
         $this->upperCount = $upperCount;
@@ -99,20 +99,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitAmount() : int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @param int $unitAmount
+     * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -121,20 +121,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getMeteringUnitName() : string
+    public function getMeteringUnitName() : ?string
     {
         return $this->meteringUnitName;
     }
     /**
      * 
      *
-     * @param string $meteringUnitName
+     * @param string|null $meteringUnitName
      *
      * @return self
      */
-    public function setMeteringUnitName(string $meteringUnitName) : self
+    public function setMeteringUnitName(?string $meteringUnitName) : self
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
@@ -146,9 +146,9 @@ class PricingUsageUnitForSave extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getAggregateUsage() : string
+    public function getAggregateUsage() : ?string
     {
         return $this->aggregateUsage;
     }
@@ -158,11 +158,11 @@ class PricingUsageUnitForSave extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @param string $aggregateUsage
+    * @param string|null $aggregateUsage
     *
     * @return self
     */
-    public function setAggregateUsage(string $aggregateUsage) : self
+    public function setAggregateUsage(?string $aggregateUsage) : self
     {
         $this->initialized['aggregateUsage'] = true;
         $this->aggregateUsage = $aggregateUsage;
@@ -171,20 +171,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 名前(name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 名前(name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -193,20 +193,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 表示名(display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 表示名(display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -215,20 +215,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 説明(description)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * 説明(description)
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -242,9 +242,9 @@ class PricingUsageUnitForSave extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -256,11 +256,11 @@ class PricingUsageUnitForSave extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @param string $type
+    * @param string|null $type
     *
     * @return self
     */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -269,20 +269,20 @@ class PricingUsageUnitForSave extends \ArrayObject
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency() : string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
-    public function setCurrency(string $currency) : self
+    public function setCurrency(?string $currency) : self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

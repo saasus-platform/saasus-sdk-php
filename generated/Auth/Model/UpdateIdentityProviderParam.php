@@ -15,32 +15,32 @@ class UpdateIdentityProviderParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $provider;
     /**
      * 
      *
-     * @var IdentityProviderProps
+     * @var IdentityProviderProps|null
      */
     protected $identityProviderProps;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getProvider() : string
+    public function getProvider() : ?string
     {
         return $this->provider;
     }
     /**
      * 
      *
-     * @param string $provider
+     * @param string|null $provider
      *
      * @return self
      */
-    public function setProvider(string $provider) : self
+    public function setProvider(?string $provider) : self
     {
         $this->initialized['provider'] = true;
         $this->provider = $provider;
@@ -49,20 +49,20 @@ class UpdateIdentityProviderParam extends \ArrayObject
     /**
      * 
      *
-     * @return IdentityProviderProps
+     * @return IdentityProviderProps|null
      */
-    public function getIdentityProviderProps() : IdentityProviderProps
+    public function getIdentityProviderProps() : ?IdentityProviderProps
     {
         return $this->identityProviderProps;
     }
     /**
      * 
      *
-     * @param IdentityProviderProps $identityProviderProps
+     * @param IdentityProviderProps|null $identityProviderProps
      *
      * @return self
      */
-    public function setIdentityProviderProps(IdentityProviderProps $identityProviderProps) : self
+    public function setIdentityProviderProps(?IdentityProviderProps $identityProviderProps) : self
     {
         $this->initialized['identityProviderProps'] = true;
         $this->identityProviderProps = $identityProviderProps;

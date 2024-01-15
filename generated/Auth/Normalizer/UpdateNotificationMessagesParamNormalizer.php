@@ -18,11 +18,11 @@ class UpdateNotificationMessagesParamNormalizer implements DenormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateNotificationMessagesParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateNotificationMessagesParam';
     }
@@ -41,41 +41,68 @@ class UpdateNotificationMessagesParamNormalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('sign_up', $data)) {
+        if (\array_key_exists('sign_up', $data) && $data['sign_up'] !== null) {
             $object->setSignUp($this->denormalizer->denormalize($data['sign_up'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['sign_up']);
         }
-        if (\array_key_exists('create_user', $data)) {
+        elseif (\array_key_exists('sign_up', $data) && $data['sign_up'] === null) {
+            $object->setSignUp(null);
+        }
+        if (\array_key_exists('create_user', $data) && $data['create_user'] !== null) {
             $object->setCreateUser($this->denormalizer->denormalize($data['create_user'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['create_user']);
         }
-        if (\array_key_exists('resend_code', $data)) {
+        elseif (\array_key_exists('create_user', $data) && $data['create_user'] === null) {
+            $object->setCreateUser(null);
+        }
+        if (\array_key_exists('resend_code', $data) && $data['resend_code'] !== null) {
             $object->setResendCode($this->denormalizer->denormalize($data['resend_code'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['resend_code']);
         }
-        if (\array_key_exists('forgot_password', $data)) {
+        elseif (\array_key_exists('resend_code', $data) && $data['resend_code'] === null) {
+            $object->setResendCode(null);
+        }
+        if (\array_key_exists('forgot_password', $data) && $data['forgot_password'] !== null) {
             $object->setForgotPassword($this->denormalizer->denormalize($data['forgot_password'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['forgot_password']);
         }
-        if (\array_key_exists('update_user_attribute', $data)) {
+        elseif (\array_key_exists('forgot_password', $data) && $data['forgot_password'] === null) {
+            $object->setForgotPassword(null);
+        }
+        if (\array_key_exists('update_user_attribute', $data) && $data['update_user_attribute'] !== null) {
             $object->setUpdateUserAttribute($this->denormalizer->denormalize($data['update_user_attribute'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['update_user_attribute']);
         }
-        if (\array_key_exists('verify_user_attribute', $data)) {
+        elseif (\array_key_exists('update_user_attribute', $data) && $data['update_user_attribute'] === null) {
+            $object->setUpdateUserAttribute(null);
+        }
+        if (\array_key_exists('verify_user_attribute', $data) && $data['verify_user_attribute'] !== null) {
             $object->setVerifyUserAttribute($this->denormalizer->denormalize($data['verify_user_attribute'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['verify_user_attribute']);
         }
-        if (\array_key_exists('authentication_mfa', $data)) {
+        elseif (\array_key_exists('verify_user_attribute', $data) && $data['verify_user_attribute'] === null) {
+            $object->setVerifyUserAttribute(null);
+        }
+        if (\array_key_exists('authentication_mfa', $data) && $data['authentication_mfa'] !== null) {
             $object->setAuthenticationMfa($this->denormalizer->denormalize($data['authentication_mfa'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['authentication_mfa']);
         }
-        if (\array_key_exists('invite_tenant_user', $data)) {
+        elseif (\array_key_exists('authentication_mfa', $data) && $data['authentication_mfa'] === null) {
+            $object->setAuthenticationMfa(null);
+        }
+        if (\array_key_exists('invite_tenant_user', $data) && $data['invite_tenant_user'] !== null) {
             $object->setInviteTenantUser($this->denormalizer->denormalize($data['invite_tenant_user'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['invite_tenant_user']);
         }
-        if (\array_key_exists('verify_external_user', $data)) {
+        elseif (\array_key_exists('invite_tenant_user', $data) && $data['invite_tenant_user'] === null) {
+            $object->setInviteTenantUser(null);
+        }
+        if (\array_key_exists('verify_external_user', $data) && $data['verify_external_user'] !== null) {
             $object->setVerifyExternalUser($this->denormalizer->denormalize($data['verify_external_user'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate', 'json', $context));
             unset($data['verify_external_user']);
+        }
+        elseif (\array_key_exists('verify_external_user', $data) && $data['verify_external_user'] === null) {
+            $object->setVerifyExternalUser(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -123,5 +150,9 @@ class UpdateNotificationMessagesParamNormalizer implements DenormalizerInterface
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateNotificationMessagesParam' => false);
     }
 }

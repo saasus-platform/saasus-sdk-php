@@ -18,11 +18,11 @@ class RecaptchaPropsNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps';
     }
@@ -41,13 +41,19 @@ class RecaptchaPropsNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('site_key', $data)) {
+        if (\array_key_exists('site_key', $data) && $data['site_key'] !== null) {
             $object->setSiteKey($data['site_key']);
             unset($data['site_key']);
         }
-        if (\array_key_exists('secret_key', $data)) {
+        elseif (\array_key_exists('site_key', $data) && $data['site_key'] === null) {
+            $object->setSiteKey(null);
+        }
+        if (\array_key_exists('secret_key', $data) && $data['secret_key'] !== null) {
             $object->setSecretKey($data['secret_key']);
             unset($data['secret_key']);
+        }
+        elseif (\array_key_exists('secret_key', $data) && $data['secret_key'] === null) {
+            $object->setSecretKey(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class RecaptchaPropsNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps' => false);
     }
 }

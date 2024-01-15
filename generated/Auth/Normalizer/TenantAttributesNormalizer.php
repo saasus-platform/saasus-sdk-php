@@ -18,11 +18,11 @@ class TenantAttributesNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantAttributes';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantAttributes';
     }
@@ -41,13 +41,16 @@ class TenantAttributesNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('tenant_attributes', $data)) {
+        if (\array_key_exists('tenant_attributes', $data) && $data['tenant_attributes'] !== null) {
             $values = array();
             foreach ($data['tenant_attributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute', 'json', $context);
             }
             $object->setTenantAttributes($values);
             unset($data['tenant_attributes']);
+        }
+        elseif (\array_key_exists('tenant_attributes', $data) && $data['tenant_attributes'] === null) {
+            $object->setTenantAttributes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class TenantAttributesNormalizer implements DenormalizerInterface, NormalizerInt
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantAttributes' => false);
     }
 }

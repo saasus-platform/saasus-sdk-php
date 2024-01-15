@@ -15,74 +15,74 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $userId;
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $createdAt;
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $status;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $feedbackTitle;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $feedbackDescription;
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $comments;
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
      * 
      *
-     * @var User[]
+     * @var User[]|null
      */
     protected $users;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -91,20 +91,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getUserId() : string
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
     /**
      * 
      *
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */
-    public function setUserId(string $userId) : self
+    public function setUserId(?string $userId) : self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;
@@ -113,20 +113,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getCreatedAt() : int
+    public function getCreatedAt() : ?int
     {
         return $this->createdAt;
     }
     /**
      * 
      *
-     * @param int $createdAt
+     * @param int|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(int $createdAt) : self
+    public function setCreatedAt(?int $createdAt) : self
     {
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
@@ -135,20 +135,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getStatus() : int
+    public function getStatus() : ?int
     {
         return $this->status;
     }
     /**
      * 
      *
-     * @param int $status
+     * @param int|null $status
      *
      * @return self
      */
-    public function setStatus(int $status) : self
+    public function setStatus(?int $status) : self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
@@ -157,20 +157,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getFeedbackTitle() : string
+    public function getFeedbackTitle() : ?string
     {
         return $this->feedbackTitle;
     }
     /**
      * 
      *
-     * @param string $feedbackTitle
+     * @param string|null $feedbackTitle
      *
      * @return self
      */
-    public function setFeedbackTitle(string $feedbackTitle) : self
+    public function setFeedbackTitle(?string $feedbackTitle) : self
     {
         $this->initialized['feedbackTitle'] = true;
         $this->feedbackTitle = $feedbackTitle;
@@ -179,20 +179,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getFeedbackDescription() : string
+    public function getFeedbackDescription() : ?string
     {
         return $this->feedbackDescription;
     }
     /**
      * 
      *
-     * @param string $feedbackDescription
+     * @param string|null $feedbackDescription
      *
      * @return self
      */
-    public function setFeedbackDescription(string $feedbackDescription) : self
+    public function setFeedbackDescription(?string $feedbackDescription) : self
     {
         $this->initialized['feedbackDescription'] = true;
         $this->feedbackDescription = $feedbackDescription;
@@ -201,20 +201,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getComments() : array
+    public function getComments() : ?array
     {
         return $this->comments;
     }
     /**
      * 
      *
-     * @param mixed[][] $comments
+     * @param array<string, mixed>[]|null $comments
      *
      * @return self
      */
-    public function setComments(array $comments) : self
+    public function setComments(?array $comments) : self
     {
         $this->initialized['comments'] = true;
         $this->comments = $comments;
@@ -223,20 +223,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
      * 
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -245,20 +245,20 @@ class Feedback extends \ArrayObject
     /**
      * 
      *
-     * @return User[]
+     * @return User[]|null
      */
-    public function getUsers() : array
+    public function getUsers() : ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param User[] $users
+     * @param User[]|null $users
      *
      * @return self
      */
-    public function setUsers(array $users) : self
+    public function setUsers(?array $users) : self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

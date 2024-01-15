@@ -15,26 +15,26 @@ class InvitationValidity extends \ArrayObject
     /**
      * 招待が有効か否か(Whether the validation is valid or not)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isValid;
     /**
      * 招待が有効か否か(Whether the validation is valid or not)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsValid() : bool
+    public function getIsValid() : ?bool
     {
         return $this->isValid;
     }
     /**
      * 招待が有効か否か(Whether the validation is valid or not)
      *
-     * @param bool $isValid
+     * @param bool|null $isValid
      *
      * @return self
      */
-    public function setIsValid(bool $isValid) : self
+    public function setIsValid(?bool $isValid) : self
     {
         $this->initialized['isValid'] = true;
         $this->isValid = $isValid;

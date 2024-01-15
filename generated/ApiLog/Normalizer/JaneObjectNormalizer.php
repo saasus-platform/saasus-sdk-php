@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\Error' => 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Normalizer\\ErrorNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\ApiLogs' => 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Normalizer\\ApiLogsNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
@@ -54,5 +54,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\Error' => false, 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\ApiLogs' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
     }
 }

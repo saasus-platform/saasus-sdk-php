@@ -18,11 +18,11 @@ class PricingMenusNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingMenus';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingMenus';
     }
@@ -41,7 +41,7 @@ class PricingMenusNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('pricing_menus', $data)) {
+        if (\array_key_exists('pricing_menus', $data) && $data['pricing_menus'] !== null) {
             $values = array();
             foreach ($data['pricing_menus'] as $value) {
                 $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -52,6 +52,9 @@ class PricingMenusNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->setPricingMenus($values);
             unset($data['pricing_menus']);
+        }
+        elseif (\array_key_exists('pricing_menus', $data) && $data['pricing_menus'] === null) {
+            $object->setPricingMenus(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -81,5 +84,9 @@ class PricingMenusNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingMenus' => false);
     }
 }

@@ -18,11 +18,11 @@ class VerifyRegistrationTokenParamNormalizer implements DenormalizerInterface, N
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\VerifyRegistrationTokenParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\VerifyRegistrationTokenParam';
     }
@@ -41,9 +41,12 @@ class VerifyRegistrationTokenParamNormalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('registration_token', $data)) {
+        if (\array_key_exists('registration_token', $data) && $data['registration_token'] !== null) {
             $object->setRegistrationToken($data['registration_token']);
             unset($data['registration_token']);
+        }
+        elseif (\array_key_exists('registration_token', $data) && $data['registration_token'] === null) {
+            $object->setRegistrationToken(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class VerifyRegistrationTokenParamNormalizer implements DenormalizerInterface, N
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\VerifyRegistrationTokenParam' => false);
     }
 }

@@ -15,26 +15,26 @@ class GetListingStatusResult extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $listingStatus;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getListingStatus() : string
+    public function getListingStatus() : ?string
     {
         return $this->listingStatus;
     }
     /**
      * 
      *
-     * @param string $listingStatus
+     * @param string|null $listingStatus
      *
      * @return self
      */
-    public function setListingStatus(string $listingStatus) : self
+    public function setListingStatus(?string $listingStatus) : self
     {
         $this->initialized['listingStatus'] = true;
         $this->listingStatus = $listingStatus;

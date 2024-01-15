@@ -15,38 +15,38 @@ class Credentials extends \ArrayObject
     /**
      * IDトークン(ID token)
      *
-     * @var string
+     * @var string|null
      */
     protected $idToken;
     /**
      * アクセストークン(access token)
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * リフレッシュトークン(refresh token)
      *
-     * @var string
+     * @var string|null
      */
     protected $refreshToken;
     /**
      * IDトークン(ID token)
      *
-     * @return string
+     * @return string|null
      */
-    public function getIdToken() : string
+    public function getIdToken() : ?string
     {
         return $this->idToken;
     }
     /**
      * IDトークン(ID token)
      *
-     * @param string $idToken
+     * @param string|null $idToken
      *
      * @return self
      */
-    public function setIdToken(string $idToken) : self
+    public function setIdToken(?string $idToken) : self
     {
         $this->initialized['idToken'] = true;
         $this->idToken = $idToken;
@@ -55,20 +55,20 @@ class Credentials extends \ArrayObject
     /**
      * アクセストークン(access token)
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * アクセストークン(access token)
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -77,20 +77,20 @@ class Credentials extends \ArrayObject
     /**
      * リフレッシュトークン(refresh token)
      *
-     * @return string
+     * @return string|null
      */
-    public function getRefreshToken() : string
+    public function getRefreshToken() : ?string
     {
         return $this->refreshToken;
     }
     /**
      * リフレッシュトークン(refresh token)
      *
-     * @param string $refreshToken
+     * @param string|null $refreshToken
      *
      * @return self
      */
-    public function setRefreshToken(string $refreshToken) : self
+    public function setRefreshToken(?string $refreshToken) : self
     {
         $this->initialized['refreshToken'] = true;
         $this->refreshToken = $refreshToken;

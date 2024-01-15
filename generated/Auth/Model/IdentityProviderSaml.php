@@ -15,32 +15,32 @@ class IdentityProviderSaml extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $metadataUrl;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $emailAttribute;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getMetadataUrl() : string
+    public function getMetadataUrl() : ?string
     {
         return $this->metadataUrl;
     }
     /**
      * 
      *
-     * @param string $metadataUrl
+     * @param string|null $metadataUrl
      *
      * @return self
      */
-    public function setMetadataUrl(string $metadataUrl) : self
+    public function setMetadataUrl(?string $metadataUrl) : self
     {
         $this->initialized['metadataUrl'] = true;
         $this->metadataUrl = $metadataUrl;
@@ -49,20 +49,20 @@ class IdentityProviderSaml extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmailAttribute() : string
+    public function getEmailAttribute() : ?string
     {
         return $this->emailAttribute;
     }
     /**
      * 
      *
-     * @param string $emailAttribute
+     * @param string|null $emailAttribute
      *
      * @return self
      */
-    public function setEmailAttribute(string $emailAttribute) : self
+    public function setEmailAttribute(?string $emailAttribute) : self
     {
         $this->initialized['emailAttribute'] = true;
         $this->emailAttribute = $emailAttribute;

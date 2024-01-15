@@ -18,11 +18,11 @@ class PlanNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plan';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plan';
     }
@@ -41,13 +41,19 @@ class PlanNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('plan_id', $data)) {
+        if (\array_key_exists('plan_id', $data) && $data['plan_id'] !== null) {
             $object->setPlanId($data['plan_id']);
             unset($data['plan_id']);
         }
-        if (\array_key_exists('plan_name', $data)) {
+        elseif (\array_key_exists('plan_id', $data) && $data['plan_id'] === null) {
+            $object->setPlanId(null);
+        }
+        if (\array_key_exists('plan_name', $data) && $data['plan_name'] !== null) {
             $object->setPlanName($data['plan_name']);
             unset($data['plan_name']);
+        }
+        elseif (\array_key_exists('plan_name', $data) && $data['plan_name'] === null) {
+            $object->setPlanName(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,5 +76,9 @@ class PlanNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plan' => false);
     }
 }

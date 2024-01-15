@@ -18,11 +18,11 @@ class MfaPreferenceNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaPreference';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaPreference';
     }
@@ -41,13 +41,19 @@ class MfaPreferenceNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('enabled', $data)) {
+        if (\array_key_exists('enabled', $data) && $data['enabled'] !== null) {
             $object->setEnabled($data['enabled']);
             unset($data['enabled']);
         }
-        if (\array_key_exists('method', $data)) {
+        elseif (\array_key_exists('enabled', $data) && $data['enabled'] === null) {
+            $object->setEnabled(null);
+        }
+        if (\array_key_exists('method', $data) && $data['method'] !== null) {
             $object->setMethod($data['method']);
             unset($data['method']);
+        }
+        elseif (\array_key_exists('method', $data) && $data['method'] === null) {
+            $object->setMethod(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -72,5 +78,9 @@ class MfaPreferenceNormalizer implements DenormalizerInterface, NormalizerInterf
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaPreference' => false);
     }
 }

@@ -9,6 +9,7 @@ use AntiPatternInc\Saasus\Sdk\Integration;
 use AntiPatternInc\Saasus\Sdk\AwsMarketplace;
 use AntiPatternInc\Saasus\Sdk\Communication;
 use AntiPatternInc\Saasus\Sdk\ApiLog;
+use Exception;
 use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
@@ -38,10 +39,17 @@ class Client
         $this->secret = getenv('SAASUS_SECRET_KEY');
         $this->saasid = getenv('SAASUS_SAAS_ID');
         $this->apikey = getenv('SAASUS_API_KEY');
-        if ($this->secret == "" || $this->saasid == "" || $this->apikey == "") {
-            error_log('SAASUS_SECRET_KEY, SAASUS_SAAS_ID and SAASUS_API_KEY are required.');
-            return false;
-        }
+
+        $errors = [];
+        if (empty($this->secret))
+            $errors[] = 'SAASUS_SECRET_KEY';
+        if (empty($this->saasid))
+            $errors[] = 'SAASUS_SAAS_ID';
+        if (empty($this->apikey))
+            $errors[] = 'SAASUS_API_KEY';
+
+        if (count($errors) > 0)
+            throw new Exception(implode(",", $errors) . " are required. Please, refer to https://github.com/saasus-platform/saasus-sdk-php/blob/main/README.md and add it to your .env file");
 
         $this->apibase = getenv('SAASUS_API_URL_BASE');
         if ($this->apibase == "") {

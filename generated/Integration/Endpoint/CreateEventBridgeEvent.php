@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Integration\Endpoint;
 class CreateEventBridgeEvent extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Endpoint
 {
     /**
-     * 監視対象となっている全ホストの状態を Amazon EventBridge 経由でイベントを送信します
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
-     */
+    * Amazon EventBridge へイベントを送信します。
+    
+    Send events to Amazon EventBridge.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
+    */
     public function __construct(?\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody = null)
     {
         $this->body = $requestBody;
@@ -40,13 +43,15 @@ class CreateEventBridgeEvent extends \AntiPatternInc\Saasus\Sdk\Integration\Runt
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (201 === $status) {
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -15,7 +15,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedbacks(), $fetch);
     }
     /**
-     * フィードバックを起票
+     * フィードバックを起票します。
      *
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateFeedbackParam $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -28,7 +28,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateFeedback($requestBody), $fetch);
     }
     /**
-     * フィードバックの削除
+     * フィードバックを削除します。
      *
      * @param string $feedbackId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -42,7 +42,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteFeedback($feedbackId), $fetch);
     }
     /**
-     * フィードバックの取得
+     * フィードバックの取得をします。
      *
      * @param string $feedbackId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -56,7 +56,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedback($feedbackId), $fetch);
     }
     /**
-     * フィードバックの編集
+     * フィードバックの編集をします。
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\UpdateFeedbackParam $requestBody 
@@ -71,7 +71,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\UpdateFeedback($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックのステータス更新
+     * フィードバックのステータスを更新します。
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\UpdateFeedbackStatusParam $requestBody 
@@ -86,7 +86,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\UpdateFeedbackStatus($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへの投票
+     * フィードバックへの投票をします。
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateVoteUserParam $requestBody 
@@ -101,7 +101,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateVoteUser($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへの投票の取消
+     * フィードバックへの投票の取消をします。
      *
      * @param string $feedbackId 
      * @param string $userId 
@@ -116,7 +116,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteVoteForFeedback($feedbackId, $userId), $fetch);
     }
     /**
-     * フィードバックへのコメント
+     * フィードバックへのコメントを投稿します。
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateFeedbackCommentParam $requestBody 
@@ -131,7 +131,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateFeedbackComment($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへのコメント削除
+     * フィードバックへのコメントを削除します。
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -146,7 +146,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteFeedbackComment($feedbackId, $commentId), $fetch);
     }
     /**
-     * フィードバックへのコメント取得
+     * フィードバックへのコメントを取得します。
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -161,7 +161,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedbackComment($feedbackId, $commentId), $fetch);
     }
     /**
-     * フィードバックへのコメント編集
+     * フィードバックへのコメントを編集します。
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -191,7 +191,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.saasus.io/v1/communication');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/communication');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

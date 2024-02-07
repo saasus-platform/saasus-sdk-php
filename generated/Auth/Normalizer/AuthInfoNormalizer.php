@@ -18,11 +18,11 @@ class AuthInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthInfo';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthInfo';
     }
@@ -41,9 +41,12 @@ class AuthInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('callback_url', $data)) {
+        if (\array_key_exists('callback_url', $data) && $data['callback_url'] !== null) {
             $object->setCallbackUrl($data['callback_url']);
             unset($data['callback_url']);
+        }
+        elseif (\array_key_exists('callback_url', $data) && $data['callback_url'] === null) {
+            $object->setCallbackUrl(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class AuthInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthInfo' => false);
     }
 }

@@ -15,38 +15,38 @@ class Customer extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $customerIdentifier;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $customerAwsAccountId;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $tenantId;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomerIdentifier() : string
+    public function getCustomerIdentifier() : ?string
     {
         return $this->customerIdentifier;
     }
     /**
      * 
      *
-     * @param string $customerIdentifier
+     * @param string|null $customerIdentifier
      *
      * @return self
      */
-    public function setCustomerIdentifier(string $customerIdentifier) : self
+    public function setCustomerIdentifier(?string $customerIdentifier) : self
     {
         $this->initialized['customerIdentifier'] = true;
         $this->customerIdentifier = $customerIdentifier;
@@ -55,20 +55,20 @@ class Customer extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomerAwsAccountId() : string
+    public function getCustomerAwsAccountId() : ?string
     {
         return $this->customerAwsAccountId;
     }
     /**
      * 
      *
-     * @param string $customerAwsAccountId
+     * @param string|null $customerAwsAccountId
      *
      * @return self
      */
-    public function setCustomerAwsAccountId(string $customerAwsAccountId) : self
+    public function setCustomerAwsAccountId(?string $customerAwsAccountId) : self
     {
         $this->initialized['customerAwsAccountId'] = true;
         $this->customerAwsAccountId = $customerAwsAccountId;
@@ -77,20 +77,20 @@ class Customer extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTenantId() : string
+    public function getTenantId() : ?string
     {
         return $this->tenantId;
     }
     /**
      * 
      *
-     * @param string $tenantId
+     * @param string|null $tenantId
      *
      * @return self
      */
-    public function setTenantId(string $tenantId) : self
+    public function setTenantId(?string $tenantId) : self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;

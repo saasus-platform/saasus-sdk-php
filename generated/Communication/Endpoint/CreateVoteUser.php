@@ -6,7 +6,7 @@ class CreateVoteUser extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Cl
 {
     protected $feedback_id;
     /**
-     * フィードバックへの投票
+     * フィードバックへの投票をします。
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateVoteUserParam $requestBody 
@@ -44,16 +44,18 @@ class CreateVoteUser extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Cl
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\Communication\Model\Votes
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Votes', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\CreateVoteUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\CreateVoteUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\CreateVoteUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\CreateVoteUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -18,11 +18,11 @@ class PricingUsageUnitForSaveNormalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingUsageUnitForSave';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingUsageUnitForSave';
     }
@@ -41,41 +41,68 @@ class PricingUsageUnitForSaveNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('upper_count', $data)) {
+        if (\array_key_exists('upper_count', $data) && $data['upper_count'] !== null) {
             $object->setUpperCount($data['upper_count']);
             unset($data['upper_count']);
         }
-        if (\array_key_exists('unit_amount', $data)) {
+        elseif (\array_key_exists('upper_count', $data) && $data['upper_count'] === null) {
+            $object->setUpperCount(null);
+        }
+        if (\array_key_exists('unit_amount', $data) && $data['unit_amount'] !== null) {
             $object->setUnitAmount($data['unit_amount']);
             unset($data['unit_amount']);
         }
-        if (\array_key_exists('metering_unit_name', $data)) {
+        elseif (\array_key_exists('unit_amount', $data) && $data['unit_amount'] === null) {
+            $object->setUnitAmount(null);
+        }
+        if (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] !== null) {
             $object->setMeteringUnitName($data['metering_unit_name']);
             unset($data['metering_unit_name']);
         }
-        if (\array_key_exists('aggregate_usage', $data)) {
+        elseif (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] === null) {
+            $object->setMeteringUnitName(null);
+        }
+        if (\array_key_exists('aggregate_usage', $data) && $data['aggregate_usage'] !== null) {
             $object->setAggregateUsage($data['aggregate_usage']);
             unset($data['aggregate_usage']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('aggregate_usage', $data) && $data['aggregate_usage'] === null) {
+            $object->setAggregateUsage(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        if (\array_key_exists('type', $data)) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('currency', $data)) {
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
             $object->setCurrency($data['currency']);
             unset($data['currency']);
+        }
+        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
+            $object->setCurrency(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -107,5 +134,9 @@ class PricingUsageUnitForSaveNormalizer implements DenormalizerInterface, Normal
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingUsageUnitForSave' => false);
     }
 }

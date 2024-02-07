@@ -15,26 +15,26 @@ class Customers extends \ArrayObject
     /**
      * 
      *
-     * @var Customer[]
+     * @var Customer[]|null
      */
     protected $customers;
     /**
      * 
      *
-     * @return Customer[]
+     * @return Customer[]|null
      */
-    public function getCustomers() : array
+    public function getCustomers() : ?array
     {
         return $this->customers;
     }
     /**
      * 
      *
-     * @param Customer[] $customers
+     * @param Customer[]|null $customers
      *
      * @return self
      */
-    public function setCustomers(array $customers) : self
+    public function setCustomers(?array $customers) : self
     {
         $this->initialized['customers'] = true;
         $this->customers = $customers;

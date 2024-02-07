@@ -15,32 +15,32 @@ class CreateFeedbackCommentParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $userId;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $body;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getUserId() : string
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
     /**
      * 
      *
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */
-    public function setUserId(string $userId) : self
+    public function setUserId(?string $userId) : self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;
@@ -49,20 +49,20 @@ class CreateFeedbackCommentParam extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getBody() : string
+    public function getBody() : ?string
     {
         return $this->body;
     }
     /**
      * 
      *
-     * @param string $body
+     * @param string|null $body
      *
      * @return self
      */
-    public function setBody(string $body) : self
+    public function setBody(?string $body) : self
     {
         $this->initialized['body'] = true;
         $this->body = $body;

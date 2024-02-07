@@ -15,26 +15,26 @@ class StripeInfo extends \ArrayObject
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isRegistered;
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsRegistered() : bool
+    public function getIsRegistered() : ?bool
     {
         return $this->isRegistered;
     }
     /**
      * 
      *
-     * @param bool $isRegistered
+     * @param bool|null $isRegistered
      *
      * @return self
      */
-    public function setIsRegistered(bool $isRegistered) : self
+    public function setIsRegistered(?bool $isRegistered) : self
     {
         $this->initialized['isRegistered'] = true;
         $this->isRegistered = $isRegistered;

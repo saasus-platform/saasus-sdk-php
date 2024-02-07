@@ -15,44 +15,44 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $applicationId;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $applicationSecret;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $approvalScope;
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isButtonHidden;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getApplicationId() : string
+    public function getApplicationId() : ?string
     {
         return $this->applicationId;
     }
     /**
      * 
      *
-     * @param string $applicationId
+     * @param string|null $applicationId
      *
      * @return self
      */
-    public function setApplicationId(string $applicationId) : self
+    public function setApplicationId(?string $applicationId) : self
     {
         $this->initialized['applicationId'] = true;
         $this->applicationId = $applicationId;
@@ -61,20 +61,20 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getApplicationSecret() : string
+    public function getApplicationSecret() : ?string
     {
         return $this->applicationSecret;
     }
     /**
      * 
      *
-     * @param string $applicationSecret
+     * @param string|null $applicationSecret
      *
      * @return self
      */
-    public function setApplicationSecret(string $applicationSecret) : self
+    public function setApplicationSecret(?string $applicationSecret) : self
     {
         $this->initialized['applicationSecret'] = true;
         $this->applicationSecret = $applicationSecret;
@@ -83,20 +83,20 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getApprovalScope() : string
+    public function getApprovalScope() : ?string
     {
         return $this->approvalScope;
     }
     /**
      * 
      *
-     * @param string $approvalScope
+     * @param string|null $approvalScope
      *
      * @return self
      */
-    public function setApprovalScope(string $approvalScope) : self
+    public function setApprovalScope(?string $approvalScope) : self
     {
         $this->initialized['approvalScope'] = true;
         $this->approvalScope = $approvalScope;
@@ -105,20 +105,20 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsButtonHidden() : bool
+    public function getIsButtonHidden() : ?bool
     {
         return $this->isButtonHidden;
     }
     /**
      * 
      *
-     * @param bool $isButtonHidden
+     * @param bool|null $isButtonHidden
      *
      * @return self
      */
-    public function setIsButtonHidden(bool $isButtonHidden) : self
+    public function setIsButtonHidden(?bool $isButtonHidden) : self
     {
         $this->initialized['isButtonHidden'] = true;
         $this->isButtonHidden = $isButtonHidden;

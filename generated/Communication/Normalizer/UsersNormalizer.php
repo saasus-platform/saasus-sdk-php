@@ -18,11 +18,11 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Users';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Users';
     }
@@ -41,13 +41,16 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('users', $data)) {
+        if (\array_key_exists('users', $data) && $data['users'] !== null) {
             $values = array();
             foreach ($data['users'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\User', 'json', $context);
             }
             $object->setUsers($values);
             unset($data['users']);
+        }
+        elseif (\array_key_exists('users', $data) && $data['users'] === null) {
+            $object->setUsers(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Users' => false);
     }
 }

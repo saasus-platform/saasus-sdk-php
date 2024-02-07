@@ -18,11 +18,11 @@ class UpdateStripeInfoParamNormalizer implements DenormalizerInterface, Normaliz
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\UpdateStripeInfoParam';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\UpdateStripeInfoParam';
     }
@@ -41,9 +41,12 @@ class UpdateStripeInfoParamNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('secret_key', $data)) {
+        if (\array_key_exists('secret_key', $data) && $data['secret_key'] !== null) {
             $object->setSecretKey($data['secret_key']);
             unset($data['secret_key']);
+        }
+        elseif (\array_key_exists('secret_key', $data) && $data['secret_key'] === null) {
+            $object->setSecretKey(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class UpdateStripeInfoParamNormalizer implements DenormalizerInterface, Normaliz
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Billing\\Model\\UpdateStripeInfoParam' => false);
     }
 }

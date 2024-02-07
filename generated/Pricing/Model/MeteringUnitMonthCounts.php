@@ -15,26 +15,26 @@ class MeteringUnitMonthCounts extends \ArrayObject
     /**
      * 
      *
-     * @var MeteringUnitMonthCount[]
+     * @var MeteringUnitMonthCount[]|null
      */
     protected $counts;
     /**
      * 
      *
-     * @return MeteringUnitMonthCount[]
+     * @return MeteringUnitMonthCount[]|null
      */
-    public function getCounts() : array
+    public function getCounts() : ?array
     {
         return $this->counts;
     }
     /**
      * 
      *
-     * @param MeteringUnitMonthCount[] $counts
+     * @param MeteringUnitMonthCount[]|null $counts
      *
      * @return self
      */
-    public function setCounts(array $counts) : self
+    public function setCounts(?array $counts) : self
     {
         $this->initialized['counts'] = true;
         $this->counts = $counts;

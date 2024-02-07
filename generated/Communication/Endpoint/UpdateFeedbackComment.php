@@ -7,7 +7,7 @@ class UpdateFeedbackComment extends \AntiPatternInc\Saasus\Sdk\Communication\Run
     protected $feedback_id;
     protected $comment_id;
     /**
-     * フィードバックへのコメント編集
+     * フィードバックへのコメントを編集します。
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -47,16 +47,18 @@ class UpdateFeedbackComment extends \AntiPatternInc\Saasus\Sdk\Communication\Run
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\UpdateFeedbackCommentNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\UpdateFeedbackCommentNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\UpdateFeedbackCommentInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\UpdateFeedbackCommentInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

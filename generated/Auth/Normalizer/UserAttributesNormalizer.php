@@ -18,11 +18,11 @@ class UserAttributesNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAttributes';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAttributes';
     }
@@ -41,13 +41,16 @@ class UserAttributesNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('user_attributes', $data)) {
+        if (\array_key_exists('user_attributes', $data) && $data['user_attributes'] !== null) {
             $values = array();
             foreach ($data['user_attributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute', 'json', $context);
             }
             $object->setUserAttributes($values);
             unset($data['user_attributes']);
+        }
+        elseif (\array_key_exists('user_attributes', $data) && $data['user_attributes'] === null) {
+            $object->setUserAttributes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,5 +76,9 @@ class UserAttributesNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAttributes' => false);
     }
 }

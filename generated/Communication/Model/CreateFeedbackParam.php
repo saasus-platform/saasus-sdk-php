@@ -15,38 +15,38 @@ class CreateFeedbackParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $userId;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $feedbackTitle;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $feedbackDescription;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getUserId() : string
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
     /**
      * 
      *
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */
-    public function setUserId(string $userId) : self
+    public function setUserId(?string $userId) : self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;
@@ -55,20 +55,20 @@ class CreateFeedbackParam extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getFeedbackTitle() : string
+    public function getFeedbackTitle() : ?string
     {
         return $this->feedbackTitle;
     }
     /**
      * 
      *
-     * @param string $feedbackTitle
+     * @param string|null $feedbackTitle
      *
      * @return self
      */
-    public function setFeedbackTitle(string $feedbackTitle) : self
+    public function setFeedbackTitle(?string $feedbackTitle) : self
     {
         $this->initialized['feedbackTitle'] = true;
         $this->feedbackTitle = $feedbackTitle;
@@ -77,20 +77,20 @@ class CreateFeedbackParam extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getFeedbackDescription() : string
+    public function getFeedbackDescription() : ?string
     {
         return $this->feedbackDescription;
     }
     /**
      * 
      *
-     * @param string $feedbackDescription
+     * @param string|null $feedbackDescription
      *
      * @return self
      */
-    public function setFeedbackDescription(string $feedbackDescription) : self
+    public function setFeedbackDescription(?string $feedbackDescription) : self
     {
         $this->initialized['feedbackDescription'] = true;
         $this->feedbackDescription = $feedbackDescription;

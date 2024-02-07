@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\ErrorNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Settings' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\SettingsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\UpdateSettingsParam' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\UpdateSettingsParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plans' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\PlansNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plan' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\PlanNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\SavePlanParam' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\SavePlanParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\CustomerNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customers' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\CustomersNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CreateCustomerParam' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\CreateCustomerParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\GetListingStatusResult' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\GetListingStatusResultNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\UpdateListingStatusParam' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\UpdateListingStatusParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CloudFormationLaunchStackLink' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\CloudFormationLaunchStackLinkNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\VerifyRegistrationTokenParam' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\VerifyRegistrationTokenParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CatalogEntityVisibility' => 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Normalizer\\CatalogEntityVisibilityNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
@@ -54,5 +54,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Settings' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\UpdateSettingsParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plans' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Plan' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\SavePlanParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customers' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CreateCustomerParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\GetListingStatusResult' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\UpdateListingStatusParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CloudFormationLaunchStackLink' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\VerifyRegistrationTokenParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\CatalogEntityVisibility' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
     }
 }

@@ -15,25 +15,25 @@ class User extends \ArrayObject
     /**
      * ユーザーID(User ID)
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $tenantId;
     /**
      * テナント名(Tenant Name)
      *
-     * @var string
+     * @var string|null
      */
     protected $tenantName;
     /**
      * メールアドレス(E-mail)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
@@ -42,32 +42,32 @@ class User extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>|null
     */
     protected $attributes;
     /**
      * 
      *
-     * @var object[]
+     * @var object[]|null
      */
     protected $envs;
     /**
      * ユーザーID(User ID)
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * ユーザーID(User ID)
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -76,20 +76,20 @@ class User extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTenantId() : string
+    public function getTenantId() : ?string
     {
         return $this->tenantId;
     }
     /**
      * 
      *
-     * @param string $tenantId
+     * @param string|null $tenantId
      *
      * @return self
      */
-    public function setTenantId(string $tenantId) : self
+    public function setTenantId(?string $tenantId) : self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;
@@ -98,20 +98,20 @@ class User extends \ArrayObject
     /**
      * テナント名(Tenant Name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getTenantName() : string
+    public function getTenantName() : ?string
     {
         return $this->tenantName;
     }
     /**
      * テナント名(Tenant Name)
      *
-     * @param string $tenantName
+     * @param string|null $tenantName
      *
      * @return self
      */
-    public function setTenantName(string $tenantName) : self
+    public function setTenantName(?string $tenantName) : self
     {
         $this->initialized['tenantName'] = true;
         $this->tenantName = $tenantName;
@@ -120,20 +120,20 @@ class User extends \ArrayObject
     /**
      * メールアドレス(E-mail)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(E-mail)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -145,9 +145,9 @@ class User extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>|null
     */
-    public function getAttributes() : iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -157,11 +157,11 @@ class User extends \ArrayObject
     Attribute information (Get information set by defining user attributes in the SaaS development console)
     
     *
-    * @param mixed[] $attributes
+    * @param array<string, mixed>|null $attributes
     *
     * @return self
     */
-    public function setAttributes(iterable $attributes) : self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -170,20 +170,20 @@ class User extends \ArrayObject
     /**
      * 
      *
-     * @return object[]
+     * @return object[]|null
      */
-    public function getEnvs() : array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
     /**
      * 
      *
-     * @param object[] $envs
+     * @param object[]|null $envs
      *
      * @return self
      */
-    public function setEnvs(array $envs) : self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;

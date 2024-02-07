@@ -15,44 +15,44 @@ class PricingTier extends \ArrayObject
     /**
      * 上限(upper limit)
      *
-     * @var int
+     * @var int|null
      */
     protected $upTo;
     /**
      * 単位金額(amount per unit)
      *
-     * @var int
+     * @var int|null
      */
     protected $unitAmount;
     /**
      * 固定金額(fixed Amount)
      *
-     * @var int
+     * @var int|null
      */
     protected $flatAmount;
     /**
      * inf
      *
-     * @var bool
+     * @var bool|null
      */
     protected $inf;
     /**
      * 上限(upper limit)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUpTo() : int
+    public function getUpTo() : ?int
     {
         return $this->upTo;
     }
     /**
      * 上限(upper limit)
      *
-     * @param int $upTo
+     * @param int|null $upTo
      *
      * @return self
      */
-    public function setUpTo(int $upTo) : self
+    public function setUpTo(?int $upTo) : self
     {
         $this->initialized['upTo'] = true;
         $this->upTo = $upTo;
@@ -61,20 +61,20 @@ class PricingTier extends \ArrayObject
     /**
      * 単位金額(amount per unit)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitAmount() : int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
     /**
      * 単位金額(amount per unit)
      *
-     * @param int $unitAmount
+     * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -83,20 +83,20 @@ class PricingTier extends \ArrayObject
     /**
      * 固定金額(fixed Amount)
      *
-     * @return int
+     * @return int|null
      */
-    public function getFlatAmount() : int
+    public function getFlatAmount() : ?int
     {
         return $this->flatAmount;
     }
     /**
      * 固定金額(fixed Amount)
      *
-     * @param int $flatAmount
+     * @param int|null $flatAmount
      *
      * @return self
      */
-    public function setFlatAmount(int $flatAmount) : self
+    public function setFlatAmount(?int $flatAmount) : self
     {
         $this->initialized['flatAmount'] = true;
         $this->flatAmount = $flatAmount;
@@ -105,20 +105,20 @@ class PricingTier extends \ArrayObject
     /**
      * inf
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getInf() : bool
+    public function getInf() : ?bool
     {
         return $this->inf;
     }
     /**
      * inf
      *
-     * @param bool $inf
+     * @param bool|null $inf
      *
      * @return self
      */
-    public function setInf(bool $inf) : self
+    public function setInf(?bool $inf) : self
     {
         $this->initialized['inf'] = true;
         $this->inf = $inf;

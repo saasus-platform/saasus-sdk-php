@@ -18,11 +18,11 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials';
     }
@@ -41,17 +41,26 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id_token', $data)) {
+        if (\array_key_exists('id_token', $data) && $data['id_token'] !== null) {
             $object->setIdToken($data['id_token']);
             unset($data['id_token']);
         }
-        if (\array_key_exists('access_token', $data)) {
+        elseif (\array_key_exists('id_token', $data) && $data['id_token'] === null) {
+            $object->setIdToken(null);
+        }
+        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
             $object->setAccessToken($data['access_token']);
             unset($data['access_token']);
         }
-        if (\array_key_exists('refresh_token', $data)) {
+        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+            $object->setAccessToken(null);
+        }
+        if (\array_key_exists('refresh_token', $data) && $data['refresh_token'] !== null) {
             $object->setRefreshToken($data['refresh_token']);
             unset($data['refresh_token']);
+        }
+        elseif (\array_key_exists('refresh_token', $data) && $data['refresh_token'] === null) {
+            $object->setRefreshToken(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -77,5 +86,9 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials' => false);
     }
 }

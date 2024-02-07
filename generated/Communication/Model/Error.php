@@ -15,32 +15,32 @@ class Error extends \ArrayObject
     /**
      * permission_denied
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Error message
      *
-     * @var string
+     * @var string|null
      */
     protected $message;
     /**
      * permission_denied
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * permission_denied
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -49,20 +49,20 @@ class Error extends \ArrayObject
     /**
      * Error message
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage() : string
+    public function getMessage() : ?string
     {
         return $this->message;
     }
     /**
      * Error message
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */
-    public function setMessage(string $message) : self
+    public function setMessage(?string $message) : self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

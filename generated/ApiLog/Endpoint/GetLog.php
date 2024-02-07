@@ -38,13 +38,15 @@ class GetLog extends \AntiPatternInc\Saasus\Sdk\ApiLog\Runtime\Client\BaseEndpoi
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\ApiLog\Exception\GetLogInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\ApiLog\Exception\GetLogInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

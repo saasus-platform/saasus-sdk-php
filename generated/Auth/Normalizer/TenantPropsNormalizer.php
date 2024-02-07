@@ -18,11 +18,11 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantProps';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantProps';
     }
@@ -41,11 +41,14 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('attributes', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['attributes'] as $key => $value) {
                 $values[$key] = $value;
@@ -53,9 +56,15 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setAttributes($values);
             unset($data['attributes']);
         }
-        if (\array_key_exists('back_office_staff_email', $data)) {
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+            $object->setAttributes(null);
+        }
+        if (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] !== null) {
             $object->setBackOfficeStaffEmail($data['back_office_staff_email']);
             unset($data['back_office_staff_email']);
+        }
+        elseif (\array_key_exists('back_office_staff_email', $data) && $data['back_office_staff_email'] === null) {
+            $object->setBackOfficeStaffEmail(null);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -83,5 +92,9 @@ class TenantPropsNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantProps' => false);
     }
 }

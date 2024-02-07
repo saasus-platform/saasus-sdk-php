@@ -15,74 +15,74 @@ class BasicInfo extends \ArrayObject
     /**
      * ドメイン名(Domain Name)
      *
-     * @var string
+     * @var string|null
      */
     protected $domainName;
     /**
      * DNSレコードの検証結果(DNS Record Verification Results)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isDnsValidated;
     /**
      * 
      *
-     * @var DnsRecord
+     * @var DnsRecord|null
      */
     protected $certificateDnsRecord;
     /**
      * 
      *
-     * @var DnsRecord
+     * @var DnsRecord|null
      */
     protected $cloudFrontDnsRecord;
     /**
      * DKIM DNS レコード(DKIM DNS Records)
      *
-     * @var DnsRecord[]
+     * @var DnsRecord[]|null
      */
     protected $dkimDnsRecords;
     /**
      * デフォルトドメイン名(Default Domain Name)
      *
-     * @var string
+     * @var string|null
      */
     protected $defaultDomainName;
     /**
      * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
-     * @var string
+     * @var string|null
      */
     protected $fromEmailAddress;
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @var string
+     * @var string|null
      */
     protected $replyEmailAddress;
     /**
      * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isSesSandboxGranted;
     /**
      * ドメイン名(Domain Name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDomainName() : string
+    public function getDomainName() : ?string
     {
         return $this->domainName;
     }
     /**
      * ドメイン名(Domain Name)
      *
-     * @param string $domainName
+     * @param string|null $domainName
      *
      * @return self
      */
-    public function setDomainName(string $domainName) : self
+    public function setDomainName(?string $domainName) : self
     {
         $this->initialized['domainName'] = true;
         $this->domainName = $domainName;
@@ -91,20 +91,20 @@ class BasicInfo extends \ArrayObject
     /**
      * DNSレコードの検証結果(DNS Record Verification Results)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsDnsValidated() : bool
+    public function getIsDnsValidated() : ?bool
     {
         return $this->isDnsValidated;
     }
     /**
      * DNSレコードの検証結果(DNS Record Verification Results)
      *
-     * @param bool $isDnsValidated
+     * @param bool|null $isDnsValidated
      *
      * @return self
      */
-    public function setIsDnsValidated(bool $isDnsValidated) : self
+    public function setIsDnsValidated(?bool $isDnsValidated) : self
     {
         $this->initialized['isDnsValidated'] = true;
         $this->isDnsValidated = $isDnsValidated;
@@ -113,20 +113,20 @@ class BasicInfo extends \ArrayObject
     /**
      * 
      *
-     * @return DnsRecord
+     * @return DnsRecord|null
      */
-    public function getCertificateDnsRecord() : DnsRecord
+    public function getCertificateDnsRecord() : ?DnsRecord
     {
         return $this->certificateDnsRecord;
     }
     /**
      * 
      *
-     * @param DnsRecord $certificateDnsRecord
+     * @param DnsRecord|null $certificateDnsRecord
      *
      * @return self
      */
-    public function setCertificateDnsRecord(DnsRecord $certificateDnsRecord) : self
+    public function setCertificateDnsRecord(?DnsRecord $certificateDnsRecord) : self
     {
         $this->initialized['certificateDnsRecord'] = true;
         $this->certificateDnsRecord = $certificateDnsRecord;
@@ -135,20 +135,20 @@ class BasicInfo extends \ArrayObject
     /**
      * 
      *
-     * @return DnsRecord
+     * @return DnsRecord|null
      */
-    public function getCloudFrontDnsRecord() : DnsRecord
+    public function getCloudFrontDnsRecord() : ?DnsRecord
     {
         return $this->cloudFrontDnsRecord;
     }
     /**
      * 
      *
-     * @param DnsRecord $cloudFrontDnsRecord
+     * @param DnsRecord|null $cloudFrontDnsRecord
      *
      * @return self
      */
-    public function setCloudFrontDnsRecord(DnsRecord $cloudFrontDnsRecord) : self
+    public function setCloudFrontDnsRecord(?DnsRecord $cloudFrontDnsRecord) : self
     {
         $this->initialized['cloudFrontDnsRecord'] = true;
         $this->cloudFrontDnsRecord = $cloudFrontDnsRecord;
@@ -157,20 +157,20 @@ class BasicInfo extends \ArrayObject
     /**
      * DKIM DNS レコード(DKIM DNS Records)
      *
-     * @return DnsRecord[]
+     * @return DnsRecord[]|null
      */
-    public function getDkimDnsRecords() : array
+    public function getDkimDnsRecords() : ?array
     {
         return $this->dkimDnsRecords;
     }
     /**
      * DKIM DNS レコード(DKIM DNS Records)
      *
-     * @param DnsRecord[] $dkimDnsRecords
+     * @param DnsRecord[]|null $dkimDnsRecords
      *
      * @return self
      */
-    public function setDkimDnsRecords(array $dkimDnsRecords) : self
+    public function setDkimDnsRecords(?array $dkimDnsRecords) : self
     {
         $this->initialized['dkimDnsRecords'] = true;
         $this->dkimDnsRecords = $dkimDnsRecords;
@@ -179,20 +179,20 @@ class BasicInfo extends \ArrayObject
     /**
      * デフォルトドメイン名(Default Domain Name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDefaultDomainName() : string
+    public function getDefaultDomainName() : ?string
     {
         return $this->defaultDomainName;
     }
     /**
      * デフォルトドメイン名(Default Domain Name)
      *
-     * @param string $defaultDomainName
+     * @param string|null $defaultDomainName
      *
      * @return self
      */
-    public function setDefaultDomainName(string $defaultDomainName) : self
+    public function setDefaultDomainName(?string $defaultDomainName) : self
     {
         $this->initialized['defaultDomainName'] = true;
         $this->defaultDomainName = $defaultDomainName;
@@ -201,20 +201,20 @@ class BasicInfo extends \ArrayObject
     /**
      * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
-     * @return string
+     * @return string|null
      */
-    public function getFromEmailAddress() : string
+    public function getFromEmailAddress() : ?string
     {
         return $this->fromEmailAddress;
     }
     /**
      * 認証メールの送信元メールアドレス(Sender Email for Authentication Email)
      *
-     * @param string $fromEmailAddress
+     * @param string|null $fromEmailAddress
      *
      * @return self
      */
-    public function setFromEmailAddress(string $fromEmailAddress) : self
+    public function setFromEmailAddress(?string $fromEmailAddress) : self
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
@@ -223,20 +223,20 @@ class BasicInfo extends \ArrayObject
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @return string
+     * @return string|null
      */
-    public function getReplyEmailAddress() : string
+    public function getReplyEmailAddress() : ?string
     {
         return $this->replyEmailAddress;
     }
     /**
      * 認証メールの返信元メールアドレス(Reply-from email address of authentication email)
      *
-     * @param string $replyEmailAddress
+     * @param string|null $replyEmailAddress
      *
      * @return self
      */
-    public function setReplyEmailAddress(string $replyEmailAddress) : self
+    public function setReplyEmailAddress(?string $replyEmailAddress) : self
     {
         $this->initialized['replyEmailAddress'] = true;
         $this->replyEmailAddress = $replyEmailAddress;
@@ -245,20 +245,20 @@ class BasicInfo extends \ArrayObject
     /**
      * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsSesSandboxGranted() : bool
+    public function getIsSesSandboxGranted() : ?bool
     {
         return $this->isSesSandboxGranted;
     }
     /**
      * SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results)
      *
-     * @param bool $isSesSandboxGranted
+     * @param bool|null $isSesSandboxGranted
      *
      * @return self
      */
-    public function setIsSesSandboxGranted(bool $isSesSandboxGranted) : self
+    public function setIsSesSandboxGranted(?bool $isSesSandboxGranted) : self
     {
         $this->initialized['isSesSandboxGranted'] = true;
         $this->isSesSandboxGranted = $isSesSandboxGranted;

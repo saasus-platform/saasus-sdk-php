@@ -15,13 +15,13 @@ class Attribute extends \ArrayObject
     /**
      * 属性名(attribute name)
      *
-     * @var string
+     * @var string|null
      */
     protected $attributeName;
     /**
      * 表示名(display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
@@ -29,26 +29,26 @@ class Attribute extends \ArrayObject
     (Type (date can be set to YYYY-MM-DD format.))
     
     *
-    * @var string
+    * @var string|null
     */
     protected $attributeType;
     /**
      * 属性名(attribute name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getAttributeName() : string
+    public function getAttributeName() : ?string
     {
         return $this->attributeName;
     }
     /**
      * 属性名(attribute name)
      *
-     * @param string $attributeName
+     * @param string|null $attributeName
      *
      * @return self
      */
-    public function setAttributeName(string $attributeName) : self
+    public function setAttributeName(?string $attributeName) : self
     {
         $this->initialized['attributeName'] = true;
         $this->attributeName = $attributeName;
@@ -57,20 +57,20 @@ class Attribute extends \ArrayObject
     /**
      * 表示名(display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 表示名(display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -81,9 +81,9 @@ class Attribute extends \ArrayObject
     (Type (date can be set to YYYY-MM-DD format.))
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getAttributeType() : string
+    public function getAttributeType() : ?string
     {
         return $this->attributeType;
     }
@@ -92,11 +92,11 @@ class Attribute extends \ArrayObject
     (Type (date can be set to YYYY-MM-DD format.))
     
     *
-    * @param string $attributeType
+    * @param string|null $attributeType
     *
     * @return self
     */
-    public function setAttributeType(string $attributeType) : self
+    public function setAttributeType(?string $attributeType) : self
     {
         $this->initialized['attributeType'] = true;
         $this->attributeType = $attributeType;

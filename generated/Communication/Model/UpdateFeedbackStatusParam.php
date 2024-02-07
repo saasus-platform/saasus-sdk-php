@@ -15,26 +15,26 @@ class UpdateFeedbackStatusParam extends \ArrayObject
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $status;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getStatus() : int
+    public function getStatus() : ?int
     {
         return $this->status;
     }
     /**
      * 
      *
-     * @param int $status
+     * @param int|null $status
      *
      * @return self
      */
-    public function setStatus(int $status) : self
+    public function setStatus(?int $status) : self
     {
         $this->initialized['status'] = true;
         $this->status = $status;

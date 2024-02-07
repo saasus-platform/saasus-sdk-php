@@ -15,26 +15,26 @@ class ResendSignUpConfirmationEmailParam extends \ArrayObject
     /**
      * メールアドレス(Email Address)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * メールアドレス(Email Address)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(Email Address)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;

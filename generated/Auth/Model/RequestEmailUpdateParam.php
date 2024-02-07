@@ -15,32 +15,32 @@ class RequestEmailUpdateParam extends \ArrayObject
     /**
      * メールアドレス(Email Address)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * メールアドレス(Email Address)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * メールアドレス(Email Address)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -49,20 +49,20 @@ class RequestEmailUpdateParam extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * 
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;

@@ -18,11 +18,11 @@ class CustomerNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer';
     }
@@ -41,17 +41,26 @@ class CustomerNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('customer_identifier', $data)) {
+        if (\array_key_exists('customer_identifier', $data) && $data['customer_identifier'] !== null) {
             $object->setCustomerIdentifier($data['customer_identifier']);
             unset($data['customer_identifier']);
         }
-        if (\array_key_exists('customer_aws_account_id', $data)) {
+        elseif (\array_key_exists('customer_identifier', $data) && $data['customer_identifier'] === null) {
+            $object->setCustomerIdentifier(null);
+        }
+        if (\array_key_exists('customer_aws_account_id', $data) && $data['customer_aws_account_id'] !== null) {
             $object->setCustomerAwsAccountId($data['customer_aws_account_id']);
             unset($data['customer_aws_account_id']);
         }
-        if (\array_key_exists('tenant_id', $data)) {
+        elseif (\array_key_exists('customer_aws_account_id', $data) && $data['customer_aws_account_id'] === null) {
+            $object->setCustomerAwsAccountId(null);
+        }
+        if (\array_key_exists('tenant_id', $data) && $data['tenant_id'] !== null) {
             $object->setTenantId($data['tenant_id']);
             unset($data['tenant_id']);
+        }
+        elseif (\array_key_exists('tenant_id', $data) && $data['tenant_id'] === null) {
+            $object->setTenantId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class CustomerNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer' => false);
     }
 }

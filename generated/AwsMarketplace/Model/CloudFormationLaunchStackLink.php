@@ -15,26 +15,26 @@ class CloudFormationLaunchStackLink extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $link;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getLink() : string
+    public function getLink() : ?string
     {
         return $this->link;
     }
     /**
      * 
      *
-     * @param string $link
+     * @param string|null $link
      *
      * @return self
      */
-    public function setLink(string $link) : self
+    public function setLink(?string $link) : self
     {
         $this->initialized['link'] = true;
         $this->link = $link;

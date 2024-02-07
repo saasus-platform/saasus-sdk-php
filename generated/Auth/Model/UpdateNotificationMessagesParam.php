@@ -15,74 +15,74 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $signUp;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $createUser;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $resendCode;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $forgotPassword;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $updateUserAttribute;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $verifyUserAttribute;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $authenticationMfa;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $inviteTenantUser;
     /**
      * 
      *
-     * @var MessageTemplate
+     * @var MessageTemplate|null
      */
     protected $verifyExternalUser;
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getSignUp() : MessageTemplate
+    public function getSignUp() : ?MessageTemplate
     {
         return $this->signUp;
     }
     /**
      * 
      *
-     * @param MessageTemplate $signUp
+     * @param MessageTemplate|null $signUp
      *
      * @return self
      */
-    public function setSignUp(MessageTemplate $signUp) : self
+    public function setSignUp(?MessageTemplate $signUp) : self
     {
         $this->initialized['signUp'] = true;
         $this->signUp = $signUp;
@@ -91,20 +91,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getCreateUser() : MessageTemplate
+    public function getCreateUser() : ?MessageTemplate
     {
         return $this->createUser;
     }
     /**
      * 
      *
-     * @param MessageTemplate $createUser
+     * @param MessageTemplate|null $createUser
      *
      * @return self
      */
-    public function setCreateUser(MessageTemplate $createUser) : self
+    public function setCreateUser(?MessageTemplate $createUser) : self
     {
         $this->initialized['createUser'] = true;
         $this->createUser = $createUser;
@@ -113,20 +113,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getResendCode() : MessageTemplate
+    public function getResendCode() : ?MessageTemplate
     {
         return $this->resendCode;
     }
     /**
      * 
      *
-     * @param MessageTemplate $resendCode
+     * @param MessageTemplate|null $resendCode
      *
      * @return self
      */
-    public function setResendCode(MessageTemplate $resendCode) : self
+    public function setResendCode(?MessageTemplate $resendCode) : self
     {
         $this->initialized['resendCode'] = true;
         $this->resendCode = $resendCode;
@@ -135,20 +135,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getForgotPassword() : MessageTemplate
+    public function getForgotPassword() : ?MessageTemplate
     {
         return $this->forgotPassword;
     }
     /**
      * 
      *
-     * @param MessageTemplate $forgotPassword
+     * @param MessageTemplate|null $forgotPassword
      *
      * @return self
      */
-    public function setForgotPassword(MessageTemplate $forgotPassword) : self
+    public function setForgotPassword(?MessageTemplate $forgotPassword) : self
     {
         $this->initialized['forgotPassword'] = true;
         $this->forgotPassword = $forgotPassword;
@@ -157,20 +157,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getUpdateUserAttribute() : MessageTemplate
+    public function getUpdateUserAttribute() : ?MessageTemplate
     {
         return $this->updateUserAttribute;
     }
     /**
      * 
      *
-     * @param MessageTemplate $updateUserAttribute
+     * @param MessageTemplate|null $updateUserAttribute
      *
      * @return self
      */
-    public function setUpdateUserAttribute(MessageTemplate $updateUserAttribute) : self
+    public function setUpdateUserAttribute(?MessageTemplate $updateUserAttribute) : self
     {
         $this->initialized['updateUserAttribute'] = true;
         $this->updateUserAttribute = $updateUserAttribute;
@@ -179,20 +179,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getVerifyUserAttribute() : MessageTemplate
+    public function getVerifyUserAttribute() : ?MessageTemplate
     {
         return $this->verifyUserAttribute;
     }
     /**
      * 
      *
-     * @param MessageTemplate $verifyUserAttribute
+     * @param MessageTemplate|null $verifyUserAttribute
      *
      * @return self
      */
-    public function setVerifyUserAttribute(MessageTemplate $verifyUserAttribute) : self
+    public function setVerifyUserAttribute(?MessageTemplate $verifyUserAttribute) : self
     {
         $this->initialized['verifyUserAttribute'] = true;
         $this->verifyUserAttribute = $verifyUserAttribute;
@@ -201,20 +201,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getAuthenticationMfa() : MessageTemplate
+    public function getAuthenticationMfa() : ?MessageTemplate
     {
         return $this->authenticationMfa;
     }
     /**
      * 
      *
-     * @param MessageTemplate $authenticationMfa
+     * @param MessageTemplate|null $authenticationMfa
      *
      * @return self
      */
-    public function setAuthenticationMfa(MessageTemplate $authenticationMfa) : self
+    public function setAuthenticationMfa(?MessageTemplate $authenticationMfa) : self
     {
         $this->initialized['authenticationMfa'] = true;
         $this->authenticationMfa = $authenticationMfa;
@@ -223,20 +223,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getInviteTenantUser() : MessageTemplate
+    public function getInviteTenantUser() : ?MessageTemplate
     {
         return $this->inviteTenantUser;
     }
     /**
      * 
      *
-     * @param MessageTemplate $inviteTenantUser
+     * @param MessageTemplate|null $inviteTenantUser
      *
      * @return self
      */
-    public function setInviteTenantUser(MessageTemplate $inviteTenantUser) : self
+    public function setInviteTenantUser(?MessageTemplate $inviteTenantUser) : self
     {
         $this->initialized['inviteTenantUser'] = true;
         $this->inviteTenantUser = $inviteTenantUser;
@@ -245,20 +245,20 @@ class UpdateNotificationMessagesParam extends \ArrayObject
     /**
      * 
      *
-     * @return MessageTemplate
+     * @return MessageTemplate|null
      */
-    public function getVerifyExternalUser() : MessageTemplate
+    public function getVerifyExternalUser() : ?MessageTemplate
     {
         return $this->verifyExternalUser;
     }
     /**
      * 
      *
-     * @param MessageTemplate $verifyExternalUser
+     * @param MessageTemplate|null $verifyExternalUser
      *
      * @return self
      */
-    public function setVerifyExternalUser(MessageTemplate $verifyExternalUser) : self
+    public function setVerifyExternalUser(?MessageTemplate $verifyExternalUser) : self
     {
         $this->initialized['verifyExternalUser'] = true;
         $this->verifyExternalUser = $verifyExternalUser;

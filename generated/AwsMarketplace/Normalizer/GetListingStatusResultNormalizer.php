@@ -18,11 +18,11 @@ class GetListingStatusResultNormalizer implements DenormalizerInterface, Normali
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\GetListingStatusResult';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\GetListingStatusResult';
     }
@@ -41,9 +41,12 @@ class GetListingStatusResultNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('listing_status', $data)) {
+        if (\array_key_exists('listing_status', $data) && $data['listing_status'] !== null) {
             $object->setListingStatus($data['listing_status']);
             unset($data['listing_status']);
+        }
+        elseif (\array_key_exists('listing_status', $data) && $data['listing_status'] === null) {
+            $object->setListingStatus(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,5 +68,9 @@ class GetListingStatusResultNormalizer implements DenormalizerInterface, Normali
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\GetListingStatusResult' => false);
     }
 }

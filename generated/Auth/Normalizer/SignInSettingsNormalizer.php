@@ -18,11 +18,11 @@ class SignInSettingsNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignInSettings';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignInSettings';
     }
@@ -41,33 +41,54 @@ class SignInSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('password_policy', $data)) {
+        if (\array_key_exists('password_policy', $data) && $data['password_policy'] !== null) {
             $object->setPasswordPolicy($this->denormalizer->denormalize($data['password_policy'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PasswordPolicy', 'json', $context));
             unset($data['password_policy']);
         }
-        if (\array_key_exists('device_configuration', $data)) {
+        elseif (\array_key_exists('password_policy', $data) && $data['password_policy'] === null) {
+            $object->setPasswordPolicy(null);
+        }
+        if (\array_key_exists('device_configuration', $data) && $data['device_configuration'] !== null) {
             $object->setDeviceConfiguration($this->denormalizer->denormalize($data['device_configuration'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration', 'json', $context));
             unset($data['device_configuration']);
         }
-        if (\array_key_exists('mfa_configuration', $data)) {
+        elseif (\array_key_exists('device_configuration', $data) && $data['device_configuration'] === null) {
+            $object->setDeviceConfiguration(null);
+        }
+        if (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] !== null) {
             $object->setMfaConfiguration($this->denormalizer->denormalize($data['mfa_configuration'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration', 'json', $context));
             unset($data['mfa_configuration']);
         }
-        if (\array_key_exists('recaptcha_props', $data)) {
+        elseif (\array_key_exists('mfa_configuration', $data) && $data['mfa_configuration'] === null) {
+            $object->setMfaConfiguration(null);
+        }
+        if (\array_key_exists('recaptcha_props', $data) && $data['recaptcha_props'] !== null) {
             $object->setRecaptchaProps($this->denormalizer->denormalize($data['recaptcha_props'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps', 'json', $context));
             unset($data['recaptcha_props']);
         }
-        if (\array_key_exists('account_verification', $data)) {
+        elseif (\array_key_exists('recaptcha_props', $data) && $data['recaptcha_props'] === null) {
+            $object->setRecaptchaProps(null);
+        }
+        if (\array_key_exists('account_verification', $data) && $data['account_verification'] !== null) {
             $object->setAccountVerification($this->denormalizer->denormalize($data['account_verification'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification', 'json', $context));
             unset($data['account_verification']);
         }
-        if (\array_key_exists('self_regist', $data)) {
+        elseif (\array_key_exists('account_verification', $data) && $data['account_verification'] === null) {
+            $object->setAccountVerification(null);
+        }
+        if (\array_key_exists('self_regist', $data) && $data['self_regist'] !== null) {
             $object->setSelfRegist($this->denormalizer->denormalize($data['self_regist'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SelfRegist', 'json', $context));
             unset($data['self_regist']);
         }
-        if (\array_key_exists('identity_provider_configuration', $data)) {
+        elseif (\array_key_exists('self_regist', $data) && $data['self_regist'] === null) {
+            $object->setSelfRegist(null);
+        }
+        if (\array_key_exists('identity_provider_configuration', $data) && $data['identity_provider_configuration'] !== null) {
             $object->setIdentityProviderConfiguration($this->denormalizer->denormalize($data['identity_provider_configuration'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration', 'json', $context));
             unset($data['identity_provider_configuration']);
+        }
+        elseif (\array_key_exists('identity_provider_configuration', $data) && $data['identity_provider_configuration'] === null) {
+            $object->setIdentityProviderConfiguration(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -95,5 +116,9 @@ class SignInSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignInSettings' => false);
     }
 }

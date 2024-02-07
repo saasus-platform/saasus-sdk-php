@@ -19,13 +19,13 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     direct: 上書き(overwrite)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $method;
     /**
      * 件数(count)
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -35,9 +35,9 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     direct: 上書き(overwrite)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getMethod() : string
+    public function getMethod() : ?string
     {
         return $this->method;
     }
@@ -48,11 +48,11 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     direct: 上書き(overwrite)
     
     *
-    * @param string $method
+    * @param string|null $method
     *
     * @return self
     */
-    public function setMethod(string $method) : self
+    public function setMethod(?string $method) : self
     {
         $this->initialized['method'] = true;
         $this->method = $method;
@@ -61,20 +61,20 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     /**
      * 件数(count)
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
      * 件数(count)
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;

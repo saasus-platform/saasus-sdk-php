@@ -18,7 +18,7 @@ class DeviceConfiguration extends \ArrayObject
     no: (don't save)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $deviceRemembering;
     /**
@@ -27,9 +27,9 @@ class DeviceConfiguration extends \ArrayObject
     no: (don't save)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getDeviceRemembering() : string
+    public function getDeviceRemembering() : ?string
     {
         return $this->deviceRemembering;
     }
@@ -39,11 +39,11 @@ class DeviceConfiguration extends \ArrayObject
     no: (don't save)
     
     *
-    * @param string $deviceRemembering
+    * @param string|null $deviceRemembering
     *
     * @return self
     */
-    public function setDeviceRemembering(string $deviceRemembering) : self
+    public function setDeviceRemembering(?string $deviceRemembering) : self
     {
         $this->initialized['deviceRemembering'] = true;
         $this->deviceRemembering = $deviceRemembering;

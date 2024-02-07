@@ -15,26 +15,26 @@ class PricingPlans extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $pricingPlans;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getPricingPlans() : array
+    public function getPricingPlans() : ?array
     {
         return $this->pricingPlans;
     }
     /**
      * 
      *
-     * @param mixed[][] $pricingPlans
+     * @param array<string, mixed>[]|null $pricingPlans
      *
      * @return self
      */
-    public function setPricingPlans(array $pricingPlans) : self
+    public function setPricingPlans(?array $pricingPlans) : self
     {
         $this->initialized['pricingPlans'] = true;
         $this->pricingPlans = $pricingPlans;

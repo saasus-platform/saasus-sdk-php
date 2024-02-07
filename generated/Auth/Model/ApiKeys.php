@@ -15,26 +15,26 @@ class ApiKeys extends \ArrayObject
     /**
      * APIキー(API Key)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $apiKeys;
     /**
      * APIキー(API Key)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getApiKeys() : array
+    public function getApiKeys() : ?array
     {
         return $this->apiKeys;
     }
     /**
      * APIキー(API Key)
      *
-     * @param string[] $apiKeys
+     * @param string[]|null $apiKeys
      *
      * @return self
      */
-    public function setApiKeys(array $apiKeys) : self
+    public function setApiKeys(?array $apiKeys) : self
     {
         $this->initialized['apiKeys'] = true;
         $this->apiKeys = $apiKeys;

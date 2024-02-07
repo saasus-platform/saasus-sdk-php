@@ -15,26 +15,26 @@ class PricingUnits extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $units;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getUnits() : array
+    public function getUnits() : ?array
     {
         return $this->units;
     }
     /**
      * 
      *
-     * @param mixed[][] $units
+     * @param array<string, mixed>[]|null $units
      *
      * @return self
      */
-    public function setUnits(array $units) : self
+    public function setUnits(?array $units) : self
     {
         $this->initialized['units'] = true;
         $this->units = $units;

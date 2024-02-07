@@ -15,32 +15,32 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $providerType;
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>|null
      */
     protected $identityProviderProps;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getProviderType() : string
+    public function getProviderType() : ?string
     {
         return $this->providerType;
     }
     /**
      * 
      *
-     * @param string $providerType
+     * @param string|null $providerType
      *
      * @return self
      */
-    public function setProviderType(string $providerType) : self
+    public function setProviderType(?string $providerType) : self
     {
         $this->initialized['providerType'] = true;
         $this->providerType = $providerType;
@@ -49,20 +49,20 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>|null
      */
-    public function getIdentityProviderProps() : iterable
+    public function getIdentityProviderProps() : ?iterable
     {
         return $this->identityProviderProps;
     }
     /**
      * 
      *
-     * @param mixed[] $identityProviderProps
+     * @param array<string, mixed>|null $identityProviderProps
      *
      * @return self
      */
-    public function setIdentityProviderProps(iterable $identityProviderProps) : self
+    public function setIdentityProviderProps(?iterable $identityProviderProps) : self
     {
         $this->initialized['identityProviderProps'] = true;
         $this->identityProviderProps = $identityProviderProps;

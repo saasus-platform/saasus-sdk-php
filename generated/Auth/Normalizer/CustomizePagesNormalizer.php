@@ -18,11 +18,11 @@ class CustomizePagesNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePages';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePages';
     }
@@ -41,17 +41,26 @@ class CustomizePagesNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('sign_up_page', $data)) {
+        if (\array_key_exists('sign_up_page', $data) && $data['sign_up_page'] !== null) {
             $object->setSignUpPage($this->denormalizer->denormalize($data['sign_up_page'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageProps', 'json', $context));
             unset($data['sign_up_page']);
         }
-        if (\array_key_exists('sign_in_page', $data)) {
+        elseif (\array_key_exists('sign_up_page', $data) && $data['sign_up_page'] === null) {
+            $object->setSignUpPage(null);
+        }
+        if (\array_key_exists('sign_in_page', $data) && $data['sign_in_page'] !== null) {
             $object->setSignInPage($this->denormalizer->denormalize($data['sign_in_page'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageProps', 'json', $context));
             unset($data['sign_in_page']);
         }
-        if (\array_key_exists('password_reset_page', $data)) {
+        elseif (\array_key_exists('sign_in_page', $data) && $data['sign_in_page'] === null) {
+            $object->setSignInPage(null);
+        }
+        if (\array_key_exists('password_reset_page', $data) && $data['password_reset_page'] !== null) {
             $object->setPasswordResetPage($this->denormalizer->denormalize($data['password_reset_page'], 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageProps', 'json', $context));
             unset($data['password_reset_page']);
+        }
+        elseif (\array_key_exists('password_reset_page', $data) && $data['password_reset_page'] === null) {
+            $object->setPasswordResetPage(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -75,5 +84,9 @@ class CustomizePagesNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePages' => false);
     }
 }

@@ -18,11 +18,11 @@ class CreateTenantInvitationParamEnvsItemNormalizer implements DenormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem';
     }
@@ -41,17 +41,23 @@ class CreateTenantInvitationParamEnvsItemNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('role_names', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('role_names', $data) && $data['role_names'] !== null) {
             $values = array();
             foreach ($data['role_names'] as $value) {
                 $values[] = $value;
             }
             $object->setRoleNames($values);
             unset($data['role_names']);
+        }
+        elseif (\array_key_exists('role_names', $data) && $data['role_names'] === null) {
+            $object->setRoleNames(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -78,5 +84,9 @@ class CreateTenantInvitationParamEnvsItemNormalizer implements DenormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem' => false);
     }
 }

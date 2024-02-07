@@ -15,50 +15,50 @@ class PricingPlanProps extends \ArrayObject
     /**
      * 料金プラン名(pricing plan name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 料金プラン表示名(pricing plan display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 料金プラン説明(pricing plan description)
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * 料金プランの使用済み設定(pricing plan used settings)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $used;
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $pricingMenus;
     /**
      * 料金プラン名(pricing plan name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 料金プラン名(pricing plan name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -67,20 +67,20 @@ class PricingPlanProps extends \ArrayObject
     /**
      * 料金プラン表示名(pricing plan display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 料金プラン表示名(pricing plan display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -89,20 +89,20 @@ class PricingPlanProps extends \ArrayObject
     /**
      * 料金プラン説明(pricing plan description)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * 料金プラン説明(pricing plan description)
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -111,20 +111,20 @@ class PricingPlanProps extends \ArrayObject
     /**
      * 料金プランの使用済み設定(pricing plan used settings)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getUsed() : bool
+    public function getUsed() : ?bool
     {
         return $this->used;
     }
     /**
      * 料金プランの使用済み設定(pricing plan used settings)
      *
-     * @param bool $used
+     * @param bool|null $used
      *
      * @return self
      */
-    public function setUsed(bool $used) : self
+    public function setUsed(?bool $used) : self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
@@ -133,20 +133,20 @@ class PricingPlanProps extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getPricingMenus() : array
+    public function getPricingMenus() : ?array
     {
         return $this->pricingMenus;
     }
     /**
      * 
      *
-     * @param mixed[][] $pricingMenus
+     * @param array<string, mixed>[]|null $pricingMenus
      *
      * @return self
      */
-    public function setPricingMenus(array $pricingMenus) : self
+    public function setPricingMenus(?array $pricingMenus) : self
     {
         $this->initialized['pricingMenus'] = true;
         $this->pricingMenus = $pricingMenus;

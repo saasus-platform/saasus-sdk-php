@@ -15,32 +15,32 @@ class Votes extends \ArrayObject
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
      * 
      *
-     * @var User[]
+     * @var User[]|null
      */
     protected $users;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
      * 
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -49,20 +49,20 @@ class Votes extends \ArrayObject
     /**
      * 
      *
-     * @return User[]
+     * @return User[]|null
      */
-    public function getUsers() : array
+    public function getUsers() : ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param User[] $users
+     * @param User[]|null $users
      *
      * @return self
      */
-    public function setUsers(array $users) : self
+    public function setUsers(?array $users) : self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

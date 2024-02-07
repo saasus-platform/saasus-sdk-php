@@ -15,26 +15,26 @@ class TenantAttributes extends \ArrayObject
     /**
      * テナント属性定義(Tenant Attribute Definition)
      *
-     * @var Attribute[]
+     * @var Attribute[]|null
      */
     protected $tenantAttributes;
     /**
      * テナント属性定義(Tenant Attribute Definition)
      *
-     * @return Attribute[]
+     * @return Attribute[]|null
      */
-    public function getTenantAttributes() : array
+    public function getTenantAttributes() : ?array
     {
         return $this->tenantAttributes;
     }
     /**
      * テナント属性定義(Tenant Attribute Definition)
      *
-     * @param Attribute[] $tenantAttributes
+     * @param Attribute[]|null $tenantAttributes
      *
      * @return self
      */
-    public function setTenantAttributes(array $tenantAttributes) : self
+    public function setTenantAttributes(?array $tenantAttributes) : self
     {
         $this->initialized['tenantAttributes'] = true;
         $this->tenantAttributes = $tenantAttributes;

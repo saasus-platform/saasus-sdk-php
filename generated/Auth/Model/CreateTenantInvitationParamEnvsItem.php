@@ -15,32 +15,32 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $id;
     /**
      * 役割名(role name)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $roleNames;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId() : ?int
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
-    public function setId(int $id) : self
+    public function setId(?int $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -49,20 +49,20 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
     /**
      * 役割名(role name)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getRoleNames() : array
+    public function getRoleNames() : ?array
     {
         return $this->roleNames;
     }
     /**
      * 役割名(role name)
      *
-     * @param string[] $roleNames
+     * @param string[]|null $roleNames
      *
      * @return self
      */
-    public function setRoleNames(array $roleNames) : self
+    public function setRoleNames(?array $roleNames) : self
     {
         $this->initialized['roleNames'] = true;
         $this->roleNames = $roleNames;

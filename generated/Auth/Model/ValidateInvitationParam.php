@@ -15,38 +15,38 @@ class ValidateInvitationParam extends \ArrayObject
     /**
      * 招待されたユーザーのアクセストークン(access token of the invited user)
      *
-     * @var string
+     * @var string|null
      */
     protected $accessToken;
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * 招待されたユーザーのパスワード(password of the invited user)
      *
-     * @var string
+     * @var string|null
      */
     protected $password;
     /**
      * 招待されたユーザーのアクセストークン(access token of the invited user)
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken() : string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
     /**
      * 招待されたユーザーのアクセストークン(access token of the invited user)
      *
-     * @param string $accessToken
+     * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(string $accessToken) : self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -55,20 +55,20 @@ class ValidateInvitationParam extends \ArrayObject
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -77,20 +77,20 @@ class ValidateInvitationParam extends \ArrayObject
     /**
      * 招待されたユーザーのパスワード(password of the invited user)
      *
-     * @return string
+     * @return string|null
      */
-    public function getPassword() : string
+    public function getPassword() : ?string
     {
         return $this->password;
     }
     /**
      * 招待されたユーザーのパスワード(password of the invited user)
      *
-     * @param string $password
+     * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(string $password) : self
+    public function setPassword(?string $password) : self
     {
         $this->initialized['password'] = true;
         $this->password = $password;

@@ -18,11 +18,11 @@ class FeedbackNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Feedback';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Feedback';
     }
@@ -41,31 +41,49 @@ class FeedbackNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('user_id', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
             $object->setUserId($data['user_id']);
             unset($data['user_id']);
         }
-        if (\array_key_exists('created_at', $data)) {
+        elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
+            $object->setUserId(null);
+        }
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt($data['created_at']);
             unset($data['created_at']);
         }
-        if (\array_key_exists('status', $data)) {
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
+            $object->setCreatedAt(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);
         }
-        if (\array_key_exists('feedback_title', $data)) {
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
+        }
+        if (\array_key_exists('feedback_title', $data) && $data['feedback_title'] !== null) {
             $object->setFeedbackTitle($data['feedback_title']);
             unset($data['feedback_title']);
         }
-        if (\array_key_exists('feedback_description', $data)) {
+        elseif (\array_key_exists('feedback_title', $data) && $data['feedback_title'] === null) {
+            $object->setFeedbackTitle(null);
+        }
+        if (\array_key_exists('feedback_description', $data) && $data['feedback_description'] !== null) {
             $object->setFeedbackDescription($data['feedback_description']);
             unset($data['feedback_description']);
         }
-        if (\array_key_exists('comments', $data)) {
+        elseif (\array_key_exists('feedback_description', $data) && $data['feedback_description'] === null) {
+            $object->setFeedbackDescription(null);
+        }
+        if (\array_key_exists('comments', $data) && $data['comments'] !== null) {
             $values = array();
             foreach ($data['comments'] as $value) {
                 $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -77,17 +95,26 @@ class FeedbackNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setComments($values);
             unset($data['comments']);
         }
-        if (\array_key_exists('count', $data)) {
+        elseif (\array_key_exists('comments', $data) && $data['comments'] === null) {
+            $object->setComments(null);
+        }
+        if (\array_key_exists('count', $data) && $data['count'] !== null) {
             $object->setCount($data['count']);
             unset($data['count']);
         }
-        if (\array_key_exists('users', $data)) {
+        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+            $object->setCount(null);
+        }
+        if (\array_key_exists('users', $data) && $data['users'] !== null) {
             $values_2 = array();
             foreach ($data['users'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\User', 'json', $context);
             }
             $object->setUsers($values_2);
             unset($data['users']);
+        }
+        elseif (\array_key_exists('users', $data) && $data['users'] === null) {
+            $object->setUsers(null);
         }
         foreach ($data as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -129,5 +156,9 @@ class FeedbackNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Feedback' => false);
     }
 }

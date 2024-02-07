@@ -15,13 +15,13 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $meteringUnitId;
     /**
@@ -30,31 +30,31 @@ class PricingUsageUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $recurringInterval;
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $used;
     /**
      * 上限値(upper limit)
      *
-     * @var int
+     * @var int|null
      */
     protected $upperCount;
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @var int
+     * @var int|null
      */
     protected $unitAmount;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $meteringUnitName;
     /**
@@ -63,25 +63,25 @@ class PricingUsageUnit extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $aggregateUsage;
     /**
      * 名前(name)
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * 表示名(display name)
      *
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
      * 説明(description)
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -92,32 +92,32 @@ class PricingUsageUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @var string
+    * @var string|null
     */
     protected $type;
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @var string
+     * @var string|null
      */
     protected $currency;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -126,20 +126,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getMeteringUnitId() : string
+    public function getMeteringUnitId() : ?string
     {
         return $this->meteringUnitId;
     }
     /**
      * 
      *
-     * @param string $meteringUnitId
+     * @param string|null $meteringUnitId
      *
      * @return self
      */
-    public function setMeteringUnitId(string $meteringUnitId) : self
+    public function setMeteringUnitId(?string $meteringUnitId) : self
     {
         $this->initialized['meteringUnitId'] = true;
         $this->meteringUnitId = $meteringUnitId;
@@ -151,9 +151,9 @@ class PricingUsageUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getRecurringInterval() : string
+    public function getRecurringInterval() : ?string
     {
         return $this->recurringInterval;
     }
@@ -163,11 +163,11 @@ class PricingUsageUnit extends \ArrayObject
     year: 年単位(yearly)
     
     *
-    * @param string $recurringInterval
+    * @param string|null $recurringInterval
     *
     * @return self
     */
-    public function setRecurringInterval(string $recurringInterval) : self
+    public function setRecurringInterval(?string $recurringInterval) : self
     {
         $this->initialized['recurringInterval'] = true;
         $this->recurringInterval = $recurringInterval;
@@ -176,20 +176,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getUsed() : bool
+    public function getUsed() : ?bool
     {
         return $this->used;
     }
     /**
      * 
      *
-     * @param bool $used
+     * @param bool|null $used
      *
      * @return self
      */
-    public function setUsed(bool $used) : self
+    public function setUsed(?bool $used) : self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
@@ -198,20 +198,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 上限値(upper limit)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUpperCount() : int
+    public function getUpperCount() : ?int
     {
         return $this->upperCount;
     }
     /**
      * 上限値(upper limit)
      *
-     * @param int $upperCount
+     * @param int|null $upperCount
      *
      * @return self
      */
-    public function setUpperCount(int $upperCount) : self
+    public function setUpperCount(?int $upperCount) : self
     {
         $this->initialized['upperCount'] = true;
         $this->upperCount = $upperCount;
@@ -220,20 +220,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitAmount() : int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
     /**
      * 使用量あたりの金額(amount per usage)
      *
-     * @param int $unitAmount
+     * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -242,20 +242,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getMeteringUnitName() : string
+    public function getMeteringUnitName() : ?string
     {
         return $this->meteringUnitName;
     }
     /**
      * 
      *
-     * @param string $meteringUnitName
+     * @param string|null $meteringUnitName
      *
      * @return self
      */
-    public function setMeteringUnitName(string $meteringUnitName) : self
+    public function setMeteringUnitName(?string $meteringUnitName) : self
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
@@ -267,9 +267,9 @@ class PricingUsageUnit extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getAggregateUsage() : string
+    public function getAggregateUsage() : ?string
     {
         return $this->aggregateUsage;
     }
@@ -279,11 +279,11 @@ class PricingUsageUnit extends \ArrayObject
     max: 期間内の使用量の最大値(maximum usage during the period)
     
     *
-    * @param string $aggregateUsage
+    * @param string|null $aggregateUsage
     *
     * @return self
     */
-    public function setAggregateUsage(string $aggregateUsage) : self
+    public function setAggregateUsage(?string $aggregateUsage) : self
     {
         $this->initialized['aggregateUsage'] = true;
         $this->aggregateUsage = $aggregateUsage;
@@ -292,20 +292,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 名前(name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * 名前(name)
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -314,20 +314,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 表示名(display name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName() : string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
     /**
      * 表示名(display name)
      *
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -336,20 +336,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 説明(description)
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * 説明(description)
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -363,9 +363,9 @@ class PricingUsageUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -377,11 +377,11 @@ class PricingUsageUnit extends \ArrayObject
     tiered_usage: 段階的使用量ユニット(tiered usage unit)
     
     *
-    * @param string $type
+    * @param string|null $type
     *
     * @return self
     */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -390,20 +390,20 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency() : string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
     /**
      * 計測単位の通貨(unit of currency)
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
-    public function setCurrency(string $currency) : self
+    public function setCurrency(?string $currency) : self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

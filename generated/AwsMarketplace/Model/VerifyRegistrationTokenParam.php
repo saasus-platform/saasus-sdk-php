@@ -15,26 +15,26 @@ class VerifyRegistrationTokenParam extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $registrationToken;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getRegistrationToken() : string
+    public function getRegistrationToken() : ?string
     {
         return $this->registrationToken;
     }
     /**
      * 
      *
-     * @param string $registrationToken
+     * @param string|null $registrationToken
      *
      * @return self
      */
-    public function setRegistrationToken(string $registrationToken) : self
+    public function setRegistrationToken(?string $registrationToken) : self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

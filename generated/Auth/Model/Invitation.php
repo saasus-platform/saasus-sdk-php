@@ -15,56 +15,56 @@ class Invitation extends \ArrayObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * 招待URL(invitation URL)
      *
-     * @var string
+     * @var string|null
      */
     protected $invitationUrl;
     /**
      * 
      *
-     * @var object[]
+     * @var object[]|null
      */
     protected $envs;
     /**
      * 招待の有効期限(expiration date of the invitation)
      *
-     * @var int
+     * @var int|null
      */
     protected $expiredAt;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getId() : string
+    public function getId() : ?string
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -73,20 +73,20 @@ class Invitation extends \ArrayObject
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * 招待されたユーザーのメールアドレス(email address of the invited user)
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -95,20 +95,20 @@ class Invitation extends \ArrayObject
     /**
      * 招待URL(invitation URL)
      *
-     * @return string
+     * @return string|null
      */
-    public function getInvitationUrl() : string
+    public function getInvitationUrl() : ?string
     {
         return $this->invitationUrl;
     }
     /**
      * 招待URL(invitation URL)
      *
-     * @param string $invitationUrl
+     * @param string|null $invitationUrl
      *
      * @return self
      */
-    public function setInvitationUrl(string $invitationUrl) : self
+    public function setInvitationUrl(?string $invitationUrl) : self
     {
         $this->initialized['invitationUrl'] = true;
         $this->invitationUrl = $invitationUrl;
@@ -117,20 +117,20 @@ class Invitation extends \ArrayObject
     /**
      * 
      *
-     * @return object[]
+     * @return object[]|null
      */
-    public function getEnvs() : array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
     /**
      * 
      *
-     * @param object[] $envs
+     * @param object[]|null $envs
      *
      * @return self
      */
-    public function setEnvs(array $envs) : self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;
@@ -139,20 +139,20 @@ class Invitation extends \ArrayObject
     /**
      * 招待の有効期限(expiration date of the invitation)
      *
-     * @return int
+     * @return int|null
      */
-    public function getExpiredAt() : int
+    public function getExpiredAt() : ?int
     {
         return $this->expiredAt;
     }
     /**
      * 招待の有効期限(expiration date of the invitation)
      *
-     * @param int $expiredAt
+     * @param int|null $expiredAt
      *
      * @return self
      */
-    public function setExpiredAt(int $expiredAt) : self
+    public function setExpiredAt(?int $expiredAt) : self
     {
         $this->initialized['expiredAt'] = true;
         $this->expiredAt = $expiredAt;
@@ -161,20 +161,20 @@ class Invitation extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus() : string
+    public function getStatus() : ?string
     {
         return $this->status;
     }
     /**
      * 
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
-    public function setStatus(string $status) : self
+    public function setStatus(?string $status) : self
     {
         $this->initialized['status'] = true;
         $this->status = $status;

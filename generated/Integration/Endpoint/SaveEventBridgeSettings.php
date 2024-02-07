@@ -5,10 +5,13 @@ namespace AntiPatternInc\Saasus\Sdk\Integration\Endpoint;
 class SaveEventBridgeSettings extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Endpoint
 {
     /**
-     * 監視対象となっている全ホストの状態を Amazon EventBridge 経由で提供するための設定を更新します
-     *
-     * @param null|\stdClass $requestBody 
-     */
+    * ホストの状態を Amazon EventBridge 経由で提供するための設定を更新します。
+    
+    Update configuration used to provide the host state via Amazon EventBridge.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    */
     public function __construct(?\stdClass $requestBody = null)
     {
         $this->body = $requestBody;
@@ -40,13 +43,15 @@ class SaveEventBridgeSettings extends \AntiPatternInc\Saasus\Sdk\Integration\Run
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Integration\Exception\SaveEventBridgeSettingsInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error', 'json'));
+            throw new \AntiPatternInc\Saasus\Sdk\Integration\Exception\SaveEventBridgeSettingsInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

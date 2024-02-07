@@ -15,32 +15,32 @@ class MeteringUnitDatePeriodCounts extends \ArrayObject
     /**
      * 計測ユニット名(metering unit name)
      *
-     * @var string
+     * @var string|null
      */
     protected $meteringUnitName;
     /**
      * 
      *
-     * @var MeteringUnitCount[]
+     * @var MeteringUnitCount[]|null
      */
     protected $counts;
     /**
      * 計測ユニット名(metering unit name)
      *
-     * @return string
+     * @return string|null
      */
-    public function getMeteringUnitName() : string
+    public function getMeteringUnitName() : ?string
     {
         return $this->meteringUnitName;
     }
     /**
      * 計測ユニット名(metering unit name)
      *
-     * @param string $meteringUnitName
+     * @param string|null $meteringUnitName
      *
      * @return self
      */
-    public function setMeteringUnitName(string $meteringUnitName) : self
+    public function setMeteringUnitName(?string $meteringUnitName) : self
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
@@ -49,20 +49,20 @@ class MeteringUnitDatePeriodCounts extends \ArrayObject
     /**
      * 
      *
-     * @return MeteringUnitCount[]
+     * @return MeteringUnitCount[]|null
      */
-    public function getCounts() : array
+    public function getCounts() : ?array
     {
         return $this->counts;
     }
     /**
      * 
      *
-     * @param MeteringUnitCount[] $counts
+     * @param MeteringUnitCount[]|null $counts
      *
      * @return self
      */
-    public function setCounts(array $counts) : self
+    public function setCounts(?array $counts) : self
     {
         $this->initialized['counts'] = true;
         $this->counts = $counts;

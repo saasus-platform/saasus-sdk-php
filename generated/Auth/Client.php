@@ -901,62 +901,6 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetApiKeysInternalServerErrorException
-     *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ApiKeys|\Psr\Http\Message\ResponseInterface
-     */
-    public function getApiKeys(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetApiKeys(), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateApiKeyInternalServerErrorException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function createApiKey(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateApiKey(), $fetch);
-    }
-    /**
-    * サーバサイド用の API キーを削除します。
-    
-    Delete API Key.
-    
-    *
-    * @param string $apiKey APIキー(API key)
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteApiKeyInternalServerErrorException
-    *
-    * @return null|\Psr\Http\Message\ResponseInterface
-    */
-    public function deleteApiKey(string $apiKey, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteApiKey($apiKey), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasIdInternalServerErrorException
-     *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId|\Psr\Http\Message\ResponseInterface
-     */
-    public function getSaasId(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetSaasId(), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasIdInternalServerErrorException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateSaasId(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasId(), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\FindNotificationMessagesInternalServerErrorException
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\NotificationMessages|\Psr\Http\Message\ResponseInterface
@@ -1185,26 +1129,6 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteStripeTenantAndPricing(), $fetch);
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetClientSecretInternalServerErrorException
-     *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret|\Psr\Http\Message\ResponseInterface
-     */
-    public function getClientSecret(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetClientSecret(), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateClientSecretInternalServerErrorException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateClientSecret(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateClientSecret(), $fetch);
-    }
-    /**
     * 一時コードまたはリフレッシュトークンを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
     
     Get ID token, access token, and refresh token using a temporary code or a refresh token.
@@ -1360,7 +1284,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.saasus.io/v1/auth');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/auth');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

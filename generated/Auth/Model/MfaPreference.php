@@ -15,32 +15,32 @@ class MfaPreference extends \ArrayObject
     /**
      * MFAを有効にするか否か(enable MFA)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
     /**
      * MFAの方法(enabledがtrueの場合は必須)(MFA method (required if enabled is true))
      *
-     * @var string
+     * @var string|null
      */
     protected $method;
     /**
      * MFAを有効にするか否か(enable MFA)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEnabled() : bool
+    public function getEnabled() : ?bool
     {
         return $this->enabled;
     }
     /**
      * MFAを有効にするか否か(enable MFA)
      *
-     * @param bool $enabled
+     * @param bool|null $enabled
      *
      * @return self
      */
-    public function setEnabled(bool $enabled) : self
+    public function setEnabled(?bool $enabled) : self
     {
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
@@ -49,20 +49,20 @@ class MfaPreference extends \ArrayObject
     /**
      * MFAの方法(enabledがtrueの場合は必須)(MFA method (required if enabled is true))
      *
-     * @return string
+     * @return string|null
      */
-    public function getMethod() : string
+    public function getMethod() : ?string
     {
         return $this->method;
     }
     /**
      * MFAの方法(enabledがtrueの場合は必須)(MFA method (required if enabled is true))
      *
-     * @param string $method
+     * @param string|null $method
      *
      * @return self
      */
-    public function setMethod(string $method) : self
+    public function setMethod(?string $method) : self
     {
         $this->initialized['method'] = true;
         $this->method = $method;

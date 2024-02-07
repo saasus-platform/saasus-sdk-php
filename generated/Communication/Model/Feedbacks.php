@@ -15,26 +15,26 @@ class Feedbacks extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]
+     * @var array<string, mixed>[]|null
      */
     protected $feedbacks;
     /**
      * 
      *
-     * @return mixed[][]
+     * @return array<string, mixed>[]|null
      */
-    public function getFeedbacks() : array
+    public function getFeedbacks() : ?array
     {
         return $this->feedbacks;
     }
     /**
      * 
      *
-     * @param mixed[][] $feedbacks
+     * @param array<string, mixed>[]|null $feedbacks
      *
      * @return self
      */
-    public function setFeedbacks(array $feedbacks) : self
+    public function setFeedbacks(?array $feedbacks) : self
     {
         $this->initialized['feedbacks'] = true;
         $this->feedbacks = $feedbacks;

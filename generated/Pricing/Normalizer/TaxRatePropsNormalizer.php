@@ -18,11 +18,11 @@ class TaxRatePropsNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRateProps';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRateProps';
     }
@@ -44,29 +44,47 @@ class TaxRatePropsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('display_name', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
             unset($data['display_name']);
         }
-        if (\array_key_exists('percentage', $data)) {
+        elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
+            $object->setDisplayName(null);
+        }
+        if (\array_key_exists('percentage', $data) && $data['percentage'] !== null) {
             $object->setPercentage($data['percentage']);
             unset($data['percentage']);
         }
-        if (\array_key_exists('inclusive', $data)) {
+        elseif (\array_key_exists('percentage', $data) && $data['percentage'] === null) {
+            $object->setPercentage(null);
+        }
+        if (\array_key_exists('inclusive', $data) && $data['inclusive'] !== null) {
             $object->setInclusive($data['inclusive']);
             unset($data['inclusive']);
         }
-        if (\array_key_exists('country', $data)) {
+        elseif (\array_key_exists('inclusive', $data) && $data['inclusive'] === null) {
+            $object->setInclusive(null);
+        }
+        if (\array_key_exists('country', $data) && $data['country'] !== null) {
             $object->setCountry($data['country']);
             unset($data['country']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('country', $data) && $data['country'] === null) {
+            $object->setCountry(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
+        }
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -93,5 +111,9 @@ class TaxRatePropsNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\TaxRateProps' => false);
     }
 }

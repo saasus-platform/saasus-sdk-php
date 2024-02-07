@@ -20,19 +20,19 @@ class CustomizePageProps extends \ArrayObject
     ※ This function is not yet provided, so it cannot be changed or saved.
     
     *
-    * @var string
+    * @var string|null
     */
     protected $htmlContents;
     /**
      * 利用規約の同意チェックボックスを表示するが設定されているか(display the terms of use agreement check box)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isTermsOfService;
     /**
      * プライバシーポリシーチェックボックスを表示するが設定されているか(show the privacy policy checkbox)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isPrivacyPolicy;
     /**
@@ -43,9 +43,9 @@ class CustomizePageProps extends \ArrayObject
     ※ This function is not yet provided, so it cannot be changed or saved.
     
     *
-    * @return string
+    * @return string|null
     */
-    public function getHtmlContents() : string
+    public function getHtmlContents() : ?string
     {
         return $this->htmlContents;
     }
@@ -57,11 +57,11 @@ class CustomizePageProps extends \ArrayObject
     ※ This function is not yet provided, so it cannot be changed or saved.
     
     *
-    * @param string $htmlContents
+    * @param string|null $htmlContents
     *
     * @return self
     */
-    public function setHtmlContents(string $htmlContents) : self
+    public function setHtmlContents(?string $htmlContents) : self
     {
         $this->initialized['htmlContents'] = true;
         $this->htmlContents = $htmlContents;
@@ -70,20 +70,20 @@ class CustomizePageProps extends \ArrayObject
     /**
      * 利用規約の同意チェックボックスを表示するが設定されているか(display the terms of use agreement check box)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsTermsOfService() : bool
+    public function getIsTermsOfService() : ?bool
     {
         return $this->isTermsOfService;
     }
     /**
      * 利用規約の同意チェックボックスを表示するが設定されているか(display the terms of use agreement check box)
      *
-     * @param bool $isTermsOfService
+     * @param bool|null $isTermsOfService
      *
      * @return self
      */
-    public function setIsTermsOfService(bool $isTermsOfService) : self
+    public function setIsTermsOfService(?bool $isTermsOfService) : self
     {
         $this->initialized['isTermsOfService'] = true;
         $this->isTermsOfService = $isTermsOfService;
@@ -92,20 +92,20 @@ class CustomizePageProps extends \ArrayObject
     /**
      * プライバシーポリシーチェックボックスを表示するが設定されているか(show the privacy policy checkbox)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsPrivacyPolicy() : bool
+    public function getIsPrivacyPolicy() : ?bool
     {
         return $this->isPrivacyPolicy;
     }
     /**
      * プライバシーポリシーチェックボックスを表示するが設定されているか(show the privacy policy checkbox)
      *
-     * @param bool $isPrivacyPolicy
+     * @param bool|null $isPrivacyPolicy
      *
      * @return self
      */
-    public function setIsPrivacyPolicy(bool $isPrivacyPolicy) : self
+    public function setIsPrivacyPolicy(?bool $isPrivacyPolicy) : self
     {
         $this->initialized['isPrivacyPolicy'] = true;
         $this->isPrivacyPolicy = $isPrivacyPolicy;

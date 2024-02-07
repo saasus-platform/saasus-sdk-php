@@ -504,6 +504,68 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetMeteringUnitsInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnits|\Psr\Http\Message\ResponseInterface
+     */
+    public function getMeteringUnits(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\GetMeteringUnits(), $fetch);
+    }
+    /**
+    * メータリングユニットを作成します。
+    
+    Create a metering unit.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\CreateMeteringUnitBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\CreateMeteringUnitInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnit|\Psr\Http\Message\ResponseInterface
+    */
+    public function createMeteringUnit(?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\CreateMeteringUnit($requestBody), $fetch);
+    }
+    /**
+    * メータリングユニットを削除します。
+    
+    Delete metering unit.
+    
+    *
+    * @param string $meteringUnitId メータリングユニットID(metering unit id)
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteMeteringUnitByIDNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteMeteringUnitByIDInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function deleteMeteringUnitByID(string $meteringUnitId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\DeleteMeteringUnitByID($meteringUnitId), $fetch);
+    }
+    /**
+    * メータリングユニットを更新します。
+    
+    Update metering unit.
+    
+    *
+    * @param string $meteringUnitId メータリングユニットID(metering unit id)
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdateMeteringUnitByIDBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdateMeteringUnitByIDInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
+    public function updateMeteringUnitByID(string $meteringUnitId, ?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Pricing\Endpoint\UpdateMeteringUnitByID($meteringUnitId, $requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\ReturnInternalServerErrorInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -517,7 +579,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.saasus.io/v1/pricing');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/pricing');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

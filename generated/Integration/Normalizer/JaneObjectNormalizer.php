@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error' => 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Normalizer\\ErrorNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventBridgeSettings' => 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Normalizer\\EventBridgeSettingsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\CreateEventBridgeEventParam' => 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Normalizer\\CreateEventBridgeEventParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage' => 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Normalizer\\EventMessageNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\AntiPatternInc\\Saasus\\Sdk\\Integration\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
@@ -54,5 +54,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\Error' => false, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventBridgeSettings' => false, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\CreateEventBridgeEventParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Integration\\Model\\EventMessage' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
     }
 }

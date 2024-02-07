@@ -15,26 +15,26 @@ class SelfRegist extends \ArrayObject
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enable;
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEnable() : bool
+    public function getEnable() : ?bool
     {
         return $this->enable;
     }
     /**
      * 
      *
-     * @param bool $enable
+     * @param bool|null $enable
      *
      * @return self
      */
-    public function setEnable(bool $enable) : self
+    public function setEnable(?bool $enable) : self
     {
         $this->initialized['enable'] = true;
         $this->enable = $enable;

@@ -10,13 +10,15 @@ class GuzzleMiddleware
     protected string $saasid;
     protected string $apikey;
     protected string $referer;
+    protected string $xSaasusReferer;
 
-    function __construct($secret = "", $saasid = "", $apikey = "", $referer = "")
+    function __construct($secret = "", $saasid = "", $apikey = "", $referer = "", $xSaasusReferer = "")
     {
         $this->secret = $secret;
         $this->saasid = $saasid;
         $this->apikey = $apikey;
         $this->referer = $referer;
+        $this->xSaasusReferer = $xSaasusReferer;
     }
 
     public function __invoke(callable $next)
@@ -40,6 +42,9 @@ class GuzzleMiddleware
         $req = $req->withHeader('Authorization', $header);
         if (!empty($this->referer)) {
             $req = $req->withHeader('Referer', $this->referer);
+        }
+        if (!empty($this->xSaasusReferer)) {
+            $req = $req->withHeader('x-saasus-referer', $this->xSaasusReferer);
         }
 
         return call_user_func($this->next, $req, $options);

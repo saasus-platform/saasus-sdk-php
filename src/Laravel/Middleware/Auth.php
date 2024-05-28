@@ -41,8 +41,13 @@ class Auth
             $referer = "";
         }
 
+        $xSaasusReferer = $request->headers->get('x-saasus-referer');
+        if (empty($xSaasusReferer)) {
+            $xSaasusReferer = "";
+        }
+
         // リクエスト送信
-        $client = new ApiClient($referer);
+        $client = new ApiClient($referer, $xSaasusReferer);
         $authApiClient = $client->getAuthClient();
         try {
             $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);

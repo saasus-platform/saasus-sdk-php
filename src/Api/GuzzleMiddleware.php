@@ -44,7 +44,7 @@ class GuzzleMiddleware
             $req = $req->withHeader('Referer', $this->referer);
         }
         if (!empty($this->xSaasusReferer)) {
-            $req = $req->withHeader('x-saasus-referer', $this->xSaasusReferer);
+            $req = $req->withHeader('X-SaaSus-Referer', $this->xSaasusReferer);
         }
 
         return call_user_func($this->next, $req, $options);

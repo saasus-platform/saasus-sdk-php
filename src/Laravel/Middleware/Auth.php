@@ -36,12 +36,12 @@ class Auth
             }
         }
 
-        $referer = $request->headers->get('referer');
+        $referer = $request->headers->get('Referer');
         if (empty($referer)) {
             $referer = "";
         }
 
-        $xSaasusReferer = $request->headers->get('x-saasus-referer');
+        $xSaasusReferer = $request->headers->get('X-SaaSus-Referer');
         if (empty($xSaasusReferer)) {
             $xSaasusReferer = "";
         }

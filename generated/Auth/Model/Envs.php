@@ -7,34 +7,34 @@ class Envs extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var Env[]|null
+     * @var list<Env>|null
      */
     protected $envs;
     /**
      * 
      *
-     * @return Env[]|null
+     * @return list<Env>|null
      */
-    public function getEnvs() : ?array
+    public function getEnvs(): ?array
     {
         return $this->envs;
     }
     /**
      * 
      *
-     * @param Env[]|null $envs
+     * @param list<Env>|null $envs
      *
      * @return self
      */
-    public function setEnvs(?array $envs) : self
+    public function setEnvs(?array $envs): self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;

@@ -6,33 +6,30 @@ class GetInvitationValidity extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
 {
     protected $invitation_id;
     /**
-    * テナントへの招待の有効性を取得します。
-    
-    Get the validity of an invitation to the tenant.
-    
-    *
-    * @param string $invitationId 招待ID(Invitation ID)
-    */
+     * Get the validity of an invitation to the tenant.
+     *
+     * @param string $invitationId Invitation ID
+     */
     public function __construct(string $invitationId)
     {
         $this->invitation_id = $invitationId;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{invitation_id}'), array($this->invitation_id), '/invitations/{invitation_id}/validity');
+        return str_replace(['{invitation_id}'], [$this->invitation_id], '/invitations/{invitation_id}/validity');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -47,17 +44,17 @@ class GetInvitationValidity extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\InvitationValidity', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetInvitationValidityInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

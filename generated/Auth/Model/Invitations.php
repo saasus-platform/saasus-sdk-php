@@ -7,34 +7,34 @@ class Invitations extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 招待一覧(invitation list)
+     * Invitation list
      *
-     * @var Invitation[]|null
+     * @var list<Invitation>|null
      */
     protected $invitations;
     /**
-     * 招待一覧(invitation list)
+     * Invitation list
      *
-     * @return Invitation[]|null
+     * @return list<Invitation>|null
      */
-    public function getInvitations() : ?array
+    public function getInvitations(): ?array
     {
         return $this->invitations;
     }
     /**
-     * 招待一覧(invitation list)
+     * Invitation list
      *
-     * @param Invitation[]|null $invitations
+     * @param list<Invitation>|null $invitations
      *
      * @return self
      */
-    public function setInvitations(?array $invitations) : self
+    public function setInvitations(?array $invitations): self
     {
         $this->initialized['invitations'] = true;
         $this->invitations = $invitations;

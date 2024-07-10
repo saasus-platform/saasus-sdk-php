@@ -6,33 +6,30 @@ class GetCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Clie
 {
     protected $customer_identifier;
     /**
-    * AWS Marketplaceに連携する顧客情報を取得します。
-    
-    Get customer information to be linked to AWS Marketplace.
-    
-    *
-    * @param string $customerIdentifier 顧客ID
-    */
+     * Get customer information to be linked to AWS Marketplace.
+     *
+     * @param string $customerIdentifier Customer ID
+     */
     public function __construct(string $customerIdentifier)
     {
         $this->customer_identifier = $customerIdentifier;
     }
     use \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{customer_identifier}'), array($this->customer_identifier), '/customers/{customer_identifier}');
+        return str_replace(['{customer_identifier}'], [$this->customer_identifier], '/customers/{customer_identifier}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -46,14 +43,14 @@ class GetCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Clie
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Customer', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

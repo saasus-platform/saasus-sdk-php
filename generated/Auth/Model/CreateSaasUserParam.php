@@ -7,62 +7,62 @@ class CreateSaasUserParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @var string|null
      */
     protected $email;
     /**
-     * パスワード(Password)
+     * Password
      *
      * @var string|null
      */
     protected $password;
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
     /**
-     * パスワード(Password)
+     * Password
      *
      * @return string|null
      */
-    public function getPassword() : ?string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
     /**
-     * パスワード(Password)
+     * Password
      *
      * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(?string $password) : self
+    public function setPassword(?string $password): self
     {
         $this->initialized['password'] = true;
         $this->password = $password;

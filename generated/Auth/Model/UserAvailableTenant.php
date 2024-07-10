@@ -7,8 +7,8 @@ class UserAvailableTenant extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -19,7 +19,7 @@ class UserAvailableTenant extends \ArrayObject
      */
     protected $id;
     /**
-     * テナント名(tenant name)
+     * Tenant Name
      *
      * @var string|null
      */
@@ -31,19 +31,19 @@ class UserAvailableTenant extends \ArrayObject
      */
     protected $completedSignUp;
     /**
-     * 環境情報、役割(ロール)情報(environmental info, role info)
+     * environmental info, role info
      *
-     * @var UserAvailableEnv[]|null
+     * @var list<UserAvailableEnv>|null
      */
     protected $envs;
     /**
-     * ユーザー追加属性(user additional attributes)
+     * user additional attributes
      *
      * @var array<string, mixed>|null
      */
     protected $userAttribute;
     /**
-     * バックオフィス担当者のメール(back office contact email)
+     * back office contact email
      *
      * @var string|null
      */
@@ -55,8 +55,8 @@ class UserAvailableTenant extends \ArrayObject
      */
     protected $planId;
     /**
-    * テナントの支払い状況(tenant payment status)
-    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    * tenant payment status
+    ※ Currently, it is returned only when stripe is linked.
     
     *
     * @var bool|null
@@ -67,7 +67,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId() : ?string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -78,29 +78,29 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
     /**
-     * テナント名(tenant name)
+     * Tenant Name
      *
      * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
-     * テナント名(tenant name)
+     * Tenant Name
      *
      * @param string|null $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -111,7 +111,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getCompletedSignUp() : ?bool
+    public function getCompletedSignUp(): ?bool
     {
         return $this->completedSignUp;
     }
@@ -122,73 +122,73 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setCompletedSignUp(?bool $completedSignUp) : self
+    public function setCompletedSignUp(?bool $completedSignUp): self
     {
         $this->initialized['completedSignUp'] = true;
         $this->completedSignUp = $completedSignUp;
         return $this;
     }
     /**
-     * 環境情報、役割(ロール)情報(environmental info, role info)
+     * environmental info, role info
      *
-     * @return UserAvailableEnv[]|null
+     * @return list<UserAvailableEnv>|null
      */
-    public function getEnvs() : ?array
+    public function getEnvs(): ?array
     {
         return $this->envs;
     }
     /**
-     * 環境情報、役割(ロール)情報(environmental info, role info)
+     * environmental info, role info
      *
-     * @param UserAvailableEnv[]|null $envs
+     * @param list<UserAvailableEnv>|null $envs
      *
      * @return self
      */
-    public function setEnvs(?array $envs) : self
+    public function setEnvs(?array $envs): self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;
         return $this;
     }
     /**
-     * ユーザー追加属性(user additional attributes)
+     * user additional attributes
      *
      * @return array<string, mixed>|null
      */
-    public function getUserAttribute() : ?iterable
+    public function getUserAttribute(): ?iterable
     {
         return $this->userAttribute;
     }
     /**
-     * ユーザー追加属性(user additional attributes)
+     * user additional attributes
      *
      * @param array<string, mixed>|null $userAttribute
      *
      * @return self
      */
-    public function setUserAttribute(?iterable $userAttribute) : self
+    public function setUserAttribute(?iterable $userAttribute): self
     {
         $this->initialized['userAttribute'] = true;
         $this->userAttribute = $userAttribute;
         return $this;
     }
     /**
-     * バックオフィス担当者のメール(back office contact email)
+     * back office contact email
      *
      * @return string|null
      */
-    public function getBackOfficeStaffEmail() : ?string
+    public function getBackOfficeStaffEmail(): ?string
     {
         return $this->backOfficeStaffEmail;
     }
     /**
-     * バックオフィス担当者のメール(back office contact email)
+     * back office contact email
      *
      * @param string|null $backOfficeStaffEmail
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail): self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;
@@ -199,7 +199,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPlanId() : ?string
+    public function getPlanId(): ?string
     {
         return $this->planId;
     }
@@ -210,33 +210,33 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanId(?string $planId) : self
+    public function setPlanId(?string $planId): self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
         return $this;
     }
     /**
-    * テナントの支払い状況(tenant payment status)
-    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    * tenant payment status
+    ※ Currently, it is returned only when stripe is linked.
     
     *
     * @return bool|null
     */
-    public function getIsPaid() : ?bool
+    public function getIsPaid(): ?bool
     {
         return $this->isPaid;
     }
     /**
-    * テナントの支払い状況(tenant payment status)
-    ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.
+    * tenant payment status
+    ※ Currently, it is returned only when stripe is linked.
     
     *
     * @param bool|null $isPaid
     *
     * @return self
     */
-    public function setIsPaid(?bool $isPaid) : self
+    public function setIsPaid(?bool $isPaid): self
     {
         $this->initialized['isPaid'] = true;
         $this->isPaid = $isPaid;

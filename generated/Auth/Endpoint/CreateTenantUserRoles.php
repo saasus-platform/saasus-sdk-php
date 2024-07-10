@@ -8,16 +8,13 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
     protected $user_id;
     protected $env_id;
     /**
-    * テナントのユーザーに役割(ロール)を作成します。
-    
-    Create roles on tenant users.
-    
-    *
-    * @param string $tenantId テナントID(Tenant ID)
-    * @param string $userId ユーザーID(User ID)
-    * @param int $envId 環境ID(Env ID)
-    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody 
-    */
+     * Create roles on tenant users.
+     *
+     * @param string $tenantId Tenant ID
+     * @param string $userId User ID
+     * @param int $envId Env ID
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody 
+     */
     public function __construct(string $tenantId, string $userId, int $envId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam $requestBody = null)
     {
         $this->tenant_id = $tenantId;
@@ -26,24 +23,24 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}', '{user_id}', '{env_id}'), array($this->tenant_id, $this->user_id, $this->env_id), '/tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles');
+        return str_replace(['{tenant_id}', '{user_id}', '{env_id}'], [$this->tenant_id, $this->user_id, $this->env_id], '/tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -60,11 +57,11 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserRolesInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserRolesInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

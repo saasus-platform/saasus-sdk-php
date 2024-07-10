@@ -7,226 +7,226 @@ class PricingFixedUnitForSave extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 料金(price)
+     * Price
      *
      * @var int|null
      */
     protected $unitAmount;
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @var string|null
     */
     protected $recurringInterval;
     /**
-     * 名前(name)
+     * Name
      *
      * @var string|null
      */
     protected $name;
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @var string|null
      */
     protected $displayName;
     /**
-     * 説明(description)
+     * Description
      *
      * @var string|null
      */
     protected $description;
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @var string|null
     */
     protected $type;
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @var string|null
      */
     protected $currency;
     /**
-     * 料金(price)
+     * Price
      *
      * @return int|null
      */
-    public function getUnitAmount() : ?int
+    public function getUnitAmount(): ?int
     {
         return $this->unitAmount;
     }
     /**
-     * 料金(price)
+     * Price
      *
      * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(?int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount): self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
         return $this;
     }
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @return string|null
     */
-    public function getRecurringInterval() : ?string
+    public function getRecurringInterval(): ?string
     {
         return $this->recurringInterval;
     }
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @param string|null $recurringInterval
     *
     * @return self
     */
-    public function setRecurringInterval(?string $recurringInterval) : self
+    public function setRecurringInterval(?string $recurringInterval): self
     {
         $this->initialized['recurringInterval'] = true;
         $this->recurringInterval = $recurringInterval;
         return $this;
     }
     /**
-     * 名前(name)
+     * Name
      *
      * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
-     * 名前(name)
+     * Name
      *
      * @param string|null $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @return string|null
      */
-    public function getDisplayName() : ?string
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName) : self
+    public function setDisplayName(?string $displayName): self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }
     /**
-     * 説明(description)
+     * Description
      *
      * @return string|null
      */
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
-     * 説明(description)
+     * Description
      *
      * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @return string|null
     */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @param string|null $type
     *
     * @return self
     */
-    public function setType(?string $type) : self
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @return string|null
      */
-    public function getCurrency() : ?string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @param string|null $currency
      *
      * @return self
      */
-    public function setCurrency(?string $currency) : self
+    public function setCurrency(?string $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

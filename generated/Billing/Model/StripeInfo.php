@@ -7,8 +7,8 @@ class StripeInfo extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class StripeInfo extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsRegistered() : ?bool
+    public function getIsRegistered(): ?bool
     {
         return $this->isRegistered;
     }
@@ -34,7 +34,7 @@ class StripeInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setIsRegistered(?bool $isRegistered) : self
+    public function setIsRegistered(?bool $isRegistered): self
     {
         $this->initialized['isRegistered'] = true;
         $this->isRegistered = $isRegistered;

@@ -6,33 +6,30 @@ class GetPricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\B
 {
     protected $menu_id;
     /**
-    * プライシング機能メニューを取得します。
-    
-    Get a pricing feature menu.
-    
-    *
-    * @param string $menuId メニューID(menu ID)
-    */
+     * Get a pricing feature menu.
+     *
+     * @param string $menuId Menu ID
+     */
     public function __construct(string $menuId)
     {
         $this->menu_id = $menuId;
     }
     use \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{menu_id}'), array($this->menu_id), '/menus/{menu_id}');
+        return str_replace(['{menu_id}'], [$this->menu_id], '/menus/{menu_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -46,14 +43,14 @@ class GetPricingMenu extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\B
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\PricingMenu', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenu', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetPricingMenuInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetPricingMenuInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Pricing\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -10,53 +10,455 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    protected $normalizers = array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserInfo' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UserInfoNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BasicInfo' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\BasicInfoNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\DnsRecordNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthInfo' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\AuthInfoNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUser' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SaasUserNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUsers' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SaasUsersNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateSaasUserParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateSaasUserParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UserNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Users' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UsersNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ApiKeys' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ApiKeysNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateBasicInfoParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateBasicInfoParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantUserParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateTenantUserParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantUserParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateTenantUserParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserPasswordParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateSaasUserPasswordParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserEmailParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateSaasUserEmailParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestEmailUpdateParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\RequestEmailUpdateParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmEmailUpdateParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ConfirmEmailUpdateParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantUserRolesParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateTenantUserRolesParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\AttributeNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAttributes' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UserAttributesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantAttributes' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantAttributesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SaasIdNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Role' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\RoleNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Roles' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\RolesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Tenant' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantDetail' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantDetailNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantProps' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantPropsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanReservation' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\PlanReservationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingInfo' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\BillingInfoNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingAddress' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\BillingAddressNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Tenants' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAvailableTenant' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UserAvailableTenantNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAvailableEnv' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UserAvailableEnvNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ErrorNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\NotificationMessages' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\NotificationMessagesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\MessageTemplateNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateNotificationMessagesParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateNotificationMessagesParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviders' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\IdentityProvidersNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderProps' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\IdentityProviderPropsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateIdentityProviderParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateIdentityProviderParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProviders' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantIdentityProvidersNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProvidersSaml' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\TenantIdentityProvidersSamlNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantIdentityProviderParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateTenantIdentityProviderParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderSaml' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\IdentityProviderSamlNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignInSettings' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SignInSettingsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PasswordPolicy' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\PasswordPolicyNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\DeviceConfigurationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\AccountVerificationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSignInSettingsParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateSignInSettingsParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\MfaConfigurationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\RecaptchaPropsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\IdentityProviderConfigurationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateEnvParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateEnvParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Env' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\EnvNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Envs' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\EnvsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePages' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CustomizePagesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageProps' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CustomizePagePropsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateCustomizePagesParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateCustomizePagesParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SelfRegist' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SelfRegistNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageSettingsProps' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CustomizePageSettingsPropsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageSettings' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CustomizePageSettingsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateCustomizePageSettingsParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateCustomizePageSettingsParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\PlanHistoryNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistories' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\PlanHistoriesNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ClientSecret' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ClientSecretNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CredentialsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthorizationTempCode' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\AuthorizationTempCodeNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateSecretCodeParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateSecretCodeParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SoftwareTokenSecretCode' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SoftwareTokenSecretCodeNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSoftwareTokenParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\UpdateSoftwareTokenParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaPreference' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\MfaPreferenceNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignUpParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SignUpParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ResendSignUpConfirmationEmailParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ResendSignUpConfirmationEmailParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignUpWithAwsMarketplaceParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\SignUpWithAwsMarketplaceParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmSignUpWithAwsMarketplaceParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ConfirmSignUpWithAwsMarketplaceParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\LinkAwsMarketplaceParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\LinkAwsMarketplaceParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Invitation' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\InvitationNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Invitations' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\InvitationsNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateTenantInvitationParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\CreateTenantInvitationParamEnvsItemNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ValidateInvitationParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ValidateInvitationParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\InvitationValidity' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\InvitationValidityNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestExternalUserLinkParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\RequestExternalUserLinkParamNormalizer', 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmExternalUserLinkParam' => 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Normalizer\\ConfirmExternalUserLinkParamNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\AntiPatternInc\\Saasus\\Sdk\\Auth\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array_key_exists($type, $this->normalizers);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        protected $normalizers = [
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BasicInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BasicInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\DnsRecordNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AuthInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasUserNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUsers::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasUsersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateSaasUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\User::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Users::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UsersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ApiKeys::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ApiKeysNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateBasicInfoParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateTenantUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSaasUserPasswordParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSaasUserEmailParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RequestEmailUpdateParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmEmailUpdateParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantUserRolesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Attribute::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AttributeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAttributes::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAttributesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantAttributes::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantAttributesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasIdNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Role::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RoleNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Roles::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RolesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantDetailNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanReservation::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanReservationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BillingInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingAddress::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BillingAddressNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenants::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAvailableTenantNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableEnv::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAvailableEnvNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Error::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ErrorNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\NotificationMessages::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\NotificationMessagesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MessageTemplate::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MessageTemplateNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateNotificationMessagesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviders::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProvidersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateIdentityProviderParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateIdentityProviderParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProviders::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantIdentityProvidersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProvidersSaml::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantIdentityProvidersSamlNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateTenantIdentityProviderParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderSaml::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderSamlNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignInSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PasswordPolicy::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PasswordPolicyNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\DeviceConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\DeviceConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AccountVerification::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AccountVerificationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSignInSettingsParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MfaConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RecaptchaProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RecaptchaPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateEnvParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Env::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\EnvNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Envs::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\EnvsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePages::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePagesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePagePropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateCustomizePagesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SelfRegist::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SelfRegistNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePageSettingsPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePageSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateCustomizePageSettingsParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistory::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanHistoryNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistories::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanHistoriesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ClientSecretNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Credentials::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CredentialsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthorizationTempCode::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AuthorizationTempCodeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateSecretCodeParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SoftwareTokenSecretCode::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SoftwareTokenSecretCodeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSoftwareTokenParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaPreference::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MfaPreferenceNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignUpParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ResendSignUpConfirmationEmailParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignUpWithAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmSignUpWithAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\LinkAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitations::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantInvitationParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParamEnvsItem::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantInvitationParamEnvsItemNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ValidateInvitationParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationValidityNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RequestExternalUserLinkParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmExternalUserLinkParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CloudFormationLaunchStackLink::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CloudFormationLaunchStackLinkNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SingleTenantSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SingleTenantSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSingleTenantSettingsParamNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+        {
+            return array_key_exists($type, $this->normalizers);
+        }
+        public function supportsNormalization($data, $format = null, array $context = []): bool
+        {
+            return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
+        }
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $normalizerClass = $this->normalizers[get_class($object)];
+            $normalizer = $this->getNormalizer($normalizerClass);
+            return $normalizer->normalize($object, $format, $context);
+        }
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            $denormalizerClass = $this->normalizers[$type];
+            $denormalizer = $this->getNormalizer($denormalizerClass);
+            return $denormalizer->denormalize($data, $type, $format, $context);
+        }
+        private function getNormalizer(string $normalizerClass)
+        {
+            return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
+        }
+        private function initNormalizer(string $normalizerClass)
+        {
+            $normalizer = new $normalizerClass();
+            $normalizer->setNormalizer($this->normalizer);
+            $normalizer->setDenormalizer($this->denormalizer);
+            $this->normalizersCache[$normalizerClass] = $normalizer;
+            return $normalizer;
+        }
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BasicInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUsers::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\User::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Users::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ApiKeys::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Attribute::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAttributes::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantAttributes::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Role::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Roles::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanReservation::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingAddress::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenants::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableEnv::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Error::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\NotificationMessages::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MessageTemplate::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviders::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateIdentityProviderParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProviders::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProvidersSaml::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderSaml::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PasswordPolicy::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\DeviceConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AccountVerification::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RecaptchaProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Env::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Envs::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePages::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SelfRegist::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistory::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistories::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Credentials::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthorizationTempCode::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SoftwareTokenSecretCode::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaPreference::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitations::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParamEnvsItem::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CloudFormationLaunchStackLink::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SingleTenantSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+        }
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+} else {
+    class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $normalizerClass = $this->normalizers[get_class($object)];
-        $normalizer = $this->getNormalizer($normalizerClass);
-        return $normalizer->normalize($object, $format, $context);
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        $denormalizerClass = $this->normalizers[$class];
-        $denormalizer = $this->getNormalizer($denormalizerClass);
-        return $denormalizer->denormalize($data, $class, $format, $context);
-    }
-    private function getNormalizer(string $normalizerClass)
-    {
-        return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
-    }
-    private function initNormalizer(string $normalizerClass)
-    {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
-        $this->normalizersCache[$normalizerClass] = $normalizer;
-        return $normalizer;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserInfo' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BasicInfo' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DnsRecord' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthInfo' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUser' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasUsers' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateSaasUserParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Users' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ApiKeys' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateBasicInfoParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantUserParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantUserParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserPasswordParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSaasUserEmailParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestEmailUpdateParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmEmailUpdateParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantUserRolesParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Attribute' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAttributes' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantAttributes' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SaasId' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Role' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Roles' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Tenant' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantDetail' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantProps' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanReservation' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingInfo' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\BillingAddress' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Tenants' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAvailableTenant' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UserAvailableEnv' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\NotificationMessages' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MessageTemplate' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateNotificationMessagesParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviders' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderProps' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateIdentityProviderParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProviders' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\TenantIdentityProvidersSaml' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateTenantIdentityProviderParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderSaml' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignInSettings' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PasswordPolicy' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\DeviceConfiguration' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AccountVerification' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSignInSettingsParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaConfiguration' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RecaptchaProps' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\IdentityProviderConfiguration' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateEnvParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Env' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Envs' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePages' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageProps' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateCustomizePagesParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SelfRegist' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageSettingsProps' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CustomizePageSettings' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateCustomizePageSettingsParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistory' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\PlanHistories' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ClientSecret' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\AuthorizationTempCode' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateSecretCodeParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SoftwareTokenSecretCode' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\UpdateSoftwareTokenParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\MfaPreference' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignUpParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ResendSignUpConfirmationEmailParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\SignUpWithAwsMarketplaceParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmSignUpWithAwsMarketplaceParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\LinkAwsMarketplaceParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Invitation' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Invitations' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\CreateTenantInvitationParamEnvsItem' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ValidateInvitationParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\InvitationValidity' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestExternalUserLinkParam' => false, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ConfirmExternalUserLinkParam' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        protected $normalizers = [
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BasicInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BasicInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\DnsRecordNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AuthInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasUserNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUsers::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasUsersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateSaasUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\User::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Users::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UsersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ApiKeys::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ApiKeysNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateBasicInfoParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateTenantUserParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSaasUserPasswordParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSaasUserEmailParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RequestEmailUpdateParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmEmailUpdateParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantUserRolesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Attribute::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AttributeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAttributes::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAttributesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantAttributes::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantAttributesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SaasIdNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Role::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RoleNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Roles::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RolesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantDetailNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanReservation::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanReservationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingInfo::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BillingInfoNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingAddress::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\BillingAddressNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenants::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAvailableTenantNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableEnv::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UserAvailableEnvNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Error::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ErrorNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\NotificationMessages::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\NotificationMessagesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MessageTemplate::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MessageTemplateNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateNotificationMessagesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviders::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProvidersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateIdentityProviderParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateIdentityProviderParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProviders::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantIdentityProvidersNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProvidersSaml::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\TenantIdentityProvidersSamlNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateTenantIdentityProviderParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderSaml::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderSamlNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignInSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PasswordPolicy::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PasswordPolicyNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\DeviceConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\DeviceConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AccountVerification::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AccountVerificationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSignInSettingsParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MfaConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RecaptchaProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RecaptchaPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderConfiguration::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\IdentityProviderConfigurationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateEnvParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Env::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\EnvNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Envs::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\EnvsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePages::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePagesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePagePropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateCustomizePagesParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SelfRegist::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SelfRegistNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePageSettingsPropsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CustomizePageSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateCustomizePageSettingsParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistory::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanHistoryNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistories::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\PlanHistoriesNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ClientSecretNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Credentials::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CredentialsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthorizationTempCode::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\AuthorizationTempCodeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateSecretCodeParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SoftwareTokenSecretCode::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SoftwareTokenSecretCodeNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSoftwareTokenParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaPreference::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\MfaPreferenceNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignUpParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ResendSignUpConfirmationEmailParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SignUpWithAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmSignUpWithAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\LinkAwsMarketplaceParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitations::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantInvitationParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParamEnvsItem::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CreateTenantInvitationParamEnvsItemNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ValidateInvitationParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\InvitationValidityNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\RequestExternalUserLinkParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\ConfirmExternalUserLinkParamNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\CloudFormationLaunchStackLink::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\CloudFormationLaunchStackLinkNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\SingleTenantSettings::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\SingleTenantSettingsNormalizer::class,
+            
+            \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam::class => \AntiPatternInc\Saasus\Sdk\Auth\Normalizer\UpdateSingleTenantSettingsParamNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+        {
+            return array_key_exists($type, $this->normalizers);
+        }
+        public function supportsNormalization($data, $format = null, array $context = []): bool
+        {
+            return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $normalizerClass = $this->normalizers[get_class($object)];
+            $normalizer = $this->getNormalizer($normalizerClass);
+            return $normalizer->normalize($object, $format, $context);
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            $denormalizerClass = $this->normalizers[$type];
+            $denormalizer = $this->getNormalizer($denormalizerClass);
+            return $denormalizer->denormalize($data, $type, $format, $context);
+        }
+        private function getNormalizer(string $normalizerClass)
+        {
+            return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
+        }
+        private function initNormalizer(string $normalizerClass)
+        {
+            $normalizer = new $normalizerClass();
+            $normalizer->setNormalizer($this->normalizer);
+            $normalizer->setDenormalizer($this->denormalizer);
+            $this->normalizersCache[$normalizerClass] = $normalizer;
+            return $normalizer;
+        }
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BasicInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUsers::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\User::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Users::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ApiKeys::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateBasicInfoParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserPasswordParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Attribute::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAttributes::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantAttributes::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasId::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Role::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Roles::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanReservation::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingInfo::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\BillingAddress::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Tenants::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableEnv::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Error::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\NotificationMessages::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MessageTemplate::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateNotificationMessagesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviders::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateIdentityProviderParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProviders::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\TenantIdentityProvidersSaml::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantIdentityProviderParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderSaml::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PasswordPolicy::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\DeviceConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AccountVerification::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSignInSettingsParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RecaptchaProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\IdentityProviderConfiguration::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateEnvParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Env::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Envs::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePages::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePagesParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SelfRegist::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateCustomizePageSettingsParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistory::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\PlanHistories::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ClientSecret::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Credentials::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\AuthorizationTempCode::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSecretCodeParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SoftwareTokenSecretCode::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSoftwareTokenParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\MfaPreference::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ResendSignUpConfirmationEmailParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpWithAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmSignUpWithAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\LinkAwsMarketplaceParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitation::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\Invitations::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantInvitationParamEnvsItem::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\InvitationValidity::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestExternalUserLinkParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmExternalUserLinkParam::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\CloudFormationLaunchStackLink::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\SingleTenantSettings::class => false, \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+        }
     }
 }

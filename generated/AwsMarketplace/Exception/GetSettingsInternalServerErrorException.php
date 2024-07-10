@@ -18,11 +18,11 @@ class GetSettingsInternalServerErrorException extends InternalServerErrorExcepti
         $this->error = $error;
         $this->response = $response;
     }
-    public function getError() : \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error
+    public function getError(): \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error
     {
         return $this->error;
     }
-    public function getResponse() : \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Psr\Http\Message\ResponseInterface
     {
         return $this->response;
     }

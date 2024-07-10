@@ -7,13 +7,13 @@ class SignUpWithAwsMarketplaceParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メールアドレス(Email Address)
+     * Email Address
      *
      * @var string|null
      */
@@ -25,22 +25,22 @@ class SignUpWithAwsMarketplaceParam extends \ArrayObject
      */
     protected $registrationToken;
     /**
-     * メールアドレス(Email Address)
+     * Email Address
      *
      * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
     /**
-     * メールアドレス(Email Address)
+     * Email Address
      *
      * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -51,7 +51,7 @@ class SignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRegistrationToken() : ?string
+    public function getRegistrationToken(): ?string
     {
         return $this->registrationToken;
     }
@@ -62,7 +62,7 @@ class SignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRegistrationToken(?string $registrationToken) : self
+    public function setRegistrationToken(?string $registrationToken): self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

@@ -7,34 +7,34 @@ class PlanHistories extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 料金プラン履歴
+     * Plan History
      *
-     * @var PlanHistory[]|null
+     * @var list<PlanHistory>|null
      */
     protected $planHistories;
     /**
-     * 料金プラン履歴
+     * Plan History
      *
-     * @return PlanHistory[]|null
+     * @return list<PlanHistory>|null
      */
-    public function getPlanHistories() : ?array
+    public function getPlanHistories(): ?array
     {
         return $this->planHistories;
     }
     /**
-     * 料金プラン履歴
+     * Plan History
      *
-     * @param PlanHistory[]|null $planHistories
+     * @param list<PlanHistory>|null $planHistories
      *
      * @return self
      */
-    public function setPlanHistories(?array $planHistories) : self
+    public function setPlanHistories(?array $planHistories): self
     {
         $this->initialized['planHistories'] = true;
         $this->planHistories = $planHistories;

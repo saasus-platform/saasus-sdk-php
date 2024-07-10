@@ -7,62 +7,62 @@ class MeteringUnitCount extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 日時(timestamp)
+     * Timestamp
      *
      * @var int|null
      */
     protected $timestamp;
     /**
-     * 件数(count)
+     * Count
      *
      * @var int|null
      */
     protected $count;
     /**
-     * 日時(timestamp)
+     * Timestamp
      *
      * @return int|null
      */
-    public function getTimestamp() : ?int
+    public function getTimestamp(): ?int
     {
         return $this->timestamp;
     }
     /**
-     * 日時(timestamp)
+     * Timestamp
      *
      * @param int|null $timestamp
      *
      * @return self
      */
-    public function setTimestamp(?int $timestamp) : self
+    public function setTimestamp(?int $timestamp): self
     {
         $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
     /**
-     * 件数(count)
+     * Count
      *
      * @return int|null
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
     /**
-     * 件数(count)
+     * Count
      *
      * @param int|null $count
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(?int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;

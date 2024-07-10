@@ -7,19 +7,19 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * テナント名(tenant name)
+     * Tenant name
      *
      * @var string|null
      */
     protected $tenantName;
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @var string|null
      */
@@ -31,44 +31,44 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      */
     protected $registrationToken;
     /**
-     * テナント名(tenant name)
+     * Tenant name
      *
      * @return string|null
      */
-    public function getTenantName() : ?string
+    public function getTenantName(): ?string
     {
         return $this->tenantName;
     }
     /**
-     * テナント名(tenant name)
+     * Tenant name
      *
      * @param string|null $tenantName
      *
      * @return self
      */
-    public function setTenantName(?string $tenantName) : self
+    public function setTenantName(?string $tenantName): self
     {
         $this->initialized['tenantName'] = true;
         $this->tenantName = $tenantName;
         return $this;
     }
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @return string|null
      */
-    public function getAccessToken() : ?string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken) : self
+    public function setAccessToken(?string $accessToken): self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -79,7 +79,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRegistrationToken() : ?string
+    public function getRegistrationToken(): ?string
     {
         return $this->registrationToken;
     }
@@ -90,7 +90,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRegistrationToken(?string $registrationToken) : self
+    public function setRegistrationToken(?string $registrationToken): self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

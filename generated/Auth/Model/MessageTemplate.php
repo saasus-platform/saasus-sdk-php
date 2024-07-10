@@ -7,62 +7,62 @@ class MessageTemplate extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * タイトル(title)
+     * Title
      *
      * @var string|null
      */
     protected $subject;
     /**
-     * メッセージ(message)
+     * Message
      *
      * @var string|null
      */
     protected $message;
     /**
-     * タイトル(title)
+     * Title
      *
      * @return string|null
      */
-    public function getSubject() : ?string
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
     /**
-     * タイトル(title)
+     * Title
      *
      * @param string|null $subject
      *
      * @return self
      */
-    public function setSubject(?string $subject) : self
+    public function setSubject(?string $subject): self
     {
         $this->initialized['subject'] = true;
         $this->subject = $subject;
         return $this;
     }
     /**
-     * メッセージ(message)
+     * Message
      *
      * @return string|null
      */
-    public function getMessage() : ?string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
     /**
-     * メッセージ(message)
+     * Message
      *
      * @param string|null $message
      *
      * @return self
      */
-    public function setMessage(?string $message) : self
+    public function setMessage(?string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

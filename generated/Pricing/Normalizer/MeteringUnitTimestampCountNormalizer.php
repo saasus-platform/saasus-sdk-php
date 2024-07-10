@@ -12,81 +12,157 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class MeteringUnitTimestampCountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class MeteringUnitTimestampCountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitTimestampCount';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitTimestampCount';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class;
         }
-        $object = new \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] !== null) {
+                $object->setMeteringUnitName($data['metering_unit_name']);
+                unset($data['metering_unit_name']);
+            }
+            elseif (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] === null) {
+                $object->setMeteringUnitName(null);
+            }
+            if (\array_key_exists('timestamp', $data) && $data['timestamp'] !== null) {
+                $object->setTimestamp($data['timestamp']);
+                unset($data['timestamp']);
+            }
+            elseif (\array_key_exists('timestamp', $data) && $data['timestamp'] === null) {
+                $object->setTimestamp(null);
+            }
+            if (\array_key_exists('count', $data) && $data['count'] !== null) {
+                $object->setCount($data['count']);
+                unset($data['count']);
+            }
+            elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+                $object->setCount(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] !== null) {
-            $object->setMeteringUnitName($data['metering_unit_name']);
-            unset($data['metering_unit_name']);
-        }
-        elseif (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] === null) {
-            $object->setMeteringUnitName(null);
-        }
-        if (\array_key_exists('timestamp', $data) && $data['timestamp'] !== null) {
-            $object->setTimestamp($data['timestamp']);
-            unset($data['timestamp']);
-        }
-        elseif (\array_key_exists('timestamp', $data) && $data['timestamp'] === null) {
-            $object->setTimestamp(null);
-        }
-        if (\array_key_exists('count', $data) && $data['count'] !== null) {
-            $object->setCount($data['count']);
-            unset($data['count']);
-        }
-        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
-            $object->setCount(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['metering_unit_name'] = $object->getMeteringUnitName();
+            $data['timestamp'] = $object->getTimestamp();
+            $data['count'] = $object->getCount();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class MeteringUnitTimestampCountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['metering_unit_name'] = $object->getMeteringUnitName();
-        $data['timestamp'] = $object->getTimestamp();
-        $data['count'] = $object->getCount();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class;
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class;
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] !== null) {
+                $object->setMeteringUnitName($data['metering_unit_name']);
+                unset($data['metering_unit_name']);
+            }
+            elseif (\array_key_exists('metering_unit_name', $data) && $data['metering_unit_name'] === null) {
+                $object->setMeteringUnitName(null);
+            }
+            if (\array_key_exists('timestamp', $data) && $data['timestamp'] !== null) {
+                $object->setTimestamp($data['timestamp']);
+                unset($data['timestamp']);
+            }
+            elseif (\array_key_exists('timestamp', $data) && $data['timestamp'] === null) {
+                $object->setTimestamp(null);
+            }
+            if (\array_key_exists('count', $data) && $data['count'] !== null) {
+                $object->setCount($data['count']);
+                unset($data['count']);
+            }
+            elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+                $object->setCount(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitTimestampCount' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['metering_unit_name'] = $object->getMeteringUnitName();
+            $data['timestamp'] = $object->getTimestamp();
+            $data['count'] = $object->getCount();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class => false];
+        }
     }
 }

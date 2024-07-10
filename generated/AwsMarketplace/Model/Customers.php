@@ -7,34 +7,34 @@ class Customers extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var Customer[]|null
+     * @var list<Customer>|null
      */
     protected $customers;
     /**
      * 
      *
-     * @return Customer[]|null
+     * @return list<Customer>|null
      */
-    public function getCustomers() : ?array
+    public function getCustomers(): ?array
     {
         return $this->customers;
     }
     /**
      * 
      *
-     * @param Customer[]|null $customers
+     * @param list<Customer>|null $customers
      *
      * @return self
      */
-    public function setCustomers(?array $customers) : self
+    public function setCustomers(?array $customers): self
     {
         $this->initialized['customers'] = true;
         $this->customers = $customers;

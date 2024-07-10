@@ -5,43 +5,40 @@ namespace AntiPatternInc\Saasus\Sdk\AwsMarketplace\Endpoint;
 class GetCustomers extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\Endpoint
 {
     /**
-    * AWS Marketplaceに連携する顧客情報の一覧を取得します。
-    
-    Get a list of customer information to be linked to AWS Marketplace.
-    
-    *
-    * @param array $queryParameters {
-    *     @var array $tenant_ids 指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)
-    * }
-    */
-    public function __construct(array $queryParameters = array())
+     * Get a list of customer information to be linked to AWS Marketplace.
+     *
+     * @param array $queryParameters {
+     *     @var array $tenant_ids 指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)
+     * }
+     */
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
     use \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/customers';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('tenant_ids'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('tenant_ids', array('array'));
+        $optionsResolver->setDefined(['tenant_ids']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('tenant_ids', ['array']);
         return $optionsResolver;
     }
     /**
@@ -56,14 +53,14 @@ class GetCustomers extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Cli
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customers', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Customers', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCustomersInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCustomersInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

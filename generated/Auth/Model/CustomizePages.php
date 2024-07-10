@@ -7,8 +7,8 @@ class CustomizePages extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return CustomizePageProps|null
      */
-    public function getSignUpPage() : ?CustomizePageProps
+    public function getSignUpPage(): ?CustomizePageProps
     {
         return $this->signUpPage;
     }
@@ -46,7 +46,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return self
      */
-    public function setSignUpPage(?CustomizePageProps $signUpPage) : self
+    public function setSignUpPage(?CustomizePageProps $signUpPage): self
     {
         $this->initialized['signUpPage'] = true;
         $this->signUpPage = $signUpPage;
@@ -57,7 +57,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return CustomizePageProps|null
      */
-    public function getSignInPage() : ?CustomizePageProps
+    public function getSignInPage(): ?CustomizePageProps
     {
         return $this->signInPage;
     }
@@ -68,7 +68,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return self
      */
-    public function setSignInPage(?CustomizePageProps $signInPage) : self
+    public function setSignInPage(?CustomizePageProps $signInPage): self
     {
         $this->initialized['signInPage'] = true;
         $this->signInPage = $signInPage;
@@ -79,7 +79,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return CustomizePageProps|null
      */
-    public function getPasswordResetPage() : ?CustomizePageProps
+    public function getPasswordResetPage(): ?CustomizePageProps
     {
         return $this->passwordResetPage;
     }
@@ -90,7 +90,7 @@ class CustomizePages extends \ArrayObject
      *
      * @return self
      */
-    public function setPasswordResetPage(?CustomizePageProps $passwordResetPage) : self
+    public function setPasswordResetPage(?CustomizePageProps $passwordResetPage): self
     {
         $this->initialized['passwordResetPage'] = true;
         $this->passwordResetPage = $passwordResetPage;

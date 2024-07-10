@@ -7,13 +7,13 @@ class Error extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * permission_denied
+     * Error type
      *
      * @var string|null
      */
@@ -25,22 +25,22 @@ class Error extends \ArrayObject
      */
     protected $message;
     /**
-     * permission_denied
+     * Error type
      *
      * @return string|null
      */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
-     * permission_denied
+     * Error type
      *
      * @param string|null $type
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -51,7 +51,7 @@ class Error extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMessage() : ?string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -62,7 +62,7 @@ class Error extends \ArrayObject
      *
      * @return self
      */
-    public function setMessage(?string $message) : self
+    public function setMessage(?string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

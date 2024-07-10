@@ -7,34 +7,34 @@ class CreateSecretCodeParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * アクセストークン(access token)
+     * access token
      *
      * @var string|null
      */
     protected $accessToken;
     /**
-     * アクセストークン(access token)
+     * access token
      *
      * @return string|null
      */
-    public function getAccessToken() : ?string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
     /**
-     * アクセストークン(access token)
+     * access token
      *
      * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken) : self
+    public function setAccessToken(?string $accessToken): self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;

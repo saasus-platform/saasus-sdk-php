@@ -7,8 +7,8 @@ class Error extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Error extends \ArrayObject
      *
      * @return string|null
      */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -46,7 +46,7 @@ class Error extends \ArrayObject
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -57,7 +57,7 @@ class Error extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMessage() : ?string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -68,7 +68,7 @@ class Error extends \ArrayObject
      *
      * @return self
      */
-    public function setMessage(?string $message) : self
+    public function setMessage(?string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;
@@ -79,7 +79,7 @@ class Error extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getData() : ?iterable
+    public function getData(): ?iterable
     {
         return $this->data;
     }
@@ -90,7 +90,7 @@ class Error extends \ArrayObject
      *
      * @return self
      */
-    public function setData(?iterable $data) : self
+    public function setData(?iterable $data): self
     {
         $this->initialized['data'] = true;
         $this->data = $data;

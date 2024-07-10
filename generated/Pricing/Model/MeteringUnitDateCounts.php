@@ -7,34 +7,34 @@ class MeteringUnitDateCounts extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var MeteringUnitDateCount[]|null
+     * @var list<MeteringUnitDateCount>|null
      */
     protected $counts;
     /**
      * 
      *
-     * @return MeteringUnitDateCount[]|null
+     * @return list<MeteringUnitDateCount>|null
      */
-    public function getCounts() : ?array
+    public function getCounts(): ?array
     {
         return $this->counts;
     }
     /**
      * 
      *
-     * @param MeteringUnitDateCount[]|null $counts
+     * @param list<MeteringUnitDateCount>|null $counts
      *
      * @return self
      */
-    public function setCounts(?array $counts) : self
+    public function setCounts(?array $counts): self
     {
         $this->initialized['counts'] = true;
         $this->counts = $counts;

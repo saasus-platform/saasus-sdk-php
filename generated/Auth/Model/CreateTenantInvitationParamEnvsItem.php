@@ -7,8 +7,8 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -19,9 +19,9 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
      */
     protected $id;
     /**
-     * 役割名(role name)
+     * Role name
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $roleNames;
     /**
@@ -29,7 +29,7 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
      *
      * @return int|null
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -40,29 +40,29 @@ class CreateTenantInvitationParamEnvsItem extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?int $id) : self
+    public function setId(?int $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
     /**
-     * 役割名(role name)
+     * Role name
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
-    public function getRoleNames() : ?array
+    public function getRoleNames(): ?array
     {
         return $this->roleNames;
     }
     /**
-     * 役割名(role name)
+     * Role name
      *
-     * @param string[]|null $roleNames
+     * @param list<string>|null $roleNames
      *
      * @return self
      */
-    public function setRoleNames(?array $roleNames) : self
+    public function setRoleNames(?array $roleNames): self
     {
         $this->initialized['roleNames'] = true;
         $this->roleNames = $roleNames;

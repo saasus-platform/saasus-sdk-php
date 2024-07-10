@@ -7,8 +7,8 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProviderType() : ?string
+    public function getProviderType(): ?string
     {
         return $this->providerType;
     }
@@ -40,7 +40,7 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
      *
      * @return self
      */
-    public function setProviderType(?string $providerType) : self
+    public function setProviderType(?string $providerType): self
     {
         $this->initialized['providerType'] = true;
         $this->providerType = $providerType;
@@ -51,7 +51,7 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getIdentityProviderProps() : ?iterable
+    public function getIdentityProviderProps(): ?iterable
     {
         return $this->identityProviderProps;
     }
@@ -62,7 +62,7 @@ class UpdateTenantIdentityProviderParam extends \ArrayObject
      *
      * @return self
      */
-    public function setIdentityProviderProps(?iterable $identityProviderProps) : self
+    public function setIdentityProviderProps(?iterable $identityProviderProps): self
     {
         $this->initialized['identityProviderProps'] = true;
         $this->identityProviderProps = $identityProviderProps;

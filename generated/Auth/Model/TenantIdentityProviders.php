@@ -7,8 +7,8 @@ class TenantIdentityProviders extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class TenantIdentityProviders extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getSaml() : ?iterable
+    public function getSaml(): ?iterable
     {
         return $this->saml;
     }
@@ -34,7 +34,7 @@ class TenantIdentityProviders extends \ArrayObject
      *
      * @return self
      */
-    public function setSaml(?iterable $saml) : self
+    public function setSaml(?iterable $saml): self
     {
         $this->initialized['saml'] = true;
         $this->saml = $saml;

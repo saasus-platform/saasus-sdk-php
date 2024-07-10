@@ -6,38 +6,35 @@ class UpdateTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
 {
     protected $tenant_id;
     /**
-    * SaaSus Platform で管理する、テナントの詳細情報を更新します。
-    
-    Update SaaSus Platform tenant details.
-    
-    *
-    * @param string $tenantId テナントID(Tenant ID)
-    * @param null|\stdClass $requestBody 
-    */
+     * Update SaaSus Platform tenant details.
+     *
+     * @param string $tenantId Tenant ID
+     * @param null|\stdClass $requestBody 
+     */
     public function __construct(string $tenantId, ?\stdClass $requestBody = null)
     {
         $this->tenant_id = $tenantId;
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PATCH';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}'), array($this->tenant_id), '/tenants/{tenant_id}');
+        return str_replace(['{tenant_id}'], [$this->tenant_id], '/tenants/{tenant_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+            return [['Content-Type' => ['application/json']], json_encode($this->body)];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,14 +52,14 @@ class UpdateTenant extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEn
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

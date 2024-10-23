@@ -7,8 +7,8 @@ class CreateFeedbackParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getUserId() : ?string
+    public function getUserId(): ?string
     {
         return $this->userId;
     }
@@ -46,7 +46,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return self
      */
-    public function setUserId(?string $userId) : self
+    public function setUserId(?string $userId): self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;
@@ -57,7 +57,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFeedbackTitle() : ?string
+    public function getFeedbackTitle(): ?string
     {
         return $this->feedbackTitle;
     }
@@ -68,7 +68,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return self
      */
-    public function setFeedbackTitle(?string $feedbackTitle) : self
+    public function setFeedbackTitle(?string $feedbackTitle): self
     {
         $this->initialized['feedbackTitle'] = true;
         $this->feedbackTitle = $feedbackTitle;
@@ -79,7 +79,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFeedbackDescription() : ?string
+    public function getFeedbackDescription(): ?string
     {
         return $this->feedbackDescription;
     }
@@ -90,7 +90,7 @@ class CreateFeedbackParam extends \ArrayObject
      *
      * @return self
      */
-    public function setFeedbackDescription(?string $feedbackDescription) : self
+    public function setFeedbackDescription(?string $feedbackDescription): self
     {
         $this->initialized['feedbackDescription'] = true;
         $this->feedbackDescription = $feedbackDescription;

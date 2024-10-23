@@ -7,34 +7,34 @@ class InvitationValidity extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 招待が有効か否か(Whether the validation is valid or not)
+     * Whether the validation is valid or not
      *
      * @var bool|null
      */
     protected $isValid;
     /**
-     * 招待が有効か否か(Whether the validation is valid or not)
+     * Whether the validation is valid or not
      *
      * @return bool|null
      */
-    public function getIsValid() : ?bool
+    public function getIsValid(): ?bool
     {
         return $this->isValid;
     }
     /**
-     * 招待が有効か否か(Whether the validation is valid or not)
+     * Whether the validation is valid or not
      *
      * @param bool|null $isValid
      *
      * @return self
      */
-    public function setIsValid(?bool $isValid) : self
+    public function setIsValid(?bool $isValid): self
     {
         $this->initialized['isValid'] = true;
         $this->isValid = $isValid;

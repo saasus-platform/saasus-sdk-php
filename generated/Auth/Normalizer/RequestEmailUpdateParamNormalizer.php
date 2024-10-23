@@ -12,73 +12,141 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class RequestEmailUpdateParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class RequestEmailUpdateParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestEmailUpdateParam';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestEmailUpdateParam';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class;
         }
-        $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
+                $object->setAccessToken($data['access_token']);
+                unset($data['access_token']);
+            }
+            elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+                $object->setAccessToken(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('email', $data) && $data['email'] !== null) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
-        }
-        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
-            $object->setEmail(null);
-        }
-        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
-            $object->setAccessToken($data['access_token']);
-            unset($data['access_token']);
-        }
-        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
-            $object->setAccessToken(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['email'] = $object->getEmail();
+            $data['access_token'] = $object->getAccessToken();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class RequestEmailUpdateParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['email'] = $object->getEmail();
-        $data['access_token'] = $object->getAccessToken();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class;
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class;
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
+                $object->setAccessToken($data['access_token']);
+                unset($data['access_token']);
+            }
+            elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+                $object->setAccessToken(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\RequestEmailUpdateParam' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['email'] = $object->getEmail();
+            $data['access_token'] = $object->getAccessToken();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam::class => false];
+        }
     }
 }

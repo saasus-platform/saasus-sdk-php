@@ -7,8 +7,8 @@ class AuthorizationTempCode extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class AuthorizationTempCode extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCode() : ?string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -34,7 +34,7 @@ class AuthorizationTempCode extends \ArrayObject
      *
      * @return self
      */
-    public function setCode(?string $code) : self
+    public function setCode(?string $code): self
     {
         $this->initialized['code'] = true;
         $this->code = $code;

@@ -7,34 +7,34 @@ class Plans extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var Plan[]|null
+     * @var list<Plan>|null
      */
     protected $plans;
     /**
      * 
      *
-     * @return Plan[]|null
+     * @return list<Plan>|null
      */
-    public function getPlans() : ?array
+    public function getPlans(): ?array
     {
         return $this->plans;
     }
     /**
      * 
      *
-     * @param Plan[]|null $plans
+     * @param list<Plan>|null $plans
      *
      * @return self
      */
-    public function setPlans(?array $plans) : self
+    public function setPlans(?array $plans): self
     {
         $this->initialized['plans'] = true;
         $this->plans = $plans;

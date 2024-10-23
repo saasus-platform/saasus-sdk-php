@@ -7,90 +7,90 @@ class Credentials extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * IDトークン(ID token)
+     * ID token
      *
      * @var string|null
      */
     protected $idToken;
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @var string|null
      */
     protected $accessToken;
     /**
-     * リフレッシュトークン(refresh token)
+     * Refresh token
      *
      * @var string|null
      */
     protected $refreshToken;
     /**
-     * IDトークン(ID token)
+     * ID token
      *
      * @return string|null
      */
-    public function getIdToken() : ?string
+    public function getIdToken(): ?string
     {
         return $this->idToken;
     }
     /**
-     * IDトークン(ID token)
+     * ID token
      *
      * @param string|null $idToken
      *
      * @return self
      */
-    public function setIdToken(?string $idToken) : self
+    public function setIdToken(?string $idToken): self
     {
         $this->initialized['idToken'] = true;
         $this->idToken = $idToken;
         return $this;
     }
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @return string|null
      */
-    public function getAccessToken() : ?string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
     /**
-     * アクセストークン(access token)
+     * Access token
      *
      * @param string|null $accessToken
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken) : self
+    public function setAccessToken(?string $accessToken): self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
         return $this;
     }
     /**
-     * リフレッシュトークン(refresh token)
+     * Refresh token
      *
      * @return string|null
      */
-    public function getRefreshToken() : ?string
+    public function getRefreshToken(): ?string
     {
         return $this->refreshToken;
     }
     /**
-     * リフレッシュトークン(refresh token)
+     * Refresh token
      *
      * @param string|null $refreshToken
      *
      * @return self
      */
-    public function setRefreshToken(?string $refreshToken) : self
+    public function setRefreshToken(?string $refreshToken): self
     {
         $this->initialized['refreshToken'] = true;
         $this->refreshToken = $refreshToken;

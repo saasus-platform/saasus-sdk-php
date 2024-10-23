@@ -7,34 +7,34 @@ class PricingUnits extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var array<string, mixed>[]|null
+     * @var list<array<string, mixed>>|null
      */
     protected $units;
     /**
      * 
      *
-     * @return array<string, mixed>[]|null
+     * @return list<array<string, mixed>>|null
      */
-    public function getUnits() : ?array
+    public function getUnits(): ?array
     {
         return $this->units;
     }
     /**
      * 
      *
-     * @param array<string, mixed>[]|null $units
+     * @param list<array<string, mixed>>|null $units
      *
      * @return self
      */
-    public function setUnits(?array $units) : self
+    public function setUnits(?array $units): self
     {
         $this->initialized['units'] = true;
         $this->units = $units;

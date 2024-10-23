@@ -7,34 +7,34 @@ class Feedbacks extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var array<string, mixed>[]|null
+     * @var list<array<string, mixed>>|null
      */
     protected $feedbacks;
     /**
      * 
      *
-     * @return array<string, mixed>[]|null
+     * @return list<array<string, mixed>>|null
      */
-    public function getFeedbacks() : ?array
+    public function getFeedbacks(): ?array
     {
         return $this->feedbacks;
     }
     /**
      * 
      *
-     * @param array<string, mixed>[]|null $feedbacks
+     * @param list<array<string, mixed>>|null $feedbacks
      *
      * @return self
      */
-    public function setFeedbacks(?array $feedbacks) : self
+    public function setFeedbacks(?array $feedbacks): self
     {
         $this->initialized['feedbacks'] = true;
         $this->feedbacks = $feedbacks;

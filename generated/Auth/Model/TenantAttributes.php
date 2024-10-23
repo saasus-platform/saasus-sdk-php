@@ -7,34 +7,34 @@ class TenantAttributes extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * テナント属性定義(Tenant Attribute Definition)
+     * Tenant Attribute Definition
      *
-     * @var Attribute[]|null
+     * @var list<Attribute>|null
      */
     protected $tenantAttributes;
     /**
-     * テナント属性定義(Tenant Attribute Definition)
+     * Tenant Attribute Definition
      *
-     * @return Attribute[]|null
+     * @return list<Attribute>|null
      */
-    public function getTenantAttributes() : ?array
+    public function getTenantAttributes(): ?array
     {
         return $this->tenantAttributes;
     }
     /**
-     * テナント属性定義(Tenant Attribute Definition)
+     * Tenant Attribute Definition
      *
-     * @param Attribute[]|null $tenantAttributes
+     * @param list<Attribute>|null $tenantAttributes
      *
      * @return self
      */
-    public function setTenantAttributes(?array $tenantAttributes) : self
+    public function setTenantAttributes(?array $tenantAttributes): self
     {
         $this->initialized['tenantAttributes'] = true;
         $this->tenantAttributes = $tenantAttributes;

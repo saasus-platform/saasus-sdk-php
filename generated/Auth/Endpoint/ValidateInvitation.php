@@ -6,38 +6,35 @@ class ValidateInvitation extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
 {
     protected $invitation_id;
     /**
-    * テナントへの招待を検証します。
-    
-    Validate an invitation to the tenant.
-    
-    *
-    * @param string $invitationId 招待ID(Invitation ID)
-    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam $requestBody 
-    */
+     * Validate an invitation to the tenant.
+     *
+     * @param string $invitationId Invitation ID
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam $requestBody 
+     */
     public function __construct(string $invitationId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam $requestBody = null)
     {
         $this->invitation_id = $invitationId;
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PATCH';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{invitation_id}'), array($this->invitation_id), '/invitations/{invitation_id}/validate');
+        return str_replace(['{invitation_id}'], [$this->invitation_id], '/invitations/{invitation_id}/validate');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -56,17 +53,17 @@ class ValidateInvitation extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
             return null;
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationBadRequestException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationBadRequestException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\ValidateInvitationInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -6,30 +6,30 @@ class GetLog extends \AntiPatternInc\Saasus\Sdk\ApiLog\Runtime\Client\BaseEndpoi
 {
     protected $api_log_id;
     /**
-     * 指定したIDのAPI実行のログ登録を取得します。
+     * Retrieve the log of the API execution with the specified ID.
      *
-     * @param string $apiLogId APIログID(API Log ID)
+     * @param string $apiLogId API Log ID
      */
     public function __construct(string $apiLogId)
     {
         $this->api_log_id = $apiLogId;
     }
     use \AntiPatternInc\Saasus\Sdk\ApiLog\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{api_log_id}'), array($this->api_log_id), '/logs/{api_log_id}');
+        return str_replace(['{api_log_id}'], [$this->api_log_id], '/logs/{api_log_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -46,11 +46,11 @@ class GetLog extends \AntiPatternInc\Saasus\Sdk\ApiLog\Runtime\Client\BaseEndpoi
             return json_decode($body);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\ApiLog\Exception\GetLogInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\ApiLog\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\ApiLog\Exception\GetLogInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\ApiLog\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

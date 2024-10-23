@@ -6,33 +6,30 @@ class SyncCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Cli
 {
     protected $customer_identifier;
     /**
-    * AWS Marketplaceの顧客情報をSaaSusに同期します。
-    
-    Sync AWS Marketplace customer information to SaaSus.
-    
-    *
-    * @param string $customerIdentifier 顧客ID
-    */
+     * Sync AWS Marketplace customer information to SaaSus.
+     *
+     * @param string $customerIdentifier Customer ID
+     */
     public function __construct(string $customerIdentifier)
     {
         $this->customer_identifier = $customerIdentifier;
     }
     use \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{customer_identifier}'), array($this->customer_identifier), '/customers/{customer_identifier}/sync');
+        return str_replace(['{customer_identifier}'], [$this->customer_identifier], '/customers/{customer_identifier}/sync');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -49,11 +46,11 @@ class SyncCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Cli
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\SyncCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\SyncCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

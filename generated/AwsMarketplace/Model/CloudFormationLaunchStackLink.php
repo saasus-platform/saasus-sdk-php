@@ -7,8 +7,8 @@ class CloudFormationLaunchStackLink extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class CloudFormationLaunchStackLink extends \ArrayObject
      *
      * @return string|null
      */
-    public function getLink() : ?string
+    public function getLink(): ?string
     {
         return $this->link;
     }
@@ -34,7 +34,7 @@ class CloudFormationLaunchStackLink extends \ArrayObject
      *
      * @return self
      */
-    public function setLink(?string $link) : self
+    public function setLink(?string $link): self
     {
         $this->initialized['link'] = true;
         $this->link = $link;

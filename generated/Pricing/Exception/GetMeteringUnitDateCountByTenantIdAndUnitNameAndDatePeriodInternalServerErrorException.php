@@ -18,11 +18,11 @@ class GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriodInternalServerEr
         $this->error = $error;
         $this->response = $response;
     }
-    public function getError() : \AntiPatternInc\Saasus\Sdk\Pricing\Model\Error
+    public function getError(): \AntiPatternInc\Saasus\Sdk\Pricing\Model\Error
     {
         return $this->error;
     }
-    public function getResponse() : \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Psr\Http\Message\ResponseInterface
     {
         return $this->response;
     }

@@ -7,8 +7,8 @@ class SaasUser extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -19,7 +19,7 @@ class SaasUser extends \ArrayObject
      */
     protected $id;
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @var string|null
      */
@@ -29,7 +29,7 @@ class SaasUser extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId() : ?string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -40,29 +40,29 @@ class SaasUser extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
     /**
-     * メールアドレス(E-mail)
+     * E-mail
      *
      * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;

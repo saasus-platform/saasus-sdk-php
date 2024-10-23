@@ -7,34 +7,34 @@ class ClientSecret extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * クライアントシークレット(client secret)
+     * Client Secret
      *
      * @var string|null
      */
     protected $clientSecret;
     /**
-     * クライアントシークレット(client secret)
+     * Client Secret
      *
      * @return string|null
      */
-    public function getClientSecret() : ?string
+    public function getClientSecret(): ?string
     {
         return $this->clientSecret;
     }
     /**
-     * クライアントシークレット(client secret)
+     * Client Secret
      *
      * @param string|null $clientSecret
      *
      * @return self
      */
-    public function setClientSecret(?string $clientSecret) : self
+    public function setClientSecret(?string $clientSecret): self
     {
         $this->initialized['clientSecret'] = true;
         $this->clientSecret = $clientSecret;

@@ -7,90 +7,90 @@ class EventMessage extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * イベントタイプ(event type)
+     * event type
      *
-     * @var string|null
+     * @var string
      */
     protected $eventType;
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * detailed event type
      *
-     * @var string|null
+     * @var string
      */
     protected $eventDetailType;
     /**
-     * イベントメッセージ(event message)
+     * event message
      *
-     * @var string|null
+     * @var string
      */
     protected $message;
     /**
-     * イベントタイプ(event type)
+     * event type
      *
-     * @return string|null
+     * @return string
      */
-    public function getEventType() : ?string
+    public function getEventType(): string
     {
         return $this->eventType;
     }
     /**
-     * イベントタイプ(event type)
+     * event type
      *
-     * @param string|null $eventType
+     * @param string $eventType
      *
      * @return self
      */
-    public function setEventType(?string $eventType) : self
+    public function setEventType(string $eventType): self
     {
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
         return $this;
     }
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * detailed event type
      *
-     * @return string|null
+     * @return string
      */
-    public function getEventDetailType() : ?string
+    public function getEventDetailType(): string
     {
         return $this->eventDetailType;
     }
     /**
-     * 詳細イベントタイプ(detailed event type)
+     * detailed event type
      *
-     * @param string|null $eventDetailType
+     * @param string $eventDetailType
      *
      * @return self
      */
-    public function setEventDetailType(?string $eventDetailType) : self
+    public function setEventDetailType(string $eventDetailType): self
     {
         $this->initialized['eventDetailType'] = true;
         $this->eventDetailType = $eventDetailType;
         return $this;
     }
     /**
-     * イベントメッセージ(event message)
+     * event message
      *
-     * @return string|null
+     * @return string
      */
-    public function getMessage() : ?string
+    public function getMessage(): string
     {
         return $this->message;
     }
     /**
-     * イベントメッセージ(event message)
+     * event message
      *
-     * @param string|null $message
+     * @param string $message
      *
      * @return self
      */
-    public function setMessage(?string $message) : self
+    public function setMessage(string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

@@ -7,34 +7,34 @@ class SaasUsers extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var SaasUser[]|null
+     * @var list<SaasUser>|null
      */
     protected $users;
     /**
      * 
      *
-     * @return SaasUser[]|null
+     * @return list<SaasUser>|null
      */
-    public function getUsers() : ?array
+    public function getUsers(): ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param SaasUser[]|null $users
+     * @param list<SaasUser>|null $users
      *
      * @return self
      */
-    public function setUsers(?array $users) : self
+    public function setUsers(?array $users): self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

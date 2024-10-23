@@ -7,7 +7,7 @@ class DeleteVoteForFeedback extends \AntiPatternInc\Saasus\Sdk\Communication\Run
     protected $feedback_id;
     protected $user_id;
     /**
-     * フィードバックへの投票の取消をします。
+     * Cancel vote for feedback.
      *
      * @param string $feedbackId 
      * @param string $userId 
@@ -18,21 +18,21 @@ class DeleteVoteForFeedback extends \AntiPatternInc\Saasus\Sdk\Communication\Run
         $this->user_id = $userId;
     }
     use \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{feedback_id}', '{user_id}'), array($this->feedback_id, $this->user_id), '/feedbacks/{feedback_id}/votes/users/{user_id}');
+        return str_replace(['{feedback_id}', '{user_id}'], [$this->feedback_id, $this->user_id], '/feedbacks/{feedback_id}/votes/users/{user_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -50,14 +50,14 @@ class DeleteVoteForFeedback extends \AntiPatternInc\Saasus\Sdk\Communication\Run
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\DeleteVoteForFeedbackNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\DeleteVoteForFeedbackNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Communication\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\DeleteVoteForFeedbackInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Communication\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Communication\Exception\DeleteVoteForFeedbackInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Communication\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

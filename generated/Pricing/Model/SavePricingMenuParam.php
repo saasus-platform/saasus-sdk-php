@@ -7,118 +7,118 @@ class SavePricingMenuParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * メニュー名(menu name)
+     * Menu name
      *
      * @var string|null
      */
     protected $name;
     /**
-     * メニュー表示名(menu display name)
+     * Menu display name
      *
      * @var string|null
      */
     protected $displayName;
     /**
-     * メニュー説明(menu description)
+     * Menu description
      *
      * @var string|null
      */
     protected $description;
     /**
-     * 追加するユニットID(unit id to add)
+     * Unit IDs to add
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $unitIds;
     /**
-     * メニュー名(menu name)
+     * Menu name
      *
      * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
-     * メニュー名(menu name)
+     * Menu name
      *
      * @param string|null $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
     /**
-     * メニュー表示名(menu display name)
+     * Menu display name
      *
      * @return string|null
      */
-    public function getDisplayName() : ?string
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
     /**
-     * メニュー表示名(menu display name)
+     * Menu display name
      *
      * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName) : self
+    public function setDisplayName(?string $displayName): self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }
     /**
-     * メニュー説明(menu description)
+     * Menu description
      *
      * @return string|null
      */
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
-     * メニュー説明(menu description)
+     * Menu description
      *
      * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
-     * 追加するユニットID(unit id to add)
+     * Unit IDs to add
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
-    public function getUnitIds() : ?array
+    public function getUnitIds(): ?array
     {
         return $this->unitIds;
     }
     /**
-     * 追加するユニットID(unit id to add)
+     * Unit IDs to add
      *
-     * @param string[]|null $unitIds
+     * @param list<string>|null $unitIds
      *
      * @return self
      */
-    public function setUnitIds(?array $unitIds) : self
+    public function setUnitIds(?array $unitIds): self
     {
         $this->initialized['unitIds'] = true;
         $this->unitIds = $unitIds;

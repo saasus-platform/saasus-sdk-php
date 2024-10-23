@@ -7,8 +7,8 @@ class UpdateListingStatusParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdateListingStatusParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getListingStatus() : ?string
+    public function getListingStatus(): ?string
     {
         return $this->listingStatus;
     }
@@ -34,7 +34,7 @@ class UpdateListingStatusParam extends \ArrayObject
      *
      * @return self
      */
-    public function setListingStatus(?string $listingStatus) : self
+    public function setListingStatus(?string $listingStatus): self
     {
         $this->initialized['listingStatus'] = true;
         $this->listingStatus = $listingStatus;

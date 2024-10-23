@@ -7,118 +7,118 @@ class PricingTier extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 上限(upper limit)
+     * Upper limit
      *
      * @var int|null
      */
     protected $upTo;
     /**
-     * 単位金額(amount per unit)
+     * Amount per unit
      *
      * @var int|null
      */
     protected $unitAmount;
     /**
-     * 固定金額(fixed Amount)
+     * Fixed amount
      *
      * @var int|null
      */
     protected $flatAmount;
     /**
-     * inf
+     * Indefinite
      *
      * @var bool|null
      */
     protected $inf;
     /**
-     * 上限(upper limit)
+     * Upper limit
      *
      * @return int|null
      */
-    public function getUpTo() : ?int
+    public function getUpTo(): ?int
     {
         return $this->upTo;
     }
     /**
-     * 上限(upper limit)
+     * Upper limit
      *
      * @param int|null $upTo
      *
      * @return self
      */
-    public function setUpTo(?int $upTo) : self
+    public function setUpTo(?int $upTo): self
     {
         $this->initialized['upTo'] = true;
         $this->upTo = $upTo;
         return $this;
     }
     /**
-     * 単位金額(amount per unit)
+     * Amount per unit
      *
      * @return int|null
      */
-    public function getUnitAmount() : ?int
+    public function getUnitAmount(): ?int
     {
         return $this->unitAmount;
     }
     /**
-     * 単位金額(amount per unit)
+     * Amount per unit
      *
      * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(?int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount): self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
         return $this;
     }
     /**
-     * 固定金額(fixed Amount)
+     * Fixed amount
      *
      * @return int|null
      */
-    public function getFlatAmount() : ?int
+    public function getFlatAmount(): ?int
     {
         return $this->flatAmount;
     }
     /**
-     * 固定金額(fixed Amount)
+     * Fixed amount
      *
      * @param int|null $flatAmount
      *
      * @return self
      */
-    public function setFlatAmount(?int $flatAmount) : self
+    public function setFlatAmount(?int $flatAmount): self
     {
         $this->initialized['flatAmount'] = true;
         $this->flatAmount = $flatAmount;
         return $this;
     }
     /**
-     * inf
+     * Indefinite
      *
      * @return bool|null
      */
-    public function getInf() : ?bool
+    public function getInf(): ?bool
     {
         return $this->inf;
     }
     /**
-     * inf
+     * Indefinite
      *
      * @param bool|null $inf
      *
      * @return self
      */
-    public function setInf(?bool $inf) : self
+    public function setInf(?bool $inf): self
     {
         $this->initialized['inf'] = true;
         $this->inf = $inf;

@@ -7,8 +7,8 @@ class TenantIdentityProvidersSaml extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSignInUrl() : ?string
+    public function getSignInUrl(): ?string
     {
         return $this->signInUrl;
     }
@@ -46,7 +46,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return self
      */
-    public function setSignInUrl(?string $signInUrl) : self
+    public function setSignInUrl(?string $signInUrl): self
     {
         $this->initialized['signInUrl'] = true;
         $this->signInUrl = $signInUrl;
@@ -57,7 +57,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMetadataUrl() : ?string
+    public function getMetadataUrl(): ?string
     {
         return $this->metadataUrl;
     }
@@ -68,7 +68,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return self
      */
-    public function setMetadataUrl(?string $metadataUrl) : self
+    public function setMetadataUrl(?string $metadataUrl): self
     {
         $this->initialized['metadataUrl'] = true;
         $this->metadataUrl = $metadataUrl;
@@ -79,7 +79,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEmailAttribute() : ?string
+    public function getEmailAttribute(): ?string
     {
         return $this->emailAttribute;
     }
@@ -90,7 +90,7 @@ class TenantIdentityProvidersSaml extends \ArrayObject
      *
      * @return self
      */
-    public function setEmailAttribute(?string $emailAttribute) : self
+    public function setEmailAttribute(?string $emailAttribute): self
     {
         $this->initialized['emailAttribute'] = true;
         $this->emailAttribute = $emailAttribute;

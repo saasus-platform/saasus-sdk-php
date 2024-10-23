@@ -25,10 +25,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\GetStripeInfo(), $fetch);
     }
     /**
-    * 請求業務で使う外部SaaSとの連携情報を更新します。
-    現在は Stripe と連携が可能です。
-    
-    Updates information on connection with external billing SaaS.
+    * Updates information on connection with external billing SaaS.
     Currently possible to connect to Stripe.
     
     *
@@ -52,11 +49,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Billing\Endpoint\ReturnInternalServerError(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/billing');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
@@ -67,11 +64,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Billing\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Billing\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Billing\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

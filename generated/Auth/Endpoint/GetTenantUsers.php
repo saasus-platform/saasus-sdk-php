@@ -6,34 +6,32 @@ class GetTenantUsers extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
 {
     protected $tenant_id;
     /**
-    * テナントに所属するユーザーを全件取得します。 idは一意です。
-    
-    Get all the users belonging to the tenant.
+    * Get all the users belonging to the tenant.
     Id is unique.
     
     *
-    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $tenantId Tenant ID
     */
     public function __construct(string $tenantId)
     {
         $this->tenant_id = $tenantId;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}'), array($this->tenant_id), '/tenants/{tenant_id}/users');
+        return str_replace(['{tenant_id}'], [$this->tenant_id], '/tenants/{tenant_id}/users');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -47,14 +45,14 @@ class GetTenantUsers extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Base
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Users', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Users', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantUsersInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetTenantUsersInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

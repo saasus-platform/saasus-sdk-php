@@ -9,16 +9,13 @@ class DeleteTenantUserRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
     protected $env_id;
     protected $role_name;
     /**
-    * テナントのユーザーから役割(ロール)を削除します。
-    
-    Remove a role from a tenant user.
-    
-    *
-    * @param string $tenantId テナントID(Tenant ID)
-    * @param string $userId ユーザーID(User ID)
-    * @param int $envId 環境ID(Env ID)
-    * @param string $roleName 役割(ロール)名(role name)
-    */
+     * Remove a role from a tenant user.
+     *
+     * @param string $tenantId Tenant ID
+     * @param string $userId User ID
+     * @param int $envId Env ID
+     * @param string $roleName Role name
+     */
     public function __construct(string $tenantId, string $userId, int $envId, string $roleName)
     {
         $this->tenant_id = $tenantId;
@@ -27,21 +24,21 @@ class DeleteTenantUserRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
         $this->role_name = $roleName;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}', '{user_id}', '{env_id}', '{role_name}'), array($this->tenant_id, $this->user_id, $this->env_id, $this->role_name), '/tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles/{role_name}');
+        return str_replace(['{tenant_id}', '{user_id}', '{env_id}', '{role_name}'], [$this->tenant_id, $this->user_id, $this->env_id, $this->role_name], '/tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles/{role_name}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -59,14 +56,14 @@ class DeleteTenantUserRole extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clien
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantUserRoleNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantUserRoleNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantUserRoleInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantUserRoleInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -7,62 +7,62 @@ class RecaptchaProps extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * サイトキー(site key)
+     * site key
      *
      * @var string|null
      */
     protected $siteKey;
     /**
-     * シークレットキー(secret key)
+     * secret key
      *
      * @var string|null
      */
     protected $secretKey;
     /**
-     * サイトキー(site key)
+     * site key
      *
      * @return string|null
      */
-    public function getSiteKey() : ?string
+    public function getSiteKey(): ?string
     {
         return $this->siteKey;
     }
     /**
-     * サイトキー(site key)
+     * site key
      *
      * @param string|null $siteKey
      *
      * @return self
      */
-    public function setSiteKey(?string $siteKey) : self
+    public function setSiteKey(?string $siteKey): self
     {
         $this->initialized['siteKey'] = true;
         $this->siteKey = $siteKey;
         return $this;
     }
     /**
-     * シークレットキー(secret key)
+     * secret key
      *
      * @return string|null
      */
-    public function getSecretKey() : ?string
+    public function getSecretKey(): ?string
     {
         return $this->secretKey;
     }
     /**
-     * シークレットキー(secret key)
+     * secret key
      *
      * @param string|null $secretKey
      *
      * @return self
      */
-    public function setSecretKey(?string $secretKey) : self
+    public function setSecretKey(?string $secretKey): self
     {
         $this->initialized['secretKey'] = true;
         $this->secretKey = $secretKey;

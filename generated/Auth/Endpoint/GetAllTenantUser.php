@@ -6,35 +6,32 @@ class GetAllTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
 {
     protected $user_id;
     /**
-    * ユーザーIDからテナントに所属しているユーザー情報を取得します。
-    複数テナントに所属している場合は別のオブジェクトとして返却されます。
-    
-    Get information on user belonging to the tenant from the user ID.
+    * Get information on user belonging to the tenant from the user ID.
     If the user belongs to multiple tenants, it will be returned as another object.
     
     *
-    * @param string $userId ユーザーID(User ID)
+    * @param string $userId User ID
     */
     public function __construct(string $userId)
     {
         $this->user_id = $userId;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{user_id}'), array($this->user_id), '/tenants/all/users/{user_id}');
+        return str_replace(['{user_id}'], [$this->user_id], '/tenants/all/users/{user_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -49,17 +46,17 @@ class GetAllTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Users', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Users', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

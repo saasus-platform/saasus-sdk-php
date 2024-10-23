@@ -7,8 +7,8 @@ class IdentityProviders extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class IdentityProviders extends \ArrayObject
      *
      * @return IdentityProviderProps|null
      */
-    public function getGoogle() : ?IdentityProviderProps
+    public function getGoogle(): ?IdentityProviderProps
     {
         return $this->google;
     }
@@ -34,7 +34,7 @@ class IdentityProviders extends \ArrayObject
      *
      * @return self
      */
-    public function setGoogle(?IdentityProviderProps $google) : self
+    public function setGoogle(?IdentityProviderProps $google): self
     {
         $this->initialized['google'] = true;
         $this->google = $google;

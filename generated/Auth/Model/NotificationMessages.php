@@ -7,8 +7,8 @@ class NotificationMessages extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -71,7 +71,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getSignUp() : ?MessageTemplate
+    public function getSignUp(): ?MessageTemplate
     {
         return $this->signUp;
     }
@@ -82,7 +82,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setSignUp(?MessageTemplate $signUp) : self
+    public function setSignUp(?MessageTemplate $signUp): self
     {
         $this->initialized['signUp'] = true;
         $this->signUp = $signUp;
@@ -93,7 +93,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getCreateUser() : ?MessageTemplate
+    public function getCreateUser(): ?MessageTemplate
     {
         return $this->createUser;
     }
@@ -104,7 +104,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setCreateUser(?MessageTemplate $createUser) : self
+    public function setCreateUser(?MessageTemplate $createUser): self
     {
         $this->initialized['createUser'] = true;
         $this->createUser = $createUser;
@@ -115,7 +115,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getResendCode() : ?MessageTemplate
+    public function getResendCode(): ?MessageTemplate
     {
         return $this->resendCode;
     }
@@ -126,7 +126,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setResendCode(?MessageTemplate $resendCode) : self
+    public function setResendCode(?MessageTemplate $resendCode): self
     {
         $this->initialized['resendCode'] = true;
         $this->resendCode = $resendCode;
@@ -137,7 +137,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getForgotPassword() : ?MessageTemplate
+    public function getForgotPassword(): ?MessageTemplate
     {
         return $this->forgotPassword;
     }
@@ -148,7 +148,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setForgotPassword(?MessageTemplate $forgotPassword) : self
+    public function setForgotPassword(?MessageTemplate $forgotPassword): self
     {
         $this->initialized['forgotPassword'] = true;
         $this->forgotPassword = $forgotPassword;
@@ -159,7 +159,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getUpdateUserAttribute() : ?MessageTemplate
+    public function getUpdateUserAttribute(): ?MessageTemplate
     {
         return $this->updateUserAttribute;
     }
@@ -170,7 +170,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setUpdateUserAttribute(?MessageTemplate $updateUserAttribute) : self
+    public function setUpdateUserAttribute(?MessageTemplate $updateUserAttribute): self
     {
         $this->initialized['updateUserAttribute'] = true;
         $this->updateUserAttribute = $updateUserAttribute;
@@ -181,7 +181,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getVerifyUserAttribute() : ?MessageTemplate
+    public function getVerifyUserAttribute(): ?MessageTemplate
     {
         return $this->verifyUserAttribute;
     }
@@ -192,7 +192,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setVerifyUserAttribute(?MessageTemplate $verifyUserAttribute) : self
+    public function setVerifyUserAttribute(?MessageTemplate $verifyUserAttribute): self
     {
         $this->initialized['verifyUserAttribute'] = true;
         $this->verifyUserAttribute = $verifyUserAttribute;
@@ -203,7 +203,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getAuthenticationMfa() : ?MessageTemplate
+    public function getAuthenticationMfa(): ?MessageTemplate
     {
         return $this->authenticationMfa;
     }
@@ -214,7 +214,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setAuthenticationMfa(?MessageTemplate $authenticationMfa) : self
+    public function setAuthenticationMfa(?MessageTemplate $authenticationMfa): self
     {
         $this->initialized['authenticationMfa'] = true;
         $this->authenticationMfa = $authenticationMfa;
@@ -225,7 +225,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getInviteTenantUser() : ?MessageTemplate
+    public function getInviteTenantUser(): ?MessageTemplate
     {
         return $this->inviteTenantUser;
     }
@@ -236,7 +236,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setInviteTenantUser(?MessageTemplate $inviteTenantUser) : self
+    public function setInviteTenantUser(?MessageTemplate $inviteTenantUser): self
     {
         $this->initialized['inviteTenantUser'] = true;
         $this->inviteTenantUser = $inviteTenantUser;
@@ -247,7 +247,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return MessageTemplate|null
      */
-    public function getVerifyExternalUser() : ?MessageTemplate
+    public function getVerifyExternalUser(): ?MessageTemplate
     {
         return $this->verifyExternalUser;
     }
@@ -258,7 +258,7 @@ class NotificationMessages extends \ArrayObject
      *
      * @return self
      */
-    public function setVerifyExternalUser(?MessageTemplate $verifyExternalUser) : self
+    public function setVerifyExternalUser(?MessageTemplate $verifyExternalUser): self
     {
         $this->initialized['verifyExternalUser'] = true;
         $this->verifyExternalUser = $verifyExternalUser;

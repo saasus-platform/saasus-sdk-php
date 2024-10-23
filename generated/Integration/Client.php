@@ -25,33 +25,27 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Clien
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\GetEventBridgeSettings(), $fetch);
     }
     /**
-    * ホストの状態を Amazon EventBridge 経由で提供するための設定を更新します。
-    
-    Update configuration used to provide the host state via Amazon EventBridge.
-    
-    *
-    * @param null|\stdClass $requestBody 
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\SaveEventBridgeSettingsInternalServerErrorException
-    *
-    * @return null|\Psr\Http\Message\ResponseInterface
-    */
+     * Update configuration used to provide the host state via Amazon EventBridge.
+     *
+     * @param null|\stdClass $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\SaveEventBridgeSettingsInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
     public function saveEventBridgeSettings(?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\SaveEventBridgeSettings($requestBody), $fetch);
     }
     /**
-    * Amazon EventBridge へイベントを送信します。
-    
-    Send events to Amazon EventBridge.
-    
-    *
-    * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventInternalServerErrorException
-    *
-    * @return null|\Psr\Http\Message\ResponseInterface
-    */
+     * Send events to Amazon EventBridge.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
     public function createEventBridgeEvent(?\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\CreateEventBridgeEvent($requestBody), $fetch);
@@ -76,11 +70,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Clien
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Integration\Endpoint\ReturnInternalServerError(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/integration');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
@@ -91,11 +85,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Clien
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Integration\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Integration\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

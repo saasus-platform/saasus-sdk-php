@@ -44,11 +44,11 @@ abstract class Client
         }
         return $endpoint->parseResponse($this->processEndpoint($endpoint), $this->serializer, $fetch);
     }
-    public function executeRawEndpoint(Endpoint $endpoint) : ResponseInterface
+    public function executeRawEndpoint(Endpoint $endpoint): ResponseInterface
     {
         return $this->processEndpoint($endpoint);
     }
-    private function processEndpoint(Endpoint $endpoint) : ResponseInterface
+    private function processEndpoint(Endpoint $endpoint): ResponseInterface
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
@@ -68,7 +68,7 @@ abstract class Client
             }
         }
         foreach ($endpoint->getHeaders($bodyHeaders) as $name => $value) {
-            $request = $request->withHeader($name, $value);
+            $request = $request->withHeader($name, !is_bool($value) ? $value : ($value ? 'true' : 'false'));
         }
         if (count($endpoint->getAuthenticationScopes()) > 0) {
             $scopes = [];

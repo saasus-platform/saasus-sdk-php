@@ -7,34 +7,34 @@ class CreateTenantUserRolesParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 役割(ロール)情報(Role Info)
+     * Role Info
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $roleNames;
     /**
-     * 役割(ロール)情報(Role Info)
+     * Role Info
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
-    public function getRoleNames() : ?array
+    public function getRoleNames(): ?array
     {
         return $this->roleNames;
     }
     /**
-     * 役割(ロール)情報(Role Info)
+     * Role Info
      *
-     * @param string[]|null $roleNames
+     * @param list<string>|null $roleNames
      *
      * @return self
      */
-    public function setRoleNames(?array $roleNames) : self
+    public function setRoleNames(?array $roleNames): self
     {
         $this->initialized['roleNames'] = true;
         $this->roleNames = $roleNames;

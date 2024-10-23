@@ -12,87 +12,169 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ValidateInvitationParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ValidateInvitationParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ValidateInvitationParam';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ValidateInvitationParam';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class;
         }
-        $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
+                $object->setAccessToken($data['access_token']);
+                unset($data['access_token']);
+            }
+            elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+                $object->setAccessToken(null);
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('password', $data) && $data['password'] !== null) {
+                $object->setPassword($data['password']);
+                unset($data['password']);
+            }
+            elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+                $object->setPassword(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
-            $object->setAccessToken($data['access_token']);
-            unset($data['access_token']);
-        }
-        elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
-            $object->setAccessToken(null);
-        }
-        if (\array_key_exists('email', $data) && $data['email'] !== null) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
-        }
-        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
-            $object->setEmail(null);
-        }
-        if (\array_key_exists('password', $data) && $data['password'] !== null) {
-            $object->setPassword($data['password']);
-            unset($data['password']);
-        }
-        elseif (\array_key_exists('password', $data) && $data['password'] === null) {
-            $object->setPassword(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('accessToken') && null !== $object->getAccessToken()) {
+                $data['access_token'] = $object->getAccessToken();
             }
-        }
-        return $object;
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $data = array();
-        if ($object->isInitialized('accessToken') && null !== $object->getAccessToken()) {
-            $data['access_token'] = $object->getAccessToken();
-        }
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if ($object->isInitialized('password') && null !== $object->getPassword()) {
-            $data['password'] = $object->getPassword();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
             }
+            if ($object->isInitialized('password') && null !== $object->getPassword()) {
+                $data['password'] = $object->getPassword();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
         }
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => false];
+        }
     }
-    public function getSupportedTypes(?string $format = null) : array
+} else {
+    class ValidateInvitationParamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array('AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\ValidateInvitationParam' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class;
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class;
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('access_token', $data) && $data['access_token'] !== null) {
+                $object->setAccessToken($data['access_token']);
+                unset($data['access_token']);
+            }
+            elseif (\array_key_exists('access_token', $data) && $data['access_token'] === null) {
+                $object->setAccessToken(null);
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('password', $data) && $data['password'] !== null) {
+                $object->setPassword($data['password']);
+                unset($data['password']);
+            }
+            elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+                $object->setPassword(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('accessToken') && null !== $object->getAccessToken()) {
+                $data['access_token'] = $object->getAccessToken();
+            }
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
+            }
+            if ($object->isInitialized('password') && null !== $object->getPassword()) {
+                $data['password'] = $object->getPassword();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\AntiPatternInc\Saasus\Sdk\Auth\Model\ValidateInvitationParam::class => false];
+        }
     }
 }

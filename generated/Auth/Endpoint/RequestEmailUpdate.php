@@ -6,18 +6,13 @@ class RequestEmailUpdate extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
 {
     protected $user_id;
     /**
-    * ユーザーのメールアドレス変更を要求します。
-    要求されたメールアドレスに対して検証コードを送信します。
-    ユーザーのアクセストークンが必要です。
-    検証コードの有効期限は24時間です。
-    
-    Request to update the user's email address.
+    * Request to update the user's email address.
     Sends a verification code to the requested email address.
     Requires the user's access token.
     The verification code is valid for 24 hours.
     
     *
-    * @param string $userId ユーザーID(User ID)
+    * @param string $userId User ID
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam $requestBody 
     */
     public function __construct(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam $requestBody = null)
@@ -26,24 +21,24 @@ class RequestEmailUpdate extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{user_id}'), array($this->user_id), '/users/{user_id}/email/request');
+        return str_replace(['{user_id}'], [$this->user_id], '/users/{user_id}/email/request');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\RequestEmailUpdateParam) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -60,11 +55,11 @@ class RequestEmailUpdate extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\RequestEmailUpdateInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\RequestEmailUpdateInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -7,8 +7,8 @@ class IdentityProviderSaml extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class IdentityProviderSaml extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMetadataUrl() : ?string
+    public function getMetadataUrl(): ?string
     {
         return $this->metadataUrl;
     }
@@ -40,7 +40,7 @@ class IdentityProviderSaml extends \ArrayObject
      *
      * @return self
      */
-    public function setMetadataUrl(?string $metadataUrl) : self
+    public function setMetadataUrl(?string $metadataUrl): self
     {
         $this->initialized['metadataUrl'] = true;
         $this->metadataUrl = $metadataUrl;
@@ -51,7 +51,7 @@ class IdentityProviderSaml extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEmailAttribute() : ?string
+    public function getEmailAttribute(): ?string
     {
         return $this->emailAttribute;
     }
@@ -62,7 +62,7 @@ class IdentityProviderSaml extends \ArrayObject
      *
      * @return self
      */
-    public function setEmailAttribute(?string $emailAttribute) : self
+    public function setEmailAttribute(?string $emailAttribute): self
     {
         $this->initialized['emailAttribute'] = true;
         $this->emailAttribute = $emailAttribute;

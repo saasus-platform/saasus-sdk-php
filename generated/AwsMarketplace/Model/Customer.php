@@ -7,8 +7,8 @@ class Customer extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Customer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCustomerIdentifier() : ?string
+    public function getCustomerIdentifier(): ?string
     {
         return $this->customerIdentifier;
     }
@@ -46,7 +46,7 @@ class Customer extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomerIdentifier(?string $customerIdentifier) : self
+    public function setCustomerIdentifier(?string $customerIdentifier): self
     {
         $this->initialized['customerIdentifier'] = true;
         $this->customerIdentifier = $customerIdentifier;
@@ -57,7 +57,7 @@ class Customer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCustomerAwsAccountId() : ?string
+    public function getCustomerAwsAccountId(): ?string
     {
         return $this->customerAwsAccountId;
     }
@@ -68,7 +68,7 @@ class Customer extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomerAwsAccountId(?string $customerAwsAccountId) : self
+    public function setCustomerAwsAccountId(?string $customerAwsAccountId): self
     {
         $this->initialized['customerAwsAccountId'] = true;
         $this->customerAwsAccountId = $customerAwsAccountId;
@@ -79,7 +79,7 @@ class Customer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantId() : ?string
+    public function getTenantId(): ?string
     {
         return $this->tenantId;
     }
@@ -90,7 +90,7 @@ class Customer extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantId(?string $tenantId) : self
+    public function setTenantId(?string $tenantId): self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;

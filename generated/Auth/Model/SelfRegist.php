@@ -7,8 +7,8 @@ class SelfRegist extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class SelfRegist extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getEnable() : ?bool
+    public function getEnable(): ?bool
     {
         return $this->enable;
     }
@@ -34,7 +34,7 @@ class SelfRegist extends \ArrayObject
      *
      * @return self
      */
-    public function setEnable(?bool $enable) : self
+    public function setEnable(?bool $enable): self
     {
         $this->initialized['enable'] = true;
         $this->enable = $enable;

@@ -7,35 +7,32 @@ class DeleteTenantInvitation extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cli
     protected $tenant_id;
     protected $invitation_id;
     /**
-    * テナントへの招待を削除します。
-    
-    Delete an invitation to the tenant.
-    
-    *
-    * @param string $tenantId テナントID(Tenant ID)
-    * @param string $invitationId 招待ID(Invitation ID)
-    */
+     * Delete an invitation for the tenant.
+     *
+     * @param string $tenantId Tenant ID
+     * @param string $invitationId Invitation ID
+     */
     public function __construct(string $tenantId, string $invitationId)
     {
         $this->tenant_id = $tenantId;
         $this->invitation_id = $invitationId;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}', '{invitation_id}'), array($this->tenant_id, $this->invitation_id), '/tenants/{tenant_id}/invitations/{invitation_id}');
+        return str_replace(['{tenant_id}', '{invitation_id}'], [$this->tenant_id, $this->invitation_id], '/tenants/{tenant_id}/invitations/{invitation_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -53,14 +50,14 @@ class DeleteTenantInvitation extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Cli
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteTenantInvitationInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

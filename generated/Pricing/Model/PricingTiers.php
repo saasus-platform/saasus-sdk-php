@@ -7,34 +7,34 @@ class PricingTiers extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var PricingTier[]|null
+     * @var list<PricingTier>|null
      */
     protected $tiers;
     /**
      * 
      *
-     * @return PricingTier[]|null
+     * @return list<PricingTier>|null
      */
-    public function getTiers() : ?array
+    public function getTiers(): ?array
     {
         return $this->tiers;
     }
     /**
      * 
      *
-     * @param PricingTier[]|null $tiers
+     * @param list<PricingTier>|null $tiers
      *
      * @return self
      */
-    public function setTiers(?array $tiers) : self
+    public function setTiers(?array $tiers): self
     {
         $this->initialized['tiers'] = true;
         $this->tiers = $tiers;

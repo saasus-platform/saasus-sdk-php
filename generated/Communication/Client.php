@@ -15,7 +15,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedbacks(), $fetch);
     }
     /**
-     * フィードバックを起票します。
+     * Create Feedback.
      *
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateFeedbackParam $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -28,7 +28,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateFeedback($requestBody), $fetch);
     }
     /**
-     * フィードバックを削除します。
+     * Delete Feedback.
      *
      * @param string $feedbackId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -42,7 +42,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteFeedback($feedbackId), $fetch);
     }
     /**
-     * フィードバックの取得をします。
+     * Retrieve feedback.
      *
      * @param string $feedbackId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -56,7 +56,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedback($feedbackId), $fetch);
     }
     /**
-     * フィードバックの編集をします。
+     * Edit feedback.
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\UpdateFeedbackParam $requestBody 
@@ -71,7 +71,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\UpdateFeedback($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックのステータスを更新します。
+     * Update Feedback Status.
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\UpdateFeedbackStatusParam $requestBody 
@@ -86,7 +86,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\UpdateFeedbackStatus($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへの投票をします。
+     * Vote for feedback.
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateVoteUserParam $requestBody 
@@ -101,7 +101,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateVoteUser($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへの投票の取消をします。
+     * Cancel vote for feedback.
      *
      * @param string $feedbackId 
      * @param string $userId 
@@ -116,7 +116,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteVoteForFeedback($feedbackId, $userId), $fetch);
     }
     /**
-     * フィードバックへのコメントを投稿します。
+     * Post comment to feedback.
      *
      * @param string $feedbackId 
      * @param null|\AntiPatternInc\Saasus\Sdk\Communication\Model\CreateFeedbackCommentParam $requestBody 
@@ -131,7 +131,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\CreateFeedbackComment($feedbackId, $requestBody), $fetch);
     }
     /**
-     * フィードバックへのコメントを削除します。
+     * Delete comment for feedback.
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -146,7 +146,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\DeleteFeedbackComment($feedbackId, $commentId), $fetch);
     }
     /**
-     * フィードバックへのコメントを取得します。
+     * Retrieve comment from feedback.
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -161,7 +161,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\GetFeedbackComment($feedbackId, $commentId), $fetch);
     }
     /**
-     * フィードバックへのコメントを編集します。
+     * Edit comment for feedback.
      *
      * @param string $feedbackId 
      * @param string $commentId 
@@ -186,11 +186,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Communication\Endpoint\ReturnInternalServerError(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.saasus.io/v1/communication');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
@@ -201,11 +201,11 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Communication\Runtime\Client\Cli
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Communication\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \AntiPatternInc\Saasus\Sdk\Communication\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

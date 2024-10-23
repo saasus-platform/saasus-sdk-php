@@ -7,74 +7,74 @@ class UpdateMeteringUnitTimestampCountParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * 更新方法(update method)
-    add: 加算(addition)
-    sub: 減算(subtraction)
-    direct: 上書き(overwrite)
+    * Update method
+    add: Addition
+    sub: Subtraction
+    direct: Overwrite
     
     *
     * @var string|null
     */
     protected $method;
     /**
-     * 件数(count)
+     * Count
      *
      * @var int|null
      */
     protected $count;
     /**
-    * 更新方法(update method)
-    add: 加算(addition)
-    sub: 減算(subtraction)
-    direct: 上書き(overwrite)
+    * Update method
+    add: Addition
+    sub: Subtraction
+    direct: Overwrite
     
     *
     * @return string|null
     */
-    public function getMethod() : ?string
+    public function getMethod(): ?string
     {
         return $this->method;
     }
     /**
-    * 更新方法(update method)
-    add: 加算(addition)
-    sub: 減算(subtraction)
-    direct: 上書き(overwrite)
+    * Update method
+    add: Addition
+    sub: Subtraction
+    direct: Overwrite
     
     *
     * @param string|null $method
     *
     * @return self
     */
-    public function setMethod(?string $method) : self
+    public function setMethod(?string $method): self
     {
         $this->initialized['method'] = true;
         $this->method = $method;
         return $this;
     }
     /**
-     * 件数(count)
+     * Count
      *
      * @return int|null
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
     /**
-     * 件数(count)
+     * Count
      *
      * @param int|null $count
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(?int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;

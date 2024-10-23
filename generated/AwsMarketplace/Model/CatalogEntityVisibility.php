@@ -7,8 +7,8 @@ class CatalogEntityVisibility extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class CatalogEntityVisibility extends \ArrayObject
      *
      * @return string|null
      */
-    public function getVisibility() : ?string
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }
@@ -34,7 +34,7 @@ class CatalogEntityVisibility extends \ArrayObject
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(?string $visibility): self
     {
         $this->initialized['visibility'] = true;
         $this->visibility = $visibility;

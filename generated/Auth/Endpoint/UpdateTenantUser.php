@@ -7,15 +7,12 @@ class UpdateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
     protected $tenant_id;
     protected $user_id;
     /**
-    * テナントのユーザー属性情報を更新します。
-    
-    Update tenant user attributes.
-    
-    *
-    * @param string $tenantId テナントID(Tenant ID)
-    * @param string $userId ユーザーID(User ID)
-    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody 
-    */
+     * Update tenant user attributes.
+     *
+     * @param string $tenantId Tenant ID
+     * @param string $userId User ID
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody 
+     */
     public function __construct(string $tenantId, string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam $requestBody = null)
     {
         $this->tenant_id = $tenantId;
@@ -23,24 +20,24 @@ class UpdateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'PATCH';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}', '{user_id}'), array($this->tenant_id, $this->user_id), '/tenants/{tenant_id}/users/{user_id}');
+        return str_replace(['{tenant_id}', '{user_id}'], [$this->tenant_id, $this->user_id], '/tenants/{tenant_id}/users/{user_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateTenantUserParam) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,14 +55,14 @@ class UpdateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
             return null;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantUserNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -5,51 +5,49 @@ namespace AntiPatternInc\Saasus\Sdk\Auth\Endpoint;
 class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\BaseEndpoint implements \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Endpoint
 {
     /**
-    * 一時コードまたはリフレッシュトークンを利用してIDトークン・アクセストークン・リフレッシュトークンを取得する。
-    
-    Get ID token, access token, and refresh token using a temporary code or a refresh token.
+    * Get ID token, access token, and refresh token using a temporary code or a refresh token.
     
     *
     * @param array $queryParameters {
-    *     @var string $code 一時コード(Temp Code)
-    *     @var string $auth-flow 認証フロー（Authentication Flow）
-    tempCodeAuth: 一時コードを利用した認証情報の取得
-    refreshTokenAuth: リフレッシュトークンを利用した認証情報の取得
-    指定されていない場合は tempCodeAuth になります
+    *     @var string $code Temp Code
+    *     @var string $auth-flow Authentication Flow
+    tempCodeAuth: Getting authentication information using a temporary code
+    refreshTokenAuth: Getting authentication information using a refresh token
+    If not specified, it will be tempCodeAuth
     
-    *     @var string $refresh-token リフレッシュトークン(Refresh Token)
+    *     @var string $refresh-token Refresh Token
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/credentials';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('code', 'auth-flow', 'refresh-token'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('code', array('string'));
-        $optionsResolver->addAllowedTypes('auth-flow', array('string'));
-        $optionsResolver->addAllowedTypes('refresh-token', array('string'));
+        $optionsResolver->setDefined(['code', 'auth-flow', 'refresh-token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('code', ['string']);
+        $optionsResolver->addAllowedTypes('auth-flow', ['string']);
+        $optionsResolver->addAllowedTypes('refresh-token', ['string']);
         return $optionsResolver;
     }
     /**
@@ -65,17 +63,17 @@ class GetAuthCredentials extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Credentials', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Credentials', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsNotFoundException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAuthCredentialsInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

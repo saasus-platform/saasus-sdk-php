@@ -7,13 +7,13 @@ class MeteringUnitDatePeriodCounts extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 計測ユニット名(metering unit name)
+     * Metering unit name
      *
      * @var string|null
      */
@@ -21,26 +21,26 @@ class MeteringUnitDatePeriodCounts extends \ArrayObject
     /**
      * 
      *
-     * @var MeteringUnitCount[]|null
+     * @var list<MeteringUnitCount>|null
      */
     protected $counts;
     /**
-     * 計測ユニット名(metering unit name)
+     * Metering unit name
      *
      * @return string|null
      */
-    public function getMeteringUnitName() : ?string
+    public function getMeteringUnitName(): ?string
     {
         return $this->meteringUnitName;
     }
     /**
-     * 計測ユニット名(metering unit name)
+     * Metering unit name
      *
      * @param string|null $meteringUnitName
      *
      * @return self
      */
-    public function setMeteringUnitName(?string $meteringUnitName) : self
+    public function setMeteringUnitName(?string $meteringUnitName): self
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
@@ -49,20 +49,20 @@ class MeteringUnitDatePeriodCounts extends \ArrayObject
     /**
      * 
      *
-     * @return MeteringUnitCount[]|null
+     * @return list<MeteringUnitCount>|null
      */
-    public function getCounts() : ?array
+    public function getCounts(): ?array
     {
         return $this->counts;
     }
     /**
      * 
      *
-     * @param MeteringUnitCount[]|null $counts
+     * @param list<MeteringUnitCount>|null $counts
      *
      * @return self
      */
-    public function setCounts(?array $counts) : self
+    public function setCounts(?array $counts): self
     {
         $this->initialized['counts'] = true;
         $this->counts = $counts;

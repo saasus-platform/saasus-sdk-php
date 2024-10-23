@@ -7,8 +7,8 @@ class UpdateSettingsParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -65,7 +65,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProductCode() : ?string
+    public function getProductCode(): ?string
     {
         return $this->productCode;
     }
@@ -76,7 +76,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setProductCode(?string $productCode) : self
+    public function setProductCode(?string $productCode): self
     {
         $this->initialized['productCode'] = true;
         $this->productCode = $productCode;
@@ -87,7 +87,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRoleArn() : ?string
+    public function getRoleArn(): ?string
     {
         return $this->roleArn;
     }
@@ -98,7 +98,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRoleArn(?string $roleArn) : self
+    public function setRoleArn(?string $roleArn): self
     {
         $this->initialized['roleArn'] = true;
         $this->roleArn = $roleArn;
@@ -109,7 +109,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRoleExternalId() : ?string
+    public function getRoleExternalId(): ?string
     {
         return $this->roleExternalId;
     }
@@ -120,7 +120,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRoleExternalId(?string $roleExternalId) : self
+    public function setRoleExternalId(?string $roleExternalId): self
     {
         $this->initialized['roleExternalId'] = true;
         $this->roleExternalId = $roleExternalId;
@@ -131,7 +131,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSnsTopicArn() : ?string
+    public function getSnsTopicArn(): ?string
     {
         return $this->snsTopicArn;
     }
@@ -142,7 +142,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setSnsTopicArn(?string $snsTopicArn) : self
+    public function setSnsTopicArn(?string $snsTopicArn): self
     {
         $this->initialized['snsTopicArn'] = true;
         $this->snsTopicArn = $snsTopicArn;
@@ -153,7 +153,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCasBucketName() : ?string
+    public function getCasBucketName(): ?string
     {
         return $this->casBucketName;
     }
@@ -164,7 +164,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setCasBucketName(?string $casBucketName) : self
+    public function setCasBucketName(?string $casBucketName): self
     {
         $this->initialized['casBucketName'] = true;
         $this->casBucketName = $casBucketName;
@@ -175,7 +175,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCasSnsTopicArn() : ?string
+    public function getCasSnsTopicArn(): ?string
     {
         return $this->casSnsTopicArn;
     }
@@ -186,7 +186,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setCasSnsTopicArn(?string $casSnsTopicArn) : self
+    public function setCasSnsTopicArn(?string $casSnsTopicArn): self
     {
         $this->initialized['casSnsTopicArn'] = true;
         $this->casSnsTopicArn = $casSnsTopicArn;
@@ -197,7 +197,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSellerSnsTopicArn() : ?string
+    public function getSellerSnsTopicArn(): ?string
     {
         return $this->sellerSnsTopicArn;
     }
@@ -208,7 +208,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setSellerSnsTopicArn(?string $sellerSnsTopicArn) : self
+    public function setSellerSnsTopicArn(?string $sellerSnsTopicArn): self
     {
         $this->initialized['sellerSnsTopicArn'] = true;
         $this->sellerSnsTopicArn = $sellerSnsTopicArn;
@@ -219,7 +219,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSqsArn() : ?string
+    public function getSqsArn(): ?string
     {
         return $this->sqsArn;
     }
@@ -230,7 +230,7 @@ class UpdateSettingsParam extends \ArrayObject
      *
      * @return self
      */
-    public function setSqsArn(?string $sqsArn) : self
+    public function setSqsArn(?string $sqsArn): self
     {
         $this->initialized['sqsArn'] = true;
         $this->sqsArn = $sqsArn;

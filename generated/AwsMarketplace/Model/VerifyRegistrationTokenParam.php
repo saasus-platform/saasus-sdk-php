@@ -7,8 +7,8 @@ class VerifyRegistrationTokenParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class VerifyRegistrationTokenParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRegistrationToken() : ?string
+    public function getRegistrationToken(): ?string
     {
         return $this->registrationToken;
     }
@@ -34,7 +34,7 @@ class VerifyRegistrationTokenParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRegistrationToken(?string $registrationToken) : self
+    public function setRegistrationToken(?string $registrationToken): self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

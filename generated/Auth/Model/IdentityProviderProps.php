@@ -7,8 +7,8 @@ class IdentityProviderProps extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getApplicationId() : ?string
+    public function getApplicationId(): ?string
     {
         return $this->applicationId;
     }
@@ -52,7 +52,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return self
      */
-    public function setApplicationId(?string $applicationId) : self
+    public function setApplicationId(?string $applicationId): self
     {
         $this->initialized['applicationId'] = true;
         $this->applicationId = $applicationId;
@@ -63,7 +63,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getApplicationSecret() : ?string
+    public function getApplicationSecret(): ?string
     {
         return $this->applicationSecret;
     }
@@ -74,7 +74,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return self
      */
-    public function setApplicationSecret(?string $applicationSecret) : self
+    public function setApplicationSecret(?string $applicationSecret): self
     {
         $this->initialized['applicationSecret'] = true;
         $this->applicationSecret = $applicationSecret;
@@ -85,7 +85,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getApprovalScope() : ?string
+    public function getApprovalScope(): ?string
     {
         return $this->approvalScope;
     }
@@ -96,7 +96,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return self
      */
-    public function setApprovalScope(?string $approvalScope) : self
+    public function setApprovalScope(?string $approvalScope): self
     {
         $this->initialized['approvalScope'] = true;
         $this->approvalScope = $approvalScope;
@@ -107,7 +107,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsButtonHidden() : ?bool
+    public function getIsButtonHidden(): ?bool
     {
         return $this->isButtonHidden;
     }
@@ -118,7 +118,7 @@ class IdentityProviderProps extends \ArrayObject
      *
      * @return self
      */
-    public function setIsButtonHidden(?bool $isButtonHidden) : self
+    public function setIsButtonHidden(?bool $isButtonHidden): self
     {
         $this->initialized['isButtonHidden'] = true;
         $this->isButtonHidden = $isButtonHidden;

@@ -7,34 +7,34 @@ class UpdateSaasUserPasswordParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * パスワード(password)
+     * Password
      *
      * @var string|null
      */
     protected $password;
     /**
-     * パスワード(password)
+     * Password
      *
      * @return string|null
      */
-    public function getPassword() : ?string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
     /**
-     * パスワード(password)
+     * Password
      *
      * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(?string $password) : self
+    public function setPassword(?string $password): self
     {
         $this->initialized['password'] = true;
         $this->password = $password;

@@ -7,8 +7,8 @@ class Votes extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -21,7 +21,7 @@ class Votes extends \ArrayObject
     /**
      * 
      *
-     * @var User[]|null
+     * @var list<User>|null
      */
     protected $users;
     /**
@@ -29,7 +29,7 @@ class Votes extends \ArrayObject
      *
      * @return int|null
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
@@ -40,7 +40,7 @@ class Votes extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(?int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -49,20 +49,20 @@ class Votes extends \ArrayObject
     /**
      * 
      *
-     * @return User[]|null
+     * @return list<User>|null
      */
-    public function getUsers() : ?array
+    public function getUsers(): ?array
     {
         return $this->users;
     }
     /**
      * 
      *
-     * @param User[]|null $users
+     * @param list<User>|null $users
      *
      * @return self
      */
-    public function setUsers(?array $users) : self
+    public function setUsers(?array $users): self
     {
         $this->initialized['users'] = true;
         $this->users = $users;

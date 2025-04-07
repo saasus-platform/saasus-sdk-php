@@ -7,8 +7,8 @@ class CreateCustomerParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class CreateCustomerParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantId() : ?string
+    public function getTenantId(): ?string
     {
         return $this->tenantId;
     }
@@ -40,7 +40,7 @@ class CreateCustomerParam extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantId(?string $tenantId) : self
+    public function setTenantId(?string $tenantId): self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;
@@ -51,7 +51,7 @@ class CreateCustomerParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRegistrationToken() : ?string
+    public function getRegistrationToken(): ?string
     {
         return $this->registrationToken;
     }
@@ -62,7 +62,7 @@ class CreateCustomerParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRegistrationToken(?string $registrationToken) : self
+    public function setRegistrationToken(?string $registrationToken): self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

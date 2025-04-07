@@ -7,34 +7,34 @@ class PricingMenus extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
      * 
      *
-     * @var array<string, mixed>[]|null
+     * @var list<array<string, mixed>>|null
      */
     protected $pricingMenus;
     /**
      * 
      *
-     * @return array<string, mixed>[]|null
+     * @return list<array<string, mixed>>|null
      */
-    public function getPricingMenus() : ?array
+    public function getPricingMenus(): ?array
     {
         return $this->pricingMenus;
     }
     /**
      * 
      *
-     * @param array<string, mixed>[]|null $pricingMenus
+     * @param list<array<string, mixed>>|null $pricingMenus
      *
      * @return self
      */
-    public function setPricingMenus(?array $pricingMenus) : self
+    public function setPricingMenus(?array $pricingMenus): self
     {
         $this->initialized['pricingMenus'] = true;
         $this->pricingMenus = $pricingMenus;

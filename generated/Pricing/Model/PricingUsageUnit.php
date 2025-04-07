@@ -7,27 +7,27 @@ class PricingUsageUnit extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @var string|null
      */
     protected $id;
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @var string|null
      */
     protected $meteringUnitId;
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @var string|null
@@ -40,134 +40,134 @@ class PricingUsageUnit extends \ArrayObject
      */
     protected $used;
     /**
-     * 上限値(upper limit)
+     * Upper limit
      *
      * @var int|null
      */
     protected $upperCount;
     /**
-     * 使用量あたりの金額(amount per usage)
+     * Amount per usage
      *
      * @var int|null
      */
     protected $unitAmount;
     /**
-     * 
+     * Metering unit name
      *
      * @var string|null
      */
     protected $meteringUnitName;
     /**
-    * 使用量の集計方法(aggregate usage)
-    sum: 期間内の使用量の合計(total usage during the period)
-    max: 期間内の使用量の最大値(maximum usage during the period)
+    * Aggregate usage
+    sum: Total usage during the period
+    max: Maximum usage during the period
     
     *
     * @var string|null
     */
     protected $aggregateUsage;
     /**
-     * 名前(name)
+     * Name
      *
      * @var string|null
      */
     protected $name;
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @var string|null
      */
     protected $displayName;
     /**
-     * 説明(description)
+     * Description
      *
      * @var string|null
      */
     protected $description;
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @var string|null
     */
     protected $type;
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @var string|null
      */
     protected $currency;
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @return string|null
      */
-    public function getId() : ?string
+    public function getId(): ?string
     {
         return $this->id;
     }
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @param string|null $id
      *
      * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @return string|null
      */
-    public function getMeteringUnitId() : ?string
+    public function getMeteringUnitId(): ?string
     {
         return $this->meteringUnitId;
     }
     /**
-     * 
+     * Universally Unique Identifier
      *
      * @param string|null $meteringUnitId
      *
      * @return self
      */
-    public function setMeteringUnitId(?string $meteringUnitId) : self
+    public function setMeteringUnitId(?string $meteringUnitId): self
     {
         $this->initialized['meteringUnitId'] = true;
         $this->meteringUnitId = $meteringUnitId;
         return $this;
     }
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @return string|null
     */
-    public function getRecurringInterval() : ?string
+    public function getRecurringInterval(): ?string
     {
         return $this->recurringInterval;
     }
     /**
-    * 繰り返し期間(cycle)
-    month: 月単位(monthly)
-    year: 年単位(yearly)
+    * Cycle
+    month: Monthly
+    year: Yearly
     
     *
     * @param string|null $recurringInterval
     *
     * @return self
     */
-    public function setRecurringInterval(?string $recurringInterval) : self
+    public function setRecurringInterval(?string $recurringInterval): self
     {
         $this->initialized['recurringInterval'] = true;
         $this->recurringInterval = $recurringInterval;
@@ -178,7 +178,7 @@ class PricingUsageUnit extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getUsed() : ?bool
+    public function getUsed(): ?bool
     {
         return $this->used;
     }
@@ -189,221 +189,221 @@ class PricingUsageUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setUsed(?bool $used) : self
+    public function setUsed(?bool $used): self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
         return $this;
     }
     /**
-     * 上限値(upper limit)
+     * Upper limit
      *
      * @return int|null
      */
-    public function getUpperCount() : ?int
+    public function getUpperCount(): ?int
     {
         return $this->upperCount;
     }
     /**
-     * 上限値(upper limit)
+     * Upper limit
      *
      * @param int|null $upperCount
      *
      * @return self
      */
-    public function setUpperCount(?int $upperCount) : self
+    public function setUpperCount(?int $upperCount): self
     {
         $this->initialized['upperCount'] = true;
         $this->upperCount = $upperCount;
         return $this;
     }
     /**
-     * 使用量あたりの金額(amount per usage)
+     * Amount per usage
      *
      * @return int|null
      */
-    public function getUnitAmount() : ?int
+    public function getUnitAmount(): ?int
     {
         return $this->unitAmount;
     }
     /**
-     * 使用量あたりの金額(amount per usage)
+     * Amount per usage
      *
      * @param int|null $unitAmount
      *
      * @return self
      */
-    public function setUnitAmount(?int $unitAmount) : self
+    public function setUnitAmount(?int $unitAmount): self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
         return $this;
     }
     /**
-     * 
+     * Metering unit name
      *
      * @return string|null
      */
-    public function getMeteringUnitName() : ?string
+    public function getMeteringUnitName(): ?string
     {
         return $this->meteringUnitName;
     }
     /**
-     * 
+     * Metering unit name
      *
      * @param string|null $meteringUnitName
      *
      * @return self
      */
-    public function setMeteringUnitName(?string $meteringUnitName) : self
+    public function setMeteringUnitName(?string $meteringUnitName): self
     {
         $this->initialized['meteringUnitName'] = true;
         $this->meteringUnitName = $meteringUnitName;
         return $this;
     }
     /**
-    * 使用量の集計方法(aggregate usage)
-    sum: 期間内の使用量の合計(total usage during the period)
-    max: 期間内の使用量の最大値(maximum usage during the period)
+    * Aggregate usage
+    sum: Total usage during the period
+    max: Maximum usage during the period
     
     *
     * @return string|null
     */
-    public function getAggregateUsage() : ?string
+    public function getAggregateUsage(): ?string
     {
         return $this->aggregateUsage;
     }
     /**
-    * 使用量の集計方法(aggregate usage)
-    sum: 期間内の使用量の合計(total usage during the period)
-    max: 期間内の使用量の最大値(maximum usage during the period)
+    * Aggregate usage
+    sum: Total usage during the period
+    max: Maximum usage during the period
     
     *
     * @param string|null $aggregateUsage
     *
     * @return self
     */
-    public function setAggregateUsage(?string $aggregateUsage) : self
+    public function setAggregateUsage(?string $aggregateUsage): self
     {
         $this->initialized['aggregateUsage'] = true;
         $this->aggregateUsage = $aggregateUsage;
         return $this;
     }
     /**
-     * 名前(name)
+     * Name
      *
      * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
-     * 名前(name)
+     * Name
      *
      * @param string|null $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @return string|null
      */
-    public function getDisplayName() : ?string
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
     /**
-     * 表示名(display name)
+     * Display Name
      *
      * @param string|null $displayName
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName) : self
+    public function setDisplayName(?string $displayName): self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }
     /**
-     * 説明(description)
+     * Description
      *
      * @return string|null
      */
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
     /**
-     * 説明(description)
+     * Description
      *
      * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @return string|null
     */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
     /**
-    * 計測単位の種別(unit of measurement type)
-    fixed: 固定ユニット(fixed unit)
-    usage: 使用量ユニット(usage unit)
-    tiered: 段階ユニット(tiered unit)
-    tiered_usage: 段階的使用量ユニット(tiered usage unit)
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
     
     *
     * @param string|null $type
     *
     * @return self
     */
-    public function setType(?string $type) : self
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @return string|null
      */
-    public function getCurrency() : ?string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
     /**
-     * 計測単位の通貨(unit of currency)
+     * Unit of currency
      *
      * @param string|null $currency
      *
      * @return self
      */
-    public function setCurrency(?string $currency) : self
+    public function setCurrency(?string $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

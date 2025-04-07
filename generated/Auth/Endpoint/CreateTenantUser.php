@@ -6,14 +6,11 @@ class CreateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
 {
     protected $tenant_id;
     /**
-    * テナントにユーザーを作成します。
-    attributesを空のオブジェクトにした場合、追加属性は空で作成されます。
-    
-    Create a tenant user.
+    * Create a tenant user.
     If attributes is empty, the additional attributes will be created empty.
     
     *
-    * @param string $tenantId テナントID(Tenant ID)
+    * @param string $tenantId Tenant ID
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam $requestBody 
     */
     public function __construct(string $tenantId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam $requestBody = null)
@@ -22,24 +19,24 @@ class CreateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'POST';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
-        return str_replace(array('{tenant_id}'), array($this->tenant_id), '/tenants/{tenant_id}/users');
+        return str_replace(['{tenant_id}'], [$this->tenant_id], '/tenants/{tenant_id}/users');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserParam) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -53,14 +50,14 @@ class CreateTenantUser extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Ba
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\User', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\User', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

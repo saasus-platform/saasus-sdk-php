@@ -7,8 +7,8 @@ class UpdateFeedbackStatusParam extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdateFeedbackStatusParam extends \ArrayObject
      *
      * @return int|null
      */
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
@@ -34,7 +34,7 @@ class UpdateFeedbackStatusParam extends \ArrayObject
      *
      * @return self
      */
-    public function setStatus(?int $status) : self
+    public function setStatus(?int $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;

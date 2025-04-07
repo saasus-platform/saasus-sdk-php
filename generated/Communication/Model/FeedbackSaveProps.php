@@ -7,8 +7,8 @@ class FeedbackSaveProps extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class FeedbackSaveProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFeedbackTitle() : ?string
+    public function getFeedbackTitle(): ?string
     {
         return $this->feedbackTitle;
     }
@@ -40,7 +40,7 @@ class FeedbackSaveProps extends \ArrayObject
      *
      * @return self
      */
-    public function setFeedbackTitle(?string $feedbackTitle) : self
+    public function setFeedbackTitle(?string $feedbackTitle): self
     {
         $this->initialized['feedbackTitle'] = true;
         $this->feedbackTitle = $feedbackTitle;
@@ -51,7 +51,7 @@ class FeedbackSaveProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFeedbackDescription() : ?string
+    public function getFeedbackDescription(): ?string
     {
         return $this->feedbackDescription;
     }
@@ -62,7 +62,7 @@ class FeedbackSaveProps extends \ArrayObject
      *
      * @return self
      */
-    public function setFeedbackDescription(?string $feedbackDescription) : self
+    public function setFeedbackDescription(?string $feedbackDescription): self
     {
         $this->initialized['feedbackDescription'] = true;
         $this->feedbackDescription = $feedbackDescription;

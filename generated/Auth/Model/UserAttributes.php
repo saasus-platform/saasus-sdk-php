@@ -7,34 +7,34 @@ class UserAttributes extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * ユーザー属性定義(User attribute definition)
+     * User Attribute Definition
      *
-     * @var Attribute[]|null
+     * @var list<Attribute>|null
      */
     protected $userAttributes;
     /**
-     * ユーザー属性定義(User attribute definition)
+     * User Attribute Definition
      *
-     * @return Attribute[]|null
+     * @return list<Attribute>|null
      */
-    public function getUserAttributes() : ?array
+    public function getUserAttributes(): ?array
     {
         return $this->userAttributes;
     }
     /**
-     * ユーザー属性定義(User attribute definition)
+     * User Attribute Definition
      *
-     * @param Attribute[]|null $userAttributes
+     * @param list<Attribute>|null $userAttributes
      *
      * @return self
      */
-    public function setUserAttributes(?array $userAttributes) : self
+    public function setUserAttributes(?array $userAttributes): self
     {
         $this->initialized['userAttributes'] = true;
         $this->userAttributes = $userAttributes;

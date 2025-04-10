@@ -1,0 +1,25 @@
+name: Publish PHP Package to Packagist
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        php-version: ["8.2"]
+
+    steps:
+      - name: Notify Packagist
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
+        run: |
+          curl -XPOST -u "$PACKAGIST_USERNAME:$PACKAGIST_API_TOKEN" \
+          https://packagist.org/api/update-package?username=$PACKAGIST_USERNAME \
+          -d '{"repository":{"url":"https://github.com/saasus-platform/saasus-sdk-php"}}'

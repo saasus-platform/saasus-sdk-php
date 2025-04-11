@@ -15,9 +15,25 @@
   },
   "authors": [
     {
-      "name": "SaaSus Platform",
+      "name": "Anti-Pattern Inc.",
       "email": "saasus@anti-pattern.co.jp"
     }
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/saasus-platform/saasus-sdk-php",
+  "keywords": [
+    "saasus",
+    "auth",
+    "authentication",
+    "openapi",
+    "openapi-generator",
+    "anti-pattern",
+    "php-sdk",
+    "api-client",
+    "laravel",
+    "sdk",
+    "multi-tenant",
+    "saas"
   ],
   "require": {
     "php": ">=8.0.2",

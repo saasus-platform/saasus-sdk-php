@@ -1,0 +1,72 @@
+# SaaSus SDK for PHP - E2Eテスト実行環境
+FROM php:8.1-cli-alpine
+
+# 作業ディレクトリの設定
+WORKDIR /app
+
+# 必要なパッケージのインストール
+RUN apk add --no-cache \
+    git \
+    curl \
+    libpng-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    sqlite \
+    sqlite-dev \
+    bash \
+    make \
+    linux-headers
+
+# PHP拡張のインストール
+RUN docker-php-ext-install \
+    pdo \
+    pdo_sqlite \
+    xml \
+    gd \
+    bcmath
+
+# Xdebugのインストール（カバレッジ用）
+RUN apk add --no-cache --virtual .build-deps \
+    $PHPIZE_DEPS \
+    linux-headers \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && apk del .build-deps
+
+# Composerのインストール
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# PHP設定
+RUN echo "memory_limit = 512M" >> /usr/local/etc/php/php.ini \
+    && echo "max_execution_time = 600" >> /usr/local/etc/php/php.ini \
+    && echo "date.timezone = Asia/Tokyo" >> /usr/local/etc/php/php.ini \
+    && echo "xdebug.mode = coverage" >> /usr/local/etc/php/php.ini
+
+# ユーザー権限の設定
+RUN addgroup -g 1000 -S appuser && \
+    adduser -u 1000 -S appuser -G appuser
+
+# アプリケーションファイルのコピー
+COPY --chown=appuser:appuser . /app
+
+# 依存関係のインストール（開発依存関係も含む）
+RUN composer install --optimize-autoloader --no-interaction
+
+# インストール結果の確認
+RUN ls -la /app/vendor/bin/ && \
+    php -v && \
+    composer --version
+
+# テスト実行スクリプトに実行権限を付与
+RUN chmod +x /app/test/run-e2e-tests.sh
+
+# カバレッジ出力ディレクトリの作成と権限設定
+RUN mkdir -p /app/coverage-html-e2e /app/test-results && \
+    chown -R appuser:appuser /app/coverage-html-e2e /app/test-results
+
+# appuserに切り替え
+USER appuser
+
+# デフォルトコマンド
+CMD ["./test/run-e2e-tests.sh", "--help"]

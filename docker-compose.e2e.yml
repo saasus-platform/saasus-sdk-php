@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # E2Eテスト実行環境
+  saasus-e2e-test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.e2e
+    container_name: saasus-e2e-test
+    volumes:
+      # ソースコードをマウント（開発時の変更を反映）
+      - .:/app
+      # Composerキャッシュの永続化
+      - composer-cache:/home/appuser/.composer
+      # テスト結果の出力
+      - ./test-results:/app/test-results
+      - ./coverage-html-e2e:/app/coverage-html-e2e
+    environment:
+      # SaaSus Platform API設定
+      - SAASUS_SECRET_KEY=${SAASUS_SECRET_KEY}
+      - SAASUS_SAAS_ID=${SAASUS_SAAS_ID}
+      - SAASUS_API_KEY=${SAASUS_API_KEY}
+      - SAASUS_API_URL_BASE=${SAASUS_API_URL_BASE:-https://dev.saasus.io}
+      - SAASUS_LOGIN_URL=${SAASUS_LOGIN_URL:-https://auth.dev.saasus.io/}
+      - SAASUS_AUTH_MODE=${SAASUS_AUTH_MODE:-api}
+      
+      # PHP設定
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAX_EXECUTION_TIME=600
+      
+      # テスト設定
+      - E2E_TEST_TIMEOUT=300
+      - E2E_TEST_RETRY_COUNT=3
+      - E2E_TEST_CLEANUP_ENABLED=true
+      
+      # デバッグ設定
+      - XDEBUG_MODE=coverage
+    working_dir: /app
+    command: ["tail", "-f", "/dev/null"]  # コンテナを起動状態に保持
+    networks:
+      - saasus-e2e-network
+
+  # テスト結果を表示するためのWebサーバー（オプション）
+  saasus-e2e-web:
+    image: nginx:alpine
+    container_name: saasus-e2e-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./coverage-html-e2e:/usr/share/nginx/html/coverage:ro
+      - ./test-results:/usr/share/nginx/html/results:ro
+      - ./docker/nginx/e2e.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - saasus-e2e-test
+    networks:
+      - saasus-e2e-network
+    profiles:
+      - web  # プロファイルを使用してオプション扱い
+
+volumes:
+  composer-cache:
+    driver: local
+
+networks:
+  saasus-e2e-network:
+    driver: bridge

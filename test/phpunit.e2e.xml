@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="bootstrap.php"
+         colors="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         backupGlobals="false"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="false"
+         failOnRisky="true"
+         failOnWarning="true">
+    
+    <testsuites>
+        <testsuite name="E2E">
+            <directory>E2E</directory>
+        </testsuite>
+        <testsuite name="Auth E2E">
+            <directory>E2E/Auth</directory>
+        </testsuite>
+    </testsuites>
+    
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="false" ignoreDeprecatedCodeUnits="true">
+        <include>
+            <directory suffix=".php">../src</directory>
+            <directory suffix=".php">../generated</directory>
+        </include>
+        <exclude>
+            <directory>../vendor</directory>
+            <directory>../src/Laravel/Views</directory>
+            <!-- 自動生成されたRuntimeクラスは除外 -->
+            <directory>../generated/*/Runtime</directory>
+            <!-- 自動生成されたNormalizerクラスは除外（大量で意味が薄い） -->
+            <directory>../generated/*/Normalizer</directory>
+            <!-- 自動生成されたExceptionクラスは除外（テストが困難） -->
+            <directory>../generated/*/Exception</directory>
+        </exclude>
+        <report>
+            <html outputDirectory="../coverage-html-e2e" lowUpperBound="50" highLowerBound="80"/>
+            <clover outputFile="../coverage-e2e.xml"/>
+            <text outputFile="../coverage-e2e.txt" showUncoveredFiles="false"/>
+        </report>
+    </coverage>
+    
+    <groups>
+        <include>
+            <group>e2e</group>
+        </include>
+    </groups>
+    
+    <php>
+        <!-- SaaSus SDK設定 -->
+        <env name="SAASUS_SAAS_ID" value=""/>
+        <env name="SAASUS_API_KEY" value=""/>
+        <env name="SAASUS_SECRET_KEY" value=""/>
+        <env name="SAASUS_API_URL_BASE" value="https://api-test.saasus.io"/>
+        <env name="SAASUS_LOGIN_URL" value="https://auth-test.saasus.io/"/>
+        <env name="SAASUS_AUTH_MODE" value="api"/>
+        
+        <!-- テスト設定 -->
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_DEBUG" value="true"/>
+        
+        <!-- データベース設定 -->
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        
+        <!-- キャッシュ設定 -->
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        
+        <!-- ログ設定 -->
+        <env name="LOG_CHANNEL" value="single"/>
+        <env name="LOG_LEVEL" value="debug"/>
+        
+        <!-- E2Eテスト固有設定 -->
+        <env name="E2E_TEST_TIMEOUT" value="300"/>
+        <env name="E2E_TEST_RETRY_COUNT" value="3"/>
+        <env name="E2E_TEST_CLEANUP_ENABLED" value="true"/>
+    </php>
+    
+    <logging>
+        <junit outputFile="../test-results/junit-e2e.xml"/>
+    </logging>
+</phpunit>

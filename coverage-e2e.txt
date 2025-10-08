@@ -1,0 +1,54 @@
+
+
+Code Coverage Report:       
+  2025-09-10 15:49:23       
+                            
+ Summary:                   
+  Classes:  0.00% (0/344)   
+  Methods:  2.98% (74/2485) 
+  Lines:    5.32% (263/4940)
+
+AntiPatternInc\Saasus\Api\Client
+  Methods:  22.22% ( 2/ 9)   Lines:  75.56% ( 34/ 45)
+AntiPatternInc\Saasus\Api\GuzzleMiddleware
+  Methods:  50.00% ( 2/ 4)   Lines:  87.88% ( 29/ 33)
+AntiPatternInc\Saasus\Sdk\ApiLog\Client
+  Methods:   0.00% ( 0/ 4)   Lines:  36.84% (  7/ 19)
+AntiPatternInc\Saasus\Sdk\Auth\Client
+  Methods:   8.43% ( 7/83)   Lines:  14.29% ( 14/ 98)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateTenant
+  Methods:  71.43% ( 5/ 7)   Lines:  78.57% ( 11/ 14)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteTenant
+  Methods:  85.71% ( 6/ 7)   Lines:  83.33% ( 10/ 12)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetBasicInfo
+  Methods:  83.33% ( 5/ 6)   Lines:  81.82% (  9/ 11)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenant
+  Methods:  85.71% ( 6/ 7)   Lines:  71.43% ( 10/ 14)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenantAttributes
+  Methods:  83.33% ( 5/ 6)   Lines:  81.82% (  9/ 11)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetTenants
+  Methods:  83.33% ( 5/ 6)   Lines:  81.82% (  9/ 11)
+AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateTenant
+  Methods:  71.43% ( 5/ 7)   Lines:  70.59% ( 12/ 17)
+AntiPatternInc\Saasus\Sdk\Auth\Model\BasicInfo
+  Methods:  47.37% ( 9/19)   Lines:  72.97% ( 27/ 37)
+AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord
+  Methods:  42.86% ( 3/ 7)   Lines:  69.23% (  9/ 13)
+AntiPatternInc\Saasus\Sdk\Auth\Model\Tenant
+  Methods:  24.00% ( 6/25)   Lines:  32.65% ( 16/ 49)
+AntiPatternInc\Saasus\Sdk\Auth\Model\TenantAttributes
+  Methods:  33.33% ( 1/ 3)   Lines:  60.00% (  3/  5)
+AntiPatternInc\Saasus\Sdk\Auth\Model\TenantDetail
+  Methods:  17.24% ( 5/29)   Lines:  26.32% ( 15/ 57)
+AntiPatternInc\Saasus\Sdk\Auth\Model\Tenants
+  Methods:  66.67% ( 2/ 3)   Lines:  80.00% (  4/  5)
+AntiPatternInc\Saasus\Sdk\AwsMarketplace\Client
+  Methods:   0.00% ( 0/16)   Lines:  22.58% (  7/ 31)
+AntiPatternInc\Saasus\Sdk\Billing\Client
+  Methods:   0.00% ( 0/ 5)   Lines:  35.00% (  7/ 20)
+AntiPatternInc\Saasus\Sdk\Communication\Client
+  Methods:   0.00% ( 0/14)   Lines:  24.14% (  7/ 29)
+AntiPatternInc\Saasus\Sdk\Integration\Client
+  Methods:   0.00% ( 0/ 7)   Lines:  31.82% (  7/ 22)
+AntiPatternInc\Saasus\Sdk\Pricing\Client
+  Methods:   0.00% ( 0/38)   Lines:  13.21% (  7/ 53)

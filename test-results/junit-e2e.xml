@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="4" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="3.849133">
+    <testsuite name="E2E" tests="4" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="3.849133">
+      <testsuite name="AntiPatternInc\Saasus\Test\E2E\Auth\AuthTenantCrudE2ETest" file="/app/test/E2E/Auth/AuthTenantCrudE2ETest.php" tests="4" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="3.849133">
+        <testcase name="testCompleteTenantCrudFlow" class="AntiPatternInc\Saasus\Test\E2E\Auth\AuthTenantCrudE2ETest" classname="AntiPatternInc.Saasus.Test.E2E.Auth.AuthTenantCrudE2ETest" file="/app/test/E2E/Auth/AuthTenantCrudE2ETest.php" line="60" assertions="5" time="1.385334">
+          <system-out>[E2ETestHelper] テスト環境検証開始
+[E2ETestHelper] .envファイル読み込み: .env
+[E2ETestHelper] .envファイル読み込み完了: .env
+[E2ETestHelper] ✓ SAASUS_SECRET_KEY: 設定済み
+[E2ETestHelper] ✓ SAASUS_SAAS_ID: 設定済み
+[E2ETestHelper] ✓ SAASUS_API_KEY: 設定済み
+[E2ETestHelper] API接続テスト開始
+[E2ETestHelper] ✓ API接続: 成功
+[E2ETestHelper] テスト環境検証完了
+=== テナント属性確認: 既存の属性が見つかりました ===
+
+=== 初期テナント数: 18 ===
+=== テナント作成開始 ===
+テナント名: E2E Test Tenant 1757486942
+管理者メール: e2e-test-1757486942@example.com
+[TestDataManager] テナント追跡追加: 63781334-4228-4aab-b20e-2d76c2da79cd
+=== テナント作成完了 ===
+テナントID: 63781334-4228-4aab-b20e-2d76c2da79cd
+=== テナント取得テスト ===
+取得成功: テナントオブジェクト
+=== テナント更新テスト ===
+更新後テナント名: Updated E2E Test Tenant 1757486943
+=== テナント更新完了 ===
+更新後テナント: オブジェクト形式
+=== テナント削除テスト ===
+[TestDataManager] テナント追跡除去: 63781334-4228-4aab-b20e-2d76c2da79cd
+テナント削除完了: 63781334-4228-4aab-b20e-2d76c2da79cd
+=== テナントCRUDフロー完了 ===
+最終テナント数: 18
+[TestDataManager] クリーンアップ対象なし
+</system-out>
+        </testcase>
+        <testcase name="testTenantCreationValidation" class="AntiPatternInc\Saasus\Test\E2E\Auth\AuthTenantCrudE2ETest" classname="AntiPatternInc.Saasus.Test.E2E.Auth.AuthTenantCrudE2ETest" file="/app/test/E2E/Auth/AuthTenantCrudE2ETest.php" line="196" assertions="4" time="0.440736">
+          <system-out>[E2ETestHelper] テスト環境検証開始
+[E2ETestHelper] .envファイル読み込み: .env
+[E2ETestHelper] .envファイル読み込み完了: .env
+[E2ETestHelper] ✓ SAASUS_SECRET_KEY: 設定済み
+[E2ETestHelper] ✓ SAASUS_SAAS_ID: 設定済み
+[E2ETestHelper] ✓ SAASUS_API_KEY: 設定済み
+[E2ETestHelper] API接続テスト開始
+[E2ETestHelper] ✓ API接続: 成功
+[E2ETestHelper] テスト環境検証完了
+=== バリデーションテスト: 必須フィールド欠如 ===
+期待通りのエラー: 空のテナント名で作成が成功してしまいました
+=== バリデーションテスト: 無効なメールアドレス ===
+期待通りのエラー: 無効なメールアドレスで作成が成功してしまいました
+=== バリデーションテスト完了 ===
+[TestDataManager] クリーンアップ対象なし
+</system-out>
+        </testcase>
+        <testcase name="testNonExistentTenantOperations" class="AntiPatternInc\Saasus\Test\E2E\Auth\AuthTenantCrudE2ETest" classname="AntiPatternInc.Saasus.Test.E2E.Auth.AuthTenantCrudE2ETest" file="/app/test/E2E/Auth/AuthTenantCrudE2ETest.php" line="248" assertions="3" time="0.454525">
+          <system-out>[E2ETestHelper] テスト環境検証開始
+[E2ETestHelper] .envファイル読み込み: .env
+[E2ETestHelper] .envファイル読み込み完了: .env
+[E2ETestHelper] ✓ SAASUS_SECRET_KEY: 設定済み
+[E2ETestHelper] ✓ SAASUS_SAAS_ID: 設定済み
+[E2ETestHelper] ✓ SAASUS_API_KEY: 設定済み
+[E2ETestHelper] API接続テスト開始
+[E2ETestHelper] ✓ API接続: 成功
+[E2ETestHelper] テスト環境検証完了
+=== 存在しないテナント操作テスト ===
+テストテナントID: non-existent-tenant-1757486945
+取得エラー（期待通り）: Client error: `GET https://api.dev.saasus.io/v1/auth/tenants/non-existent-tenant-1757486945` resulted in a `400 Bad Request` response:
+{
+  "message": "invalid id: non-existent-tenant-1757486945",
+  "type": "invalid_parameter"
+}
+
+
+更新エラー（期待通り）: Client error: `PATCH https://api.dev.saasus.io/v1/auth/tenants/non-existent-tenant-1757486945` resulted in a `400 Bad Request` response:
+{
+  "message": "invalid id: non-existent-tenant-1757486945",
+  "type": "invalid_parameter"
+}
+
+
+削除エラー（期待通り）: Client error: `DELETE https://api.dev.saasus.io/v1/auth/tenants/non-existent-tenant-1757486945` resulted in a `400 Bad Request` response:
+{
+  "message": "invalid id: non-existent-tenant-1757486945",
+  "type": "invalid_parameter"
+}
+
+
+=== 存在しないテナント操作テスト完了 ===
+[TestDataManager] クリーンアップ対象なし
+</system-out>
+        </testcase>
+        <testcase name="testBulkTenantOperationsPerformance" class="AntiPatternInc\Saasus\Test\E2E\Auth\AuthTenantCrudE2ETest" classname="AntiPatternInc.Saasus.Test.E2E.Auth.AuthTenantCrudE2ETest" file="/app/test/E2E/Auth/AuthTenantCrudE2ETest.php" line="301" assertions="2" time="1.568537">
+          <system-out>[E2ETestHelper] テスト環境検証開始
+[E2ETestHelper] .envファイル読み込み: .env
+[E2ETestHelper] .envファイル読み込み完了: .env
+[E2ETestHelper] ✓ SAASUS_SECRET_KEY: 設定済み
+[E2ETestHelper] ✓ SAASUS_SAAS_ID: 設定済み
+[E2ETestHelper] ✓ SAASUS_API_KEY: 設定済み
+[E2ETestHelper] API接続テスト開始
+[E2ETestHelper] ✓ API接続: 成功
+[E2ETestHelper] テスト環境検証完了
+=== 大量テナント操作パフォーマンステスト ===
+作成予定テナント数: 5
+[TestDataManager] テナント追跡追加: cbcfa440-1c8e-4c8c-97b8-590152da9df0
+[TestDataManager] テナント追跡追加: feaaad49-3023-4a94-826f-491baf100a89
+[TestDataManager] テナント追跡追加: dd8f0462-324e-4826-98e6-eef27b63914c
+[TestDataManager] テナント追跡追加: a9cfcaac-3bef-4776-be43-5ccff7c048ac
+[TestDataManager] テナント追跡追加: ff13487d-e1a8-444f-b505-f5fc0ccc394d
+=== 作成完了 ===
+作成時間: 0.51秒
+平均作成時間: 0.1秒/テナント
+[TestDataManager] テナント追跡除去: cbcfa440-1c8e-4c8c-97b8-590152da9df0
+テナント 1 削除完了: cbcfa440-1c8e-4c8c-97b8-590152da9df0
+[TestDataManager] テナント追跡除去: feaaad49-3023-4a94-826f-491baf100a89
+テナント 2 削除完了: feaaad49-3023-4a94-826f-491baf100a89
+[TestDataManager] テナント追跡除去: dd8f0462-324e-4826-98e6-eef27b63914c
+テナント 3 削除完了: dd8f0462-324e-4826-98e6-eef27b63914c
+[TestDataManager] テナント追跡除去: a9cfcaac-3bef-4776-be43-5ccff7c048ac
+テナント 4 削除完了: a9cfcaac-3bef-4776-be43-5ccff7c048ac
+[TestDataManager] テナント追跡除去: ff13487d-e1a8-444f-b505-f5fc0ccc394d
+テナント 5 削除完了: ff13487d-e1a8-444f-b505-f5fc0ccc394d
+=== 削除完了 ===
+削除時間: 0.89秒
+平均削除時間: 0.18秒/テナント
+=== パフォーマンステスト完了 ===
+[TestDataManager] クリーンアップ対象なし
+</system-out>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

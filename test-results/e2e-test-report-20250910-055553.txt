@@ -1,0 +1,15 @@
+SaaSus SDK for PHP - E2Eテスト実行レポート
+==========================================
+
+実行日時: Wed Sep 10 05:55:53 UTC 2025
+テストグループ: user-crud
+カバレッジ生成: true
+
+環境情報:
+- PHP バージョン: PHP 8.1.33 (cli) (built: Aug  4 2025 20:59:14) (NTS)
+- SaaSus API URL: https://api.dev.saasus.io
+- テスト実行ディレクトリ: /app/test
+
+JUnitレポート: test-results/junit-e2e.xml
+カバレッジレポート: coverage-e2e.xml
+カバレッジHTML: coverage-html-e2e/index.html

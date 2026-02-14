@@ -4,10 +4,8 @@ namespace AntiPatternInc\Saasus\Laravel\Middleware;
 
 use AntiPatternInc\Saasus\Api\Client as ApiClient;
 use Closure;
-
 use Http\Client\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Response;
-
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
@@ -16,8 +14,8 @@ class Auth
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param Request $request
+     * @param Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -36,37 +34,35 @@ class Auth
             }
         }
 
-        $referer = $request->headers->get('referer');
-        if (empty($referer)) {
-            $referer = "";
-        }
-
-        $xSaasusReferer = $request->headers->get('x-saasus-referer');
-        if (empty($xSaasusReferer)) {
-            $xSaasusReferer = "";
-        }
+        $referer = $request->headers->get('referer') ?? "";
+        $xSaasusReferer = $request->headers->get('x-saasus-referer') ?? "";
 
         // リクエスト送信
         $client = new ApiClient($referer, $xSaasusReferer);
         $authApiClient = $client->getAuthClient();
+        
         try {
             $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);
         } catch (\Exception $e) {
             if ($e instanceof HttpException) {
                 $statusCode = $e->getResponse()->getStatusCode();
-                $type = json_decode($e->getResponse()->getBody(), true)["type"];
-                $message = json_decode($e->getResponse()->getBody(), true)["message"];
+                $responseBody = json_decode($e->getResponse()->getBody(), true);
+                $type = $responseBody["type"] ?? 'Unknown';
+                $message = $responseBody["message"] ?? 'Unknown error';
+                
+                Log::info("Type: {$type}, Message: {$message}");
+                
                 if ($statusCode == Response::HTTP_UNAUTHORIZED) {
-                    Log::info('Type: ' . $type . ', Message: ' . $message);
                     if (getenv('SAASUS_AUTH_MODE') == "api") {
                         return response()->json(['type' => $type, 'message' => $message], Response::HTTP_UNAUTHORIZED);
                     } else {
                         return redirect(getenv('SAASUS_LOGIN_URL'));
                     }
                 }
-                Log::info('Type: ' . $type . ', Message: ' . $message);
+                
                 return response()->json(['type' => $type, 'message' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
+            
             Log::info('Uncaught error: ' . $e);
             return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }

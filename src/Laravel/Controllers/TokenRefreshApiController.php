@@ -4,7 +4,6 @@ namespace AntiPatternInc\Saasus\Laravel\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +16,7 @@ use Http\Client\Exception\HttpException;
 
 class TokenRefreshApiController extends BaseController
 {
-  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, ValidatesRequests;
 
   public function index(Request $request)
   {

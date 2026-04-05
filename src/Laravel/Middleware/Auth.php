@@ -8,11 +8,18 @@ use Closure;
 use Http\Client\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Response;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class Auth
 {
+    // userinfo レスポンスのキャッシュ有効期間（秒）
+    // この期間中はロール変更・ユーザー無効化が反映されないため、
+    // セキュリティ要件に応じて SAASUS_USERINFO_CACHE_TTL 環境変数で調整すること
+    // デフォルト: 60秒、無効化する場合は 0 を設定
+    private const DEFAULT_CACHE_TTL_SECONDS = 60;
+
     /**
      * Handle an incoming request.
      *
@@ -46,17 +53,32 @@ class Auth
             $xSaasusReferer = "";
         }
 
-        // リクエスト送信
-        $client = new ApiClient($referer, $xSaasusReferer);
-        $authApiClient = $client->getAuthClient();
+        $ttl = (int) (getenv('SAASUS_USERINFO_CACHE_TTL') !== false
+            ? getenv('SAASUS_USERINFO_CACHE_TTL')
+            : self::DEFAULT_CACHE_TTL_SECONDS);
+
+        // referer もキーに含めることで、同一トークンでも referer が異なる場合に
+        // 別エントリとしてキャッシュする
+        $cacheKey = 'saasus_userinfo:' . hash('sha256', $token . ':' . $referer);
+
         try {
-            $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);
+            if ($ttl > 0) {
+                $userinfo = Cache::remember($cacheKey, $ttl, function () use ($token, $referer, $xSaasusReferer) {
+                    return $this->fetchUserInfo($token, $referer, $xSaasusReferer);
+                });
+            } else {
+                $userinfo = $this->fetchUserInfo($token, $referer, $xSaasusReferer);
+            }
         } catch (\Exception $e) {
             if ($e instanceof HttpException) {
                 $statusCode = $e->getResponse()->getStatusCode();
-                $type = json_decode($e->getResponse()->getBody(), true)["type"];
-                $message = json_decode($e->getResponse()->getBody(), true)["message"];
+                $body = json_decode($e->getResponse()->getBody(), true);
+                $type = $body['type'] ?? 'unknown';
+                $message = $body['message'] ?? 'unknown error';
+
                 if ($statusCode == Response::HTTP_UNAUTHORIZED) {
+                    // 認証エラーの場合はキャッシュを削除してから返す
+                    Cache::forget($cacheKey);
                     Log::info('Type: ' . $type . ', Message: ' . $message);
                     if (getenv('SAASUS_AUTH_MODE') == "api") {
                         return response()->json(['type' => $type, 'message' => $message], Response::HTTP_UNAUTHORIZED);
@@ -71,11 +93,19 @@ class Auth
             return response()->json('Uncaught error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $userinfo = $response->getBody();
-        $userinfo = json_decode($userinfo, true);
-
         $request->merge(['userinfo' => $userinfo]);
 
         return $next($request);
+    }
+
+    /**
+     * SaaSus API から userinfo を取得する
+     */
+    private function fetchUserInfo(string $token, string $referer, string $xSaasusReferer): array
+    {
+        $client = new ApiClient($referer, $xSaasusReferer);
+        $authApiClient = $client->getAuthClient();
+        $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);
+        return json_decode($response->getBody(), true);
     }
 }

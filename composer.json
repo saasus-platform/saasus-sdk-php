@@ -60,6 +60,11 @@
     }
   },
   "extra": {
+    "laravel": {
+      "providers": [
+        "AntiPatternInc\\Saasus\\Laravel\\SaasusServiceProvider"
+      ]
+    },
     "symfony": {
       "allow-contrib": "true"
     }

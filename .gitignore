@@ -2,3 +2,6 @@ vendor/
 composer.phar
 .phpunit.result.cache
 .history
+
+*.yml
+!docker-compose.yml

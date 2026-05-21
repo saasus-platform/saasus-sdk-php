@@ -46,8 +46,13 @@ class Auth
             $xSaasusReferer = "";
         }
 
+        $xSaasusTraceId = $request->headers->get('x-saasus-trace-id');
+        if (empty($xSaasusTraceId)) {
+            $xSaasusTraceId = "";
+        }
+
         // リクエスト送信
-        $client = new ApiClient($referer, $xSaasusReferer);
+        $client = new ApiClient($referer, $xSaasusReferer, $xSaasusTraceId);
         $authApiClient = $client->getAuthClient();
         try {
             $response = $authApiClient->getUserInfo(['token' => $token], $authApiClient::FETCH_RESPONSE);

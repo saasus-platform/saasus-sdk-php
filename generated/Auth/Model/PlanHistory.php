@@ -8,7 +8,7 @@ class PlanHistory extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -52,7 +52,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPlanId(): ?string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
@@ -63,7 +63,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanId(?string $planId): self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -74,7 +74,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return int|null
      */
-    public function getPlanAppliedAt(): ?int
+    public function getPlanAppliedAt() : ?int
     {
         return $this->planAppliedAt;
     }
@@ -85,7 +85,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanAppliedAt(?int $planAppliedAt): self
+    public function setPlanAppliedAt(?int $planAppliedAt) : self
     {
         $this->initialized['planAppliedAt'] = true;
         $this->planAppliedAt = $planAppliedAt;
@@ -96,7 +96,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTaxRateId(): ?string
+    public function getTaxRateId() : ?string
     {
         return $this->taxRateId;
     }
@@ -107,7 +107,7 @@ class PlanHistory extends \ArrayObject
      *
      * @return self
      */
-    public function setTaxRateId(?string $taxRateId): self
+    public function setTaxRateId(?string $taxRateId) : self
     {
         $this->initialized['taxRateId'] = true;
         $this->taxRateId = $taxRateId;
@@ -120,7 +120,7 @@ class PlanHistory extends \ArrayObject
     *
     * @return string|null
     */
-    public function getProrationBehavior(): ?string
+    public function getProrationBehavior() : ?string
     {
         return $this->prorationBehavior;
     }
@@ -133,7 +133,7 @@ class PlanHistory extends \ArrayObject
     *
     * @return self
     */
-    public function setProrationBehavior(?string $prorationBehavior): self
+    public function setProrationBehavior(?string $prorationBehavior) : self
     {
         $this->initialized['prorationBehavior'] = true;
         $this->prorationBehavior = $prorationBehavior;
@@ -147,7 +147,7 @@ class PlanHistory extends \ArrayObject
     *
     * @return bool|null
     */
-    public function getDeleteUsage(): ?bool
+    public function getDeleteUsage() : ?bool
     {
         return $this->deleteUsage;
     }
@@ -161,7 +161,7 @@ class PlanHistory extends \ArrayObject
     *
     * @return self
     */
-    public function setDeleteUsage(?bool $deleteUsage): self
+    public function setDeleteUsage(?bool $deleteUsage) : self
     {
         $this->initialized['deleteUsage'] = true;
         $this->deleteUsage = $deleteUsage;

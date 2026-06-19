@@ -8,7 +8,7 @@ class AuthInfo extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class AuthInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCallbackUrl(): ?string
+    public function getCallbackUrl() : ?string
     {
         return $this->callbackUrl;
     }
@@ -34,7 +34,7 @@ class AuthInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setCallbackUrl(?string $callbackUrl): self
+    public function setCallbackUrl(?string $callbackUrl) : self
     {
         $this->initialized['callbackUrl'] = true;
         $this->callbackUrl = $callbackUrl;

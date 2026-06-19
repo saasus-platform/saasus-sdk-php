@@ -8,7 +8,7 @@ class Envs extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Envs extends \ArrayObject
      *
      * @return list<Env>|null
      */
-    public function getEnvs(): ?array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
@@ -34,7 +34,7 @@ class Envs extends \ArrayObject
      *
      * @return self
      */
-    public function setEnvs(?array $envs): self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;

@@ -8,7 +8,7 @@ class UpdateTenantUserParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdateTenantUserParam extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getAttributes(): ?iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -34,7 +34,7 @@ class UpdateTenantUserParam extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributes(?iterable $attributes): self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;

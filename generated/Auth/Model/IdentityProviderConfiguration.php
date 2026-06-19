@@ -8,7 +8,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDomain(): ?string
+    public function getDomain() : ?string
     {
         return $this->domain;
     }
@@ -52,7 +52,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return self
      */
-    public function setDomain(?string $domain): self
+    public function setDomain(?string $domain) : self
     {
         $this->initialized['domain'] = true;
         $this->domain = $domain;
@@ -63,7 +63,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRedirectUrl(): ?string
+    public function getRedirectUrl() : ?string
     {
         return $this->redirectUrl;
     }
@@ -74,7 +74,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return self
      */
-    public function setRedirectUrl(?string $redirectUrl): self
+    public function setRedirectUrl(?string $redirectUrl) : self
     {
         $this->initialized['redirectUrl'] = true;
         $this->redirectUrl = $redirectUrl;
@@ -85,7 +85,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEntityId(): ?string
+    public function getEntityId() : ?string
     {
         return $this->entityId;
     }
@@ -96,7 +96,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return self
      */
-    public function setEntityId(?string $entityId): self
+    public function setEntityId(?string $entityId) : self
     {
         $this->initialized['entityId'] = true;
         $this->entityId = $entityId;
@@ -107,7 +107,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return string|null
      */
-    public function getReplyUrl(): ?string
+    public function getReplyUrl() : ?string
     {
         return $this->replyUrl;
     }
@@ -118,7 +118,7 @@ class IdentityProviderConfiguration extends \ArrayObject
      *
      * @return self
      */
-    public function setReplyUrl(?string $replyUrl): self
+    public function setReplyUrl(?string $replyUrl) : self
     {
         $this->initialized['replyUrl'] = true;
         $this->replyUrl = $replyUrl;

@@ -8,7 +8,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantName(): ?string
+    public function getTenantName() : ?string
     {
         return $this->tenantName;
     }
@@ -46,7 +46,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantName(?string $tenantName): self
+    public function setTenantName(?string $tenantName) : self
     {
         $this->initialized['tenantName'] = true;
         $this->tenantName = $tenantName;
@@ -57,7 +57,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAccessToken(): ?string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
@@ -68,7 +68,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken): self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -79,7 +79,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRegistrationToken(): ?string
+    public function getRegistrationToken() : ?string
     {
         return $this->registrationToken;
     }
@@ -90,7 +90,7 @@ class ConfirmSignUpWithAwsMarketplaceParam extends \ArrayObject
      *
      * @return self
      */
-    public function setRegistrationToken(?string $registrationToken): self
+    public function setRegistrationToken(?string $registrationToken) : self
     {
         $this->initialized['registrationToken'] = true;
         $this->registrationToken = $registrationToken;

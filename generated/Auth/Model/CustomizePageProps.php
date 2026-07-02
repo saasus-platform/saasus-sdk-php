@@ -8,7 +8,7 @@ class CustomizePageProps extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -39,7 +39,7 @@ class CustomizePageProps extends \ArrayObject
     *
     * @return string|null
     */
-    public function getHtmlContents(): ?string
+    public function getHtmlContents() : ?string
     {
         return $this->htmlContents;
     }
@@ -52,7 +52,7 @@ class CustomizePageProps extends \ArrayObject
     *
     * @return self
     */
-    public function setHtmlContents(?string $htmlContents): self
+    public function setHtmlContents(?string $htmlContents) : self
     {
         $this->initialized['htmlContents'] = true;
         $this->htmlContents = $htmlContents;
@@ -63,7 +63,7 @@ class CustomizePageProps extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsTermsOfService(): ?bool
+    public function getIsTermsOfService() : ?bool
     {
         return $this->isTermsOfService;
     }
@@ -74,7 +74,7 @@ class CustomizePageProps extends \ArrayObject
      *
      * @return self
      */
-    public function setIsTermsOfService(?bool $isTermsOfService): self
+    public function setIsTermsOfService(?bool $isTermsOfService) : self
     {
         $this->initialized['isTermsOfService'] = true;
         $this->isTermsOfService = $isTermsOfService;
@@ -85,7 +85,7 @@ class CustomizePageProps extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsPrivacyPolicy(): ?bool
+    public function getIsPrivacyPolicy() : ?bool
     {
         return $this->isPrivacyPolicy;
     }
@@ -96,7 +96,7 @@ class CustomizePageProps extends \ArrayObject
      *
      * @return self
      */
-    public function setIsPrivacyPolicy(?bool $isPrivacyPolicy): self
+    public function setIsPrivacyPolicy(?bool $isPrivacyPolicy) : self
     {
         $this->initialized['isPrivacyPolicy'] = true;
         $this->isPrivacyPolicy = $isPrivacyPolicy;

@@ -8,7 +8,7 @@ class EventMessage extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class EventMessage extends \ArrayObject
      *
      * @return string
      */
-    public function getEventType(): string
+    public function getEventType() : string
     {
         return $this->eventType;
     }
@@ -46,7 +46,7 @@ class EventMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setEventType(string $eventType): self
+    public function setEventType(string $eventType) : self
     {
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
@@ -57,7 +57,7 @@ class EventMessage extends \ArrayObject
      *
      * @return string
      */
-    public function getEventDetailType(): string
+    public function getEventDetailType() : string
     {
         return $this->eventDetailType;
     }
@@ -68,7 +68,7 @@ class EventMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setEventDetailType(string $eventDetailType): self
+    public function setEventDetailType(string $eventDetailType) : self
     {
         $this->initialized['eventDetailType'] = true;
         $this->eventDetailType = $eventDetailType;
@@ -79,7 +79,7 @@ class EventMessage extends \ArrayObject
      *
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage() : string
     {
         return $this->message;
     }
@@ -90,7 +90,7 @@ class EventMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setMessage(string $message): self
+    public function setMessage(string $message) : self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

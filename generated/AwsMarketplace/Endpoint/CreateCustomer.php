@@ -14,22 +14,22 @@ class CreateCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\C
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\EndpointTrait;
-    public function getMethod(): string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    public function getUri(): string
+    public function getUri() : string
     {
         return '/customers';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\CreateCustomerParam) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }
-    public function getExtraHeaders(): array
+    public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
@@ -45,13 +45,13 @@ class CreateCustomer extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\C
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Customer', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Customer', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\CreateCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\CreateCustomerInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\AwsMarketplace\\Model\\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes(): array
+    public function getAuthenticationScopes() : array
     {
         return ['Bearer'];
     }

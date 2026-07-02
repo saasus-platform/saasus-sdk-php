@@ -8,7 +8,7 @@ class PricingMenus extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class PricingMenus extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getPricingMenus(): ?array
+    public function getPricingMenus() : ?array
     {
         return $this->pricingMenus;
     }
@@ -34,7 +34,7 @@ class PricingMenus extends \ArrayObject
      *
      * @return self
      */
-    public function setPricingMenus(?array $pricingMenus): self
+    public function setPricingMenus(?array $pricingMenus) : self
     {
         $this->initialized['pricingMenus'] = true;
         $this->pricingMenus = $pricingMenus;

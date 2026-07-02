@@ -8,7 +8,7 @@ class BillingAddress extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -53,7 +53,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getStreet(): ?string
+    public function getStreet() : ?string
     {
         return $this->street;
     }
@@ -64,7 +64,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setStreet(?string $street): self
+    public function setStreet(?string $street) : self
     {
         $this->initialized['street'] = true;
         $this->street = $street;
@@ -75,7 +75,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCity(): ?string
+    public function getCity() : ?string
     {
         return $this->city;
     }
@@ -86,7 +86,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setCity(?string $city): self
+    public function setCity(?string $city) : self
     {
         $this->initialized['city'] = true;
         $this->city = $city;
@@ -97,7 +97,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getState(): ?string
+    public function getState() : ?string
     {
         return $this->state;
     }
@@ -108,7 +108,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setState(?string $state): self
+    public function setState(?string $state) : self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -119,7 +119,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCountry(): ?string
+    public function getCountry() : ?string
     {
         return $this->country;
     }
@@ -130,7 +130,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setCountry(?string $country): self
+    public function setCountry(?string $country) : self
     {
         $this->initialized['country'] = true;
         $this->country = $country;
@@ -141,7 +141,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAdditionalAddressInfo(): ?string
+    public function getAdditionalAddressInfo() : ?string
     {
         return $this->additionalAddressInfo;
     }
@@ -152,7 +152,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setAdditionalAddressInfo(?string $additionalAddressInfo): self
+    public function setAdditionalAddressInfo(?string $additionalAddressInfo) : self
     {
         $this->initialized['additionalAddressInfo'] = true;
         $this->additionalAddressInfo = $additionalAddressInfo;
@@ -163,7 +163,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPostalCode(): ?string
+    public function getPostalCode() : ?string
     {
         return $this->postalCode;
     }
@@ -174,7 +174,7 @@ class BillingAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setPostalCode(?string $postalCode): self
+    public function setPostalCode(?string $postalCode) : self
     {
         $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;

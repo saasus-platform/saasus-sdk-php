@@ -34,8 +34,9 @@ class Client
     protected string $apibase;
     protected string $referer;
     protected string $xSaasusReferer;
+    protected string $xSaasusTraceId;
 
-    function __construct($referer = "", $xSaasusReferer = "")
+    function __construct($referer = "", $xSaasusReferer = "", $xSaasusTraceId = "")
     {
         $this->secret = getenv('SAASUS_SECRET_KEY');
         $this->saasid = getenv('SAASUS_SAAS_ID');
@@ -59,6 +60,7 @@ class Client
 
         $this->referer = $referer;
         $this->xSaasusReferer = $xSaasusReferer;
+        $this->xSaasusTraceId = $xSaasusTraceId;
 
         $handlers = HandlerStack::create();
         $handlers->push(new GuzzleMiddleware(
@@ -66,7 +68,8 @@ class Client
             $this->saasid,
             $this->apikey,
             $this->referer,
-            $this->xSaasusReferer
+            $this->xSaasusReferer,
+            $this->xSaasusTraceId
         ));
 
         $this->guzzleClient = new GuzzleClient(

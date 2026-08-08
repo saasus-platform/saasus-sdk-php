@@ -21,19 +21,19 @@ class DeleteMeteringUnitTimestampCount extends \AntiPatternInc\Saasus\Sdk\Pricin
         $this->timestamp = $timestamp;
     }
     use \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\EndpointTrait;
-    public function getMethod(): string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    public function getUri(): string
+    public function getUri() : string
     {
         return str_replace(['{tenant_id}', '{metering_unit_name}', '{timestamp}'], [$this->tenant_id, $this->metering_unit_name, $this->timestamp], '/metering/tenants/{tenant_id}/units/{metering_unit_name}/timestamp/{timestamp}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return [[], null];
     }
-    public function getExtraHeaders(): array
+    public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
@@ -52,10 +52,10 @@ class DeleteMeteringUnitTimestampCount extends \AntiPatternInc\Saasus\Sdk\Pricin
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteMeteringUnitTimestampCountInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Pricing\Model\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\DeleteMeteringUnitTimestampCountInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes(): array
+    public function getAuthenticationScopes() : array
     {
         return ['Bearer'];
     }

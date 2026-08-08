@@ -8,7 +8,7 @@ class TenantProps extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class TenantProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -46,7 +46,7 @@ class TenantProps extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -57,7 +57,7 @@ class TenantProps extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getAttributes(): ?iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -68,7 +68,7 @@ class TenantProps extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributes(?iterable $attributes): self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -79,7 +79,7 @@ class TenantProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getBackOfficeStaffEmail(): ?string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
@@ -90,7 +90,7 @@ class TenantProps extends \ArrayObject
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail): self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;

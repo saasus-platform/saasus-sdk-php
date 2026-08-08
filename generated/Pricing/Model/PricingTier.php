@@ -8,7 +8,7 @@ class PricingTier extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class PricingTier extends \ArrayObject
      *
      * @return int|null
      */
-    public function getUpTo(): ?int
+    public function getUpTo() : ?int
     {
         return $this->upTo;
     }
@@ -52,7 +52,7 @@ class PricingTier extends \ArrayObject
      *
      * @return self
      */
-    public function setUpTo(?int $upTo): self
+    public function setUpTo(?int $upTo) : self
     {
         $this->initialized['upTo'] = true;
         $this->upTo = $upTo;
@@ -63,7 +63,7 @@ class PricingTier extends \ArrayObject
      *
      * @return int|null
      */
-    public function getUnitAmount(): ?int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
@@ -74,7 +74,7 @@ class PricingTier extends \ArrayObject
      *
      * @return self
      */
-    public function setUnitAmount(?int $unitAmount): self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -85,7 +85,7 @@ class PricingTier extends \ArrayObject
      *
      * @return int|null
      */
-    public function getFlatAmount(): ?int
+    public function getFlatAmount() : ?int
     {
         return $this->flatAmount;
     }
@@ -96,7 +96,7 @@ class PricingTier extends \ArrayObject
      *
      * @return self
      */
-    public function setFlatAmount(?int $flatAmount): self
+    public function setFlatAmount(?int $flatAmount) : self
     {
         $this->initialized['flatAmount'] = true;
         $this->flatAmount = $flatAmount;
@@ -107,7 +107,7 @@ class PricingTier extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getInf(): ?bool
+    public function getInf() : ?bool
     {
         return $this->inf;
     }
@@ -118,7 +118,7 @@ class PricingTier extends \ArrayObject
      *
      * @return self
      */
-    public function setInf(?bool $inf): self
+    public function setInf(?bool $inf) : self
     {
         $this->initialized['inf'] = true;
         $this->inf = $inf;

@@ -8,7 +8,7 @@ class Tenant extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -55,10 +55,13 @@ class Tenant extends \ArrayObject
      */
     protected $nextPlanId;
     /**
-     * Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.)
-     *
-     * @var int|null
-     */
+    * This parameter is set when reserving a pricing plan change for a future date and time. It is not required for immediate application.
+    When specifying the next pricing plan start date and time, please specify a date and time at least 5 minutes after the current time.
+    Note for Stripe integration: By specifying the beginning of the current month (00:00 UTC) as the start date and time, you can create a subscription that starts from the first day of that month. (Example: To specify January 1, 2023 00:00 UTC → 1672531200)
+    
+    *
+    * @var int|null
+    */
     protected $usingNextPlanFrom;
     /**
      * 
@@ -94,7 +97,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -105,7 +108,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -116,7 +119,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPlanId(): ?string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
@@ -127,7 +130,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanId(?string $planId): self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -138,7 +141,7 @@ class Tenant extends \ArrayObject
      *
      * @return BillingInfo|null
      */
-    public function getBillingInfo(): ?BillingInfo
+    public function getBillingInfo() : ?BillingInfo
     {
         return $this->billingInfo;
     }
@@ -149,7 +152,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setBillingInfo(?BillingInfo $billingInfo): self
+    public function setBillingInfo(?BillingInfo $billingInfo) : self
     {
         $this->initialized['billingInfo'] = true;
         $this->billingInfo = $billingInfo;
@@ -160,7 +163,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -171,7 +174,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -182,7 +185,7 @@ class Tenant extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getAttributes(): ?iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -193,7 +196,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributes(?iterable $attributes): self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -204,7 +207,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getBackOfficeStaffEmail(): ?string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
@@ -215,7 +218,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail): self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;
@@ -226,7 +229,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getNextPlanId(): ?string
+    public function getNextPlanId() : ?string
     {
         return $this->nextPlanId;
     }
@@ -237,29 +240,35 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setNextPlanId(?string $nextPlanId): self
+    public function setNextPlanId(?string $nextPlanId) : self
     {
         $this->initialized['nextPlanId'] = true;
         $this->nextPlanId = $nextPlanId;
         return $this;
     }
     /**
-     * Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.)
-     *
-     * @return int|null
-     */
-    public function getUsingNextPlanFrom(): ?int
+    * This parameter is set when reserving a pricing plan change for a future date and time. It is not required for immediate application.
+    When specifying the next pricing plan start date and time, please specify a date and time at least 5 minutes after the current time.
+    Note for Stripe integration: By specifying the beginning of the current month (00:00 UTC) as the start date and time, you can create a subscription that starts from the first day of that month. (Example: To specify January 1, 2023 00:00 UTC → 1672531200)
+    
+    *
+    * @return int|null
+    */
+    public function getUsingNextPlanFrom() : ?int
     {
         return $this->usingNextPlanFrom;
     }
     /**
-     * Next billing plan start time (When using stripe, you can create a subscription that starts at the beginning of the current month by specifying 00:00 (UTC) at the beginning of the current month. Ex. 1672531200 for January 2023.)
-     *
-     * @param int|null $usingNextPlanFrom
-     *
-     * @return self
-     */
-    public function setUsingNextPlanFrom(?int $usingNextPlanFrom): self
+    * This parameter is set when reserving a pricing plan change for a future date and time. It is not required for immediate application.
+    When specifying the next pricing plan start date and time, please specify a date and time at least 5 minutes after the current time.
+    Note for Stripe integration: By specifying the beginning of the current month (00:00 UTC) as the start date and time, you can create a subscription that starts from the first day of that month. (Example: To specify January 1, 2023 00:00 UTC → 1672531200)
+    
+    *
+    * @param int|null $usingNextPlanFrom
+    *
+    * @return self
+    */
+    public function setUsingNextPlanFrom(?int $usingNextPlanFrom) : self
     {
         $this->initialized['usingNextPlanFrom'] = true;
         $this->usingNextPlanFrom = $usingNextPlanFrom;
@@ -270,7 +279,7 @@ class Tenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getNextPlanTaxRateId(): ?string
+    public function getNextPlanTaxRateId() : ?string
     {
         return $this->nextPlanTaxRateId;
     }
@@ -281,7 +290,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setNextPlanTaxRateId(?string $nextPlanTaxRateId): self
+    public function setNextPlanTaxRateId(?string $nextPlanTaxRateId) : self
     {
         $this->initialized['nextPlanTaxRateId'] = true;
         $this->nextPlanTaxRateId = $nextPlanTaxRateId;
@@ -294,7 +303,7 @@ class Tenant extends \ArrayObject
     *
     * @return string|null
     */
-    public function getProrationBehavior(): ?string
+    public function getProrationBehavior() : ?string
     {
         return $this->prorationBehavior;
     }
@@ -307,7 +316,7 @@ class Tenant extends \ArrayObject
     *
     * @return self
     */
-    public function setProrationBehavior(?string $prorationBehavior): self
+    public function setProrationBehavior(?string $prorationBehavior) : self
     {
         $this->initialized['prorationBehavior'] = true;
         $this->prorationBehavior = $prorationBehavior;
@@ -321,7 +330,7 @@ class Tenant extends \ArrayObject
     *
     * @return bool|null
     */
-    public function getDeleteUsage(): ?bool
+    public function getDeleteUsage() : ?bool
     {
         return $this->deleteUsage;
     }
@@ -335,7 +344,7 @@ class Tenant extends \ArrayObject
     *
     * @return self
     */
-    public function setDeleteUsage(?bool $deleteUsage): self
+    public function setDeleteUsage(?bool $deleteUsage) : self
     {
         $this->initialized['deleteUsage'] = true;
         $this->deleteUsage = $deleteUsage;
@@ -346,7 +355,7 @@ class Tenant extends \ArrayObject
      *
      * @return list<PlanHistory>|null
      */
-    public function getPlanHistories(): ?array
+    public function getPlanHistories() : ?array
     {
         return $this->planHistories;
     }
@@ -357,7 +366,7 @@ class Tenant extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanHistories(?array $planHistories): self
+    public function setPlanHistories(?array $planHistories) : self
     {
         $this->initialized['planHistories'] = true;
         $this->planHistories = $planHistories;

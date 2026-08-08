@@ -8,7 +8,7 @@ class AccountVerification extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -38,7 +38,7 @@ class AccountVerification extends \ArrayObject
     *
     * @return string|null
     */
-    public function getVerificationMethod(): ?string
+    public function getVerificationMethod() : ?string
     {
         return $this->verificationMethod;
     }
@@ -52,7 +52,7 @@ class AccountVerification extends \ArrayObject
     *
     * @return self
     */
-    public function setVerificationMethod(?string $verificationMethod): self
+    public function setVerificationMethod(?string $verificationMethod) : self
     {
         $this->initialized['verificationMethod'] = true;
         $this->verificationMethod = $verificationMethod;
@@ -66,7 +66,7 @@ class AccountVerification extends \ArrayObject
     *
     * @return string|null
     */
-    public function getSendingTo(): ?string
+    public function getSendingTo() : ?string
     {
         return $this->sendingTo;
     }
@@ -80,7 +80,7 @@ class AccountVerification extends \ArrayObject
     *
     * @return self
     */
-    public function setSendingTo(?string $sendingTo): self
+    public function setSendingTo(?string $sendingTo) : self
     {
         $this->initialized['sendingTo'] = true;
         $this->sendingTo = $sendingTo;

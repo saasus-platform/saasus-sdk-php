@@ -23,23 +23,23 @@ class GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriod extends \AntiPa
         $this->queryParameters = $queryParameters;
     }
     use \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\EndpointTrait;
-    public function getMethod(): string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    public function getUri(): string
+    public function getUri() : string
     {
         return str_replace(['{tenant_id}', '{metering_unit_name}'], [$this->tenant_id, $this->metering_unit_name], '/metering/tenants/{tenant_id}/units/{metering_unit_name}/date-period');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return [[], null];
     }
-    public function getExtraHeaders(): array
+    public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['start_timestamp', 'end_timestamp']);
@@ -61,13 +61,13 @@ class GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriod extends \AntiPa
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDatePeriodCounts', 'json');
+            return $serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\MeteringUnitDatePeriodCounts', 'json');
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriodInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Pricing\Model\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Pricing\Exception\GetMeteringUnitDateCountByTenantIdAndUnitNameAndDatePeriodInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Pricing\\Model\\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes(): array
+    public function getAuthenticationScopes() : array
     {
         return ['Bearer'];
     }

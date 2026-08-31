@@ -8,7 +8,7 @@ class PlanHistories extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class PlanHistories extends \ArrayObject
      *
      * @return list<PlanHistory>|null
      */
-    public function getPlanHistories(): ?array
+    public function getPlanHistories() : ?array
     {
         return $this->planHistories;
     }
@@ -34,7 +34,7 @@ class PlanHistories extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanHistories(?array $planHistories): self
+    public function setPlanHistories(?array $planHistories) : self
     {
         $this->initialized['planHistories'] = true;
         $this->planHistories = $planHistories;

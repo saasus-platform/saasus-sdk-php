@@ -8,7 +8,7 @@ class Comments extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Comments extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getComments(): ?array
+    public function getComments() : ?array
     {
         return $this->comments;
     }
@@ -34,7 +34,7 @@ class Comments extends \ArrayObject
      *
      * @return self
      */
-    public function setComments(?array $comments): self
+    public function setComments(?array $comments) : self
     {
         $this->initialized['comments'] = true;
         $this->comments = $comments;

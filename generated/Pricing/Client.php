@@ -200,6 +200,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Client\Client
      *
      * @param null|\AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdatePricingPlansUsedNotImplementedException
      * @throws \AntiPatternInc\Saasus\Sdk\Pricing\Exception\UpdatePricingPlansUsedInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface

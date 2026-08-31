@@ -8,7 +8,7 @@ class Attribute extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Attribute extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAttributeName(): ?string
+    public function getAttributeName() : ?string
     {
         return $this->attributeName;
     }
@@ -46,7 +46,7 @@ class Attribute extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributeName(?string $attributeName): self
+    public function setAttributeName(?string $attributeName) : self
     {
         $this->initialized['attributeName'] = true;
         $this->attributeName = $attributeName;
@@ -57,7 +57,7 @@ class Attribute extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -68,7 +68,7 @@ class Attribute extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -79,7 +79,7 @@ class Attribute extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAttributeType(): ?string
+    public function getAttributeType() : ?string
     {
         return $this->attributeType;
     }
@@ -90,7 +90,7 @@ class Attribute extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributeType(?string $attributeType): self
+    public function setAttributeType(?string $attributeType) : self
     {
         $this->initialized['attributeType'] = true;
         $this->attributeType = $attributeType;

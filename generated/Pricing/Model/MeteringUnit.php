@@ -8,7 +8,7 @@ class MeteringUnit extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -56,7 +56,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -67,7 +67,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -78,7 +78,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getUsed(): ?bool
+    public function getUsed() : ?bool
     {
         return $this->used;
     }
@@ -89,7 +89,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setUsed(?bool $used): self
+    public function setUsed(?bool $used) : self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
@@ -100,7 +100,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return string|null
      */
-    public function getUnitName(): ?string
+    public function getUnitName() : ?string
     {
         return $this->unitName;
     }
@@ -111,7 +111,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setUnitName(?string $unitName): self
+    public function setUnitName(?string $unitName) : self
     {
         $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
@@ -125,7 +125,7 @@ class MeteringUnit extends \ArrayObject
     *
     * @return string|null
     */
-    public function getAggregateUsage(): ?string
+    public function getAggregateUsage() : ?string
     {
         return $this->aggregateUsage;
     }
@@ -139,7 +139,7 @@ class MeteringUnit extends \ArrayObject
     *
     * @return self
     */
-    public function setAggregateUsage(?string $aggregateUsage): self
+    public function setAggregateUsage(?string $aggregateUsage) : self
     {
         $this->initialized['aggregateUsage'] = true;
         $this->aggregateUsage = $aggregateUsage;
@@ -150,7 +150,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -161,7 +161,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -172,7 +172,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -183,7 +183,7 @@ class MeteringUnit extends \ArrayObject
      *
      * @return self
      */
-    public function setDescription(?string $description): self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;

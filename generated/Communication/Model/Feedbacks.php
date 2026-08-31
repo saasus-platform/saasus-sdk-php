@@ -8,7 +8,7 @@ class Feedbacks extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Feedbacks extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getFeedbacks(): ?array
+    public function getFeedbacks() : ?array
     {
         return $this->feedbacks;
     }
@@ -34,7 +34,7 @@ class Feedbacks extends \ArrayObject
      *
      * @return self
      */
-    public function setFeedbacks(?array $feedbacks): self
+    public function setFeedbacks(?array $feedbacks) : self
     {
         $this->initialized['feedbacks'] = true;
         $this->feedbacks = $feedbacks;

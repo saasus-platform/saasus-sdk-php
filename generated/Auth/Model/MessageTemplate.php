@@ -8,7 +8,7 @@ class MessageTemplate extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class MessageTemplate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSubject(): ?string
+    public function getSubject() : ?string
     {
         return $this->subject;
     }
@@ -40,7 +40,7 @@ class MessageTemplate extends \ArrayObject
      *
      * @return self
      */
-    public function setSubject(?string $subject): self
+    public function setSubject(?string $subject) : self
     {
         $this->initialized['subject'] = true;
         $this->subject = $subject;
@@ -51,7 +51,7 @@ class MessageTemplate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMessage(): ?string
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -62,7 +62,7 @@ class MessageTemplate extends \ArrayObject
      *
      * @return self
      */
-    public function setMessage(?string $message): self
+    public function setMessage(?string $message) : self
     {
         $this->initialized['message'] = true;
         $this->message = $message;

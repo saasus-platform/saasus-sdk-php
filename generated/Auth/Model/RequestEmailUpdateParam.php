@@ -8,7 +8,7 @@ class RequestEmailUpdateParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class RequestEmailUpdateParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEmail(): ?string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
@@ -40,7 +40,7 @@ class RequestEmailUpdateParam extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(?string $email): self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -51,7 +51,7 @@ class RequestEmailUpdateParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAccessToken(): ?string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
@@ -62,7 +62,7 @@ class RequestEmailUpdateParam extends \ArrayObject
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken): self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;

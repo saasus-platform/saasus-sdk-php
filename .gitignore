@@ -5,3 +5,10 @@ composer.phar
 
 *.yml
 !docker-compose.yml
+
+# Local E2E credentials
+.env
+.env.*
+
+# Generated E2E snapshots and reports
+test/E2E/Snapshots/

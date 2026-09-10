@@ -54,11 +54,12 @@
     "friendsofphp/php-cs-fixer": "^3.10"
   },
   "scripts": {
-    "test": "phpunit test"
+    "test": "phpunit --configuration test/phpunit.xml"
   },
   "config": {
     "allow-plugins": {
-      "kylekatarnls/update-helper": true
+      "kylekatarnls/update-helper": true,
+      "php-http/discovery": true
     }
   },
   "extra": {

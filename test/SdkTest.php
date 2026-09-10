@@ -12,7 +12,6 @@ class SdkTest extends TestCase
 {
     public function testSign()
     {
-
         $header = GuzzleMiddleware::getSignAsHeader(
             "AAA",
             "BBB",
@@ -24,11 +23,15 @@ class SdkTest extends TestCase
             ""
         );
 
-        var_dump($header);
+        $this->assertStringStartsWith("SAASUSSIGV1 Sig=", $header);
+        $this->assertStringContainsString(", SaaSID=CCC, APIKey=BBB", $header);
     }
 
     public function testApi()
     {
+        $this->markTestSkipped(
+            "Legacy test that changes a live SaaSus environment; module E2E stories must be used instead."
+        );
 
         $apiClient = new Client(
             "aaa",

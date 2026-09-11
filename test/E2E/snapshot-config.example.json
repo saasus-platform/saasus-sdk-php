@@ -1,0 +1,32 @@
+{
+    "mode": "full",
+    "module_name": "billing",
+    "file_name_format": "story_snapshot_{tag}_{story_name}.json",
+    "capture_level": "FULL",
+    "comparison_mode": "release",
+    "sdk_version": "development",
+    "test_environment": "e2e",
+    "validation_enabled": true,
+    "verbose": true,
+    "stories": [
+        "Billing API"
+    ],
+    "validation_rules": {
+        "completion": {
+            "enabled": true,
+            "severity": "error"
+        },
+        "sequence": {
+            "enabled": true,
+            "severity": "error"
+        },
+        "state_transition": {
+            "enabled": true,
+            "severity": "warning"
+        },
+        "timing": {
+            "enabled": false,
+            "severity": "info"
+        }
+    }
+}

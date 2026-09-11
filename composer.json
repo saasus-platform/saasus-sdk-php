@@ -37,7 +37,6 @@
   ],
   "require": {
     "php": ">=8.0.2",
-    "laravel/framework": ">=9 <12",
     "guzzlehttp/guzzle": "^7.4",
     "guzzlehttp/psr7": "^1.7.0|^2.0",
     "guzzlehttp/promises": "^1.4.0",
@@ -53,12 +52,19 @@
     "jane-php/json-schema": "7.8.0",
     "friendsofphp/php-cs-fixer": "^3.10"
   },
+  "suggest": {
+    "laravel/framework": "Install this in applications that integrate the SDK with Laravel."
+  },
   "scripts": {
-    "test": "phpunit test"
+    "test": "phpunit --configuration test/phpunit.xml"
   },
   "config": {
     "allow-plugins": {
-      "kylekatarnls/update-helper": true
+      "kylekatarnls/update-helper": true,
+      "php-http/discovery": true
+    },
+    "platform": {
+      "php": "8.0.2"
     }
   },
   "extra": {

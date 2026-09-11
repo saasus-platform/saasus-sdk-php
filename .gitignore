@@ -5,3 +5,9 @@ composer.phar
 
 *.yml
 !docker-compose.yml
+
+.env
+
+# Generated from committed, tagged E2E snapshots.
+test/E2E/Snapshots/*/story_comparisons/
+test/E2E/Snapshots/*/story_reports/

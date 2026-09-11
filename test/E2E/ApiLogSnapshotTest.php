@@ -1,0 +1,104 @@
+<?php
+
+namespace AntiPatternInc\Saasus\Test\E2E;
+
+use AntiPatternInc\Saasus\Test\TestLib\Config;
+use AntiPatternInc\Saasus\Test\TestLib\E2EEngine;
+use AntiPatternInc\Saasus\Test\TestLib\Snapshot\SnapshotComparator;
+use AntiPatternInc\Saasus\Test\TestLib\Snapshot\SnapshotConfig;
+use AntiPatternInc\Saasus\Test\TestLib\Snapshot\SnapshotManager;
+use AntiPatternInc\Saasus\Test\TestLib\TestStatus;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @group e2e
+ * @group snapshot
+ */
+final class ApiLogSnapshotTest extends TestCase
+{
+    public function testApiLogApiSnapshots(): void
+    {
+        $snapshotConfig = SnapshotConfig::fromEnvironment(
+            __DIR__ . '/Snapshots/apilog',
+            'apilog'
+        );
+        $manager = new SnapshotManager($snapshotConfig->outputDirectory, $snapshotConfig);
+
+        if (in_array($snapshotConfig->mode, [SnapshotManager::MODE_COMPARE, SnapshotManager::MODE_REPORT], true)) {
+            $this->assertSnapshotReport($manager->process($snapshotConfig->mode), $snapshotConfig->mode);
+            return;
+        }
+        if (!filter_var(getenv('SAASUS_E2E') ?: 'false', FILTER_VALIDATE_BOOLEAN)) {
+            $this->markTestSkipped('Set SAASUS_E2E=true to run ApiLog snapshot tests.');
+        }
+
+        $config = Config::fromEnvironment();
+        $config->validate();
+        if ($config->dryRun) {
+            self::fail('Snapshot tests require real responses; unset E2E_DRY_RUN.');
+        }
+
+        $client = ApiLogApiTest::createApiLogClient($config);
+        $stories = array_values(array_filter(
+            ApiLogApiTest::apiLogStories($client),
+            static fn ($story): bool => $snapshotConfig->matchesStory($story->name)
+        ));
+        self::assertNotSame([], $stories, 'No ApiLog stories matched the snapshot filter.');
+
+        $engine = new E2EEngine($client, ApiLogApiTest::methods(), $config);
+        $results = $engine->executeStories($stories);
+        $engine->printResults($results);
+
+        $failures = [];
+        foreach ($results as $result) {
+            if ($result->status !== TestStatus::FAILED) {
+                continue;
+            }
+            $failures[] = sprintf(
+                '%s: %s',
+                $result->storyName,
+                $result->error === null ? 'unknown error' : $result->error->getMessage()
+            );
+        }
+        self::assertSame([], $failures, implode(PHP_EOL, $failures));
+        self::assertTrue(
+            $engine->coverage->isFullyCovered(),
+            'Untested ApiLog client methods: ' . implode(', ', $engine->coverage->getUntestedMethods())
+        );
+
+        $snapshots = $manager->createSnapshots($stories, $results, 'apilog');
+        $this->assertSnapshotReport(
+            $manager->process($snapshotConfig->mode, $snapshots),
+            $snapshotConfig->mode
+        );
+    }
+
+    /** @param array<string, mixed> $report */
+    private function assertSnapshotReport(array $report, string $mode): void
+    {
+        fwrite(STDOUT, sprintf(
+            "Snapshot mode: %s\nTags: %s -> %s\nSnapshots: %d\nCompatibility: %s\nDifferences: %d\n",
+            $report['mode'],
+            $report['old_tag'] === '' ? '(baseline)' : $report['old_tag'],
+            $report['new_tag'],
+            $report['snapshots'],
+            $report['compatibility'],
+            count($report['differences'])
+        ));
+
+        self::assertGreaterThan(0, $report['snapshots'], 'No snapshots were processed.');
+        foreach ($report['validations'] as $validation) {
+            self::assertTrue(
+                $validation['is_valid'],
+                'Snapshot validation failed for ' . $validation['story_name']
+            );
+        }
+        if ($mode !== SnapshotManager::MODE_REPORT) {
+            self::assertNotSame(
+                SnapshotComparator::BREAKING,
+                $report['compatibility'],
+                SnapshotManager::formatDifferences($report['differences'])
+            );
+        }
+    }
+}

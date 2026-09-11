@@ -29,6 +29,9 @@ class SdkTest extends TestCase
 
     public function testApi()
     {
+        $this->markTestSkipped(
+            "Legacy test that changes a live SaaSus environment; module E2E stories must be used instead."
+        );
 
         $apiClient = new Client(
             "aaa",

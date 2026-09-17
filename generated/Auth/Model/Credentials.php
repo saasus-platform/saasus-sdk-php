@@ -8,7 +8,7 @@ class Credentials extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Credentials extends \ArrayObject
      *
      * @return string|null
      */
-    public function getIdToken(): ?string
+    public function getIdToken() : ?string
     {
         return $this->idToken;
     }
@@ -46,7 +46,7 @@ class Credentials extends \ArrayObject
      *
      * @return self
      */
-    public function setIdToken(?string $idToken): self
+    public function setIdToken(?string $idToken) : self
     {
         $this->initialized['idToken'] = true;
         $this->idToken = $idToken;
@@ -57,7 +57,7 @@ class Credentials extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAccessToken(): ?string
+    public function getAccessToken() : ?string
     {
         return $this->accessToken;
     }
@@ -68,7 +68,7 @@ class Credentials extends \ArrayObject
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken): self
+    public function setAccessToken(?string $accessToken) : self
     {
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
@@ -79,7 +79,7 @@ class Credentials extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRefreshToken(): ?string
+    public function getRefreshToken() : ?string
     {
         return $this->refreshToken;
     }
@@ -90,7 +90,7 @@ class Credentials extends \ArrayObject
      *
      * @return self
      */
-    public function setRefreshToken(?string $refreshToken): self
+    public function setRefreshToken(?string $refreshToken) : self
     {
         $this->initialized['refreshToken'] = true;
         $this->refreshToken = $refreshToken;

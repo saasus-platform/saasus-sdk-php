@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -54,42 +54,66 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('email', $data) && $data['email'] === null) {
                 $object->setEmail(null);
             }
-            if (\array_key_exists('tenants', $data) && $data['tenants'] !== null) {
-                $values = [];
-                foreach ($data['tenants'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class, 'json', $context);
+            if (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] !== null) {
+                $object->setSignInId($data['sign_in_id']);
+                unset($data['sign_in_id']);
+            }
+            elseif (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] === null) {
+                $object->setSignInId(null);
+            }
+            if (\array_key_exists('user_attribute', $data) && $data['user_attribute'] !== null) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['user_attribute'] as $key => $value) {
+                    $values[$key] = $value;
                 }
-                $object->setTenants($values);
+                $object->setUserAttribute($values);
+                unset($data['user_attribute']);
+            }
+            elseif (\array_key_exists('user_attribute', $data) && $data['user_attribute'] === null) {
+                $object->setUserAttribute(null);
+            }
+            if (\array_key_exists('tenants', $data) && $data['tenants'] !== null) {
+                $values_1 = [];
+                foreach ($data['tenants'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class, 'json', $context);
+                }
+                $object->setTenants($values_1);
                 unset($data['tenants']);
             }
             elseif (\array_key_exists('tenants', $data) && $data['tenants'] === null) {
                 $object->setTenants(null);
             }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
+            foreach ($data as $key_1 => $value_2) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_2;
                 }
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['id'] = $object->getId();
             $data['email'] = $object->getEmail();
+            $data['sign_in_id'] = $object->getSignInId();
             $values = [];
-            foreach ($object->getTenants() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($object->getUserAttribute() as $key => $value) {
+                $values[$key] = $value;
             }
-            $data['tenants'] = $values;
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
+            $data['user_attribute'] = $values;
+            $values_1 = [];
+            foreach ($object->getTenants() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['tenants'] = $values_1;
+            foreach ($object as $key_1 => $value_2) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_2;
                 }
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => false];
         }
@@ -101,11 +125,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class;
         }
@@ -138,20 +162,38 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('email', $data) && $data['email'] === null) {
                 $object->setEmail(null);
             }
-            if (\array_key_exists('tenants', $data) && $data['tenants'] !== null) {
-                $values = [];
-                foreach ($data['tenants'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class, 'json', $context);
+            if (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] !== null) {
+                $object->setSignInId($data['sign_in_id']);
+                unset($data['sign_in_id']);
+            }
+            elseif (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] === null) {
+                $object->setSignInId(null);
+            }
+            if (\array_key_exists('user_attribute', $data) && $data['user_attribute'] !== null) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['user_attribute'] as $key => $value) {
+                    $values[$key] = $value;
                 }
-                $object->setTenants($values);
+                $object->setUserAttribute($values);
+                unset($data['user_attribute']);
+            }
+            elseif (\array_key_exists('user_attribute', $data) && $data['user_attribute'] === null) {
+                $object->setUserAttribute(null);
+            }
+            if (\array_key_exists('tenants', $data) && $data['tenants'] !== null) {
+                $values_1 = [];
+                foreach ($data['tenants'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \AntiPatternInc\Saasus\Sdk\Auth\Model\UserAvailableTenant::class, 'json', $context);
+                }
+                $object->setTenants($values_1);
                 unset($data['tenants']);
             }
             elseif (\array_key_exists('tenants', $data) && $data['tenants'] === null) {
                 $object->setTenants(null);
             }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
+            foreach ($data as $key_1 => $value_2) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_2;
                 }
             }
             return $object;
@@ -164,19 +206,25 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['id'] = $object->getId();
             $data['email'] = $object->getEmail();
+            $data['sign_in_id'] = $object->getSignInId();
             $values = [];
-            foreach ($object->getTenants() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($object->getUserAttribute() as $key => $value) {
+                $values[$key] = $value;
             }
-            $data['tenants'] = $values;
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
+            $data['user_attribute'] = $values;
+            $values_1 = [];
+            foreach ($object->getTenants() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['tenants'] = $values_1;
+            foreach ($object as $key_1 => $value_2) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_2;
                 }
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo::class => false];
         }

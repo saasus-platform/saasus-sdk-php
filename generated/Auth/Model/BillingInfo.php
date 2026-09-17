@@ -8,7 +8,7 @@ class BillingInfo extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -46,7 +46,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -57,7 +57,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return BillingAddress|null
      */
-    public function getAddress(): ?BillingAddress
+    public function getAddress() : ?BillingAddress
     {
         return $this->address;
     }
@@ -68,7 +68,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setAddress(?BillingAddress $address): self
+    public function setAddress(?BillingAddress $address) : self
     {
         $this->initialized['address'] = true;
         $this->address = $address;
@@ -79,7 +79,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getInvoiceLanguage(): ?string
+    public function getInvoiceLanguage() : ?string
     {
         return $this->invoiceLanguage;
     }
@@ -90,7 +90,7 @@ class BillingInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setInvoiceLanguage(?string $invoiceLanguage): self
+    public function setInvoiceLanguage(?string $invoiceLanguage) : self
     {
         $this->initialized['invoiceLanguage'] = true;
         $this->invoiceLanguage = $invoiceLanguage;

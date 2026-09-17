@@ -8,7 +8,7 @@ class Invitations extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Invitations extends \ArrayObject
      *
      * @return list<Invitation>|null
      */
-    public function getInvitations(): ?array
+    public function getInvitations() : ?array
     {
         return $this->invitations;
     }
@@ -34,7 +34,7 @@ class Invitations extends \ArrayObject
      *
      * @return self
      */
-    public function setInvitations(?array $invitations): self
+    public function setInvitations(?array $invitations) : self
     {
         $this->initialized['invitations'] = true;
         $this->invitations = $invitations;

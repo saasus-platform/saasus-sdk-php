@@ -8,7 +8,7 @@ class PricingMenuProps extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -47,7 +47,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -58,7 +58,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -69,7 +69,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -80,7 +80,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -91,7 +91,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -102,7 +102,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return self
      */
-    public function setDescription(?string $description): self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -113,7 +113,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getUsed(): ?bool
+    public function getUsed() : ?bool
     {
         return $this->used;
     }
@@ -124,7 +124,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return self
      */
-    public function setUsed(?bool $used): self
+    public function setUsed(?bool $used) : self
     {
         $this->initialized['used'] = true;
         $this->used = $used;
@@ -135,7 +135,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getUnits(): ?array
+    public function getUnits() : ?array
     {
         return $this->units;
     }
@@ -146,7 +146,7 @@ class PricingMenuProps extends \ArrayObject
      *
      * @return self
      */
-    public function setUnits(?array $units): self
+    public function setUnits(?array $units) : self
     {
         $this->initialized['units'] = true;
         $this->units = $units;

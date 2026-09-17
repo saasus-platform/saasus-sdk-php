@@ -8,7 +8,7 @@ class Invitation extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -53,7 +53,7 @@ class Invitation extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -64,7 +64,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -75,7 +75,7 @@ class Invitation extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEmail(): ?string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
@@ -86,7 +86,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(?string $email): self
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -97,7 +97,7 @@ class Invitation extends \ArrayObject
      *
      * @return string|null
      */
-    public function getInvitationUrl(): ?string
+    public function getInvitationUrl() : ?string
     {
         return $this->invitationUrl;
     }
@@ -108,7 +108,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setInvitationUrl(?string $invitationUrl): self
+    public function setInvitationUrl(?string $invitationUrl) : self
     {
         $this->initialized['invitationUrl'] = true;
         $this->invitationUrl = $invitationUrl;
@@ -119,7 +119,7 @@ class Invitation extends \ArrayObject
      *
      * @return list<object>|null
      */
-    public function getEnvs(): ?array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
@@ -130,7 +130,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setEnvs(?array $envs): self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;
@@ -141,7 +141,7 @@ class Invitation extends \ArrayObject
      *
      * @return int|null
      */
-    public function getExpiredAt(): ?int
+    public function getExpiredAt() : ?int
     {
         return $this->expiredAt;
     }
@@ -152,7 +152,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setExpiredAt(?int $expiredAt): self
+    public function setExpiredAt(?int $expiredAt) : self
     {
         $this->initialized['expiredAt'] = true;
         $this->expiredAt = $expiredAt;
@@ -163,7 +163,7 @@ class Invitation extends \ArrayObject
      *
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getStatus() : ?string
     {
         return $this->status;
     }
@@ -174,7 +174,7 @@ class Invitation extends \ArrayObject
      *
      * @return self
      */
-    public function setStatus(?string $status): self
+    public function setStatus(?string $status) : self
     {
         $this->initialized['status'] = true;
         $this->status = $status;

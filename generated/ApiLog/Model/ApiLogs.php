@@ -8,7 +8,7 @@ class ApiLogs extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class ApiLogs extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getApiLogs(): ?array
+    public function getApiLogs() : ?array
     {
         return $this->apiLogs;
     }
@@ -40,7 +40,7 @@ class ApiLogs extends \ArrayObject
      *
      * @return self
      */
-    public function setApiLogs(?array $apiLogs): self
+    public function setApiLogs(?array $apiLogs) : self
     {
         $this->initialized['apiLogs'] = true;
         $this->apiLogs = $apiLogs;
@@ -51,7 +51,7 @@ class ApiLogs extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCursor(): ?string
+    public function getCursor() : ?string
     {
         return $this->cursor;
     }
@@ -62,7 +62,7 @@ class ApiLogs extends \ArrayObject
      *
      * @return self
      */
-    public function setCursor(?string $cursor): self
+    public function setCursor(?string $cursor) : self
     {
         $this->initialized['cursor'] = true;
         $this->cursor = $cursor;

@@ -23,22 +23,22 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
         $this->body = $requestBody;
     }
     use \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\EndpointTrait;
-    public function getMethod(): string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    public function getUri(): string
+    public function getUri() : string
     {
         return str_replace(['{tenant_id}', '{user_id}', '{env_id}'], [$this->tenant_id, $this->user_id, $this->env_id], '/tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \AntiPatternInc\Saasus\Sdk\Auth\Model\CreateTenantUserRolesParam) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }
-    public function getExtraHeaders(): array
+    public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
@@ -57,10 +57,10 @@ class CreateTenantUserRoles extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Clie
             return null;
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserRolesInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\Saasus\Sdk\Auth\Model\Error', 'json'), $response);
+            throw new \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateTenantUserRolesInternalServerErrorException($serializer->deserialize($body, 'AntiPatternInc\\Saasus\\Sdk\\Auth\\Model\\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes(): array
+    public function getAuthenticationScopes() : array
     {
         return ['Bearer'];
     }

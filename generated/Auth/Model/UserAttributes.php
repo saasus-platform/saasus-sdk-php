@@ -8,7 +8,7 @@ class UserAttributes extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UserAttributes extends \ArrayObject
      *
      * @return list<Attribute>|null
      */
-    public function getUserAttributes(): ?array
+    public function getUserAttributes() : ?array
     {
         return $this->userAttributes;
     }
@@ -34,7 +34,7 @@ class UserAttributes extends \ArrayObject
      *
      * @return self
      */
-    public function setUserAttributes(?array $userAttributes): self
+    public function setUserAttributes(?array $userAttributes) : self
     {
         $this->initialized['userAttributes'] = true;
         $this->userAttributes = $userAttributes;

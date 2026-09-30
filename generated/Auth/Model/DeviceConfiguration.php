@@ -8,7 +8,7 @@ class DeviceConfiguration extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class DeviceConfiguration extends \ArrayObject
     *
     * @return string|null
     */
-    public function getDeviceRemembering(): ?string
+    public function getDeviceRemembering() : ?string
     {
         return $this->deviceRemembering;
     }
@@ -43,7 +43,7 @@ class DeviceConfiguration extends \ArrayObject
     *
     * @return self
     */
-    public function setDeviceRemembering(?string $deviceRemembering): self
+    public function setDeviceRemembering(?string $deviceRemembering) : self
     {
         $this->initialized['deviceRemembering'] = true;
         $this->deviceRemembering = $deviceRemembering;

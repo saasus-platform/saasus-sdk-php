@@ -8,7 +8,7 @@ class BasicInfo extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -71,7 +71,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDomainName(): ?string
+    public function getDomainName() : ?string
     {
         return $this->domainName;
     }
@@ -82,7 +82,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setDomainName(?string $domainName): self
+    public function setDomainName(?string $domainName) : self
     {
         $this->initialized['domainName'] = true;
         $this->domainName = $domainName;
@@ -93,7 +93,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsDnsValidated(): ?bool
+    public function getIsDnsValidated() : ?bool
     {
         return $this->isDnsValidated;
     }
@@ -104,7 +104,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setIsDnsValidated(?bool $isDnsValidated): self
+    public function setIsDnsValidated(?bool $isDnsValidated) : self
     {
         $this->initialized['isDnsValidated'] = true;
         $this->isDnsValidated = $isDnsValidated;
@@ -115,7 +115,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return DnsRecord|null
      */
-    public function getCertificateDnsRecord(): ?DnsRecord
+    public function getCertificateDnsRecord() : ?DnsRecord
     {
         return $this->certificateDnsRecord;
     }
@@ -126,7 +126,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setCertificateDnsRecord(?DnsRecord $certificateDnsRecord): self
+    public function setCertificateDnsRecord(?DnsRecord $certificateDnsRecord) : self
     {
         $this->initialized['certificateDnsRecord'] = true;
         $this->certificateDnsRecord = $certificateDnsRecord;
@@ -137,7 +137,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return DnsRecord|null
      */
-    public function getCloudFrontDnsRecord(): ?DnsRecord
+    public function getCloudFrontDnsRecord() : ?DnsRecord
     {
         return $this->cloudFrontDnsRecord;
     }
@@ -148,7 +148,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setCloudFrontDnsRecord(?DnsRecord $cloudFrontDnsRecord): self
+    public function setCloudFrontDnsRecord(?DnsRecord $cloudFrontDnsRecord) : self
     {
         $this->initialized['cloudFrontDnsRecord'] = true;
         $this->cloudFrontDnsRecord = $cloudFrontDnsRecord;
@@ -159,7 +159,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return list<DnsRecord>|null
      */
-    public function getDkimDnsRecords(): ?array
+    public function getDkimDnsRecords() : ?array
     {
         return $this->dkimDnsRecords;
     }
@@ -170,7 +170,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setDkimDnsRecords(?array $dkimDnsRecords): self
+    public function setDkimDnsRecords(?array $dkimDnsRecords) : self
     {
         $this->initialized['dkimDnsRecords'] = true;
         $this->dkimDnsRecords = $dkimDnsRecords;
@@ -181,7 +181,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDefaultDomainName(): ?string
+    public function getDefaultDomainName() : ?string
     {
         return $this->defaultDomainName;
     }
@@ -192,7 +192,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setDefaultDomainName(?string $defaultDomainName): self
+    public function setDefaultDomainName(?string $defaultDomainName) : self
     {
         $this->initialized['defaultDomainName'] = true;
         $this->defaultDomainName = $defaultDomainName;
@@ -203,7 +203,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFromEmailAddress(): ?string
+    public function getFromEmailAddress() : ?string
     {
         return $this->fromEmailAddress;
     }
@@ -214,7 +214,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setFromEmailAddress(?string $fromEmailAddress): self
+    public function setFromEmailAddress(?string $fromEmailAddress) : self
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
@@ -225,7 +225,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getReplyEmailAddress(): ?string
+    public function getReplyEmailAddress() : ?string
     {
         return $this->replyEmailAddress;
     }
@@ -236,7 +236,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setReplyEmailAddress(?string $replyEmailAddress): self
+    public function setReplyEmailAddress(?string $replyEmailAddress) : self
     {
         $this->initialized['replyEmailAddress'] = true;
         $this->replyEmailAddress = $replyEmailAddress;
@@ -247,7 +247,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsSesSandboxGranted(): ?bool
+    public function getIsSesSandboxGranted() : ?bool
     {
         return $this->isSesSandboxGranted;
     }
@@ -258,7 +258,7 @@ class BasicInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setIsSesSandboxGranted(?bool $isSesSandboxGranted): self
+    public function setIsSesSandboxGranted(?bool $isSesSandboxGranted) : self
     {
         $this->initialized['isSesSandboxGranted'] = true;
         $this->isSesSandboxGranted = $isSesSandboxGranted;

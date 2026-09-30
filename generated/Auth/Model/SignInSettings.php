@@ -8,7 +8,7 @@ class SignInSettings extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -67,7 +67,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return PasswordPolicy|null
      */
-    public function getPasswordPolicy(): ?PasswordPolicy
+    public function getPasswordPolicy() : ?PasswordPolicy
     {
         return $this->passwordPolicy;
     }
@@ -78,7 +78,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setPasswordPolicy(?PasswordPolicy $passwordPolicy): self
+    public function setPasswordPolicy(?PasswordPolicy $passwordPolicy) : self
     {
         $this->initialized['passwordPolicy'] = true;
         $this->passwordPolicy = $passwordPolicy;
@@ -89,7 +89,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return DeviceConfiguration|null
      */
-    public function getDeviceConfiguration(): ?DeviceConfiguration
+    public function getDeviceConfiguration() : ?DeviceConfiguration
     {
         return $this->deviceConfiguration;
     }
@@ -100,7 +100,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setDeviceConfiguration(?DeviceConfiguration $deviceConfiguration): self
+    public function setDeviceConfiguration(?DeviceConfiguration $deviceConfiguration) : self
     {
         $this->initialized['deviceConfiguration'] = true;
         $this->deviceConfiguration = $deviceConfiguration;
@@ -113,7 +113,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return MfaConfiguration|null
     */
-    public function getMfaConfiguration(): ?MfaConfiguration
+    public function getMfaConfiguration() : ?MfaConfiguration
     {
         return $this->mfaConfiguration;
     }
@@ -126,7 +126,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return self
     */
-    public function setMfaConfiguration(?MfaConfiguration $mfaConfiguration): self
+    public function setMfaConfiguration(?MfaConfiguration $mfaConfiguration) : self
     {
         $this->initialized['mfaConfiguration'] = true;
         $this->mfaConfiguration = $mfaConfiguration;
@@ -139,7 +139,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return RecaptchaProps|null
     */
-    public function getRecaptchaProps(): ?RecaptchaProps
+    public function getRecaptchaProps() : ?RecaptchaProps
     {
         return $this->recaptchaProps;
     }
@@ -152,7 +152,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return self
     */
-    public function setRecaptchaProps(?RecaptchaProps $recaptchaProps): self
+    public function setRecaptchaProps(?RecaptchaProps $recaptchaProps) : self
     {
         $this->initialized['recaptchaProps'] = true;
         $this->recaptchaProps = $recaptchaProps;
@@ -165,7 +165,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return AccountVerification|null
     */
-    public function getAccountVerification(): ?AccountVerification
+    public function getAccountVerification() : ?AccountVerification
     {
         return $this->accountVerification;
     }
@@ -178,7 +178,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return self
     */
-    public function setAccountVerification(?AccountVerification $accountVerification): self
+    public function setAccountVerification(?AccountVerification $accountVerification) : self
     {
         $this->initialized['accountVerification'] = true;
         $this->accountVerification = $accountVerification;
@@ -189,7 +189,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return SelfRegist|null
      */
-    public function getSelfRegist(): ?SelfRegist
+    public function getSelfRegist() : ?SelfRegist
     {
         return $this->selfRegist;
     }
@@ -200,7 +200,7 @@ class SignInSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setSelfRegist(?SelfRegist $selfRegist): self
+    public function setSelfRegist(?SelfRegist $selfRegist) : self
     {
         $this->initialized['selfRegist'] = true;
         $this->selfRegist = $selfRegist;
@@ -213,7 +213,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return IdentityProviderConfiguration|null
     */
-    public function getIdentityProviderConfiguration(): ?IdentityProviderConfiguration
+    public function getIdentityProviderConfiguration() : ?IdentityProviderConfiguration
     {
         return $this->identityProviderConfiguration;
     }
@@ -226,7 +226,7 @@ class SignInSettings extends \ArrayObject
     *
     * @return self
     */
-    public function setIdentityProviderConfiguration(?IdentityProviderConfiguration $identityProviderConfiguration): self
+    public function setIdentityProviderConfiguration(?IdentityProviderConfiguration $identityProviderConfiguration) : self
     {
         $this->initialized['identityProviderConfiguration'] = true;
         $this->identityProviderConfiguration = $identityProviderConfiguration;

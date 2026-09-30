@@ -25,6 +25,38 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetUserInfo($queryParameters), $fetch);
     }
     /**
+     * Get user information by email address.
+     *
+     * @param array $queryParameters {
+     *     @var string $email Email
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoByEmailNotFoundException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoByEmailInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo|\Psr\Http\Message\ResponseInterface
+     */
+    public function getUserInfoByEmail(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetUserInfoByEmail($queryParameters), $fetch);
+    }
+    /**
+     * Get user information by sign-in ID.
+     *
+     * @param array $queryParameters {
+     *     @var string $sign_in_id Sign-in ID.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoBySignInIdNotFoundException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserInfoBySignInIdInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo|\Psr\Http\Message\ResponseInterface
+     */
+    public function getUserInfoBySignInId(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetUserInfoBySignInId($queryParameters), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetBasicInfoInternalServerErrorException
      *
@@ -86,29 +118,77 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetSaasUsers(), $fetch);
     }
     /**
-     * Create SaaS User.
-     *
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateSaasUserBadRequestException
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateSaasUserInternalServerErrorException
-     *
-     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser|\Psr\Http\Message\ResponseInterface
-     */
+    * Create SaaS User.
+    If attributes is empty, a temporary password will be sent to the registered email.
+    
+    *
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateSaasUserBadRequestException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateSaasUserInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\CreatedSaasUser|\Psr\Http\Message\ResponseInterface
+    */
     public function createSaasUser(?\AntiPatternInc\Saasus\Sdk\Auth\Model\CreateSaasUserParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateSaasUser($requestBody), $fetch);
     }
     /**
-     * Delete all users with matching user ID from the tenant and SaaS.
-     *
-     * @param string $userId User ID
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteSaasUserNotFoundException
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteSaasUserInternalServerErrorException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetSaasUsersCountInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUsersCount|\Psr\Http\Message\ResponseInterface
+     */
+    public function getSaasUsersCount(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetSaasUsersCount(), $fetch);
+    }
+    /**
+     * Save the count of SaaS users.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaveSaasUsersCountParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SaveSaasUsersCountBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SaveSaasUsersCountInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
+    public function saveSaasUsersCount(?\AntiPatternInc\Saasus\Sdk\Auth\Model\SaveSaasUsersCountParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SaveSaasUsersCount($requestBody), $fetch);
+    }
+    /**
+     * Search SaaS users by user ID, email, or sign-in ID.
+     *
+     * @param array $queryParameters {
+     *     @var string $id User ID
+     *     @var string $email Email prefix
+     *     @var string $sign_in_id Sign-in ID prefix
+     *     @var int $limit Maximum number of items to retrieve
+     *     @var string $cursor Cursor for cursor pagination
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SearchSaasUsersBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SearchSaasUsersInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SearchSaasUsersResult|\Psr\Http\Message\ResponseInterface
+     */
+    public function searchSaasUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SearchSaasUsers($queryParameters), $fetch);
+    }
+    /**
+    * Delete all users with matching user ID from the tenant and SaaS.
+    Returns user information before deletion.
+    
+    *
+    * @param string $userId User ID
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteSaasUserNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\DeleteSaasUserInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UserInfo|\Psr\Http\Message\ResponseInterface
+    */
     public function deleteSaasUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteSaasUser($userId), $fetch);
@@ -142,24 +222,58 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasUserPassword($userId, $requestBody), $fetch);
     }
     /**
-     * Change user's email.
-     *
-     * @param string $userId User ID
-     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasUserEmailInternalServerErrorException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
+    * Reset user's login password.
+    The current password will be invalidated and a temporary password will be issued.
+    
+    *
+    * @param string $userId User ID
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ResetSaasUserPasswordNotFoundException
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ResetSaasUserPasswordInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUserResetPasswordResult|\Psr\Http\Message\ResponseInterface
+    */
+    public function resetSaasUserPassword(string $userId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ResetSaasUserPassword($userId), $fetch);
+    }
+    /**
+    * Change user's email.
+    The user must be an email authentication user.
+    Sign-in ID authentication users cannot change their email.
+    
+    *
+    * @param string $userId User ID
+    * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasUserEmailInternalServerErrorException
+    *
+    * @return null|\Psr\Http\Message\ResponseInterface
+    */
     public function updateSaasUserEmail(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserEmailParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasUserEmail($userId, $requestBody), $fetch);
+    }
+    /**
+     * Change user's sign-in ID.
+     *
+     * @param string $userId User ID
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserSignInIdParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasUserSignInIdInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateSaasUserSignInId(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserSignInIdParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasUserSignInId($userId, $requestBody), $fetch);
     }
     /**
     * Request to update the user's email address.
     Sends a verification code to the requested email address.
     Requires the user's access token.
     The verification code is valid for 24 hours.
+    This API is only available for email-authenticated users. Sign-in ID authentication users cannot use this API.
     
     *
     * @param string $userId User ID
@@ -188,6 +302,20 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function confirmEmailUpdate(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmEmailUpdateParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ConfirmEmailUpdate($userId, $requestBody), $fetch);
+    }
+    /**
+     * Update the additional attributes of the SaaS user.
+     *
+     * @param string $userId User ID
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserAttributesParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateSaasUserAttributesInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateSaasUserAttributes(string $userId, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSaasUserAttributesParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSaasUserAttributes($userId, $requestBody), $fetch);
     }
     /**
      * Register an authentication application.
@@ -267,6 +395,53 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function getAllTenantUsers(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetAllTenantUsers(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetAllTenantUsersCountInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\TenantUsersCounts|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAllTenantUsersCount(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetAllTenantUsersCount(), $fetch);
+    }
+    /**
+     * Save the count of tenant users for each tenant.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SaveTenantUsersCountsParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SaveTenantUsersCountsBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SaveTenantUsersCountsInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function saveTenantUsersCounts(?\AntiPatternInc\Saasus\Sdk\Auth\Model\SaveTenantUsersCountsParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SaveTenantUsersCounts($requestBody), $fetch);
+    }
+    /**
+     * Search tenant users by user id, tenant id, email, sign-in ID, env, or role.
+     *
+     * @param array $queryParameters {
+     *     @var string $tenant_id Tenant ID
+     *     @var string $id User ID
+     *     @var string $email Email prefix
+     *     @var string $sign_in_id Sign-in ID prefix
+     *     @var int $env_id Environment ID
+     *     @var string $role_name Role Name
+     *     @var int $limit Maximum number of items to retrieve
+     *     @var string $cursor Cursor for cursor pagination
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SearchTenantUsersBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SearchTenantUsersInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SearchTenantUsersResult|\Psr\Http\Message\ResponseInterface
+     */
+    public function searchTenantUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SearchTenantUsers($queryParameters), $fetch);
     }
     /**
     * Get information on user belonging to the tenant from the user ID.
@@ -436,6 +611,22 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteRole($roleName), $fetch);
     }
     /**
+     * Update role display name.
+     *
+     * @param string $roleName Role name
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateRoleParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateRoleBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateRoleNotFoundException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateRoleInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateRole(string $roleName, ?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateRoleParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateRole($roleName, $requestBody), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetUserAttributesInternalServerErrorException
      *
@@ -447,6 +638,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     }
     /**
     * Create additional user attributes to be kept on the SaaSus Platform.
+    You can give different values to each tenant.
     For example, you can define items associated with a user, such as user name, birthday, etc.
     If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition.
     
@@ -474,6 +666,21 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function deleteUserAttribute(string $attributeName, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\DeleteUserAttribute($attributeName), $fetch);
+    }
+    /**
+    * Create additional SaaS user attributes to be kept on the SaaSus Platform.
+    You can give common values to all tenants.
+    
+    *
+    * @param null|\stdClass $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\CreateSaasUserAttributeInternalServerErrorException
+    *
+    * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\Attribute|\Psr\Http\Message\ResponseInterface
+    */
+    public function createSaasUserAttribute(?\stdClass $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateSaasUserAttribute($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1003,6 +1210,64 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\CreateAuthCredentials($requestBody), $fetch);
     }
     /**
+     * A user attempts to sign in.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SignInParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SignInUnauthorizedException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\SignInInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SignInResult|\Psr\Http\Message\ResponseInterface
+     */
+    public function signIn(?\AntiPatternInc\Saasus\Sdk\Auth\Model\SignInParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\SignIn($requestBody), $fetch);
+    }
+    /**
+     * Confirms a device for remembering.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmDeviceParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmDeviceBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmDeviceUnauthorizedException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\ConfirmDeviceInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmDeviceResult|\Psr\Http\Message\ResponseInterface
+     */
+    public function confirmDevice(?\AntiPatternInc\Saasus\Sdk\Auth\Model\ConfirmDeviceParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\ConfirmDevice($requestBody), $fetch);
+    }
+    /**
+     * Updates the device status.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateDeviceStatusParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateDeviceStatusBadRequestException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateDeviceStatusUnauthorizedException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\UpdateDeviceStatusInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateDeviceStatus(?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateDeviceStatusParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateDeviceStatus($requestBody), $fetch);
+    }
+    /**
+     * Respond to a sign-in challenge.
+     *
+     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\RespondToSignInChallengeParam $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\RespondToSignInChallengeUnauthorizedException
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\RespondToSignInChallengeInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\RespondToSignInChallengeResult|\Psr\Http\Message\ResponseInterface
+     */
+    public function respondToSignInChallenge(?\AntiPatternInc\Saasus\Sdk\Auth\Model\RespondToSignInChallengeParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\RespondToSignInChallenge($requestBody), $fetch);
+    }
+    /**
      * Register a new user. A temporary password will be sent to the registered email.
      *
      * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\SignUpParam $requestBody 
@@ -1104,8 +1369,8 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetSingleTenantSettings(), $fetch);
     }
     /**
-    * Updates configuration information for single-tenant functionality
-    Returns error if single tenant feature cannot be enabled.
+    * Updates configuration information for SaaS Infrastructure Management
+    Returns error if SaaS Infrastructure Management feature cannot be enabled.
     
     *
     * @param null|\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam $requestBody 
@@ -1118,6 +1383,19 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Auth\Runtime\Client\Client
     public function updateSingleTenantSettings(?\AntiPatternInc\Saasus\Sdk\Auth\Model\UpdateSingleTenantSettingsParam $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\UpdateSingleTenantSettings($requestBody), $fetch);
+    }
+    /**
+     * Get the Stripe Customer information associated with the tenant, including their subscriptions.
+     *
+     * @param string $tenantId Tenant ID
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Auth\Exception\GetStripeCustomerInternalServerErrorException
+     *
+     * @return null|\AntiPatternInc\Saasus\Sdk\Auth\Model\StripeCustomer|\Psr\Http\Message\ResponseInterface
+     */
+    public function getStripeCustomer(string $tenantId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \AntiPatternInc\Saasus\Sdk\Auth\Endpoint\GetStripeCustomer($tenantId), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

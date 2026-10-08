@@ -8,7 +8,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -67,7 +67,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return int|null
      */
-    public function getUnitAmount(): ?int
+    public function getUnitAmount() : ?int
     {
         return $this->unitAmount;
     }
@@ -78,7 +78,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setUnitAmount(?int $unitAmount): self
+    public function setUnitAmount(?int $unitAmount) : self
     {
         $this->initialized['unitAmount'] = true;
         $this->unitAmount = $unitAmount;
@@ -92,7 +92,7 @@ class PricingFixedUnitForSave extends \ArrayObject
     *
     * @return string|null
     */
-    public function getRecurringInterval(): ?string
+    public function getRecurringInterval() : ?string
     {
         return $this->recurringInterval;
     }
@@ -106,7 +106,7 @@ class PricingFixedUnitForSave extends \ArrayObject
     *
     * @return self
     */
-    public function setRecurringInterval(?string $recurringInterval): self
+    public function setRecurringInterval(?string $recurringInterval) : self
     {
         $this->initialized['recurringInterval'] = true;
         $this->recurringInterval = $recurringInterval;
@@ -117,7 +117,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -128,7 +128,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -139,7 +139,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -150,7 +150,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -161,7 +161,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -172,7 +172,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setDescription(?string $description): self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -188,7 +188,7 @@ class PricingFixedUnitForSave extends \ArrayObject
     *
     * @return string|null
     */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -204,7 +204,7 @@ class PricingFixedUnitForSave extends \ArrayObject
     *
     * @return self
     */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -215,7 +215,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCurrency(): ?string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
@@ -226,7 +226,7 @@ class PricingFixedUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrency(?string $currency): self
+    public function setCurrency(?string $currency) : self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

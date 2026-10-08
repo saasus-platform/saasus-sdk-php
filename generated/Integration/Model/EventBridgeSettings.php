@@ -8,7 +8,7 @@ class EventBridgeSettings extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class EventBridgeSettings extends \ArrayObject
      *
      * @return string
      */
-    public function getAwsAccountId(): string
+    public function getAwsAccountId() : string
     {
         return $this->awsAccountId;
     }
@@ -40,7 +40,7 @@ class EventBridgeSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setAwsAccountId(string $awsAccountId): self
+    public function setAwsAccountId(string $awsAccountId) : self
     {
         $this->initialized['awsAccountId'] = true;
         $this->awsAccountId = $awsAccountId;
@@ -51,7 +51,7 @@ class EventBridgeSettings extends \ArrayObject
      *
      * @return string
      */
-    public function getAwsRegion(): string
+    public function getAwsRegion() : string
     {
         return $this->awsRegion;
     }
@@ -62,7 +62,7 @@ class EventBridgeSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setAwsRegion(string $awsRegion): self
+    public function setAwsRegion(string $awsRegion) : self
     {
         $this->initialized['awsRegion'] = true;
         $this->awsRegion = $awsRegion;

@@ -8,7 +8,7 @@ class PasswordPolicy extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -53,7 +53,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return int|null
      */
-    public function getMinimumLength(): ?int
+    public function getMinimumLength() : ?int
     {
         return $this->minimumLength;
     }
@@ -64,7 +64,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setMinimumLength(?int $minimumLength): self
+    public function setMinimumLength(?int $minimumLength) : self
     {
         $this->initialized['minimumLength'] = true;
         $this->minimumLength = $minimumLength;
@@ -75,7 +75,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsRequireLowercase(): ?bool
+    public function getIsRequireLowercase() : ?bool
     {
         return $this->isRequireLowercase;
     }
@@ -86,7 +86,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setIsRequireLowercase(?bool $isRequireLowercase): self
+    public function setIsRequireLowercase(?bool $isRequireLowercase) : self
     {
         $this->initialized['isRequireLowercase'] = true;
         $this->isRequireLowercase = $isRequireLowercase;
@@ -97,7 +97,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsRequireNumbers(): ?bool
+    public function getIsRequireNumbers() : ?bool
     {
         return $this->isRequireNumbers;
     }
@@ -108,7 +108,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setIsRequireNumbers(?bool $isRequireNumbers): self
+    public function setIsRequireNumbers(?bool $isRequireNumbers) : self
     {
         $this->initialized['isRequireNumbers'] = true;
         $this->isRequireNumbers = $isRequireNumbers;
@@ -119,7 +119,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsRequireSymbols(): ?bool
+    public function getIsRequireSymbols() : ?bool
     {
         return $this->isRequireSymbols;
     }
@@ -130,7 +130,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setIsRequireSymbols(?bool $isRequireSymbols): self
+    public function setIsRequireSymbols(?bool $isRequireSymbols) : self
     {
         $this->initialized['isRequireSymbols'] = true;
         $this->isRequireSymbols = $isRequireSymbols;
@@ -141,7 +141,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getIsRequireUppercase(): ?bool
+    public function getIsRequireUppercase() : ?bool
     {
         return $this->isRequireUppercase;
     }
@@ -152,7 +152,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setIsRequireUppercase(?bool $isRequireUppercase): self
+    public function setIsRequireUppercase(?bool $isRequireUppercase) : self
     {
         $this->initialized['isRequireUppercase'] = true;
         $this->isRequireUppercase = $isRequireUppercase;
@@ -163,7 +163,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return int|null
      */
-    public function getTemporaryPasswordValidityDays(): ?int
+    public function getTemporaryPasswordValidityDays() : ?int
     {
         return $this->temporaryPasswordValidityDays;
     }
@@ -174,7 +174,7 @@ class PasswordPolicy extends \ArrayObject
      *
      * @return self
      */
-    public function setTemporaryPasswordValidityDays(?int $temporaryPasswordValidityDays): self
+    public function setTemporaryPasswordValidityDays(?int $temporaryPasswordValidityDays) : self
     {
         $this->initialized['temporaryPasswordValidityDays'] = true;
         $this->temporaryPasswordValidityDays = $temporaryPasswordValidityDays;

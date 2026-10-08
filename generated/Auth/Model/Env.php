@@ -8,7 +8,7 @@ class Env extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Env extends \ArrayObject
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -46,7 +46,7 @@ class Env extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?int $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -57,7 +57,7 @@ class Env extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -68,7 +68,7 @@ class Env extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -79,7 +79,7 @@ class Env extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -90,7 +90,7 @@ class Env extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;

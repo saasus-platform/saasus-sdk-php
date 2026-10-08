@@ -8,7 +8,7 @@ class User extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -31,11 +31,21 @@ class User extends \ArrayObject
      */
     protected $tenantName;
     /**
-     * E-mail
-     *
-     * @var string|null
-     */
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @var string|null
+    */
     protected $email;
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @var string|null
+    */
+    protected $signInId;
     /**
      * Attribute information (Get information set by defining user attributes in the SaaS development console)
      *
@@ -53,7 +63,7 @@ class User extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -64,7 +74,7 @@ class User extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -75,7 +85,7 @@ class User extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantId(): ?string
+    public function getTenantId() : ?string
     {
         return $this->tenantId;
     }
@@ -86,7 +96,7 @@ class User extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantId(?string $tenantId): self
+    public function setTenantId(?string $tenantId) : self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;
@@ -97,7 +107,7 @@ class User extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantName(): ?string
+    public function getTenantName() : ?string
     {
         return $this->tenantName;
     }
@@ -108,32 +118,62 @@ class User extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantName(?string $tenantName): self
+    public function setTenantName(?string $tenantName) : self
     {
         $this->initialized['tenantName'] = true;
         $this->tenantName = $tenantName;
         return $this;
     }
     /**
-     * E-mail
-     *
-     * @return string|null
-     */
-    public function getEmail(): ?string
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @return string|null
+    */
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
-     * E-mail
-     *
-     * @param string|null $email
-     *
-     * @return self
-     */
-    public function setEmail(?string $email): self
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @param string|null $email
+    *
+    * @return self
+    */
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
+        return $this;
+    }
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @return string|null
+    */
+    public function getSignInId() : ?string
+    {
+        return $this->signInId;
+    }
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @param string|null $signInId
+    *
+    * @return self
+    */
+    public function setSignInId(?string $signInId) : self
+    {
+        $this->initialized['signInId'] = true;
+        $this->signInId = $signInId;
         return $this;
     }
     /**
@@ -141,7 +181,7 @@ class User extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getAttributes(): ?iterable
+    public function getAttributes() : ?iterable
     {
         return $this->attributes;
     }
@@ -152,7 +192,7 @@ class User extends \ArrayObject
      *
      * @return self
      */
-    public function setAttributes(?iterable $attributes): self
+    public function setAttributes(?iterable $attributes) : self
     {
         $this->initialized['attributes'] = true;
         $this->attributes = $attributes;
@@ -163,7 +203,7 @@ class User extends \ArrayObject
      *
      * @return list<object>|null
      */
-    public function getEnvs(): ?array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
@@ -174,7 +214,7 @@ class User extends \ArrayObject
      *
      * @return self
      */
-    public function setEnvs(?array $envs): self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;

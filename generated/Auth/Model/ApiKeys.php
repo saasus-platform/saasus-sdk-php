@@ -8,7 +8,7 @@ class ApiKeys extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class ApiKeys extends \ArrayObject
      *
      * @return list<string>|null
      */
-    public function getApiKeys(): ?array
+    public function getApiKeys() : ?array
     {
         return $this->apiKeys;
     }
@@ -34,7 +34,7 @@ class ApiKeys extends \ArrayObject
      *
      * @return self
      */
-    public function setApiKeys(?array $apiKeys): self
+    public function setApiKeys(?array $apiKeys) : self
     {
         $this->initialized['apiKeys'] = true;
         $this->apiKeys = $apiKeys;

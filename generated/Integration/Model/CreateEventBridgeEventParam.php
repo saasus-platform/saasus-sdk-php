@@ -8,7 +8,7 @@ class CreateEventBridgeEventParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class CreateEventBridgeEventParam extends \ArrayObject
      *
      * @return list<EventMessage>
      */
-    public function getEventMessages(): array
+    public function getEventMessages() : array
     {
         return $this->eventMessages;
     }
@@ -34,7 +34,7 @@ class CreateEventBridgeEventParam extends \ArrayObject
      *
      * @return self
      */
-    public function setEventMessages(array $eventMessages): self
+    public function setEventMessages(array $eventMessages) : self
     {
         $this->initialized['eventMessages'] = true;
         $this->eventMessages = $eventMessages;

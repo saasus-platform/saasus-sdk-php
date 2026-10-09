@@ -8,7 +8,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDomainName(): ?string
+    public function getDomainName() : ?string
     {
         return $this->domainName;
     }
@@ -46,7 +46,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return self
      */
-    public function setDomainName(?string $domainName): self
+    public function setDomainName(?string $domainName) : self
     {
         $this->initialized['domainName'] = true;
         $this->domainName = $domainName;
@@ -57,7 +57,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFromEmailAddress(): ?string
+    public function getFromEmailAddress() : ?string
     {
         return $this->fromEmailAddress;
     }
@@ -68,7 +68,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return self
      */
-    public function setFromEmailAddress(?string $fromEmailAddress): self
+    public function setFromEmailAddress(?string $fromEmailAddress) : self
     {
         $this->initialized['fromEmailAddress'] = true;
         $this->fromEmailAddress = $fromEmailAddress;
@@ -79,7 +79,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getReplyEmailAddress(): ?string
+    public function getReplyEmailAddress() : ?string
     {
         return $this->replyEmailAddress;
     }
@@ -90,7 +90,7 @@ class UpdateBasicInfoParam extends \ArrayObject
      *
      * @return self
      */
-    public function setReplyEmailAddress(?string $replyEmailAddress): self
+    public function setReplyEmailAddress(?string $replyEmailAddress) : self
     {
         $this->initialized['replyEmailAddress'] = true;
         $this->replyEmailAddress = $replyEmailAddress;

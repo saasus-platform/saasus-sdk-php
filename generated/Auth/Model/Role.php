@@ -8,7 +8,7 @@ class Role extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Role extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRoleName(): ?string
+    public function getRoleName() : ?string
     {
         return $this->roleName;
     }
@@ -40,7 +40,7 @@ class Role extends \ArrayObject
      *
      * @return self
      */
-    public function setRoleName(?string $roleName): self
+    public function setRoleName(?string $roleName) : self
     {
         $this->initialized['roleName'] = true;
         $this->roleName = $roleName;
@@ -51,7 +51,7 @@ class Role extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -62,7 +62,7 @@ class Role extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;

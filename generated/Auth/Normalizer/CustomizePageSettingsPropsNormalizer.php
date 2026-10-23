@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -68,6 +68,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('google_tag_manager_container_id', $data) && $data['google_tag_manager_container_id'] === null) {
                 $object->setGoogleTagManagerContainerId(null);
             }
+            if (\array_key_exists('is_sign_in_id_enabled', $data) && $data['is_sign_in_id_enabled'] !== null) {
+                $object->setIsSignInIdEnabled($data['is_sign_in_id_enabled']);
+                unset($data['is_sign_in_id_enabled']);
+            }
+            elseif (\array_key_exists('is_sign_in_id_enabled', $data) && $data['is_sign_in_id_enabled'] === null) {
+                $object->setIsSignInIdEnabled(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -75,13 +82,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['title'] = $object->getTitle();
             $data['terms_of_service_url'] = $object->getTermsOfServiceUrl();
             $data['privacy_policy_url'] = $object->getPrivacyPolicyUrl();
             $data['google_tag_manager_container_id'] = $object->getGoogleTagManagerContainerId();
+            if ($object->isInitialized('isSignInIdEnabled') && null !== $object->getIsSignInIdEnabled()) {
+                $data['is_sign_in_id_enabled'] = $object->getIsSignInIdEnabled();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -89,7 +99,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => false];
         }
@@ -101,11 +111,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class;
         }
@@ -152,6 +162,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('google_tag_manager_container_id', $data) && $data['google_tag_manager_container_id'] === null) {
                 $object->setGoogleTagManagerContainerId(null);
             }
+            if (\array_key_exists('is_sign_in_id_enabled', $data) && $data['is_sign_in_id_enabled'] !== null) {
+                $object->setIsSignInIdEnabled($data['is_sign_in_id_enabled']);
+                unset($data['is_sign_in_id_enabled']);
+            }
+            elseif (\array_key_exists('is_sign_in_id_enabled', $data) && $data['is_sign_in_id_enabled'] === null) {
+                $object->setIsSignInIdEnabled(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -169,6 +186,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['terms_of_service_url'] = $object->getTermsOfServiceUrl();
             $data['privacy_policy_url'] = $object->getPrivacyPolicyUrl();
             $data['google_tag_manager_container_id'] = $object->getGoogleTagManagerContainerId();
+            if ($object->isInitialized('isSignInIdEnabled') && null !== $object->getIsSignInIdEnabled()) {
+                $data['is_sign_in_id_enabled'] = $object->getIsSignInIdEnabled();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -176,7 +196,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\CustomizePageSettingsProps::class => false];
         }

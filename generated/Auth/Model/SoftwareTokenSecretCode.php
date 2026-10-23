@@ -8,7 +8,7 @@ class SoftwareTokenSecretCode extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class SoftwareTokenSecretCode extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSecretCode(): ?string
+    public function getSecretCode() : ?string
     {
         return $this->secretCode;
     }
@@ -34,7 +34,7 @@ class SoftwareTokenSecretCode extends \ArrayObject
      *
      * @return self
      */
-    public function setSecretCode(?string $secretCode): self
+    public function setSecretCode(?string $secretCode) : self
     {
         $this->initialized['secretCode'] = true;
         $this->secretCode = $secretCode;

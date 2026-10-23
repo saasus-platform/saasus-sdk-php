@@ -8,10 +8,21 @@ class PricingTieredUnitForSave extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
+    /**
+    * Unit of measurement type
+    fixed: Fixed unit
+    usage: Usage unit
+    tiered: Tiered unit
+    tiered_usage: Tiered usage unit
+    
+    *
+    * @var string|null
+    */
+    protected $type;
     /**
      * Upper limit
      *
@@ -52,17 +63,6 @@ class PricingTieredUnitForSave extends \ArrayObject
      */
     protected $description;
     /**
-    * Unit of measurement type
-    fixed: Fixed unit
-    usage: Usage unit
-    tiered: Tiered unit
-    tiered_usage: Tiered usage unit
-    
-    *
-    * @var string|null
-    */
-    protected $type;
-    /**
      * Unit of currency
      *
      * @var string|null
@@ -75,144 +75,6 @@ class PricingTieredUnitForSave extends \ArrayObject
      */
     protected $tiers;
     /**
-     * Upper limit
-     *
-     * @return int|null
-     */
-    public function getUpperCount(): ?int
-    {
-        return $this->upperCount;
-    }
-    /**
-     * Upper limit
-     *
-     * @param int|null $upperCount
-     *
-     * @return self
-     */
-    public function setUpperCount(?int $upperCount): self
-    {
-        $this->initialized['upperCount'] = true;
-        $this->upperCount = $upperCount;
-        return $this;
-    }
-    /**
-     * Metering unit name
-     *
-     * @return string|null
-     */
-    public function getMeteringUnitName(): ?string
-    {
-        return $this->meteringUnitName;
-    }
-    /**
-     * Metering unit name
-     *
-     * @param string|null $meteringUnitName
-     *
-     * @return self
-     */
-    public function setMeteringUnitName(?string $meteringUnitName): self
-    {
-        $this->initialized['meteringUnitName'] = true;
-        $this->meteringUnitName = $meteringUnitName;
-        return $this;
-    }
-    /**
-    * Aggregate usage
-    sum: Total usage during the period
-    max: Maximum usage during the period
-    
-    *
-    * @return string|null
-    */
-    public function getAggregateUsage(): ?string
-    {
-        return $this->aggregateUsage;
-    }
-    /**
-    * Aggregate usage
-    sum: Total usage during the period
-    max: Maximum usage during the period
-    
-    *
-    * @param string|null $aggregateUsage
-    *
-    * @return self
-    */
-    public function setAggregateUsage(?string $aggregateUsage): self
-    {
-        $this->initialized['aggregateUsage'] = true;
-        $this->aggregateUsage = $aggregateUsage;
-        return $this;
-    }
-    /**
-     * Name
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-    /**
-     * Name
-     *
-     * @param string|null $name
-     *
-     * @return self
-     */
-    public function setName(?string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * Display Name
-     *
-     * @return string|null
-     */
-    public function getDisplayName(): ?string
-    {
-        return $this->displayName;
-    }
-    /**
-     * Display Name
-     *
-     * @param string|null $displayName
-     *
-     * @return self
-     */
-    public function setDisplayName(?string $displayName): self
-    {
-        $this->initialized['displayName'] = true;
-        $this->displayName = $displayName;
-        return $this;
-    }
-    /**
-     * Description
-     *
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-    /**
-     * Description
-     *
-     * @param string|null $description
-     *
-     * @return self
-     */
-    public function setDescription(?string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
-        return $this;
-    }
-    /**
     * Unit of measurement type
     fixed: Fixed unit
     usage: Usage unit
@@ -222,7 +84,7 @@ class PricingTieredUnitForSave extends \ArrayObject
     *
     * @return string|null
     */
-    public function getType(): ?string
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -238,10 +100,148 @@ class PricingTieredUnitForSave extends \ArrayObject
     *
     * @return self
     */
-    public function setType(?string $type): self
+    public function setType(?string $type) : self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
+        return $this;
+    }
+    /**
+     * Upper limit
+     *
+     * @return int|null
+     */
+    public function getUpperCount() : ?int
+    {
+        return $this->upperCount;
+    }
+    /**
+     * Upper limit
+     *
+     * @param int|null $upperCount
+     *
+     * @return self
+     */
+    public function setUpperCount(?int $upperCount) : self
+    {
+        $this->initialized['upperCount'] = true;
+        $this->upperCount = $upperCount;
+        return $this;
+    }
+    /**
+     * Metering unit name
+     *
+     * @return string|null
+     */
+    public function getMeteringUnitName() : ?string
+    {
+        return $this->meteringUnitName;
+    }
+    /**
+     * Metering unit name
+     *
+     * @param string|null $meteringUnitName
+     *
+     * @return self
+     */
+    public function setMeteringUnitName(?string $meteringUnitName) : self
+    {
+        $this->initialized['meteringUnitName'] = true;
+        $this->meteringUnitName = $meteringUnitName;
+        return $this;
+    }
+    /**
+    * Aggregate usage
+    sum: Total usage during the period
+    max: Maximum usage during the period
+    
+    *
+    * @return string|null
+    */
+    public function getAggregateUsage() : ?string
+    {
+        return $this->aggregateUsage;
+    }
+    /**
+    * Aggregate usage
+    sum: Total usage during the period
+    max: Maximum usage during the period
+    
+    *
+    * @param string|null $aggregateUsage
+    *
+    * @return self
+    */
+    public function setAggregateUsage(?string $aggregateUsage) : self
+    {
+        $this->initialized['aggregateUsage'] = true;
+        $this->aggregateUsage = $aggregateUsage;
+        return $this;
+    }
+    /**
+     * Name
+     *
+     * @return string|null
+     */
+    public function getName() : ?string
+    {
+        return $this->name;
+    }
+    /**
+     * Name
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name) : self
+    {
+        $this->initialized['name'] = true;
+        $this->name = $name;
+        return $this;
+    }
+    /**
+     * Display Name
+     *
+     * @return string|null
+     */
+    public function getDisplayName() : ?string
+    {
+        return $this->displayName;
+    }
+    /**
+     * Display Name
+     *
+     * @param string|null $displayName
+     *
+     * @return self
+     */
+    public function setDisplayName(?string $displayName) : self
+    {
+        $this->initialized['displayName'] = true;
+        $this->displayName = $displayName;
+        return $this;
+    }
+    /**
+     * Description
+     *
+     * @return string|null
+     */
+    public function getDescription() : ?string
+    {
+        return $this->description;
+    }
+    /**
+     * Description
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description) : self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
         return $this;
     }
     /**
@@ -249,7 +249,7 @@ class PricingTieredUnitForSave extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCurrency(): ?string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
@@ -260,7 +260,7 @@ class PricingTieredUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrency(?string $currency): self
+    public function setCurrency(?string $currency) : self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;
@@ -271,7 +271,7 @@ class PricingTieredUnitForSave extends \ArrayObject
      *
      * @return list<PricingTier>|null
      */
-    public function getTiers(): ?array
+    public function getTiers() : ?array
     {
         return $this->tiers;
     }
@@ -282,7 +282,7 @@ class PricingTieredUnitForSave extends \ArrayObject
      *
      * @return self
      */
-    public function setTiers(?array $tiers): self
+    public function setTiers(?array $tiers) : self
     {
         $this->initialized['tiers'] = true;
         $this->tiers = $tiers;

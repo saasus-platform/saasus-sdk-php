@@ -8,7 +8,7 @@ class UserAvailableTenant extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -67,7 +67,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -78,7 +78,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -89,7 +89,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -100,7 +100,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -111,7 +111,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getCompletedSignUp(): ?bool
+    public function getCompletedSignUp() : ?bool
     {
         return $this->completedSignUp;
     }
@@ -122,7 +122,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setCompletedSignUp(?bool $completedSignUp): self
+    public function setCompletedSignUp(?bool $completedSignUp) : self
     {
         $this->initialized['completedSignUp'] = true;
         $this->completedSignUp = $completedSignUp;
@@ -133,7 +133,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return list<UserAvailableEnv>|null
      */
-    public function getEnvs(): ?array
+    public function getEnvs() : ?array
     {
         return $this->envs;
     }
@@ -144,7 +144,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setEnvs(?array $envs): self
+    public function setEnvs(?array $envs) : self
     {
         $this->initialized['envs'] = true;
         $this->envs = $envs;
@@ -155,7 +155,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return array<string, mixed>|null
      */
-    public function getUserAttribute(): ?iterable
+    public function getUserAttribute() : ?iterable
     {
         return $this->userAttribute;
     }
@@ -166,7 +166,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setUserAttribute(?iterable $userAttribute): self
+    public function setUserAttribute(?iterable $userAttribute) : self
     {
         $this->initialized['userAttribute'] = true;
         $this->userAttribute = $userAttribute;
@@ -177,7 +177,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getBackOfficeStaffEmail(): ?string
+    public function getBackOfficeStaffEmail() : ?string
     {
         return $this->backOfficeStaffEmail;
     }
@@ -188,7 +188,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail): self
+    public function setBackOfficeStaffEmail(?string $backOfficeStaffEmail) : self
     {
         $this->initialized['backOfficeStaffEmail'] = true;
         $this->backOfficeStaffEmail = $backOfficeStaffEmail;
@@ -199,7 +199,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPlanId(): ?string
+    public function getPlanId() : ?string
     {
         return $this->planId;
     }
@@ -210,7 +210,7 @@ class UserAvailableTenant extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanId(?string $planId): self
+    public function setPlanId(?string $planId) : self
     {
         $this->initialized['planId'] = true;
         $this->planId = $planId;
@@ -223,7 +223,7 @@ class UserAvailableTenant extends \ArrayObject
     *
     * @return bool|null
     */
-    public function getIsPaid(): ?bool
+    public function getIsPaid() : ?bool
     {
         return $this->isPaid;
     }
@@ -236,7 +236,7 @@ class UserAvailableTenant extends \ArrayObject
     *
     * @return self
     */
-    public function setIsPaid(?bool $isPaid): self
+    public function setIsPaid(?bool $isPaid) : self
     {
         $this->initialized['isPaid'] = true;
         $this->isPaid = $isPaid;

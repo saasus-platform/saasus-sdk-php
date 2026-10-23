@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -54,26 +54,60 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('email', $data) && $data['email'] === null) {
                 $object->setEmail(null);
             }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+            if (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] !== null) {
+                $object->setSignInId($data['sign_in_id']);
+                unset($data['sign_in_id']);
+            }
+            elseif (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] === null) {
+                $object->setSignInId(null);
+            }
+            if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['attributes'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setAttributes($values);
+                unset($data['attributes']);
+            }
+            elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+                $object->setAttributes(null);
+            }
+            if (\array_key_exists('last_login_at', $data) && $data['last_login_at'] !== null) {
+                $object->setLastLoginAt($data['last_login_at']);
+                unset($data['last_login_at']);
+            }
+            elseif (\array_key_exists('last_login_at', $data) && $data['last_login_at'] === null) {
+                $object->setLastLoginAt(null);
+            }
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
                 }
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['id'] = $object->getId();
             $data['email'] = $object->getEmail();
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+            $data['sign_in_id'] = $object->getSignInId();
+            $values = [];
+            foreach ($object->getAttributes() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['attributes'] = $values;
+            if ($object->isInitialized('lastLoginAt') && null !== $object->getLastLoginAt()) {
+                $data['last_login_at'] = $object->getLastLoginAt();
+            }
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
                 }
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => false];
         }
@@ -85,11 +119,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class;
         }
@@ -122,9 +156,34 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('email', $data) && $data['email'] === null) {
                 $object->setEmail(null);
             }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+            if (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] !== null) {
+                $object->setSignInId($data['sign_in_id']);
+                unset($data['sign_in_id']);
+            }
+            elseif (\array_key_exists('sign_in_id', $data) && $data['sign_in_id'] === null) {
+                $object->setSignInId(null);
+            }
+            if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['attributes'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setAttributes($values);
+                unset($data['attributes']);
+            }
+            elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+                $object->setAttributes(null);
+            }
+            if (\array_key_exists('last_login_at', $data) && $data['last_login_at'] !== null) {
+                $object->setLastLoginAt($data['last_login_at']);
+                unset($data['last_login_at']);
+            }
+            elseif (\array_key_exists('last_login_at', $data) && $data['last_login_at'] === null) {
+                $object->setLastLoginAt(null);
+            }
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
                 }
             }
             return $object;
@@ -137,14 +196,23 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['id'] = $object->getId();
             $data['email'] = $object->getEmail();
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+            $data['sign_in_id'] = $object->getSignInId();
+            $values = [];
+            foreach ($object->getAttributes() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['attributes'] = $values;
+            if ($object->isInitialized('lastLoginAt') && null !== $object->getLastLoginAt()) {
+                $data['last_login_at'] = $object->getLastLoginAt();
+            }
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
                 }
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\SaasUser::class => false];
         }

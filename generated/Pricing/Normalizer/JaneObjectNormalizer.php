@@ -98,21 +98,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             
             \Jane\Component\JsonSchemaRuntime\Reference::class => \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Normalizer\ReferenceNormalizer::class,
         ], $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []): bool
+        public function supportsNormalization($data, $format = null, array $context = []) : bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $normalizerClass = $this->normalizers[get_class($object)];
             $normalizer = $this->getNormalizer($normalizerClass);
             return $normalizer->normalize($object, $format, $context);
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             $denormalizerClass = $this->normalizers[$type];
             $denormalizer = $this->getNormalizer($denormalizerClass);
@@ -130,7 +130,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\Error::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUsageUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUsageUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingFixedUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUnitBaseProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUsageUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUsageUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingFixedUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUnits::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTiers::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTier::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenuProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\SavePricingMenuParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenu::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenus::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlanProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\SavePricingPlanParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlan::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlans::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDateCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitMonthCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDateCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitMonthCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDatePeriodCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateMeteringUnitTimestampCountParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateMeteringUnitTimestampCountNowParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRateProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRate::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateTaxRateParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRates::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnits::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitProps::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
@@ -222,11 +222,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             
             \Jane\Component\JsonSchemaRuntime\Reference::class => \AntiPatternInc\Saasus\Sdk\Pricing\Runtime\Normalizer\ReferenceNormalizer::class,
         ], $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []): bool
+        public function supportsNormalization($data, $format = null, array $context = []) : bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
@@ -260,7 +260,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\Error::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUsageUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUsageUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingFixedUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUnitBaseProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUsageUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUsageUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingFixedUnitForSave::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingUnits::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTiers::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTier::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenuProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\SavePricingMenuParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenu::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingMenus::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlanProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\SavePricingPlanParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlan::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingPlans::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdatePricingPlansUsedParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitTimestampCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDateCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitMonthCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDateCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitMonthCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitDatePeriodCounts::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateMeteringUnitTimestampCountParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateMeteringUnitTimestampCountNowParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRateProps::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRate::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\UpdateTaxRateParam::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\TaxRates::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitCount::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnits::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnit::class => false, \AntiPatternInc\Saasus\Sdk\Pricing\Model\MeteringUnitProps::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }

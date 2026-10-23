@@ -8,7 +8,7 @@ class TaxRate extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -59,7 +59,7 @@ class TaxRate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -70,7 +70,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -81,7 +81,7 @@ class TaxRate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -92,7 +92,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -103,7 +103,7 @@ class TaxRate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -114,7 +114,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -125,7 +125,7 @@ class TaxRate extends \ArrayObject
      *
      * @return float|null
      */
-    public function getPercentage(): ?float
+    public function getPercentage() : ?float
     {
         return $this->percentage;
     }
@@ -136,7 +136,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setPercentage(?float $percentage): self
+    public function setPercentage(?float $percentage) : self
     {
         $this->initialized['percentage'] = true;
         $this->percentage = $percentage;
@@ -147,7 +147,7 @@ class TaxRate extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getInclusive(): ?bool
+    public function getInclusive() : ?bool
     {
         return $this->inclusive;
     }
@@ -158,7 +158,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setInclusive(?bool $inclusive): self
+    public function setInclusive(?bool $inclusive) : self
     {
         $this->initialized['inclusive'] = true;
         $this->inclusive = $inclusive;
@@ -169,7 +169,7 @@ class TaxRate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCountry(): ?string
+    public function getCountry() : ?string
     {
         return $this->country;
     }
@@ -180,7 +180,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setCountry(?string $country): self
+    public function setCountry(?string $country) : self
     {
         $this->initialized['country'] = true;
         $this->country = $country;
@@ -191,7 +191,7 @@ class TaxRate extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -202,7 +202,7 @@ class TaxRate extends \ArrayObject
      *
      * @return self
      */
-    public function setDescription(?string $description): self
+    public function setDescription(?string $description) : self
     {
         $this->initialized['description'] = true;
         $this->description = $description;

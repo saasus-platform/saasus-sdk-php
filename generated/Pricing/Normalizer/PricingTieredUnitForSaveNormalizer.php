@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -39,6 +39,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $object = new \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave();
             if (null === $data || false === \is_array($data)) {
                 return $object;
+            }
+            if (\array_key_exists('type', $data) && $data['type'] !== null) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+                $object->setType(null);
             }
             if (\array_key_exists('upper_count', $data) && $data['upper_count'] !== null) {
                 $object->setUpperCount($data['upper_count']);
@@ -81,13 +88,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             elseif (\array_key_exists('description', $data) && $data['description'] === null) {
                 $object->setDescription(null);
-            }
-            if (\array_key_exists('type', $data) && $data['type'] !== null) {
-                $object->setType($data['type']);
-                unset($data['type']);
-            }
-            elseif (\array_key_exists('type', $data) && $data['type'] === null) {
-                $object->setType(null);
             }
             if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
                 $object->setCurrency($data['currency']);
@@ -114,9 +114,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
+            $data['type'] = $object->getType();
             $data['upper_count'] = $object->getUpperCount();
             $data['metering_unit_name'] = $object->getMeteringUnitName();
             if ($object->isInitialized('aggregateUsage') && null !== $object->getAggregateUsage()) {
@@ -125,7 +126,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['name'] = $object->getName();
             $data['display_name'] = $object->getDisplayName();
             $data['description'] = $object->getDescription();
-            $data['type'] = $object->getType();
             $data['currency'] = $object->getCurrency();
             $values = [];
             foreach ($object->getTiers() as $value) {
@@ -139,7 +139,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class => false];
         }
@@ -151,11 +151,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class;
         }
@@ -173,6 +173,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $object = new \AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave();
             if (null === $data || false === \is_array($data)) {
                 return $object;
+            }
+            if (\array_key_exists('type', $data) && $data['type'] !== null) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+                $object->setType(null);
             }
             if (\array_key_exists('upper_count', $data) && $data['upper_count'] !== null) {
                 $object->setUpperCount($data['upper_count']);
@@ -215,13 +222,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             elseif (\array_key_exists('description', $data) && $data['description'] === null) {
                 $object->setDescription(null);
-            }
-            if (\array_key_exists('type', $data) && $data['type'] !== null) {
-                $object->setType($data['type']);
-                unset($data['type']);
-            }
-            elseif (\array_key_exists('type', $data) && $data['type'] === null) {
-                $object->setType(null);
             }
             if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
                 $object->setCurrency($data['currency']);
@@ -254,6 +254,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
+            $data['type'] = $object->getType();
             $data['upper_count'] = $object->getUpperCount();
             $data['metering_unit_name'] = $object->getMeteringUnitName();
             if ($object->isInitialized('aggregateUsage') && null !== $object->getAggregateUsage()) {
@@ -262,7 +263,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['name'] = $object->getName();
             $data['display_name'] = $object->getDisplayName();
             $data['description'] = $object->getDescription();
-            $data['type'] = $object->getType();
             $data['currency'] = $object->getCurrency();
             $values = [];
             foreach ($object->getTiers() as $value) {
@@ -276,7 +276,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Pricing\Model\PricingTieredUnitForSave::class => false];
         }

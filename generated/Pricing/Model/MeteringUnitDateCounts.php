@@ -8,7 +8,7 @@ class MeteringUnitDateCounts extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class MeteringUnitDateCounts extends \ArrayObject
      *
      * @return list<MeteringUnitDateCount>|null
      */
-    public function getCounts(): ?array
+    public function getCounts() : ?array
     {
         return $this->counts;
     }
@@ -34,7 +34,7 @@ class MeteringUnitDateCounts extends \ArrayObject
      *
      * @return self
      */
-    public function setCounts(?array $counts): self
+    public function setCounts(?array $counts) : self
     {
         $this->initialized['counts'] = true;
         $this->counts = $counts;

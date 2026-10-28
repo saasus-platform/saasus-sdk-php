@@ -5,3 +5,5 @@ composer.phar
 
 *.yml
 !docker-compose.yml
+# GitHub Actions workflows are YAML and must be tracked despite the rule above.
+!.github/workflows/*.yml

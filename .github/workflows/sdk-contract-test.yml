@@ -35,8 +35,6 @@ jobs:
     name: contract-test
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      MODULES: "auth pricing billing awsmarketplace integration apilog communication"
     steps:
       - name: Checkout PR (latest SDK)
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -66,11 +64,9 @@ jobs:
       # The api repository and its latest stable tag are resolved inside the action.
       - name: Fetch OpenAPI spec
         id: spec
-        uses: saasus-platform/github-actions/.github/actions/fetch-openapi-spec@3828a6f1321f954cbb32e8cb3bd253593d5fa0c1 # github-actions main
+        uses: saasus-platform/github-actions/.github/actions/fetch-openapi-spec@main
         with:
           token: ${{ steps.api-token.outputs.token }}
-          modules: ${{ env.MODULES }}
-          dest: openapi-spec
 
       # (A) Validate the generated code committed here (the released artifact);
       # re-generating would verify a different one. The pipeline
@@ -97,11 +93,10 @@ jobs:
       # Static mode: responses come from the spec's examples, which is how the
       # spec makes oneOf responses resolvable. Dynamic mode would ignore them.
       - name: Start Prism mocks
-        uses: saasus-platform/github-actions/.github/actions/setup-prism@3828a6f1321f954cbb32e8cb3bd253593d5fa0c1 # github-actions main
+        uses: saasus-platform/github-actions/.github/actions/setup-prism@main
         with:
           spec-dir: ${{ steps.spec.outputs.spec-dir }}
           modules: ${{ steps.spec.outputs.modules }}
-          base-port: "4010"
 
       # (B) Latest SDK spec-compliance: requests accepted + responses
       # deserialize. The suite auto-enumerates every operation from the spec in
@@ -116,7 +111,7 @@ jobs:
 
       - name: Resolve previous SDK stable tag
         id: old-tag
-        uses: saasus-platform/github-actions/.github/actions/resolve-latest-stable-tag@3828a6f1321f954cbb32e8cb3bd253593d5fa0c1 # github-actions main
+        uses: saasus-platform/github-actions/.github/actions/resolve-latest-stable-tag@main
 
       - name: Checkout old SDK
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

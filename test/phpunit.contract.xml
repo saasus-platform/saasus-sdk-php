@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+  Dedicated PHPUnit config for the SDK contract suite (steps B and C). It is the
+  stable entry point: a release's forward-compat check (step C) runs the suite
+  the release bundles via `phpunit -c test/phpunit.contract.xml`, so this file's
+  name and location must stay constant across SDK generations. A tag published
+  before the suite existed has no such file, and PHPUnit fails on the missing
+  config by design — there is no skip mechanism.
+
+  Kept separate from test/phpunit.xml so the existing `composer test` flow is
+  unaffected and the contract suite is only run when explicitly selected.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="../vendor/autoload.php"
+         colors="true"
+         backupGlobals="false"
+         failOnWarning="true"
+         failOnRisky="true"
+         beStrictAboutTestsThatDoNotTestAnything="false">
+  <testsuites>
+    <testsuite name="Contract">
+      <directory>./Contract</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

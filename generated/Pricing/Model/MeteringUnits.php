@@ -8,7 +8,7 @@ class MeteringUnits extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class MeteringUnits extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getUnits(): ?array
+    public function getUnits() : ?array
     {
         return $this->units;
     }
@@ -34,7 +34,7 @@ class MeteringUnits extends \ArrayObject
      *
      * @return self
      */
-    public function setUnits(?array $units): self
+    public function setUnits(?array $units) : self
     {
         $this->initialized['units'] = true;
         $this->units = $units;

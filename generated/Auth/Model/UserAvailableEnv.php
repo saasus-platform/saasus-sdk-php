@@ -8,7 +8,7 @@ class UserAvailableEnv extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?int $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -63,7 +63,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -74,7 +74,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -85,7 +85,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
@@ -96,7 +96,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return self
      */
-    public function setDisplayName(?string $displayName): self
+    public function setDisplayName(?string $displayName) : self
     {
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
@@ -107,7 +107,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return list<Role>|null
      */
-    public function getRoles(): ?array
+    public function getRoles() : ?array
     {
         return $this->roles;
     }
@@ -118,7 +118,7 @@ class UserAvailableEnv extends \ArrayObject
      *
      * @return self
      */
-    public function setRoles(?array $roles): self
+    public function setRoles(?array $roles) : self
     {
         $this->initialized['roles'] = true;
         $this->roles = $roles;

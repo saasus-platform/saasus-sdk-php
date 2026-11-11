@@ -8,7 +8,7 @@ class PricingPlans extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class PricingPlans extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getPricingPlans(): ?array
+    public function getPricingPlans() : ?array
     {
         return $this->pricingPlans;
     }
@@ -34,7 +34,7 @@ class PricingPlans extends \ArrayObject
      *
      * @return self
      */
-    public function setPricingPlans(?array $pricingPlans): self
+    public function setPricingPlans(?array $pricingPlans) : self
     {
         $this->initialized['pricingPlans'] = true;
         $this->pricingPlans = $pricingPlans;

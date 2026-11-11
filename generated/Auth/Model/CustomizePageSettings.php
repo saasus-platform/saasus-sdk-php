@@ -8,7 +8,7 @@ class CustomizePageSettings extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -49,11 +49,17 @@ class CustomizePageSettings extends \ArrayObject
      */
     protected $googleTagManagerContainerId;
     /**
+     * display setting for sign-in ID on the sign-in screen
+     *
+     * @var bool|null
+     */
+    protected $isSignInIdEnabled;
+    /**
      * service icon
      *
      * @return string|null
      */
-    public function getIcon(): ?string
+    public function getIcon() : ?string
     {
         return $this->icon;
     }
@@ -64,7 +70,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setIcon(?string $icon): self
+    public function setIcon(?string $icon) : self
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;
@@ -75,7 +81,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getFavicon(): ?string
+    public function getFavicon() : ?string
     {
         return $this->favicon;
     }
@@ -86,7 +92,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setFavicon(?string $favicon): self
+    public function setFavicon(?string $favicon) : self
     {
         $this->initialized['favicon'] = true;
         $this->favicon = $favicon;
@@ -97,7 +103,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTitle(): ?string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
@@ -108,7 +114,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setTitle(?string $title): self
+    public function setTitle(?string $title) : self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -119,7 +125,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTermsOfServiceUrl(): ?string
+    public function getTermsOfServiceUrl() : ?string
     {
         return $this->termsOfServiceUrl;
     }
@@ -130,7 +136,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setTermsOfServiceUrl(?string $termsOfServiceUrl): self
+    public function setTermsOfServiceUrl(?string $termsOfServiceUrl) : self
     {
         $this->initialized['termsOfServiceUrl'] = true;
         $this->termsOfServiceUrl = $termsOfServiceUrl;
@@ -141,7 +147,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPrivacyPolicyUrl(): ?string
+    public function getPrivacyPolicyUrl() : ?string
     {
         return $this->privacyPolicyUrl;
     }
@@ -152,7 +158,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setPrivacyPolicyUrl(?string $privacyPolicyUrl): self
+    public function setPrivacyPolicyUrl(?string $privacyPolicyUrl) : self
     {
         $this->initialized['privacyPolicyUrl'] = true;
         $this->privacyPolicyUrl = $privacyPolicyUrl;
@@ -163,7 +169,7 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getGoogleTagManagerContainerId(): ?string
+    public function getGoogleTagManagerContainerId() : ?string
     {
         return $this->googleTagManagerContainerId;
     }
@@ -174,10 +180,32 @@ class CustomizePageSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setGoogleTagManagerContainerId(?string $googleTagManagerContainerId): self
+    public function setGoogleTagManagerContainerId(?string $googleTagManagerContainerId) : self
     {
         $this->initialized['googleTagManagerContainerId'] = true;
         $this->googleTagManagerContainerId = $googleTagManagerContainerId;
+        return $this;
+    }
+    /**
+     * display setting for sign-in ID on the sign-in screen
+     *
+     * @return bool|null
+     */
+    public function getIsSignInIdEnabled() : ?bool
+    {
+        return $this->isSignInIdEnabled;
+    }
+    /**
+     * display setting for sign-in ID on the sign-in screen
+     *
+     * @param bool|null $isSignInIdEnabled
+     *
+     * @return self
+     */
+    public function setIsSignInIdEnabled(?bool $isSignInIdEnabled) : self
+    {
+        $this->initialized['isSignInIdEnabled'] = true;
+        $this->isSignInIdEnabled = $isSignInIdEnabled;
         return $this;
     }
 }

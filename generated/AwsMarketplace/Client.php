@@ -166,6 +166,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Runtime\Client\Cl
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCatalogEntityVisibilityNotFoundException
      * @throws \AntiPatternInc\Saasus\Sdk\AwsMarketplace\Exception\GetCatalogEntityVisibilityInternalServerErrorException
      *
      * @return null|\AntiPatternInc\Saasus\Sdk\AwsMarketplace\Model\CatalogEntityVisibility|\Psr\Http\Message\ResponseInterface

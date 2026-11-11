@@ -8,7 +8,7 @@ class UpdatePricingPlansUsedParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdatePricingPlansUsedParam extends \ArrayObject
      *
      * @return list<string>|null
      */
-    public function getPlanIds(): ?array
+    public function getPlanIds() : ?array
     {
         return $this->planIds;
     }
@@ -34,7 +34,7 @@ class UpdatePricingPlansUsedParam extends \ArrayObject
      *
      * @return self
      */
-    public function setPlanIds(?array $planIds): self
+    public function setPlanIds(?array $planIds) : self
     {
         $this->initialized['planIds'] = true;
         $this->planIds = $planIds;

@@ -8,7 +8,7 @@ class TenantAttributes extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class TenantAttributes extends \ArrayObject
      *
      * @return list<Attribute>|null
      */
-    public function getTenantAttributes(): ?array
+    public function getTenantAttributes() : ?array
     {
         return $this->tenantAttributes;
     }
@@ -34,7 +34,7 @@ class TenantAttributes extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantAttributes(?array $tenantAttributes): self
+    public function setTenantAttributes(?array $tenantAttributes) : self
     {
         $this->initialized['tenantAttributes'] = true;
         $this->tenantAttributes = $tenantAttributes;

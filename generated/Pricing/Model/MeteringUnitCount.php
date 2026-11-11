@@ -8,7 +8,7 @@ class MeteringUnitCount extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class MeteringUnitCount extends \ArrayObject
      *
      * @return int|null
      */
-    public function getTimestamp(): ?int
+    public function getTimestamp() : ?int
     {
         return $this->timestamp;
     }
@@ -40,7 +40,7 @@ class MeteringUnitCount extends \ArrayObject
      *
      * @return self
      */
-    public function setTimestamp(?int $timestamp): self
+    public function setTimestamp(?int $timestamp) : self
     {
         $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
@@ -51,7 +51,7 @@ class MeteringUnitCount extends \ArrayObject
      *
      * @return int|null
      */
-    public function getCount(): ?int
+    public function getCount() : ?int
     {
         return $this->count;
     }
@@ -62,7 +62,7 @@ class MeteringUnitCount extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(?int $count): self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;

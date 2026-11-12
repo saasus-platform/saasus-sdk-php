@@ -8,7 +8,7 @@ class Customers extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Customers extends \ArrayObject
      *
      * @return list<Customer>|null
      */
-    public function getCustomers(): ?array
+    public function getCustomers() : ?array
     {
         return $this->customers;
     }
@@ -34,7 +34,7 @@ class Customers extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomers(?array $customers): self
+    public function setCustomers(?array $customers) : self
     {
         $this->initialized['customers'] = true;
         $this->customers = $customers;

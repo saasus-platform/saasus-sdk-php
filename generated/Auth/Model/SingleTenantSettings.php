@@ -8,12 +8,12 @@ class SingleTenantSettings extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * enable Single Tenant settings or not
+     * enable SaaS Infrastructure Management settings or not
      *
      * @var bool|null
      */
@@ -43,22 +43,22 @@ class SingleTenantSettings extends \ArrayObject
      */
     protected $roleExternalId;
     /**
-     * enable Single Tenant settings or not
+     * enable SaaS Infrastructure Management settings or not
      *
      * @return bool|null
      */
-    public function getEnabled(): ?bool
+    public function getEnabled() : ?bool
     {
         return $this->enabled;
     }
     /**
-     * enable Single Tenant settings or not
+     * enable SaaS Infrastructure Management settings or not
      *
      * @param bool|null $enabled
      *
      * @return self
      */
-    public function setEnabled(?bool $enabled): self
+    public function setEnabled(?bool $enabled) : self
     {
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
@@ -69,7 +69,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRoleArn(): ?string
+    public function getRoleArn() : ?string
     {
         return $this->roleArn;
     }
@@ -80,7 +80,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setRoleArn(?string $roleArn): self
+    public function setRoleArn(?string $roleArn) : self
     {
         $this->initialized['roleArn'] = true;
         $this->roleArn = $roleArn;
@@ -91,7 +91,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCloudformationTemplateUrl(): ?string
+    public function getCloudformationTemplateUrl() : ?string
     {
         return $this->cloudformationTemplateUrl;
     }
@@ -102,7 +102,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setCloudformationTemplateUrl(?string $cloudformationTemplateUrl): self
+    public function setCloudformationTemplateUrl(?string $cloudformationTemplateUrl) : self
     {
         $this->initialized['cloudformationTemplateUrl'] = true;
         $this->cloudformationTemplateUrl = $cloudformationTemplateUrl;
@@ -113,7 +113,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDdlTemplateUrl(): ?string
+    public function getDdlTemplateUrl() : ?string
     {
         return $this->ddlTemplateUrl;
     }
@@ -124,7 +124,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setDdlTemplateUrl(?string $ddlTemplateUrl): self
+    public function setDdlTemplateUrl(?string $ddlTemplateUrl) : self
     {
         $this->initialized['ddlTemplateUrl'] = true;
         $this->ddlTemplateUrl = $ddlTemplateUrl;
@@ -135,7 +135,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return string|null
      */
-    public function getRoleExternalId(): ?string
+    public function getRoleExternalId() : ?string
     {
         return $this->roleExternalId;
     }
@@ -146,7 +146,7 @@ class SingleTenantSettings extends \ArrayObject
      *
      * @return self
      */
-    public function setRoleExternalId(?string $roleExternalId): self
+    public function setRoleExternalId(?string $roleExternalId) : self
     {
         $this->initialized['roleExternalId'] = true;
         $this->roleExternalId = $roleExternalId;

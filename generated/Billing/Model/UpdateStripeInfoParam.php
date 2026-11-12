@@ -8,7 +8,7 @@ class UpdateStripeInfoParam extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdateStripeInfoParam extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSecretKey(): ?string
+    public function getSecretKey() : ?string
     {
         return $this->secretKey;
     }
@@ -34,7 +34,7 @@ class UpdateStripeInfoParam extends \ArrayObject
      *
      * @return self
      */
-    public function setSecretKey(?string $secretKey): self
+    public function setSecretKey(?string $secretKey) : self
     {
         $this->initialized['secretKey'] = true;
         $this->secretKey = $secretKey;

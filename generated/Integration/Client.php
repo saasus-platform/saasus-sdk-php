@@ -42,6 +42,7 @@ class Client extends \AntiPatternInc\Saasus\Sdk\Integration\Runtime\Client\Clien
      *
      * @param null|\AntiPatternInc\Saasus\Sdk\Integration\Model\CreateEventBridgeEventParam $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventNotImplementedException
      * @throws \AntiPatternInc\Saasus\Sdk\Integration\Exception\CreateEventBridgeEventInternalServerErrorException
      *
      * @return null|\Psr\Http\Message\ResponseInterface

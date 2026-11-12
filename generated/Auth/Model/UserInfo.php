@@ -8,7 +8,7 @@ class UserInfo extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -19,11 +19,27 @@ class UserInfo extends \ArrayObject
      */
     protected $id;
     /**
-     * E-mail
-     *
-     * @var string|null
-     */
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @var string|null
+    */
     protected $email;
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @var string|null
+    */
+    protected $signInId;
+    /**
+     * user additional attributes
+     *
+     * @var array<string, mixed>|null
+     */
+    protected $userAttribute;
     /**
      * Tenant Info
      *
@@ -35,7 +51,7 @@ class UserInfo extends \ArrayObject
      *
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId() : ?string
     {
         return $this->id;
     }
@@ -46,32 +62,84 @@ class UserInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
     /**
-     * E-mail
-     *
-     * @return string|null
-     */
-    public function getEmail(): ?string
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @return string|null
+    */
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
-     * E-mail
-     *
-     * @param string|null $email
-     *
-     * @return self
-     */
-    public function setEmail(?string $email): self
+    * E-mail.
+    For sign-in ID authentication users, this field is an empty string.
+    
+    *
+    * @param string|null $email
+    *
+    * @return self
+    */
+    public function setEmail(?string $email) : self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
+        return $this;
+    }
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @return string|null
+    */
+    public function getSignInId() : ?string
+    {
+        return $this->signInId;
+    }
+    /**
+    * Sign-in ID.
+    For email authentication users, this field is an empty string.
+    
+    *
+    * @param string|null $signInId
+    *
+    * @return self
+    */
+    public function setSignInId(?string $signInId) : self
+    {
+        $this->initialized['signInId'] = true;
+        $this->signInId = $signInId;
+        return $this;
+    }
+    /**
+     * user additional attributes
+     *
+     * @return array<string, mixed>|null
+     */
+    public function getUserAttribute() : ?iterable
+    {
+        return $this->userAttribute;
+    }
+    /**
+     * user additional attributes
+     *
+     * @param array<string, mixed>|null $userAttribute
+     *
+     * @return self
+     */
+    public function setUserAttribute(?iterable $userAttribute) : self
+    {
+        $this->initialized['userAttribute'] = true;
+        $this->userAttribute = $userAttribute;
         return $this;
     }
     /**
@@ -79,7 +147,7 @@ class UserInfo extends \ArrayObject
      *
      * @return list<UserAvailableTenant>|null
      */
-    public function getTenants(): ?array
+    public function getTenants() : ?array
     {
         return $this->tenants;
     }
@@ -90,7 +158,7 @@ class UserInfo extends \ArrayObject
      *
      * @return self
      */
-    public function setTenants(?array $tenants): self
+    public function setTenants(?array $tenants) : self
     {
         $this->initialized['tenants'] = true;
         $this->tenants = $tenants;

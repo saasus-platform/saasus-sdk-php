@@ -8,7 +8,7 @@ class Roles extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Roles extends \ArrayObject
      *
      * @return list<Role>|null
      */
-    public function getRoles(): ?array
+    public function getRoles() : ?array
     {
         return $this->roles;
     }
@@ -34,7 +34,7 @@ class Roles extends \ArrayObject
      *
      * @return self
      */
-    public function setRoles(?array $roles): self
+    public function setRoles(?array $roles) : self
     {
         $this->initialized['roles'] = true;
         $this->roles = $roles;

@@ -8,7 +8,7 @@ class SaasId extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class SaasId extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTenantId(): ?string
+    public function getTenantId() : ?string
     {
         return $this->tenantId;
     }
@@ -46,7 +46,7 @@ class SaasId extends \ArrayObject
      *
      * @return self
      */
-    public function setTenantId(?string $tenantId): self
+    public function setTenantId(?string $tenantId) : self
     {
         $this->initialized['tenantId'] = true;
         $this->tenantId = $tenantId;
@@ -57,7 +57,7 @@ class SaasId extends \ArrayObject
      *
      * @return int|null
      */
-    public function getEnvId(): ?int
+    public function getEnvId() : ?int
     {
         return $this->envId;
     }
@@ -68,7 +68,7 @@ class SaasId extends \ArrayObject
      *
      * @return self
      */
-    public function setEnvId(?int $envId): self
+    public function setEnvId(?int $envId) : self
     {
         $this->initialized['envId'] = true;
         $this->envId = $envId;
@@ -79,7 +79,7 @@ class SaasId extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSaasId(): ?string
+    public function getSaasId() : ?string
     {
         return $this->saasId;
     }
@@ -90,7 +90,7 @@ class SaasId extends \ArrayObject
      *
      * @return self
      */
-    public function setSaasId(?string $saasId): self
+    public function setSaasId(?string $saasId) : self
     {
         $this->initialized['saasId'] = true;
         $this->saasId = $saasId;

@@ -8,7 +8,7 @@ class MfaConfiguration extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class MfaConfiguration extends \ArrayObject
     *
     * @return string|null
     */
-    public function getMfaConfiguration(): ?string
+    public function getMfaConfiguration() : ?string
     {
         return $this->mfaConfiguration;
     }
@@ -43,7 +43,7 @@ class MfaConfiguration extends \ArrayObject
     *
     * @return self
     */
-    public function setMfaConfiguration(?string $mfaConfiguration): self
+    public function setMfaConfiguration(?string $mfaConfiguration) : self
     {
         $this->initialized['mfaConfiguration'] = true;
         $this->mfaConfiguration = $mfaConfiguration;

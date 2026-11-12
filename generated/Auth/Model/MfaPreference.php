@@ -8,7 +8,7 @@ class MfaPreference extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class MfaPreference extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getEnabled(): ?bool
+    public function getEnabled() : ?bool
     {
         return $this->enabled;
     }
@@ -40,7 +40,7 @@ class MfaPreference extends \ArrayObject
      *
      * @return self
      */
-    public function setEnabled(?bool $enabled): self
+    public function setEnabled(?bool $enabled) : self
     {
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
@@ -51,7 +51,7 @@ class MfaPreference extends \ArrayObject
      *
      * @return string|null
      */
-    public function getMethod(): ?string
+    public function getMethod() : ?string
     {
         return $this->method;
     }
@@ -62,7 +62,7 @@ class MfaPreference extends \ArrayObject
      *
      * @return self
      */
-    public function setMethod(?string $method): self
+    public function setMethod(?string $method) : self
     {
         $this->initialized['method'] = true;
         $this->method = $method;

@@ -8,7 +8,7 @@ class TaxRates extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property): bool
+    public function isInitialized($property) : bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class TaxRates extends \ArrayObject
      *
      * @return list<array<string, mixed>>|null
      */
-    public function getTaxRates(): ?array
+    public function getTaxRates() : ?array
     {
         return $this->taxRates;
     }
@@ -34,7 +34,7 @@ class TaxRates extends \ArrayObject
      *
      * @return self
      */
-    public function setTaxRates(?array $taxRates): self
+    public function setTaxRates(?array $taxRates) : self
     {
         $this->initialized['taxRates'] = true;
         $this->taxRates = $taxRates;

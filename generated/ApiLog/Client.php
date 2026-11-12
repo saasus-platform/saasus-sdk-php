@@ -9,8 +9,10 @@ class Client extends \AntiPatternInc\Saasus\Sdk\ApiLog\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *     @var string $created_date The date, in format of YYYY-MM-DD, to retrieve the log.
-     *     @var string $created_at The datetime, in ISO 8601 format, to retrieve the log.
+     *     @var string $created_at The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at.
      *     @var int $limit Maximum number of logs to retrieve.
+     *     @var int $start_at The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
+     *     @var int $end_at The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
      *     @var string $cursor Cursor for cursor pagination.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

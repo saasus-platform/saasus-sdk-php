@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -89,6 +89,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('identity_provider_configuration', $data) && $data['identity_provider_configuration'] === null) {
                 $object->setIdentityProviderConfiguration(null);
             }
+            if (\array_key_exists('refresh_token_validity', $data) && $data['refresh_token_validity'] !== null) {
+                $object->setRefreshTokenValidity($this->denormalizer->denormalize($data['refresh_token_validity'], \AntiPatternInc\Saasus\Sdk\Auth\Model\RefreshTokenValidity::class, 'json', $context));
+                unset($data['refresh_token_validity']);
+            }
+            elseif (\array_key_exists('refresh_token_validity', $data) && $data['refresh_token_validity'] === null) {
+                $object->setRefreshTokenValidity(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -96,7 +103,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['password_policy'] = $this->normalizer->normalize($object->getPasswordPolicy(), 'json', $context);
@@ -106,6 +113,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['account_verification'] = $this->normalizer->normalize($object->getAccountVerification(), 'json', $context);
             $data['self_regist'] = $this->normalizer->normalize($object->getSelfRegist(), 'json', $context);
             $data['identity_provider_configuration'] = $this->normalizer->normalize($object->getIdentityProviderConfiguration(), 'json', $context);
+            $data['refresh_token_validity'] = $this->normalizer->normalize($object->getRefreshTokenValidity(), 'json', $context);
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -113,7 +121,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => false];
         }
@@ -125,11 +133,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
             return $type === \AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
             return is_object($data) && get_class($data) === AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class;
         }
@@ -197,6 +205,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('identity_provider_configuration', $data) && $data['identity_provider_configuration'] === null) {
                 $object->setIdentityProviderConfiguration(null);
             }
+            if (\array_key_exists('refresh_token_validity', $data) && $data['refresh_token_validity'] !== null) {
+                $object->setRefreshTokenValidity($this->denormalizer->denormalize($data['refresh_token_validity'], \AntiPatternInc\Saasus\Sdk\Auth\Model\RefreshTokenValidity::class, 'json', $context));
+                unset($data['refresh_token_validity']);
+            }
+            elseif (\array_key_exists('refresh_token_validity', $data) && $data['refresh_token_validity'] === null) {
+                $object->setRefreshTokenValidity(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -217,6 +232,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['account_verification'] = $this->normalizer->normalize($object->getAccountVerification(), 'json', $context);
             $data['self_regist'] = $this->normalizer->normalize($object->getSelfRegist(), 'json', $context);
             $data['identity_provider_configuration'] = $this->normalizer->normalize($object->getIdentityProviderConfiguration(), 'json', $context);
+            $data['refresh_token_validity'] = $this->normalizer->normalize($object->getRefreshTokenValidity(), 'json', $context);
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -224,7 +240,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
+        public function getSupportedTypes(?string $format = null) : array
         {
             return [\AntiPatternInc\Saasus\Sdk\Auth\Model\SignInSettings::class => false];
         }

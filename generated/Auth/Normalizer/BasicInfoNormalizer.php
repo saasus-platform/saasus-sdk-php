@@ -54,6 +54,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             elseif (\array_key_exists('is_dns_validated', $data) && $data['is_dns_validated'] === null) {
                 $object->setIsDnsValidated(null);
             }
+            if (\array_key_exists('domain_setup_status', $data) && $data['domain_setup_status'] !== null) {
+                $object->setDomainSetupStatus($data['domain_setup_status']);
+                unset($data['domain_setup_status']);
+            }
+            elseif (\array_key_exists('domain_setup_status', $data) && $data['domain_setup_status'] === null) {
+                $object->setDomainSetupStatus(null);
+            }
+            if (\array_key_exists('domain_setup_reason_code', $data) && $data['domain_setup_reason_code'] !== null) {
+                $object->setDomainSetupReasonCode($data['domain_setup_reason_code']);
+                unset($data['domain_setup_reason_code']);
+            }
+            elseif (\array_key_exists('domain_setup_reason_code', $data) && $data['domain_setup_reason_code'] === null) {
+                $object->setDomainSetupReasonCode(null);
+            }
             if (\array_key_exists('certificate_dns_record', $data) && $data['certificate_dns_record'] !== null) {
                 $object->setCertificateDnsRecord($this->denormalizer->denormalize($data['certificate_dns_record'], \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class, 'json', $context));
                 unset($data['certificate_dns_record']);
@@ -119,6 +133,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['domain_name'] = $object->getDomainName();
             $data['is_dns_validated'] = $object->getIsDnsValidated();
+            if ($object->isInitialized('domainSetupStatus') && null !== $object->getDomainSetupStatus()) {
+                $data['domain_setup_status'] = $object->getDomainSetupStatus();
+            }
+            if ($object->isInitialized('domainSetupReasonCode') && null !== $object->getDomainSetupReasonCode()) {
+                $data['domain_setup_reason_code'] = $object->getDomainSetupReasonCode();
+            }
             $data['certificate_dns_record'] = $this->normalizer->normalize($object->getCertificateDnsRecord(), 'json', $context);
             $data['cloud_front_dns_record'] = $this->normalizer->normalize($object->getCloudFrontDnsRecord(), 'json', $context);
             $values = [];
@@ -185,6 +205,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             elseif (\array_key_exists('is_dns_validated', $data) && $data['is_dns_validated'] === null) {
                 $object->setIsDnsValidated(null);
+            }
+            if (\array_key_exists('domain_setup_status', $data) && $data['domain_setup_status'] !== null) {
+                $object->setDomainSetupStatus($data['domain_setup_status']);
+                unset($data['domain_setup_status']);
+            }
+            elseif (\array_key_exists('domain_setup_status', $data) && $data['domain_setup_status'] === null) {
+                $object->setDomainSetupStatus(null);
+            }
+            if (\array_key_exists('domain_setup_reason_code', $data) && $data['domain_setup_reason_code'] !== null) {
+                $object->setDomainSetupReasonCode($data['domain_setup_reason_code']);
+                unset($data['domain_setup_reason_code']);
+            }
+            elseif (\array_key_exists('domain_setup_reason_code', $data) && $data['domain_setup_reason_code'] === null) {
+                $object->setDomainSetupReasonCode(null);
             }
             if (\array_key_exists('certificate_dns_record', $data) && $data['certificate_dns_record'] !== null) {
                 $object->setCertificateDnsRecord($this->denormalizer->denormalize($data['certificate_dns_record'], \AntiPatternInc\Saasus\Sdk\Auth\Model\DnsRecord::class, 'json', $context));
@@ -254,6 +288,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['domain_name'] = $object->getDomainName();
             $data['is_dns_validated'] = $object->getIsDnsValidated();
+            if ($object->isInitialized('domainSetupStatus') && null !== $object->getDomainSetupStatus()) {
+                $data['domain_setup_status'] = $object->getDomainSetupStatus();
+            }
+            if ($object->isInitialized('domainSetupReasonCode') && null !== $object->getDomainSetupReasonCode()) {
+                $data['domain_setup_reason_code'] = $object->getDomainSetupReasonCode();
+            }
             $data['certificate_dns_record'] = $this->normalizer->normalize($object->getCertificateDnsRecord(), 'json', $context);
             $data['cloud_front_dns_record'] = $this->normalizer->normalize($object->getCloudFrontDnsRecord(), 'json', $context);
             $values = [];

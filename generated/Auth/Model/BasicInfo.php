@@ -25,6 +25,18 @@ class BasicInfo extends \ArrayObject
      */
     protected $isDnsValidated;
     /**
+     * Domain setup status. Pending means validation or configuration is in progress; action_required means user action is needed; completed means configuration has been accepted.
+     *
+     * @var string|null
+     */
+    protected $domainSetupStatus;
+    /**
+     * Reason domain setup is incomplete. Omitted when no known reason is available. DNS validation may still be pending while records propagate. Failed or timed-out certificate requests require resubmitting the domain settings after correcting DNS.
+     *
+     * @var string|null
+     */
+    protected $domainSetupReasonCode;
+    /**
      * 
      *
      * @var DnsRecord|null
@@ -108,6 +120,50 @@ class BasicInfo extends \ArrayObject
     {
         $this->initialized['isDnsValidated'] = true;
         $this->isDnsValidated = $isDnsValidated;
+        return $this;
+    }
+    /**
+     * Domain setup status. Pending means validation or configuration is in progress; action_required means user action is needed; completed means configuration has been accepted.
+     *
+     * @return string|null
+     */
+    public function getDomainSetupStatus() : ?string
+    {
+        return $this->domainSetupStatus;
+    }
+    /**
+     * Domain setup status. Pending means validation or configuration is in progress; action_required means user action is needed; completed means configuration has been accepted.
+     *
+     * @param string|null $domainSetupStatus
+     *
+     * @return self
+     */
+    public function setDomainSetupStatus(?string $domainSetupStatus) : self
+    {
+        $this->initialized['domainSetupStatus'] = true;
+        $this->domainSetupStatus = $domainSetupStatus;
+        return $this;
+    }
+    /**
+     * Reason domain setup is incomplete. Omitted when no known reason is available. DNS validation may still be pending while records propagate. Failed or timed-out certificate requests require resubmitting the domain settings after correcting DNS.
+     *
+     * @return string|null
+     */
+    public function getDomainSetupReasonCode() : ?string
+    {
+        return $this->domainSetupReasonCode;
+    }
+    /**
+     * Reason domain setup is incomplete. Omitted when no known reason is available. DNS validation may still be pending while records propagate. Failed or timed-out certificate requests require resubmitting the domain settings after correcting DNS.
+     *
+     * @param string|null $domainSetupReasonCode
+     *
+     * @return self
+     */
+    public function setDomainSetupReasonCode(?string $domainSetupReasonCode) : self
+    {
+        $this->initialized['domainSetupReasonCode'] = true;
+        $this->domainSetupReasonCode = $domainSetupReasonCode;
         return $this;
     }
     /**

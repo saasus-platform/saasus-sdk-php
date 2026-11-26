@@ -57,4 +57,9 @@ done
 echo "Cleaning up backup directory..."
 rm -rf "$BACKUP_DIR"
 
+# The API release workflow exports VERSION when regenerating the SDK.
+if [ -n "${VERSION:-}" ]; then
+  sh ./update-version.sh "$VERSION"
+fi
+
 echo "=== PHP SDK generation with README preservation completed ==="

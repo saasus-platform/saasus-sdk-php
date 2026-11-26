@@ -48,6 +48,11 @@ Route::middleware(\AntiPatternInc\Saasus\Laravel\Middleware\Auth::class)->group(
 
 ## PHP SDK
 
+API リクエストの `User-Agent` には SDK のバージョンを付与します。リリース用の
+生成処理では `VERSION` 環境変数を使い、同名ファイルと
+`src/Api/SdkVersion.php` を更新します。手動でリリースする場合は、タグを作成する前に
+`sh update-version.sh vX.Y.Z` を実行し、両ファイルをコミットしてください。
+
 - [Auth](./generated/Auth/README.md)
 
   ユーザ情報、基本情報、認証情報、テナント情報、役割(ロール)情報などに参照・更新に利用します。

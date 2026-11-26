@@ -39,6 +39,9 @@ jobs:
       - name: Checkout PR (latest SDK)
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
+      - name: Verify SDK version
+        run: sh update-version.sh --check
+
       - name: Set up PHP
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
         with:

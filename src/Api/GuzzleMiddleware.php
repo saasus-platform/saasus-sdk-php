@@ -4,6 +4,8 @@ namespace AntiPatternInc\Saasus\Api;
 
 class GuzzleMiddleware
 {
+    private const USER_AGENT = 'SaaSus-SDK-php/' . SdkVersion::VERSION;
+
     private $next;
 
     protected string $secret;
@@ -42,6 +44,10 @@ class GuzzleMiddleware
             $req->getBody()
         );
         $req = $req->withHeader('Authorization', $header);
+        $userAgent = implode(' ', $req->getHeader('User-Agent'));
+        if (!in_array(self::USER_AGENT, preg_split('/\s+/', $userAgent), true)) {
+            $req = $req->withHeader('User-Agent', trim($userAgent . ' ' . self::USER_AGENT));
+        }
         if (!empty($this->referer)) {
             $req = $req->withHeader('Referer', $this->referer);
         }
